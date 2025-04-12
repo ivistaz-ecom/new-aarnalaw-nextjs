@@ -101,7 +101,7 @@ export default function Partners() {
     <div className="bg-bgDark3 py-12">
       <div className="text-center">
         <p className="mb-4 text-2xl font-bold tracking-wider text-custom-red">
-          {/* PARTNERS */}  {translations.aboutPartner.aboutPartnerTitle}  
+          {/* PARTNERS */}  {translations.aboutPartner.aboutPartnerTitle}
         </p>
         <p className="mx-auto mb-4 px-4 leading-normal text-white md:w-[1200px] md:text-center md:text-3xl">
           {/* The expertise of our accomplished team anchors our practice in thought
@@ -145,11 +145,12 @@ export default function Partners() {
                     {item.acf?.designation || "Designation not available"}
                   </p>
                   <p
-                    className="line-clamp-2 min-h-[50px] text-center text-base text-gray-700"
+                    className="line-clamp-2 text-center text-base text-gray-700 leading-tight mb-2"
                     dangerouslySetInnerHTML={{
                       __html: item.acf?.description || "",
                     }}
                   ></p>
+
                   <Link
                     href={`/team/${item.slug}`}
                     className="mt-2 inline-block rounded bg-custom-red px-4 py-2 text-white hover:bg-red-800"
