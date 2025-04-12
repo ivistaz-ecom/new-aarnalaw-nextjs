@@ -45,3 +45,6 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
 }
 
 export default ModalContact;
+
+
+
