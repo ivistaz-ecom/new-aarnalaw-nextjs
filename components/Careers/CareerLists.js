@@ -95,7 +95,7 @@ function PracticeLists() {
                 <h2 id={`accordion-flush-heading-${index}`}>
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between gap-3 border-b border-gray-200 py-5 text-lg font-medium text-custom-blue dark:border-gray-700 dark:text-gray-400"
+                    className="flex w-full text-start items-center justify-between gap-3 border-b border-gray-200 py-5 text-lg font-medium text-custom-blue dark:border-gray-700 dark:text-gray-400"
                     data-accordion-target={`#accordion-flush-body-${index}`}
                     aria-expanded="false"
                     aria-controls={`accordion-flush-body-${index}`}
@@ -190,7 +190,7 @@ function PracticeLists() {
             year LLB programme.
           </p>
         </div>
-        <div className="flex w-full justify-start">
+        <div className="flex w-full justify-start mt-5">
           <ContactModal
             btnName="Apply Now"
             textColor="text-custom-red"

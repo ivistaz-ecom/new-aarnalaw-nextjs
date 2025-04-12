@@ -22,6 +22,9 @@ const NavBar = () => {
     if (pathname === "/podcast") {
       router.replace("/podcasts");
     }
+
+    // Close menu on route change
+    setIsMenuOpen(false);
   }, [pathname, router]);
 
   return (
@@ -31,7 +34,7 @@ const NavBar = () => {
       </div>
 
       <nav className="absolute z-50 mx-auto mt-20 w-full border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between">
+        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 md:px-0">
           <Link href="/" className="flex items-center">
             <Image
               src="/logo/NewAarnalawLogo.jpg"
@@ -72,32 +75,41 @@ const NavBar = () => {
             </svg>
           </button>
 
-          <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto`} id="navbar-dropdown">
-            <ul className="mt-1 flex flex-col rounded-lg borderfont-medium dark:border-gray-700 md:flex-row md:space-x-6">
+          <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto `} id="navbar-dropdown">
+          <ul className="mt-1 flex flex-col rounded-lg borderfont-medium dark:border-gray-700 md:flex-row md:space-x-6">
               {HeaderMenu.map((item, index) => (
                 <li key={index} className="relative group">
-                  {/* Render main menu item without a link if it has a submenu */}
                   {item.aboutSubMenu || item.subMenu ? (
                     <span className="flex items-center px-3 py-2 md:hover:text-custom-red cursor-pointer">
                       {translations.menu[formatKey(item.menu)] || item.menu}
                       <span className="ml-1 text-sm">&#9662;</span>
                     </span>
                   ) : (
-                    <Link href={item.slug || "#"} className="flex items-center px-3 py-2 md:hover:text-custom-red">
+                    <Link
+                      href={item.slug || "#"}
+                      className="flex items-center px-3 py-2 md:hover:text-custom-red"
+                      onClick={() => setIsMenuOpen(false)} // Close menu on click
+                    >
                       {translations.menu[formatKey(item.menu)] || item.menu}
                     </Link>
                   )}
 
-                  {/* Submenus */}
                   {(item.aboutSubMenu || item.subMenu) && (
                     <ul className="absolute hidden group-hover:block bg-white shadow-lg rounded-lg p-2 w-48 z-10">
-                      {(item.aboutSubMenu || item.subMenu).map((sub, subIndex) => (
-                        <li key={subIndex}>
-                          <Link href={sub.slug || "#"} className="block px-4 py-2 hover:bg-gray-100">
-                            {translations.menu[formatKey(sub.name)] || sub.name}
-                          </Link>
-                        </li>
-                      ))}
+                      {(item.aboutSubMenu || item.subMenu).map(
+                        (sub, subIndex) => (
+                          <li key={subIndex}>
+                            <Link
+                              href={sub.slug || "#"}
+                              className="block px-4 py-2 hover:bg-gray-100"
+                              onClick={() => setIsMenuOpen(false)} // Close submenu on click
+                            >
+                              {translations.menu[formatKey(sub.name)] ||
+                                sub.name}
+                            </Link>
+                          </li>
+                        )
+                      )}
                     </ul>
                   )}
                 </li>
@@ -110,6 +122,7 @@ const NavBar = () => {
             <Link
               href="/contact-us"
               className="mb-2 me-2 mt-2 border border-custom-red bg-white px-5 py-2.5 text-sm font-medium text-custom-red hover:bg-custom-red hover:text-white"
+              onClick={() => setIsMenuOpen(false)} // Also close here just in case
             >
               {translations.menu.contactus || "CONTACT US"}
             </Link>
