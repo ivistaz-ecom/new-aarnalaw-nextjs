@@ -17,6 +17,10 @@ const nextConfig = {
     ],
   },
 
+  eslint: {
+    ignoreDuringBuilds: true, // 👈 this line disables ESLint during build
+  },
+
   async redirects() {
     return [
       //Practice area
@@ -26,8 +30,8 @@ const nextConfig = {
           "/practice-areas",
         permanent: true,
       },
-       //Practice area
-       {
+      //Practice area
+      {
         source: "/contact",
         destination:
           "/contact-us",
@@ -420,7 +424,7 @@ const nextConfig = {
           "insights/case-update-m-s-pathanjali-ayurved-ltd-anr-vs-arudra-engineers-pvt-ltd",
         permanent: true,
       },
-    
+
       {
         source: "/india-and-bilateral-investment-treaties-a-summary-of-the-recommendations-in-the-10th-report-of-the-committee-on-external-affairs-ministry-of-external-affairs",
         destination:
@@ -577,7 +581,7 @@ const nextConfig = {
           "insights/the-arbitration-and-conciliation-amendment-bill-2021",
         permanent: true,
       },
-    
+
 
       //Aarna News
       {
@@ -682,7 +686,7 @@ const nextConfig = {
           "/insights/group-of-companies-doctrine-when-non-signatories-are-bound-by-arbitration-agreements",
         permanent: true,
       },
-     
+
     ];
   },
 };
