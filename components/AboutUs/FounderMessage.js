@@ -7,7 +7,7 @@ function FounderMessage() {
   return (
     <div className="mx-auto grid w-11/12 pb-12 lg:grid-cols-2">
       <div className="flex flex-col items-start justify-center p-2 lg:hidden lg:pl-12">
-        <div className="">
+        <div className="mb-3">
           <Image
             src="/images/quote-png.png"
             width={100}

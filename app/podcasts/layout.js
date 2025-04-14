@@ -11,7 +11,7 @@ export const metadata = {
     description:
       "Tune into Aarna Law's podcast for insightful conversations with legal professionals. Explore in-depth discussions on current legal issues and emerging trends.",
     url: "/podcasts",
-    images: "/aarna-law.png",
+    images: "/insights/InsightsBanner.jpg",
   },
 };
 
