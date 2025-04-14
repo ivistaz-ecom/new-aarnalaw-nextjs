@@ -6,8 +6,15 @@
   ],
   "settings": {
     "tailwindcss": {
-      "callees": ["twMerge", "createTheme"],
+      "callees": [
+        "twMerge",
+        "createTheme"
+      ],
       "classRegex": "^(class(Name)|theme)?$"
     }
+  },
+  "rules": {
+    "no-console": "off",
+    "no-unused-vars": "warn"
   }
 }
