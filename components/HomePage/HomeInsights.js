@@ -43,23 +43,18 @@ export default function HomeInsights() {
           return mediaData.source_url;
         };
 
-        const latestInsights = await Promise.all(
-          posts
-            .sort((a, b) => new Date(b.date) - new Date(a.date))
-            .slice(0, 8)
-            .map(async (item) => {
-              const imageUrl = await fetchMedia(
-                item._embedded?.["wp:featuredmedia"]?.[0]?.source_url,
-              );
-              return {
-                ...item,
-                imageUrl: imageUrl,
-                title: item.title.rendered,
-                desc: item.excerpt.rendered,
-              };
-            }),
-        );
-
+        const latestInsights = posts
+          .sort((a, b) => new Date(b.date) - new Date(a.date))
+          .slice(0, 6)
+          .map((item) => {
+            return {
+              ...item,
+              imageUrl: item._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
+              title: item.title.rendered,
+              desc: item.excerpt.rendered,
+            };
+          });
+          
         setInsightsData(latestInsights);
       } catch (error) {
         // console.log(error);

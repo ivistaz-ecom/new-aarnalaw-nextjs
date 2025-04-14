@@ -41,7 +41,7 @@ const NavBar = () => {
               alt="Aarna Law Logo"
               width={600}
               height={600}
-              className="md:h-24 md:w-24 h-20 w-16"
+              className="md:h-24 md:w-24 h-20 w-20"
               loading="lazy"
             />
           </Link>
@@ -76,7 +76,7 @@ const NavBar = () => {
           </button>
 
           <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto `} id="navbar-dropdown">
-          <ul className="mt-1 flex flex-col rounded-lg borderfont-medium dark:border-gray-700 md:flex-row md:space-x-6">
+            <ul className="mt-1 flex flex-col rounded-lg borderfont-medium dark:border-gray-700 md:flex-row md:space-x-6">
               {HeaderMenu.map((item, index) => (
                 <li key={index} className="relative group">
                   {item.aboutSubMenu || item.subMenu ? (

@@ -1,5 +1,6 @@
 "use client"
 import { useEffect, useState } from "react";
+import { LuArrowBigUpDash } from "react-icons/lu";
 
 const ScrollToTop = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,7 +36,8 @@ const ScrollToTop = () => {
     style={{ transition: "opacity 0.5s" }}
     aria-label="Scroll to top"
   >
-    ⇪
+    {/* ⇪ */}
+    <LuArrowBigUpDash size={24} />
   </button>
   );
 };

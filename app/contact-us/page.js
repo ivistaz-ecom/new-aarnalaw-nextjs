@@ -18,7 +18,7 @@ export const metadata = {
     description:
       "Contact us, the premier Bangalore-based law firm, for expert legal assistance and guidance.",
     url: "/contact-us",
-    images: "/aarna-law.png",
+    images: "/contactUs/ContactBanner.jpg"
   },
 };
 

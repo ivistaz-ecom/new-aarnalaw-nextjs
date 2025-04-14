@@ -20,7 +20,7 @@ export const metadata = {
     description:
       "Discover award-winning legal services in Bangalore. Aarna Law offers full-service representation with expertise and dedication.",
     url: "https://aarnalaw.com/",
-    images: "/aarna-law.png",
+    images: "/banner/desktop_home_banner_2.jpg",
   },
 };
 

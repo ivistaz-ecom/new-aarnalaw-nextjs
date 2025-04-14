@@ -15,7 +15,7 @@ export const metadata = {
     description:
       "We offer tailored legal services for diverse industries, addressing unique needs across sectors with specialized expertise.",
     url: "/industries",
-    images: "/aarna-law.png",
+    images: "/Industries/IndutriesBanner.jpg",
   },
 };
 

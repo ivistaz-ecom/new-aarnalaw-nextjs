@@ -15,7 +15,7 @@ export const metadata = {
     description:
       "We offer legal services for a range of practice areas including corporate advisory, arbitration, mediation, litigation, IP, risk assessment, and compliance",
     url: "/practice-area",
-    images: "/aarna-law.png",
+    images: "/PracticeArea/PracticeAreas.png",
   },
 };
 

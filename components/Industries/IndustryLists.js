@@ -63,50 +63,50 @@ function IndustryLists() {
         <div className="grid gap-4 pt-12 lg:grid-cols-4">
           {loading
             ? [...Array(12)].map((_, index) => (
-                <div key={index} className="animate-pulse">
-                  <div className="h-[200px] w-full bg-gray-300"></div>
-                  <div className="h-[65px] bg-[#233876]"></div>
-                </div>
-              ))
+              <div key={index} className="animate-pulse">
+                <div className="h-[200px] w-full bg-gray-300"></div>
+                <div className="h-[65px] bg-[#233876]"></div>
+              </div>
+            ))
             : data.map((item, index) => {
-                // Choose title & description based on language selection
-                const title =
-                  language === "ta" && item.acf.tamil_title
-                    ? item.acf.tamil_title
-                    : language === "kn" && item.acf.kannada_title
+              // Choose title & description based on language selection
+              const title =
+                language === "ta" && item.acf.tamil_title
+                  ? item.acf.tamil_title
+                  : language === "kn" && item.acf.kannada_title
                     ? item.acf.kannada_title
                     : language === "te" && item.acf.telugu_title
-                    ? item.acf.telugu_title
-                    : item.title.rendered;
+                      ? item.acf.telugu_title
+                      : item.title.rendered;
 
-                const description =
-                  language === "ta" && item.acf.tamil_description
-                    ? item.acf.tamil_description
-                    : language === "kn" && item.acf.kannada_description
+              const description =
+                language === "ta" && item.acf.tamil_description
+                  ? item.acf.tamil_description
+                  : language === "kn" && item.acf.kannada_description
                     ? item.acf.kannada_description
                     : item.acf.description;
 
-                return (
-                  <div className="group" key={index}>
-                    <div className="overflow-hidden">
-                      <Image
-                        src={item.acf.banner_image.url}
-                        width={400}
-                        height={400}
-                        className="h-[200px] w-full transition-transform duration-500 ease-in-out group-hover:scale-110"
-                        alt={title}
-                        loading="lazy"
-                      />
-                    </div>
-                    <Link
-                      href={`/industries/${item.slug}`}
-                      className="flex h-[65px] items-center justify-center bg-[#233876] p-1 text-center font-semibold text-white"
-                    >
-                      <p dangerouslySetInnerHTML={{ __html: title }} />
-                    </Link>
+              return (
+                <div className="group" key={index}>
+                  <div className="overflow-hidden">
+                    <Image
+                      src={item.acf.banner_image.url}
+                      width={400}
+                      height={400}
+                      className="h-[200px] w-full transition-transform duration-500 ease-in-out group-hover:scale-110"
+                      alt={title}
+                      loading="lazy"
+                    />
                   </div>
-                );
-              })}
+                  <Link
+                    href={`/industries/${item.slug}`}
+                    className="flex h-[65px] items-center justify-center bg-[#233876] p-1 text-center font-semibold text-white"
+                  >
+                    <p dangerouslySetInnerHTML={{ __html: title }} />
+                  </Link>
+                </div>
+              );
+            })}
         </div>
       </div>
     </div>

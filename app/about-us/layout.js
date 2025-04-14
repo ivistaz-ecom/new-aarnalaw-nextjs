@@ -11,7 +11,7 @@ export const metadata = {
     description:
       "Aarna Law: Your Go-To for Tailored Legal Solutions. Trusted Advisors Offering International Legal Expertise from India",
     url: "/about-us",
-    images: "/aarna-law.png",
+    images: "/aboutUs/aboutusbanner.png",
   },
 };
 
