@@ -53,21 +53,22 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
         `}
       </style>
       <div className="flex w-full flex-col py-5 lg:flex-row">
-        <div className="inner-content w-full px-6 md:w-9/12 md:p-14">
+        <div className="inner-content w-full md:px-6 md:w-9/12 md:p-14">
           {/* Select details based on language */}
-          <p
-            dangerouslySetInnerHTML={{
-              __html:
-                language === "ta" && details?.acf?.tamil_description
-                  ? details.acf.tamil_description
-                  : language === "kn" && details?.acf?.kannada_description
-                    ? details.acf.kannada_description
-                    : language === "te" && details?.acf?.telugu_description
-                      ? details.acf.telugu_description
-                      : details?.acf?.description,
-            }}
-            className="md:px-20"
-          />
+          <div className="prose px-6 pt-8 lg:px-20 lg:pt-0 [&_ol]:ml-8 [&_li]:ml-8">
+            <div
+              dangerouslySetInnerHTML={{
+                __html:
+                  language === "ta" && details?.acf?.tamil_description
+                    ? details.acf.tamil_description
+                    : language === "kn" && details?.acf?.kannada_description
+                      ? details.acf.kannada_description
+                      : language === "te" && details?.acf?.telugu_description
+                        ? details.acf.telugu_description
+                        : details?.acf?.description, // Default to English
+              }}
+            />
+          </div>
         </div>
 
         {/* Sidebar */}
@@ -108,7 +109,7 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
           </div>
 
           {/* Quick Links */}
-          <div className="w-full p-2 pt-10">
+          <div className="w-full md:p-2 p-5 pt-10">
             <h2 className="font-bold">Quick Links</h2>
             <hr className="my-4 border-t-2 border-red-500" />
             <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400 md:pr-10">

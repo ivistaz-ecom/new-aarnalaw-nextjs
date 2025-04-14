@@ -1,9 +1,10 @@
-import { Button, Modal } from "flowbite-react";
+import { Modal } from "flowbite-react";
 import { useState } from "react";
 import HubSpotCareer from "@/utils/HubSpotForm/CareerForm";
 import InternShip from "@/utils/HubSpotForm/Internships";
 import Subscribe from "@/utils/HubSpotForm/Subscribe";
 import ContactPartner from "@/utils/HubSpotForm/ContactPartner";
+import { HiX } from "react-icons/hi"; // Close icon
 
 function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
   const [openModal, setOpenModal] = useState(false);
@@ -27,11 +28,22 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
       >
         {btnName}
       </button>
+
       <Modal show={openModal} onClose={() => setOpenModal(false)}>
-        {/* Custom header with HTML rendering */}
-        <div className="px-6 pt-6 text-xl font-semibold text-gray-900 dark:text-white">
-          <div dangerouslySetInnerHTML={{ __html: modalTitle }} />
+        {/* Custom Header with title + close button */}
+        <div className="flex items-center justify-between px-6 pt-6 pb-2 border-b">
+          <div
+            className="text-xl font-semibold text-gray-900 dark:text-white"
+            dangerouslySetInnerHTML={{ __html: modalTitle }}
+          />
+          <button
+            onClick={() => setOpenModal(false)}
+            className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
+          >
+            <HiX className="w-6 h-6" />
+          </button>
         </div>
+
         <Modal.Body>
           {SelectedComponent ? (
             <SelectedComponent id={id} />
@@ -45,6 +57,3 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
 }
 
 export default ModalContact;
-
-
-

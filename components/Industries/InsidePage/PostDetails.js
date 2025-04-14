@@ -49,19 +49,20 @@ function PostDetails({ details, partnersData, slug, title }) {
     <div className="flex w-full flex-col lg:flex-row">
       <div className="inner-content lg:w-9/12 lg:p-14">
         {/* Select description based on selected language */}
-        <p
-          dangerouslySetInnerHTML={{
-            __html:
-              language === "ta" && details?.acf?.tamil_description
-                ? details.acf.tamil_description
-                : language === "kn" && details?.acf?.kannada_description
-                  ? details.acf.kannada_description
-                : language === "te" && details?.acf?.telugu_description
-                  ? details.acf.telugu_description
-                  : details?.acf?.description, // Default to English
-          }}
-          className="px-6 pt-8 lg:px-20 lg:pt-0"
-        />
+        <div className="prose px-6 pt-8 lg:px-20 lg:pt-0 [&_ol]:ml-8 [&_li]:ml-8">
+          <div
+            dangerouslySetInnerHTML={{
+              __html:
+                language === "ta" && details?.acf?.tamil_description
+                  ? details.acf.tamil_description
+                  : language === "kn" && details?.acf?.kannada_description
+                    ? details.acf.kannada_description
+                    : language === "te" && details?.acf?.telugu_description
+                      ? details.acf.telugu_description
+                      : details?.acf?.description, // Default to English
+            }}
+          />
+        </div>
 
         <div className="flex w-full justify-center lg:justify-start lg:px-20">
           <ContactModal
@@ -116,7 +117,7 @@ function PostDetails({ details, partnersData, slug, title }) {
         )}
 
         {/* Quick Links */}
-        <div className="w-full p-2 pt-10">
+        <div className="w-full md:p-2 md:pt-10 p-6">
           <h2 className="font-bold">Quick Links</h2>
           <hr className="my-4 border-t-2 border-red-500" />
           <ul className="space-y-4 pr-10 text-left text-gray-500 dark:text-gray-400">
@@ -127,9 +128,9 @@ function PostDetails({ details, partnersData, slug, title }) {
                   ? item.acf.tamil_title
                   : language === "kn" && item.acf.kannada_title
                     ? item.acf.kannada_title
-                  : language === "te" && item.acf.telugu_title
-                    ? item.acf.telugu_title
-                    : item.title.rendered; // Default to English title
+                    : language === "te" && item.acf.telugu_title
+                      ? item.acf.telugu_title
+                      : item.title.rendered; // Default to English title
 
               return (
                 <Link

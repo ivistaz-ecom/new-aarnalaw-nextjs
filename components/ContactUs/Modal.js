@@ -18,7 +18,7 @@ function ModalTestimonial({ data, onClose }) {
   }, [onClose]);
 
   return (
-    <Modal show={!!data} onClose={onClose} dismissible={false}>
+    <Modal show={!!data} onClose={onClose} dismissible={false} className="pt-52 md:pt-0">
       <div ref={modalRef}>
         <Modal.Header>
           <div>

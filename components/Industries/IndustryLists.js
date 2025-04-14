@@ -87,7 +87,7 @@ function IndustryLists() {
                     : item.acf.description;
 
               return (
-                <div className="group" key={index}>
+                <Link href={`/industries/${item.slug}`} key={index} className="group block">
                   <div className="overflow-hidden">
                     <Image
                       src={item.acf.banner_image.url}
@@ -98,13 +98,11 @@ function IndustryLists() {
                       loading="lazy"
                     />
                   </div>
-                  <Link
-                    href={`/industries/${item.slug}`}
-                    className="flex h-[65px] items-center justify-center bg-[#233876] p-1 text-center font-semibold text-white"
-                  >
+                  <div className="flex h-[65px] items-center justify-center bg-[#233876] p-1 text-center font-semibold text-white">
                     <p dangerouslySetInnerHTML={{ __html: title }} />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
+
               );
             })}
         </div>

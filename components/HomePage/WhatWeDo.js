@@ -22,17 +22,17 @@ const WhatWeDo = () => {
           />
         </div>
         <div className="flex flex-col items-start justify-center lg:px-8">
-          <h1 className="pb-1 text-2xl font-bold text-custom-red mt-4 lg:mt-0">
+          <h1 className="pb-1 text-2xl font-bold text-custom-red mt-6 lg:mt-0">
             {translations.whatWeDo.title}
           </h1>
-          <h2 className="lg:mt-4 py-8 text-2xl font-semibold text-custom-blue md:mt-0 lg:text-4xl">
+          <h2 className="lg:mt-4 md:py-8 py-4 text-2xl font-semibold text-custom-blue md:mt-0 lg:text-4xl">
             {translations.whatWeDo.headline}
           </h2>
-          <p className="mt-4 text-custom-gray md:mt-0 ">
+          <p className=" text-custom-gray md:mt-0 ">
 
             {translations.whatWeDo.para1}
           </p>
-          <p className="mt-4 py-8 text-custom-gray md:mt-0">
+          <p className="mt-4 md:py-8 text-custom-gray md:mt-0">
             {translations.whatWeDo.para2}
           </p>
           <Link
@@ -49,18 +49,18 @@ const WhatWeDo = () => {
           <h1 className="text-2xl font-bold text-custom-blue mt-4 lg:mt-0">
             {translations.ourLegacy1.legacyTitle1}
           </h1>
-          <h2 className="lg:mt-4 py-12 text-2xl font-semibold text-custom-blue md:mt-0 lg:text-4xl">
+          <h2 className="lg:mt-4 md:py-12 py-4 text-2xl font-semibold text-custom-blue md:mt-0 lg:text-4xl">
             {translations.ourLegacy1.legacyHeadline1}
           </h2>
-          <p className="mt-4 text-custom-gray md:mt-0 ">
+          <p className=" text-custom-gray md:mt-0 ">
             {translations.ourLegacy1.legacyPara1}
           </p>
-          <p className="mt-4 py-8 text-custom-gray md:mt-0">
+          <p className="mt-4 md:py-8 text-custom-gray md:mt-0">
             {translations.ourLegacy1.legacyPara2}
           </p>
           <Link
             href="/about-us"
-            className="mx-auto mt-4 border border-custom-blue px-4 py-2 text-custom-blue hover:bg-custom-blue hover:text-white md:mx-0 md:mt-0"
+            className="mx-auto mt-10 border border-custom-blue px-4 py-2 text-custom-blue hover:bg-custom-blue hover:text-white md:mx-0 md:mt-0"
           >
             {translations.ourFirmTitle.ourFirm}
           </Link>
