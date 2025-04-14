@@ -65,7 +65,7 @@ function PracticeLists() {
         <p className=" text-justify">
           {translations.practiceAreaPara2.practiceAreaPara2}
         </p>
-        
+
         <div className="grid gap-4 pt-12 lg:grid-cols-4 ">
           {loading
 
@@ -99,7 +99,7 @@ function PracticeLists() {
 
 
               return (
-                <div className="group" key={index}>
+                <Link href={`/practice-areas/${item.slug}`} key={index} className="group block">
                   <div className="overflow-hidden">
                     <Image
                       src={item.acf.banner_image.url}
@@ -110,16 +110,14 @@ function PracticeLists() {
                       loading="lazy"
                     />
                   </div>
-                  <Link
-                    href={`/practice-areas/${item.slug}`}
-                    className="flex h-[65px] items-center justify-center bg-[#233876] p-1 text-center font-semibold text-white"
-                  >
+                  <div className="flex h-[65px] items-center justify-center bg-[#233876] p-1 text-center font-semibold text-white">
                     <p dangerouslySetInnerHTML={{ __html: title }} />
-                  </Link>
-                </div>
+                  </div>
+                </Link>
+
               );
             })}
-            
+
         </div>
       </div>
     </div>
