@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import configData from "../../config.json";
 import { LanguageContext } from "../../app/context/LanguageContext";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 export default function Partners() {
   const sliderRef = useRef(null);
@@ -84,7 +85,8 @@ export default function Partners() {
       onClick={onClick}
       className="absolute right-2 top-1/2 -translate-y-1/2 transform rounded-full bg-gray-200 p-2 shadow hover:bg-gray-300"
     >
-      →
+      <FaArrowRight />
+      {/* → */}
     </button>
   );
 
@@ -93,7 +95,8 @@ export default function Partners() {
       onClick={onClick}
       className="absolute left-2 top-1/2 -translate-y-1/2 transform rounded-full bg-gray-200 p-2 shadow hover:bg-gray-300"
     >
-      ←
+      <FaArrowLeft />
+      {/* ← */}
     </button>
   );
 
