@@ -30,16 +30,16 @@ export default function Footer() {
       <div className="bg-white border-t-2 border-custom-blue">
         <div className="mx-auto grid w-11/12 lg:grid-cols-2">
           <div className="pt-4">
-          <Link href="/" className="flex items-center">
-          <Image
+            <Link href="/" className="flex items-center">
+              <Image
                 src="/logo/NewAarnalawLogo.jpg"
                 alt="Aarna Law Logo"
                 width={600}
                 height={600}
-                className="md:h-24 md:w-24 h-20 w-16"
-               loading="lazy"
+                className="md:h-24 md:w-24 h-20 w-20"
+                loading="lazy"
               />
-          </Link>
+            </Link>
             <div className="flex gap-8 py-4 ps-2">
               <Link
                 href="https://www.linkedin.com/company/aarna-law1/"

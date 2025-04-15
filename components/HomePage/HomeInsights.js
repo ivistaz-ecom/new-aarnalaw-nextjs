@@ -54,7 +54,7 @@ export default function HomeInsights() {
               desc: item.excerpt.rendered,
             };
           });
-          
+
         setInsightsData(latestInsights);
       } catch (error) {
         // console.log(error);
@@ -189,7 +189,7 @@ export default function HomeInsights() {
               </InsightSlider>
             )}
             {/* View All Button */}
-            <div className="ms-3 mt-6 flex  justify-center">
+            <div className="md:ms-3 mt-6 flex  justify-center">
               <Link
                 href="/insights"
                 className="border border-custom-blue px-6 py-2 text-custom-blue md:hover:bg-custom-blue md:hover:text-white"
