@@ -11,7 +11,7 @@ export const metadata = {
       description:
         "Get in touch with the internationally recognised law firm in India - Aarna Law. Terms of use now for professional legal assistance.",
       url: "/terms of use",
-      images: "/aarna-law.png",
+      images: "/aarnalaw_new_banner.jpg",
     },
   };
   

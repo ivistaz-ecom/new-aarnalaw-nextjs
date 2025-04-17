@@ -39,13 +39,16 @@ export default function PracticeAreaBanner({
     };
   }, [backgroundImage, mobileBackgroundImage]);
 
-// Select title based on language
-const title =
-  language === "ta" && titleText?.acf?.tamil_title
-    ? titleText.acf.tamil_title
-    : language === "kn" && titleText?.acf?.kannada_title
-    ? titleText.acf.kannada_title
-    : titleText?.rendered; // Default to the English title
+  // Select title based on language
+  const title =
+    language === "ta" && titleText?.acf?.tamil_title
+      ? titleText.acf.tamil_title
+      : language === "kn" && titleText?.acf?.kannada_title
+        ? titleText.acf.kannada_title
+        : language === "te" && titleText?.acf?.telugu_title
+          ? titleText.acf.telugu_title
+          : titleText?.rendered;
+  // Default to the English title 
 
 
   return (

@@ -21,7 +21,7 @@ export async function generateMetadata({ params }) {
           "We offer legal services for a range of practice areas including corporate advisory, arbitration, mediation, litigation, IP, risk assessment, and compliance",
         images: [
           {
-            url: "/aarna-law.png",
+            url: "/aarnalaw_new_banner.jpg",
             width: 800,
             height: 600,
             alt: "India's leading law firm offering legal counsel in practice areas",
@@ -68,7 +68,7 @@ export async function generateMetadata({ params }) {
             ]
           : [
               {
-                url: "/aarna-law.png",
+                url: "/aarnalaw_new_banner.jpg",
                 width: 800,
                 height: 600,
                 alt: "India's leading law firm offering legal counsel in practice areas",

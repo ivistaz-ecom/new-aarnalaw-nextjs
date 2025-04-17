@@ -16,7 +16,7 @@ const en = {
     podcasts: "Podcasts",
     careers: "Careers",
     contactus: "Contact Us",
-  },
+  }, 
 
   // Banner Titles
   practiceAreasTitle: {

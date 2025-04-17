@@ -17,7 +17,7 @@ export async function generateMetadata({ params }) {
         description: "Publications| Aarna Law",
         images: [
           {
-            url: "/aarna-law.png",
+            url: "/aarnalaw_new_banner.jpg",
             width: 800,
             height: 600,
             alt: "Publications| Aarna Law",
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }) {
             ]
           : [
               {
-                url: "/aarna-law.png",
+                url: "/aarnalaw_new_banner.jpg",
                 width: 800,
                 height: 600,
                 alt: "Publications| Aarna Law",
