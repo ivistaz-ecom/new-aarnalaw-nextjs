@@ -3,288 +3,294 @@
 // import { practiceArea } from "@/utils/data";
 
 const te = {
-    menu: {
-      about: "మా గురించి ",
-      thefirm: "The Firm",
-      testimonials: "Testimonials",
-      practiceareas: "ప్రాక్టీస్ ప్రాంతాలు ",
-      industries: "Industries",
-      newsinsights: "News & Insights",
-      insights: "Insights",
-      aarnanews: "Aarna News",
-      publications: "Publications",
-      podcasts: "Podcasts",
-      careers: "Careers",
-      contactus: "Contact Us",
+  menu: {
+    about: "మా గురించి ",
+    thefirm: "The Firm",
+    testimonials: "Testimonials",
+    practiceareas: "ప్రాక్టీస్ ప్రాంతాలు ",
+    industries: "పరిశ్రమలు",
+    newsinsights: "News & Insights",
+    insights: "Insights",
+    aarnanews: "Aarna News",
+    publications: "Publications",
+    podcasts: "Podcasts",
+    careers: "Careers",
+    contactus: "Contact Us",
+  },
+
+  // Banner Titles
+  practiceAreasTitle: {
+    practiceAreas: "ప్రాక్టీస్ ప్రాంతాలు ",
+  },
+  industriesTitle: {
+    industries: "పరిశ్రమలు",
+  },
+  insightsTitle: {
+    insights: "Insights",
+  },
+
+  aarnaNewsTitle: {
+    aarnaNews: "Aarna News",
+  },
+  publicationsTitle: {
+    publications: "Publications",
+  },
+  podcastsTitle: {
+    podcasts: "Podcasts",
+  },
+  careersTitle: {
+    careers: "Careers",
+  },
+  contactUsTitle: {
+    contactUs: "Contact Us",
+  },
+
+  // About Us 
+  aboutTitle: {
+    aboutName: "మా గురించి",
+  },
+
+  //About Us and Home Page
+  whatWeDo: {
+    title: "మేము ఏమి చేస్తాము ",
+    headline: "మేము అంతర్జాతీయ దృక్కోణంతో పురస్కారాలు గెలుచుకున్న న్యాయ లిటిగేషన్ బూటిక్.",
+    para1:
+      "ఆర్నా లా అనేది నాణ్యతతో నడిచే, విలువ ఆధారిత చట్టపరమైన సేవలను అందించడం, మేము సేవలందించే వారితో లోతైన మరియు శాశ్వత సంబంధాలను పెంపొందించడం అనే దృఢమైన నిబద్ధతతో స్థాపించబడింది. మా క్లయింట్ల వ్యాపారాలు మరియు వాణిజ్య లక్ష్యాలను అర్థం చేసుకోవడానికి మేము సమయం మరియు కృషిని అంకితం చేస్తాము, సందర్భోచితంగా సంబంధితమైన మరియు వ్యూహాత్మకంగా మంచి పరిష్కారాలను రూపొందించడానికి మాకు వీలు కల్పిస్తాము.",
+    para2:
+      "మా విధానం వినూత్నమైనది మరియు వ్యాపార స్పృహతో కూడుకున్నది, వాణిజ్యపరంగా చతురత, ఆచరణాత్మక మరియు పరిష్కార-ఆధారిత అనుభవజ్ఞులైన న్యాయవాదుల బృందంచే మద్దతు ఇవ్వబడింది.",
+  },
+
+  ourLegacy: {
+    legacyTitle: "మా వారసత్వం ",
+    legacyHeadline: "వివిధ డొమెయిన్‌లు, పరిశ్రమలు మరియు అంతర్జాతీయ సరిహద్దులలో, మా న్యాయ సేవలు మరియు పరిష్కారాలు అత్యున్నత ప్రమాణాల సమగ్రత మరియు గోప్యతను నిర్వహిస్తాయి.",
+    legacyPara:
+      "అన్నింటికంటే ముఖ్యంగా, మా పురస్కారాలు గెలుచుకున్న ప్రాక్టీస్ ప్రతి కస్టమర్‌తో మేము పెంచుకునే శాశ్వత సంబంధాలపై స్థాపించబడింది. మేము అందించే న్యాయ మరియు వాణిజ్య సలహాలు మా కస్టమర్ వ్యాపార ప్రయోజనాలపై ఈ చైతన్య అవగాహనను ప్రతిబింబిస్తాయి.",
+  },
+
+  founderMessage: {
+    founderTitle: "మా స్థాపకుల నుండి సందేశం ",
+    founderPara:
+      "మేము చిన్న, మధ్యతరహా మరియు పెద్ద పరిశ్రమలలో కస్టమర్లకు సేవ చేయడానికి అవకాశం కలిగినందుకు మరియు భారత గణరాజ్యానికి సలహాదారులుగా ఉన్నందుకు చాలా కృతజ్ఞతలు. మేము గత తరాల ఆశీర్వాదాలు మరియు ఉన్నతమైన భుజాలను వినమ్రంగా అంగీకరిస్తాము. వారు నాటిన లోతైన విలువలు మమ్మల్ని మా కస్టమర్లకు సేవ చేయడానికి మరియు న్యాయ కారణాన్ని ముందుకు తీసుకెళ్లడానికి ప్రయత్నిస్తున్నప్పుడు, మమ్మల్ని సమిష్టిగా మా ఉత్తమ సంస్కరణలను తీసుకురావడానికి ప్రేరేపిస్తూనే ఉంటాయి.  ",
+    founderName1: "కమల నాగనంద్     ",
+    founderDescription1: "నిర్వహణ భాగస్వామి  ",
+    founderName2: " శ్రేయస్ జయసింహ ",
+    founderDescription2: " స్థాపక భాగస్వామి ",
+  },
+
+  jayasimhaFoundation: {
+    jayasimhaTitle: "జయసింహ ఫౌండేషన్ ",
+    jayasimhaPara1:
+      "మరణించిన జస్టిస్ ఆర్ జయసింహ బాబు (1942-2015) జ్ఞాపకార్థం స్థాపించబడిన జయసింహ ఫౌండేషన్ సేవా భావంతో ఉత్తమత సాధనలో నిక్షిప్తమైన ఒక గొప్ప వారసత్వాన్ని ముందుకు తీసుకెళ్తుంది. ",
+    jayasimhaPara2: "ఈ ఫౌండేషన్ జస్టిస్ జయసింహ బాబు ప్రతిబింబించిన నిజాయితీ, ధైర్యం మరియు క్రమశిక్షణ అనే మార్గదర్శక సూత్రాలను అవలంబిస్తుంది.",
+    jayasimhaPara3: "మద్రాస్ హైకోర్టు న్యాయమూర్తిగా మరియు అంతకుముందు కర్ణాటక హైకోర్టు న్యాయమూర్తిగా తన విశిష్టమైన నియామకాల ద్వారా, జస్టిస్ జయసింహ బాబు రాజ్యాంగ చట్టం, కంపెనీ మరియు వాణిజ్య చట్టం, మరియు పన్నులపై విస్తృతంగా ఉటంకించబడిన తీర్పులను ఇచ్చారు. అంతేకాకుండా, దేశీయ మరియు అంతర్జాతీయ వివాదాలలో మధ్యవర్తిగా వివాద పరిష్కారానికి ఆయన యొక్క తెలివైన దృష్టికోణం అత్యంత గౌరవనీయంగా పరిగణించబడింది. ",
+    jayasimhaPara4: "కర్ణాటక, హిందుస్తానీ మరియు పాశ్చాత్య శాస్త్రీయ సంగీతం యొక్క ఒక రసికుడు, జస్టిస్ బాబు చట్టంలో యువ ప్రతిభలను ప్రోత్సహించడానికి మరియు సాధికారత కల్పించడానికి ఆసక్తి చూపించారు. ",
+  },
+
+  joinTeam: {
+    joinTeamTitle: "మా బృందంలో చేరాలనుకుంటున్నారా? ",
+    joinTeamPara: "మేము ఒక ఆవిష్కరణాత్మక సంస్థ, ఒకరినొకరు అభివృద్ధి చెందడానికి మరియు విజయవంతం కావడానికి సాధికారత కల్పిస్తాము. నిజాయితీ, సామర్థ్యం, బృందపని, మరియు పరోపకారం మా బూటిక్ ఆచరణ యొక్క మూలస్తంభాలు. ",
+    joinTeamOpening: "View Current Openings",
+  },
+
+  aboutPracticeAreaTitle: {
+    aboutPracticeAreaName: "ప్రాక్టీస్ ప్రాంతాలు ",
+  },
+
+  aboutPartner: {
+    aboutPartnerTitle: "భాగస్వాములు ",
+    aboutPartnerPara: "మా నైపుణ్యవంతమైన బృందం నైపుణ్యం మా ఆచరణను ఆలోచనాత్మక నాయకత్వం, మార్గదర్శకత్వం, మరియు ఉత్తమత సాధనలో స్థిరపరుస్తుంది... ",
+  },
+
+  // Testimonials 
+  testmonialBannerTitle: {
+    testmonialBannerName: "టెస్టిమోనియల్‌లు",
+  },
+
+  testimonialDetails: [
+    {
+
+      imageUrl: "/testimonials/powerplay.png",
+      name: "నవీన్ రెడ్డి",
+      post: "పవర్‌ప్లే",
+      desingnation: "",
+      desc: "“ఆర్నా లా నా అన్ని చట్టపరమైన అవసరాల్లో నాకు మద్దతు ఇచ్చింది, ఉద్యోగి ఒప్పందం నుండి వాణిజ్య ఒప్పందాల వరకు. అన్ని వ్యాపార సంబంధిత సమస్యలను వారు సులభంగా మరియు వివరాలకు శ్రద్ధతో పరిష్కరించారు. నా అన్ని చట్టపరమైన అవసరాలకు నేను వారిని ఆశ్రయిస్తాను.”",
+      fullTestimonial: `ఆర్నా లా నా అన్ని చట్టపరమైన అవసరాల్లో నాకు మద్దతు ఇచ్చింది, ఉద్యోగి ఒప్పందం నుండి వాణిజ్య ఒప్పందాల వరకు. అన్ని వ్యాపార సంబంధిత సమస్యలను వారు సులభంగా మరియు వివరాలకు శ్రద్ధతో పరిష్కరించారు. నా అన్ని చట్టపరమైన అవసరాలకు నేను వారిని ఆశ్రయిస్తాను.",`,
     },
-  
-    // Banner Titles
-    practiceAreasTitle: {
-      practiceAreas: "ప్రాక్టీస్ ప్రాంతాలు ",
-    },
-    industriesTitle: {
-      industries: "Industries",
-    },
-    insightsTitle: {
-      insights: "Insights",
-    },
-  
-    aarnaNewsTitle: {
-      aarnaNews: "Aarna News",
-    },
-    publicationsTitle: {
-      publications: "Publications",
-    },
-    podcastsTitle: {
-      podcasts: "Podcasts",
-    },
-    careersTitle: {
-      careers: "Careers",
-    },
-    contactUsTitle: {
-      contactUs: "Contact Us",
-    },
-  
-    // About Us 
-    aboutTitle: {
-      aboutName: "మా గురించి",
-    },
-  
-    //About Us and Home Page
-    whatWeDo: {
-      title: "మేము ఏమి చేస్తాము ",
-      headline: "మేము అంతర్జాతీయ దృక్కోణంతో పురస్కారాలు గెలుచుకున్న న్యాయ లిటిగేషన్ బూటిక్.",
-      para1:
-        "మా న్యాయవాదుల నేతృత్వంలోని, సాంకేతికత ఆధారిత ప్రాక్టీస్ అంతర్జాతీయ వాణిజ్యం మరియు ప్రవాహమయమైన సరిహద్దుల ఈ గ్లోబల్ ఎకానమీ లో న్యాయాన్ని ఒక ముఖ్యమైన సేవగా ఊహిస్తుంది. ",
-      para2:
-        "మేము దేశీయ, విదేశీ మరియు ప్రవాస కస్టమర్లకు వివిధ సమస్యలపై సలహా ఇస్తాము. నియంత్రణ, ఆర్థిక మరియు న్యాయపరమైన ప్రమాదాన్ని తగ్గించడం నుండి జాతీయ మరియు అంతర్జాతీయ చట్టాల యొక్క అత్యంత ప్రత్యేకమైన ప్రాంతాలను నావిగేట్ చేయడం వరకు, మేము నిర్దాక్షిణ్యమైన సమగ్రతతో సలహా ఇస్తాము.",
-    },
-  
-    ourLegacy: {
-      legacyTitle: "మా వారసత్వం ",
-      legacyHeadline: "వివిధ డొమెయిన్‌లు, పరిశ్రమలు మరియు అంతర్జాతీయ సరిహద్దులలో, మా న్యాయ సేవలు మరియు పరిష్కారాలు అత్యున్నత ప్రమాణాల సమగ్రత మరియు గోప్యతను నిర్వహిస్తాయి. ",
-      legacyPara:
-        "అన్నింటికంటే ముఖ్యంగా, మా పురస్కారాలు గెలుచుకున్న ప్రాక్టీస్ ప్రతి కస్టమర్‌తో మేము పెంచుకునే శాశ్వత సంబంధాలపై స్థాపించబడింది. మేము అందించే న్యాయ మరియు వాణిజ్య సలహాలు మా కస్టమర్ వ్యాపార ప్రయోజనాలపై ఈ చైతన్య అవగాహనను ప్రతిబింబిస్తాయి. ",
-    },
-  
-    founderMessage: {
-      founderTitle: "మా స్థాపకుల నుండి సందేశం ",
-      founderPara:
-        "మేము చిన్న, మధ్యతరహా మరియు పెద్ద పరిశ్రమలలో కస్టమర్లకు సేవ చేయడానికి అవకాశం కలిగినందుకు మరియు భారత గణరాజ్యానికి సలహాదారులుగా ఉన్నందుకు చాలా కృతజ్ఞతలు. మేము గత తరాల ఆశీర్వాదాలు మరియు ఉన్నతమైన భుజాలను వినమ్రంగా అంగీకరిస్తాము. వారు నాటిన లోతైన విలువలు మమ్మల్ని మా కస్టమర్లకు సేవ చేయడానికి మరియు న్యాయ కారణాన్ని ముందుకు తీసుకెళ్లడానికి ప్రయత్నిస్తున్నప్పుడు, మమ్మల్ని సమిష్టిగా మా ఉత్తమ సంస్కరణలను తీసుకురావడానికి ప్రేరేపిస్తూనే ఉంటాయి.  ",
-      founderName1: "కమల నాగనంద్     ",
-      founderDescription1: "నిర్వహణ భాగస్వామి  ",
-      founderName2: " శ్రేయస్ జయసింహ ",
-      founderDescription2: " స్థాపక భాగస్వామి ",
-    },
-  
-    jayasimhaFoundation: {
-      jayasimhaTitle: "జయసింహ ఫౌండేషన్ ",
-      jayasimhaPara1:
-        "మరణించిన జస్టిస్ ఆర్ జయసింహ బాబు (1942-2015) జ్ఞాపకార్థం స్థాపించబడిన జయసింహ ఫౌండేషన్ సేవా భావంతో ఉత్తమత సాధనలో నిక్షిప్తమైన ఒక గొప్ప వారసత్వాన్ని ముందుకు తీసుకెళ్తుంది. ",
-      jayasimhaPara2: "ఈ ఫౌండేషన్ జస్టిస్ జయసింహ బాబు ప్రతిబింబించిన నిజాయితీ, ధైర్యం మరియు క్రమశిక్షణ అనే మార్గదర్శక సూత్రాలను అవలంబిస్తుంది.",
-      jayasimhaPara3: "మద్రాస్ హైకోర్టు న్యాయమూర్తిగా మరియు అంతకుముందు కర్ణాటక హైకోర్టు న్యాయమూర్తిగా తన విశిష్టమైన నియామకాల ద్వారా, జస్టిస్ జయసింహ బాబు రాజ్యాంగ చట్టం, కంపెనీ మరియు వాణిజ్య చట్టం, మరియు పన్నులపై విస్తృతంగా ఉటంకించబడిన తీర్పులను ఇచ్చారు. అంతేకాకుండా, దేశీయ మరియు అంతర్జాతీయ వివాదాలలో మధ్యవర్తిగా వివాద పరిష్కారానికి ఆయన యొక్క తెలివైన దృష్టికోణం అత్యంత గౌరవనీయంగా పరిగణించబడింది. ",
-      jayasimhaPara4: "కర్ణాటక, హిందుస్తానీ మరియు పాశ్చాత్య శాస్త్రీయ సంగీతం యొక్క ఒక రసికుడు, జస్టిస్ బాబు చట్టంలో యువ ప్రతిభలను ప్రోత్సహించడానికి మరియు సాధికారత కల్పించడానికి ఆసక్తి చూపించారు. ",
-    },
-  
-    joinTeam: {
-      joinTeamTitle: "మా బృందంలో చేరాలనుకుంటున్నారా? ",
-      joinTeamPara: "మేము ఒక ఆవిష్కరణాత్మక సంస్థ, ఒకరినొకరు అభివృద్ధి చెందడానికి మరియు విజయవంతం కావడానికి సాధికారత కల్పిస్తాము. నిజాయితీ, సామర్థ్యం, బృందపని, మరియు పరోపకారం మా బూటిక్ ఆచరణ యొక్క మూలస్తంభాలు. ",
-      joinTeamOpening: "View Current Openings",
-    },
-  
-    aboutPracticeAreaTitle: {
-      aboutPracticeAreaName: "ప్రాక్టీస్ ప్రాంతాలు ",
-    },
-  
-    aboutPartner: {
-      aboutPartnerTitle: "భాగస్వాములు ",
-      aboutPartnerPara: "మా నైపుణ్యవంతమైన బృందం నైపుణ్యం మా ఆచరణను ఆలోచనాత్మక నాయకత్వం, మార్గదర్శకత్వం, మరియు ఉత్తమత సాధనలో స్థిరపరుస్తుంది... ",
-    },
-  
-    // Testimonials 
-    testmonialBannerTitle: {
-      testmonialBannerName: "Testimonials",
-    },
-  
-    testimonialDetails: [
-      {
-  
-        imageUrl: "/testimonials/powerplay.png",
-        name: "Naveen Reddy",
-        post: "Powerplay",
-        desingnation: "",
-        desc: "“Aarna law has supported me in all my legal needs from drafting employee agreement to commercial agreements.”",
-        fullTestimonial: `Aarna law has supported me in all my legal needs from drafting employee agreement to commercial agreements. All business-related issue were addressed and resolved by them with ease and attention to detail. They are the people I turn to for all my legal requirements.",`,
-      },
-      {
-        imageUrl: "/testimonials/dummy-white.png",
-        name: "Pawan Jain",
-        post: "VP",
-        desingnation: "Finance",
-        desc: "“ They showed a high degree of commitment to the work and respectful of deadlines and expectations.”",
-        fullTestimonial: `Ms Kamala and her entire team is uber professional in their approach and open to feedback at all times. They showed a high degree of commitment to the work and respectful of deadlines and expectations. It was indeed a pleasure to work with them and we look forward to work with them in future.,
+    {
+      imageUrl: "/testimonials/dummy-white.png",
+      name: "పవన్ జైన్",
+      post: "VP",
+      desingnation: "ఫైనాన్స్",
+      desc: "“ఆర్నా లా నా అన్ని చట్టపరమైన అవసరాల్లో నాకు మద్దతు ఇచ్చింది, ఉద్యోగి ఒప్పందం నుండి వాణిజ్య ఒప్పందాల వరకు. అన్ని వ్యాపార సంబంధిత సమస్యలను వారు సులభంగా మరియు వివరాలకు శ్రద్ధతో పరిష్కరించారు. నా అన్ని చట్టపరమైన అవసరాలకు నేను పవన్ జైన్ మరియు వారి బృందాన్ని ఆశ్రయిస్తాను. మిస్ కమల మరియు ఆమె మొత్తం బృందం వారి విధానంలో అత్యంత ప్రొఫెషనల్ గా ఉంటారు మరియు ఎల్లప్పుడూ అభిప్రాయాలకు తెరిచి ఉంటారు. వారు పనికి ఉన్న అత్యధిక స్థాయి నిబద్ధతను చూపించారు మరియు గడువులు మరియు అంచనాలను గౌరవించారు. వారితో పని చేయడం నిజంగా ఆనందంగా ఉంది మరియు భవిష్యత్తులో వారితో పని చేయాలని ఆశిస్తున్నాము.”",
+      fullTestimonial: `ఆర్నా లా నా అన్ని చట్టపరమైన అవసరాల్లో నాకు మద్దతు ఇచ్చింది, ఉద్యోగి ఒప్పందం నుండి వాణిజ్య ఒప్పందాల వరకు. అన్ని వ్యాపార సంబంధిత సమస్యలను వారు సులభంగా మరియు వివరాలకు శ్రద్ధతో పరిష్కరించారు. నా అన్ని చట్టపరమైన అవసరాలకు నేను పవన్ జైన్ మరియు వారి బృందాన్ని ఆశ్రయిస్తాను. మిస్ కమల మరియు ఆమె మొత్తం బృందం వారి విధానంలో అత్యంత ప్రొఫెషనల్ గా ఉంటారు మరియు ఎల్లప్పుడూ అభిప్రాయాలకు తెరిచి ఉంటారు. వారు పనికి ఉన్న అత్యధిక స్థాయి నిబద్ధతను చూపించారు మరియు గడువులు మరియు అంచనాలను గౌరవించారు. వారితో పని చేయడం నిజంగా ఆనందంగా ఉంది మరియు భవిష్యత్తులో వారితో పని చేయాలని ఆశిస్తున్నాము.",
         `,
-      },
-  
-      {
-        imageUrl: "/testimonials/og_healthcare.jpg",
-        name: "Tony Hales",
-        post: "CEO",
-        desingnation: "OG Healthcare",
-        desc: "“Aarna Law was able to cater to our specific needs on time and within budget - truly a professional firm with knowledge, experience and network across many domains.”",
-        fullTestimonial: `Thank you, Shreyas and the team, at Aarna Law for your initial counsel and subsequent delivery of legal services. Not the run of the mill case, Aarna Law was able to cater to our specific needs on time and within budget - truly a professional firm with knowledge, experience and network across many domains. Once again thanks.,
+    },
+
+    {
+      imageUrl: "/testimonials/og_healthcare.jpg",
+      name: "టోనీ హేల్స్",
+      post: "CEO",
+      desingnation: "OG హెల్త్‌కేర్",
+      desc: "“ఆర్నా లాలో శ్రేయాస్ మరియు బృందం, మీ ప్రారంభ సలహా మరియు తదుపరి చట్టపరమైన సేవలను అందించినందుకు ధన్యవాదాలు. కేసు అంత సులభం కాదు, ఆర్నా లా మా నిర్దిష్ట అవసరాలను సమయానికి మరియు బడ్జెట్‌లో తీర్చగలిగింది - నిజంగా అనేక డొమైన్‌లలో జ్ఞానం, అనుభవం మరియు నెట్‌వర్క్‌తో కూడిన ప్రొఫెషనల్ సంస్థ. మరోసారి ధన్యవాదాలు.,",
+      fullTestimonial: `ఆర్నా లాలో శ్రేయాస్ మరియు బృందం, మీ ప్రారంభ సలహా మరియు తదుపరి చట్టపరమైన సేవలను అందించినందుకు ధన్యవాదాలు. కేసు అంత సులభం కాదు, ఆర్నా లా మా నిర్దిష్ట అవసరాలను సమయానికి మరియు బడ్జెట్‌లో తీర్చగలిగింది - నిజంగా అనేక డొమైన్‌లలో జ్ఞానం, అనుభవం మరియు నెట్‌వర్క్‌తో కూడిన ప్రొఫెషనల్ సంస్థ. మరోసారి ధన్యవాదాలు.,
         `,
-      },
-      {
-        imageUrl: "/testimonials/daimler.jpg",
-        name: " Vinay Bhagwan",
-        post: "General Counsel",
-        desingnation: "Daimler Trucks India",
-        desc: "“I wholeheartedly recommend Aarna Law and its outstanding team to anyone seeking top-notch legal representation.”",
-        fullTestimonial: `My experience with Aarna Law has been nothing short of exceptional. The firm’s founding partners, Shreyas and Kamala, have managed the firm with remarkable vision and dedication, taking it to greater heights. Their leadership, coupled with their deep commitment to excellence, sets Aarna Law apart in the legal industry.,
-        "As a husband-and-wife team, Shreyas and Kamala bring a unique dynamism to the firm, blending their individual strengths to create a cohesive and highly effective partnership. Their strategic acumen and meticulous attention to detail have been instrumental in guiding us through complex legal challenges.",
-        "I am particularly impressed by their appetite for innovation, especially their efforts to integrate cutting-edge technology into their practice. This forward-thinking approach not only enhances efficiency but also ensures that clients receive the most sophisticated and effective legal solutions available.",
-        "Beyond their technical proficiency, Shreyas and Kamala are known for their integrity, ethical standards, and genuine care for their clients. They have built a culture of trust and excellence that permeates the entire firm.",
-        "I wholeheartedly recommend Aarna Law and its outstanding team to anyone seeking top-notch legal representation.",
+    },
+    {
+      imageUrl: "/testimonials/daimler.jpg",
+      name: " వినయ్ భగవాన్",
+      post: "సాధారణ న్యాయవాది",
+      desingnation: "డైమ్లర్ ట్రక్స్ ఇండియా",
+      desc: "“ఆర్ణ లాతో నా అనుభవం అసాధారణమైనది. సంస్థ వ్యవస్థాపక భాగస్వాములు శ్రేయాస్ మరియు కమల, సంస్థను అద్భుతమైన దృష్టి మరియు అంకితభావంతో నిర్వహించారు, దానిని ఉన్నత శిఖరాలకు తీసుకెళ్లారు. వారి నాయకత్వం, వారి గొప్పతనానికి నిబద్ధతతో కలిసి, ఆర్ణ లాను న్యాయ పరిశ్రమలో ప్రత్యేకంగా నిలిపింది",
+      fullTestimonial: `ఆర్ణ లాతో నా అనుభవం అసాధారణమైనది. సంస్థ వ్యవస్థాపక భాగస్వాములు శ్రేయాస్ మరియు కమల, సంస్థను అద్భుతమైన దృష్టి మరియు అంకితభావంతో నిర్వహించారు, దానిని ఉన్నత శిఖరాలకు తీసుకెళ్లారు. వారి నాయకత్వం, వారి గొప్పతనానికి నిబద్ధతతో కలిసి, ఆర్ణ లాను న్యాయ పరిశ్రమలో ప్రత్యేకంగా నిలిపింది.,
+        "భార్యభర్తల బృందంగా, శ్రేయాస్ మరియు కమల సంస్థకు ఒక ప్రత్యేకమైన చైతన్యాన్ని తీసుకువస్తారు, వారి వ్యక్తిగత బలాలను మిళితం చేసి ఒక సమన్వయ మరియు అత్యంత ప్రభావవంతమైన భాగస్వామ్యాన్ని సృష్టిస్తారు. వారి వ్యూహాత్మక చతురత మరియు వివరాలపై శ్రద్ధ చూపడం సంక్లిష్టమైన చట్టపరమైన సవాళ్ల ద్వారా మమ్మల్ని మార్గనిర్దేశం చేయడంలో కీలక పాత్ర పోషించాయి.",
+        "వారి ఆవిష్కరణల పట్ల ఆసక్తి, ముఖ్యంగా అత్యాధునిక సాంకేతిక పరిజ్ఞానాన్ని వారి ఆచరణలో అనుసంధానించడానికి వారు చేస్తున్న ప్రయత్నాలు నన్ను ప్రత్యేకంగా ఆకట్టుకున్నాయి. ఈ ముందుకు ఆలోచించే విధానం సామర్థ్యాన్ని పెంచడమే కాకుండా క్లయింట్లు అందుబాటులో ఉన్న అత్యంత అధునాతనమైన మరియు ప్రభావవంతమైన చట్టపరమైన పరిష్కారాలను పొందేలా చేస్తుంది.",
+        "శ్రేయాస్ మరియు కమల వారి సాంకేతిక నైపుణ్యానికి మించి, వారి సమగ్రత, నైతిక ప్రమాణాలు మరియు వారి క్లయింట్ల పట్ల నిజమైన శ్రద్ధకు ప్రసిద్ధి చెందారు. వారు మొత్తం మీద విస్తరించి ఉన్న నమ్మకం మరియు శ్రేష్ఠత యొక్క సంస్కృతిని నిర్మించారు.",
+        "అగ్రశ్రేణి చట్టపరమైన ప్రాతినిధ్యం కోరుకునే ఎవరికైనా నేను ఆర్నా లా మరియు దాని అత్యుత్తమ బృందాన్ని హృదయపూర్వకంగా సిఫార్సు చేస్తున్నాను",
       `,
-      },
-      {
-        imageUrl: "/testimonials/client_fabric.jpg",
-        name: "Pallavi Rao and Arun Kiezpadathil",
-        post: "Founders",
-        desingnation: "Client Fabric Tech Ltd. ",
-        desc: "“ We found Aarna law after a global search and are thrilled that we did. ”",
-        fullTestimonial: `We have been on the hunt for a law firm that was personable, capable, responsive and understood our business and Aarna law has been all of those things and more for us. We found Aarna law after a global search and are thrilled that we did.,
+    },
+    {
+      imageUrl: "/testimonials/client_fabric.jpg",
+      name: "పల్లవి రావు మరియు అరుణ్ కీజ్పదతిల్",
+      post: "వ్యవస్థాపకులు",
+      desingnation: "క్లయింట్ ఫాబ్రిక్ టెక్ లిమిటెడ్. ",
+      desc: "“ మేము వ్యక్తిత్వం కలిగిన, సామర్థ్యం గల, ప్రతిస్పందించే మరియు మా వ్యాపారాన్ని అర్థం చేసుకునే న్యాయ సంస్థ కోసం వెతుకుతున్నాము మరియు ఆర్నా చట్టం మాకు అన్నీ మరియు అంతకంటే ఎక్కువ. ప్రపంచవ్యాప్తంగా చేసిన శోధన తర్వాత మేము ఆర్నా చట్టాన్ని కనుగొన్నాము మరియు మేము అలా చేసినందుకు చాలా సంతోషంగా ఉన్నాము.,”",
+      fullTestimonial: `మేము వ్యక్తిత్వం కలిగిన, సామర్థ్యం గల, ప్రతిస్పందించే మరియు మా వ్యాపారాన్ని అర్థం చేసుకునే న్యాయ సంస్థ కోసం వెతుకుతున్నాము మరియు ఆర్నా చట్టం మాకు అన్నీ మరియు అంతకంటే ఎక్కువ. ప్రపంచవ్యాప్తంగా చేసిన శోధన తర్వాత మేము ఆర్నా చట్టాన్ని కనుగొన్నాము మరియు మేము అలా చేసినందుకు చాలా సంతోషంగా ఉన్నాము.,
         `,
-      },
-      {
-        imageUrl: "/testimonials/dummy-white.png",
-        name: "Pranav Nahar",
-        post: "",
-        desingnation: "Entrepreneur",
-        desc: "“Their client servicing and legal expertise was very professional. It was a pleasure working with them.”",
-        fullTestimonial: `Manjushree and the team at Aarna Law were given a mandate to find the most optimised and regulatory compatible structure to conduct our real estate fintech experience. They handled the mandate with clarity and detail. What impressed us that we had many doubts and queries that we persisted with and they patiently worked through all the details we requested. Their client servicing and legal expertise was very professional. It was a pleasure working with them.,
+    },
+    {
+      imageUrl: "/testimonials/dummy-white.png",
+      name: "ప్రణవ్ నహర్ ",
+      post: "",
+      desingnation: "పారిశ్రామికవేత్త",
+      desc: "మా రియల్ ఎస్టేట్ ఫిన్‌టెక్ అనుభవాన్ని నిర్వహించడానికి అత్యంత ఆప్టిమైజ్ చేయబడిన మరియు నియంత్రణా అనుకూల నిర్మాణాన్ని కనుగొనడానికి మంజుశ్రీ మరియు ఆర్నా లా బృందానికి ఆదేశం ఇవ్వబడింది. వారు ఆ ఆదేశాన్ని స్పష్టత మరియు వివరాలతో నిర్వహించారు. మాకు చాలా సందేహాలు మరియు ప్రశ్నలు ఉన్నాయని మేము కొనసాగించాము మరియు మేము అభ్యర్థించిన అన్ని వివరాల ద్వారా వారు ఓపికగా పనిచేశారు అనేది మమ్మల్ని ఆకట్టుకుంది. వారి క్లయింట్ సేవ మరియు చట్టపరమైన నైపుణ్యం చాలా ప్రొఫెషనల్‌గా ఉన్నాయి. వారితో పనిచేయడం ఆనందంగా ఉంది.,",
+      fullTestimonial: `మా రియల్ ఎస్టేట్ ఫిన్‌టెక్ అనుభవాన్ని నిర్వహించడానికి అత్యంత ఆప్టిమైజ్ చేయబడిన మరియు నియంత్రణా అనుకూల నిర్మాణాన్ని కనుగొనడానికి మంజుశ్రీ మరియు ఆర్నా లా బృందానికి ఆదేశం ఇవ్వబడింది. వారు ఆ ఆదేశాన్ని స్పష్టత మరియు వివరాలతో నిర్వహించారు. మాకు చాలా సందేహాలు మరియు ప్రశ్నలు ఉన్నాయని మేము కొనసాగించాము మరియు మేము అభ్యర్థించిన అన్ని వివరాల ద్వారా వారు ఓపికగా పనిచేశారు అనేది మమ్మల్ని ఆకట్టుకుంది. వారి క్లయింట్ సేవ మరియు చట్టపరమైన నైపుణ్యం చాలా ప్రొఫెషనల్‌గా ఉన్నాయి. వారితో పనిచేయడం ఆనందంగా ఉంది.,,
       `,
-      },
-      {
-        imageUrl: "/testimonials/mamma-miya.jpg",
-        name: "Aashika Abraham",
-        post: "Founder",
-        desingnation: "Mammamiya",
-        desc: "“ I have thoroughly enjoyed working with Shreyas & Kamala and their team at Aarna Law - mostly because their legal opinion always comes balanced with wisdom, perspective and commercial/ social/ political context too.”",
-        fullTestimonial: `I have thoroughly enjoyed working with Shreyas & Kamala and their team at Aarna Law - mostly because their legal opinion always comes balanced with wisdom, perspective and commercial/ social/ political context too.,
-        "Their internal calling for justice strengthens their practice and this comes through in their commitment to find legal solutions and settlements at the earliest.",
+    },
+    {
+      imageUrl: "/testimonials/mamma-miya.jpg",
+      name: "ఆషికా అబ్రహం",
+      post: "వ్యవస్థాపకుడు",
+      desingnation: "మమ్మామియా",
+      desc: "ఆర్నా లాలో శ్రేయాస్ & కమల మరియు వారి బృందంతో కలిసి పనిచేయడం నాకు చాలా ఆనందంగా ఉంది - ఎందుకంటే వారి చట్టపరమైన అభిప్రాయం ఎల్లప్పుడూ జ్ఞానం, దృక్పథం మరియు వాణిజ్య/సామాజిక/రాజకీయ సందర్భంతో సమతుల్యంగా ఉంటుంది.,",
+      fullTestimonial: `ఆర్నా లాలో శ్రేయాస్ & కమల మరియు వారి బృందంతో కలిసి పనిచేయడం నాకు చాలా ఆనందంగా ఉంది - ఎందుకంటే వారి చట్టపరమైన అభిప్రాయం ఎల్లప్పుడూ జ్ఞానం, దృక్పథం మరియు వాణిజ్య/సామాజిక/రాజకీయ సందర్భంతో సమతుల్యంగా ఉంటుంది.,,
+        "న్యాయం కోసం వారి అంతర్గత పిలుపు వారి అభ్యాసాన్ని బలపరుస్తుంది మరియు వీలైనంత త్వరగా చట్టపరమైన పరిష్కారాలు మరియు పరిష్కారాలను కనుగొనాలనే వారి నిబద్ధతలో ఇది కనిపిస్తుంది.",
       `,
-      },
-      {
-        imageUrl: "/testimonials/one_paper.jpeg",
-        name: "Kunal Shah",
-        post: "OnePaper Research Analysts Private Limited",
-        desingnation: "",
-        desc: "“ We greatly appreciate the team’s hard work and commitment to delivering satisfactory results.”",
-        fullTestimonial: `We are pleased to share that OnePaper is entirely satisfied with the services provided by Aarna Law. Vidhisha, Punti, and the entire team demonstrated exceptional skill and dedication in addressing our needs. Their efforts and timely assistance played a crucial role in achieving a favourable order for our matter.,
-          "We greatly appreciate the team’s hard work and commitment to delivering satisfactory results.",
-          "Thank you once again for your support."`,
-  
-      },
-      {
-        imageUrl: "/testimonials/novalite.jpg",
-        name: "Mukesh Shah",
-        post: "Novalite limited",
-        desingnation: "",
-        desc: "“ The experience was nothing short of exceptional. Mr. Jayasimha and his team demonstrated an outstanding level of professionalism, expertise, and dedication.”",
-        fullTestimonial: `We at Novalite Limited had the pleasure of working with Aarna Law, and specifically with Mr. Shreyas Jayasimha, on several complex legal matters. The experience was nothing short of exceptional. Mr. Jayasimha and his team demonstrated an outstanding level of professionalism, expertise, and dedication.,
-          "What truly sets Aarna Law apart is their holistic approach to legal services. They not only guide you through the legal formalities with precision but also provide invaluable advisory and consultation that aligns seamlessly with our business lifestyle. Their ability to understand our unique needs and tailor their services accordingly made all the difference.",
-          "We are extremely grateful for the support and insight provided by Mr. Jayasimha and the entire Aarna Law team. They have been more than just legal advisors; they have been true partners in our business journey.",
-          "Thank you, Aarna Law, for your unwavering commitment to excellence. We look forward to continuing our collaboration in the future.",
+    },
+    {
+      imageUrl: "/testimonials/one_paper.jpeg",
+      name: "కునాల్ షా",
+      post: "వన్‌పేపర్ రీసెర్చ్ అనలిస్టిక్స్ ప్రైవేట్ లిమిటెడ్",
+      desingnation: "",
+      desc: "ఆర్ణ లా అందించే సేవలతో వన్‌పేపర్ పూర్తిగా సంతృప్తి చెందిందని పంచుకోవడానికి మేము సంతోషిస్తున్నాము. విధిష, పుంటి మరియు మొత్తం బృందం మా అవసరాలను తీర్చడంలో అసాధారణమైన నైపుణ్యం మరియు అంకితభావాన్ని ప్రదర్శించారు. వారి ప్రయత్నాలు మరియు సకాలంలో సహాయం మా విషయానికి అనుకూలమైన ఆర్డర్‌ను సాధించడంలో కీలక పాత్ర పోషించాయి.,",
+      fullTestimonial: `ఆర్ణ లా అందించే సేవలతో వన్‌పేపర్ పూర్తిగా సంతృప్తి చెందిందని పంచుకోవడానికి మేము సంతోషిస్తున్నాము. విధిష, పుంటి మరియు మొత్తం బృందం మా అవసరాలను తీర్చడంలో అసాధారణమైన నైపుణ్యం మరియు అంకితభావాన్ని ప్రదర్శించారు. వారి ప్రయత్నాలు మరియు సకాలంలో సహాయం మా విషయానికి అనుకూలమైన ఆర్డర్‌ను సాధించడంలో కీలక పాత్ర పోషించాయి.,,
+          "సంతృప్తికరమైన ఫలితాలను అందించడంలో జట్టు కృషి మరియు నిబద్ధతకు మేము ఎంతో అభినందిస్తున్నాము",
+          "మీ మద్దతుకు మరోసారి ధన్యవాదాలు"`,
+
+    },
+    {
+      imageUrl: "/testimonials/novalite.jpg",
+      name: " ముఖేష్ షా",
+      post: "నోవలైట్ లిమిటెడ్",
+      desingnation: "",
+      desc: "నోవాలైట్ లిమిటెడ్‌లో మేము ఆర్నా లాతో, ముఖ్యంగా శ్రీ శ్రేయాస్ జయసింహతో కలిసి అనేక సంక్లిష్టమైన చట్టపరమైన విషయాలపై పనిచేసే ఆనందం పొందాము. ఈ అనుభవం అసాధారణమైనది. శ్రీ జయసింహ మరియు అతని బృందం అత్యుత్తమ వృత్తి నైపుణ్యం, నైపుణ్యం మరియు అంకితభావాన్ని ప్రదర్శించారు.",
+      fullTestimonial: `నోవాలైట్ లిమిటెడ్‌లో మేము ఆర్నా లాతో, ముఖ్యంగా శ్రీ శ్రేయాస్ జయసింహతో కలిసి అనేక సంక్లిష్టమైన చట్టపరమైన విషయాలపై పనిచేసే ఆనందం పొందాము. ఈ అనుభవం అసాధారణమైనది. శ్రీ జయసింహ మరియు అతని బృందం అత్యుత్తమ వృత్తి నైపుణ్యం, నైపుణ్యం మరియు అంకితభావాన్ని ప్రదర్శించారు.,
+          "ఆర్నా లాను నిజంగా ప్రత్యేకంగా నిలిపేది చట్టపరమైన సేవలకు వారి సమగ్ర విధానం. వారు చట్టపరమైన ఫార్మాలిటీల ద్వారా మీకు ఖచ్చితత్వంతో మార్గనిర్దేశం చేయడమే కాకుండా, మా వ్యాపార జీవనశైలికి సజావుగా సరిపోయే అమూల్యమైన సలహా మరియు సంప్రదింపులను కూడా అందిస్తారు. మా ప్రత్యేక అవసరాలను అర్థం చేసుకుని, తదనుగుణంగా వారి సేవలను రూపొందించగల వారి సామర్థ్యం అన్ని తేడాలను తెచ్చిపెట్టింది.",
+          "శ్రీ జయసింహ మరియు మొత్తం ఆర్ణ లా బృందం అందించిన మద్దతు మరియు అంతర్దృష్టికి మేము చాలా కృతజ్ఞులం. వారు కేవలం న్యాయ సలహాదారుల కంటే ఎక్కువ; వారు మా వ్యాపార ప్రయాణంలో నిజమైన భాగస్వాములు.",
+          "ఆర్నా లా, శ్రేష్ఠతకు మీ అచంచలమైన నిబద్ధతకు ధన్యవాదాలు. భవిష్యత్తులో మా సహకారాన్ని కొనసాగించాలని మేము ఎదురుచూస్తున్నాము.",
         `,
-      },
-    ],
-  
-    // Home Page
-  
-    ourLegacy1: {
-      legacyTitle1: "Our Legacy",
-      legacyHeadline1: "Founded on over nine decades of commitment and service",
-      legacyPara1:
-        "Across varied domains, industries, and international borders, our legal services and solutions are tailor-made to represent our clients’ best interests without compromising on our principles of natural law, justice, and compassion.",
-      legacyPara2: "We counsel domestic, foreign, and diasporic clients on a range of issues. From minimizing regulatory, financial, and legal risk to navigating highly specialized areas of national and international law, we advise with uncompromising integrity.",
     },
-  
-    ourServicesTitle: {
-      ourServices: "Our Services",
+  ],
+
+  // Home Page
+
+  ourLegacy1: {
+    legacyTitle1: "మా వారసత్వం",
+    legacyHeadline1: "తొమ్మిది దశాబ్దాలకు పైగా నిబద్ధత మరియు సేవపై స్థాపించబడింది.",
+    legacyPara1:
+      "విభిన్న డొమైన్‌లు, పరిశ్రమలు మరియు అంతర్జాతీయ సరిహద్దులలో, మా న్యాయ సేవలు మరియు పరిష్కారాలు మా సహజ చట్టం, న్యాయం మరియు కరుణ సూత్రాలపై రాజీ పడకుండా మా క్లయింట్ల ఉత్తమ ప్రయోజనాలను సూచించడానికి ప్రత్యేకంగా రూపొందించబడ్డాయి",
+    legacyPara2: "మేము దేశీయ, విదేశీ మరియు డయాస్పోరిక్ క్లయింట్‌లకు వివిధ అంశాలపై సలహా ఇస్తున్నాము. నియంత్రణ, ఆర్థిక మరియు చట్టపరమైన ప్రమాదాన్ని తగ్గించడం నుండి జాతీయ మరియు అంతర్జాతీయ చట్టంలోని అత్యంత ప్రత్యేకమైన రంగాలను నావిగేట్ చేయడం వరకు, మేము రాజీలేని సమగ్రతతో సలహా ఇస్తున్నాము.",
+  },
+
+  ourServicesTitle: {
+    ourServices: "మా సేవలు",
+  },
+
+  ourFirmTitle: {
+    ourFirm: "మా సంస్థ",
+  },
+
+  disputes: {
+    disputesTitle: "Disputes We Resolve",
+  },
+
+  disputesDetails: [
+    {
+      name: "Commercial Litigation",
     },
-  
-    ourFirmTitle: {
-      ourFirm: "Our Firm",
+    {
+      name: "Arbitration",
     },
-  
-    disputes: {
-      disputesTitle: "Disputes We Resolve",
+    {
+      name: "International Arbitration",
     },
-  
-    disputesDetails: [
-      {
-        name: "Commercial Litigation",
-      },
-      {
-        name: "Arbitration",
-      },
-      {
-        name: "International Arbitration",
-      },
-      {
-        name: "Mediation",
-      },
-      {
-        name: "Construction Disputes",
-      },
-      {
-        name: "Real Estate Disputes",
-      },
-      {
-        name: "Share Holder Disputes",
-      },
-      {
-        name: "Trial & Advocacy",
-      },
-      {
-        name: "Corporate disputes",
-      },
-      {
-        name: "Restructuring & Insolvency",
-      },
-      {
-        name: "Regulatory disputes",
-      },
-  
-    ],
-  
-    trackRecord: {
-      trackRecordTitle: "Our Track Record by Numbers",
+    {
+      name: "Mediation",
     },
-  
-    awards: {
-      awardsTitle: "Awards & Accolades",
+    {
+      name: "Construction Disputes",
     },
-  
-    //Practice Area Main Heading
-    practiceAreaHeading: {
-      practiceAreaHeading: "మా చురుకైన బృందం విభిన్న అభ్యాస ప్రాంతాలలో అనుభవజ్ఞులైన సలహాలను అందిస్తుంది. ",
+    {
+      name: "Real Estate Disputes",
     },
-  
-    //Industries Main Heading
-    industriesHeading: {
-      industriesHeading: "Our progressive practice provides expert assistance to clients across industry.",
+    {
+      name: "Share Holder Disputes",
     },
-    industrieslistTitle: {
-      industrieslist: "INDUSTRIES WE SERVE",
+    {
+      name: "Trial & Advocacy",
     },
-    contactOurExpertsTitle: {
-      contactOurExperts: "CONTACT OUR EXPERTS",
+    {
+      name: "Corporate disputes",
     },
-  
-  };
-  export default te;
-  
-  
+    {
+      name: "Restructuring & Insolvency",
+    },
+    {
+      name: "Regulatory disputes",
+    },
+
+  ],
+
+  trackRecord: {
+    trackRecordTitle: "Our Track Record by Numbers",
+  },
+
+  awards: {
+    awardsTitle: "Awards & Accolades",
+  },
+
+  //Practice Area Main Heading
+  practiceAreaHeading: {
+    practiceAreaHeading: "మా చురుకైన బృందం విభిన్న అభ్యాస ప్రాంతాలలో అనుభవజ్ఞులైన సలహాలను అందిస్తుంది. ",
+  },
+
+  practiceAreaPara1: {
+    practiceAreaPara1: " సంవత్సరాలుగా, ఆర్నా చట్టం విశ్వసనీయ సలహాదారుగా విశిష్ట ఖ్యాతిని సంపాదించుకుంది. మేము పెంపొందించుకున్న దీర్ఘకాలిక సంబంధాలు చట్టపరమైన ప్రకృతి దృశ్యం గురించి మా లోతైన అవగాహన, మా వనరుల సామర్థ్యం మరియు ఆచరణాత్మకమైన, ఫలితాల ఆధారిత సలహాలను అందించగల మా సామర్థ్యానికి నిదర్శనంగా నిలుస్తాయి.",
+  },
+  practiceAreaPara2: {
+    practiceAreaPara2: "మేము సమగ్రమైన న్యాయ సేవలను అందిస్తున్నాము, ప్రతి ఒక్కటి ఒకదానికొకటి పూరకంగా ఉంటాయి, మేము చేపట్టే ప్రతి విషయంపై సమగ్రమైన, విభిన్న క్రమశిక్షణా దృక్పథాన్ని స్వీకరించడానికి వీలు కల్పిస్తుంది. మా ప్రధాన సాధన రంగాలలో కార్పొరేట్, వాణిజ్య మరియు నియంత్రణ సలహా, ఈక్విటీ మరియు రుణ ఫైనాన్సింగ్, విలీనాలు మరియు సముపార్జనలు మరియు వివాద పరిష్కారం ఉన్నాయి.",
+  },
+
+  //Industries Main Heading
+  industriesHeading: {
+    industriesHeading: "మా పురోగమించే ప్రాక్టీస్ పరిశ్రమ అంతటా క్లయింట్లకు నిపుణుల సహాయాన్ని అందిస్తుంది.",
+  },
+  industrieslistTitle: {
+    industrieslist: "మేము సేవలందించే పరిశ్రమలు",
+  },
+  contactOurExpertsTitle: {
+    contactOurExperts: "CONTACT OUR EXPERTS",
+  },
+
+};
+export default te;
+

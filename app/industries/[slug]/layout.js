@@ -64,7 +64,7 @@ export async function generateMetadata({ params }) {
             ]
           : [
               {
-                url: "/aarna-law.png",
+                url: "/aarnalaw_new_banner.jpg",
                 width: 800,
                 height: 600,
                 alt: "Industry-Specific Legal Solutions | Aarna Law",

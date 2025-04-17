@@ -15,7 +15,7 @@ function PracticeLists() {
     setLoading(true);
     try {
       let server;
-      if (domain === `${configData.LIVE_SITE_URL}`) {
+      if (domain === configData.LIVE_SITE_URL || domain === configData.LIVE_SITE_URL_WWW) {
         server = `${configData.LIVE_PRODUCTION_SERVER_ID}`;
       } else if (domain === `${configData.STAGING_SITE_URL}`) {
         server = `${configData.STAG_PRODUCTION_SERVER_ID}`;

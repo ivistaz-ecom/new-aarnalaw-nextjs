@@ -22,7 +22,7 @@ function ModalTestimonial({ data, onClose }) {
       show={!!data}
       onClose={onClose}
       dismissible={false}
-      className="flex items-center justify-center pt-44 md:pt-0" // center modal on all screens
+      className="flex items-center justify-center pt-40 md:pt-0" // center modal on all screens
     >
       <div
         ref={modalRef}

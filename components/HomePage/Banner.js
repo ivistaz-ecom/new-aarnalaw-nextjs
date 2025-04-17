@@ -39,10 +39,10 @@ export default function Banner() {
                 height={500}
                 loading="eager"
                 priority
-                
+
                 placeholder="blur"
                 blurDataURL={banner.mobileBannerUrl}
-                
+
               />
               {/* Desktop Banner */}
               <Image
@@ -67,8 +67,6 @@ export default function Banner() {
           <p>No banners available.</p> // Fallback message if the array is empty
         )}
       </div>
-
-
     </div>
   );
 }
