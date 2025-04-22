@@ -50,6 +50,10 @@ export async function generateMetadata({ params }) {
       },
     };
   }
+
+
+
+  
   
   // Force revalidation every 10 seconds to get the latest data
   export const revalidate = 10;
