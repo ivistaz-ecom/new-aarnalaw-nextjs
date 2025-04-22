@@ -4,18 +4,18 @@
 
 const te = {
   menu: {
-    about: "మా గురించి ",
-    thefirm: "The Firm",
-    testimonials: "Testimonials",
+    about: "మా గురించి",
+    thefirm: "సంస్థ ",
+    testimonials: "సాక్ష్యాలు",
     practiceareas: "ప్రాక్టీస్ ప్రాంతాలు ",
     industries: "పరిశ్రమలు",
-    newsinsights: "News & Insights",
-    insights: "Insights",
-    aarnanews: "Aarna News",
-    publications: "Publications",
-    podcasts: "Podcasts",
-    careers: "Careers",
-    contactus: "Contact Us",
+    newsinsights: "వార్తలు & అవగాహనలు ",
+    insights: "అవగాహనలు",
+    aarnanews: "ఆర్ణా వార్తలు",
+    publications: "ప్రచురణలు",
+    podcasts: "పాడ్‌కాస్ట్‌లు",
+    careers: "ఉద్యోగాలు",
+    contactus: "మమ్మల్ని సంప్రదించండి",
   },
 
   // Banner Titles
@@ -26,23 +26,23 @@ const te = {
     industries: "పరిశ్రమలు",
   },
   insightsTitle: {
-    insights: "Insights",
+    insights: "అవగాహనలు",
   },
 
   aarnaNewsTitle: {
-    aarnaNews: "Aarna News",
+    aarnaNews: "ఆర్ణా వార్తలు",
   },
   publicationsTitle: {
-    publications: "Publications",
+    publications: "ప్రచురణలు",
   },
   podcastsTitle: {
-    podcasts: "Podcasts",
+    podcasts: "పాడ్‌కాస్ట్‌లు",
   },
   careersTitle: {
-    careers: "Careers",
+    careers: "ఉద్యోగాలు",
   },
   contactUsTitle: {
-    contactUs: "Contact Us",
+    contactUs: "మమ్మల్ని సంప్రదించండి",
   },
 
   // About Us 
@@ -220,7 +220,7 @@ const te = {
   },
 
   disputes: {
-    disputesTitle: "Disputes We Resolve",
+    disputesTitle: "మేము పరిష్కరించే వివాదాలు",
   },
 
   disputesDetails: [
@@ -261,11 +261,11 @@ const te = {
   ],
 
   trackRecord: {
-    trackRecordTitle: "Our Track Record by Numbers",
+    trackRecordTitle: "సంఖ్యలలో మా ట్రాక్ రికార్డు ",
   },
 
   awards: {
-    awardsTitle: "Awards & Accolades",
+    awardsTitle: "అవార్డులు మరియు ప్రశంసలు",
   },
 
   //Practice Area Main Heading
