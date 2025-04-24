@@ -24,22 +24,15 @@ export default function PostContent({ slug }) {
                     setDate(post.date);
                     setContent(post.content.rendered);
 
-                    // Handle featured image safely
-                    if (post.featured_media) {
-                        try {
-                            const mediaResponse = await fetch(`https://docs.aarnalaw.com/wp-json/wp/v2/media/${post.featured_media}`);
-                            if (mediaResponse.ok) {
-                                const mediaResult = await mediaResponse.json();
-                                setFeatureImage(mediaResult?.source_url || null);
-                            } else {
-                                console.warn(`Media fetch failed: ${mediaResponse.status}`);
-                                setFeatureImage(null);
-                            }
-                        } catch (err) {
-                            console.error("Error fetching media:", err);
-                            setFeatureImage(null);
-                        }
+                    // Check ACF field: desktop_banner_image
+                    const desktopBanner = post.acf?.desktop_banner_image;
+
+                    if (desktopBanner && typeof desktopBanner === "object") {
+                        setFeatureImage(desktopBanner.url || null);
+                    } else {
+                        setFeatureImage(desktopBanner || null);
                     }
+
                 } else {
                     setError(true);
                 }
@@ -65,20 +58,34 @@ export default function PostContent({ slug }) {
         <>
             <div className="mx-auto w-11/12">
                 <div className="h-[200px]" />
-                <h1 className="py-4 text-4xl font-bold tracking-wide text-black" dangerouslySetInnerHTML={{ __html: title }} />
+                <h1
+                    className="py-4 text-4xl font-bold tracking-wide text-black"
+                    dangerouslySetInnerHTML={{ __html: title }}
+                />
                 <p className="py-4">Published:- {formatDateString(date)}</p>
-                <Banner backgroundImage={featureImage} />
+                {featureImage && <Banner backgroundImage={featureImage} />}
             </div>
 
             <div className="py-12 mx-auto w-11/12">
-                <p dangerouslySetInnerHTML={{ __html: content }} className="insight-blog py-12" />
+                <p
+                    dangerouslySetInnerHTML={{ __html: content }}
+                    className="insight-blog py-5"
+                />
             </div>
 
             <div className="mx-auto w-11/12">
-                <Link href="/aarna-news/" className="mt-6 bg-custom-red px-4 py-2 text-white">
+                <Link
+                    href="/aarna-news/"
+                    className="mt-6 bg-custom-red px-4 py-2 text-white"
+                >
                     Back to Aarna News
                 </Link>
             </div>
         </>
     );
 }
+
+
+
+
+
