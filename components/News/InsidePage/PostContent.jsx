@@ -67,7 +67,7 @@ export default function PostContent({ slug }) {
                 <div className="h-[200px]" />
                 <h1 className="py-4 text-4xl font-bold tracking-wide text-black" dangerouslySetInnerHTML={{ __html: title }} />
                 <p className="py-4">Published:- {formatDateString(date)}</p>
-                {featureImage && <Banner backgroundImage={featureImage} />}
+                <Banner backgroundImage={featureImage} />
             </div>
 
             <div className="py-12 mx-auto w-11/12">
