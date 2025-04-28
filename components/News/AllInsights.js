@@ -120,7 +120,7 @@ function AllNews({ searchTerm }) {
                   <Image
                   src={items.featured_image_url}
                   alt={items.title.rendered}
-                  className="h-[200px] w-full md:h-[300px]"
+                  className="h-[200px] w-full md:h-[300px] object-cover"
                   width={500}
                   height={300}
                    loading="lazy"

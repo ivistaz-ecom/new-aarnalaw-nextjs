@@ -77,46 +77,52 @@ const NavBar = () => {
 
           <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto `} id="navbar-dropdown">
             <ul className="mt-1 flex flex-col rounded-lg borderfont-medium dark:border-gray-700 md:flex-row md:space-x-6">
-              {HeaderMenu.map((item, index) => (
-                <li key={index} className="relative group">
-                  {item.aboutSubMenu || item.subMenu ? (
-                    <span className="flex items-center px-3 py-2 md:hover:text-custom-red cursor-pointer">
-                      {translations.menu[formatKey(item.menu)] || item.menu}
-                      <span className="ml-1 text-sm">&#9662;</span>
-                    </span>
-                  ) : (
-                    <Link
-                      href={item.slug || "#"}
-                      className="flex items-center px-3 py-2 md:hover:text-custom-red"
-                      onClick={() => setIsMenuOpen(false)} // Close menu on click
-                    >
-                      {translations.menu[formatKey(item.menu)] || item.menu}
-                    </Link>
-                  )}
+              {HeaderMenu.map((item, index) => {
+                const isContactUs = item.menu === "Contact Us"; // define inside map
 
-                  {(item.aboutSubMenu || item.subMenu) && (
-                    <ul className="absolute hidden group-hover:block bg-white shadow-lg rounded-lg p-2 w-48 z-10">
-                      {(item.aboutSubMenu || item.subMenu).map(
-                        (sub, subIndex) => (
+                return (
+                  <li
+                    key={index}
+                    className={`relative group ${isContactUs ? "md:hidden" : ""}`} // hide "Contact Us" on desktop in menu
+                  >
+                    {item.aboutSubMenu || item.subMenu ? (
+                      <span className="flex items-center px-3 py-2 md:hover:text-custom-red cursor-pointer">
+                        {translations.menu[formatKey(item.menu)] || item.menu}
+                        <span className="ml-1 text-sm">&#9662;</span>
+                      </span>
+                    ) : (
+                      <Link
+                        href={item.slug || "#"}
+                        className="flex items-center px-3 py-2 md:hover:text-custom-red"
+                        onClick={() => setIsMenuOpen(false)} // Close menu on click
+                      >
+                        {translations.menu[formatKey(item.menu)] || item.menu}
+                      </Link>
+                    )}
+
+                    {(item.aboutSubMenu || item.subMenu) && (
+                      <ul className="absolute hidden group-hover:block bg-white shadow-lg rounded-lg p-2 w-48 z-10">
+                        {(item.aboutSubMenu || item.subMenu).map((sub, subIndex) => (
                           <li key={subIndex}>
                             <Link
                               href={sub.slug || "#"}
                               className="block px-4 py-2 hover:bg-gray-100"
-                              onClick={() => setIsMenuOpen(false)} // Close submenu on click
+                              onClick={() => setIsMenuOpen(false)}
                             >
-                              {translations.menu[formatKey(sub.name)] ||
-                                sub.name}
+                              {translations.menu[formatKey(sub.name)] || sub.name}
                             </Link>
                           </li>
-                        )
-                      )}
-                    </ul>
-                  )}
-                </li>
-              ))}
+                        ))}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
+
           </div>
 
+          {/* Contact us for desktop view */}
           <div className="hidden w-3/12 items-center justify-evenly lg:flex">
             <SearchModal />
             <Link

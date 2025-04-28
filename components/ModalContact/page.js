@@ -45,9 +45,9 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
       >
         {btnName}
       </button>
-      <Modal show={openModal} onClose={() => setOpenModal(false)} className="pt-10 md:pt-0">
-        <div ref={modalRef}>
-          <div className="flex items-center justify-between px-6 pt-6 pb-2 border-b">
+      <Modal show={openModal} onClose={() => setOpenModal(false)} size="md" className="pt-10 md:pt-0">
+        <div ref={modalRef} className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <div className="flex items-center justify-between px-6 pt-6 pb-2 border-b dark:border-gray-600">
             <div
               className="text-xl font-semibold text-gray-900 dark:text-white"
               dangerouslySetInnerHTML={{ __html: modalTitle }}
@@ -68,6 +68,7 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
           </Modal.Body>
         </div>
       </Modal>
+
     </>
   );
 }

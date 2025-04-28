@@ -19,6 +19,7 @@ export const HeaderMenu = [
     ],
   },
   { menu: "Careers", slug: "/careers" },
+  { menu: "Contact Us", slug: "/contact-us" },
 ];
 
 // Home/Images/
