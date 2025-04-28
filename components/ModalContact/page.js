@@ -8,7 +8,7 @@ import { HiX } from "react-icons/hi";
 
 function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
   const [openModal, setOpenModal] = useState(false);
-  const modalRef = useRef(null); // ✅ Declare modalRef
+  const modalRef = useRef(null);
 
   const componentMap = {
     career: HubSpotCareer,
@@ -22,7 +22,7 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (modalRef.current && !modalRef.current.contains(event.target)) {
-        setOpenModal(false); // ✅ Close modal when clicking outside
+        setOpenModal(false);
       }
     };
 
@@ -45,8 +45,17 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
       >
         {btnName}
       </button>
-      <Modal show={openModal} onClose={() => setOpenModal(false)} size="md" className="pt-10 md:pt-0">
-        <div ref={modalRef} className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+
+      <Modal
+        show={openModal}
+        onClose={() => setOpenModal(false)}
+        position="center" 
+      >
+        <div
+          ref={modalRef}
+          className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-full md:w-[700px] max-h-[90vh] overflow-hidden flex flex-col"
+        >
+          {/* Modal Header */}
           <div className="flex items-center justify-between px-6 pt-6 pb-2 border-b dark:border-gray-600">
             <div
               className="text-xl font-semibold text-gray-900 dark:text-white"
@@ -59,19 +68,19 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
               <HiX className="w-6 h-6" />
             </button>
           </div>
-          <Modal.Body>
+
+          {/* Modal Body */}
+          <div className="overflow-y-auto p-6" style={{ flex: '1 1 auto' }}>
             {SelectedComponent ? (
               <SelectedComponent id={id} />
             ) : (
               <p>Component not found</p>
             )}
-          </Modal.Body>
+          </div>
         </div>
       </Modal>
-
     </>
   );
 }
 
 export default ModalContact;
-
