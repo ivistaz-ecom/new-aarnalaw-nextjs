@@ -86,6 +86,8 @@ function PracticeLists() {
                     ? item.acf.kannada_title
                     : language === "te" && item.acf.telugu_title
                       ? item.acf.telugu_title
+                      : language === "hi" && item.acf.hindi_title
+                      ? item.acf.hindi_title
                       : item.title.rendered;
 
               const description =
@@ -95,6 +97,8 @@ function PracticeLists() {
                     ? item.acf.kannada_description
                     : language === "te" && item.acf.telugu_description
                       ? item.acf.telugu_description
+                    : language === "hi" && item.acf.hindi_description
+                      ? item.acf.hindi_description
                       : item.acf.description;
 
 

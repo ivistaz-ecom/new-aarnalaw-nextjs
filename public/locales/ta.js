@@ -284,6 +284,9 @@ const ta = {
   contactOurExpertsTitle: {
     contactOurExperts: "CONTACT OUR EXPERTS",
   },
+  network: {
+    networkTitle: " உலகம் முழுவதும் வழக்கறிஞர்களின் ஒருங்கிணைந்த அமைப்பு",
+  },
 
 };
 

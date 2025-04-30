@@ -12,8 +12,16 @@ const LanguageDropdown = () => {
     { code: "kn", label: "ಕನ್ನಡ (Kannada)" },
     { code: "ta", label: "தமிழ் (Tamil)" },
     { code: "te", label: "తెలుగు (Telugu)" }, 
+    { code: "hi", label: "हिंदी (Hindi)" },
+    // { code: "mr", label: "मराठी (Marathi)" },
     // { code: "ml", label: "മലയാളം (Malayalam)" },
-    // { code: "hi", label: "हिंदी (Hindi)" },
+    // { code: "ur", label: "اردو (Urdu)" },
+    // { code: "pa", label: "ਪੰਜਾਬੀ (Punjabi)" },
+    // { code: "bn", label: "বাংলা (Bengali)" },
+    // { code: "gu", label: "ગુજરાતી (Gujarati)" },
+    // { code: "or", label: "ଓଡିଆ (Odia)" },
+    // { code: "as", label: "অসমীয়া (Assamese)" },
+    // { code: "ne", label: "नेपाली (Nepali)" },
   ];
 
   // Find the selected language label
