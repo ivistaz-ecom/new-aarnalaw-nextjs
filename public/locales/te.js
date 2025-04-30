@@ -225,37 +225,37 @@ const te = {
 
   disputesDetails: [
     {
-      name: "Commercial Litigation",
+      name: " వాణిజ్య లిటిగేషన్ ",
     },
     {
-      name: "Arbitration",
+      name: " పంచాయితీ ",
     },
     {
-      name: "International Arbitration",
+      name: "అంతర్జాతీయ అనుసంధానం (పంచాయితీ) ",
     },
     {
-      name: "Mediation",
+      name: " మధ్యవర్తిత్వం / సమస్యం పరిష్కారం ",
     },
     {
-      name: "Construction Disputes",
+      name: " నిర్మాణ సంబంధిత వివాదాలు ",
     },
     {
-      name: "Real Estate Disputes",
+      name: " రియల్ ఎస్టేట్ వివాదాలు ",
     },
     {
-      name: "Share Holder Disputes",
+      name: " షేర్ హోల్డర్ల మధ్య వివాదాలు ",
     },
     {
-      name: "Trial & Advocacy",
+      name: "విచారణ మరియు వాదనలు",
     },
     {
-      name: "Corporate disputes",
+      name: "కార్పొరేట్ వివాదాల",
     },
     {
-      name: "Restructuring & Insolvency",
+      name: "పునర్‍వ్యవస్థీకరణ మరియు దివాళా",
     },
     {
-      name: "Regulatory disputes",
+      name: "నియంత్రణ సంబంధిత వివాదాలు",
     },
 
   ],
@@ -289,6 +289,9 @@ const te = {
   },
   contactOurExpertsTitle: {
     contactOurExperts: "CONTACT OUR EXPERTS",
+  },
+  network: {
+    networkTitle: "ప్రపంచవ్యాప్తంగా న్యాయవాదుల నెట్‌వర్క్",
   },
 
 };

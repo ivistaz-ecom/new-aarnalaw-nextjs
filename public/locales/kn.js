@@ -285,6 +285,9 @@ const kn = {
   contactOurExpertsTitle: {
     contactOurExperts: "ನಮ್ಮ ತಜ್ಞರನ್ನು ಸಂಪರ್ಕಿಸಿ",
   },
+  network: {
+    networkTitle: "ಪ್ರಪಂಚದಾದ್ಯಂತದ ವಕೀಲರ ಜಾಲ",
+  },
 
 };
 export default kn;

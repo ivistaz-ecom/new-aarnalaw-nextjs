@@ -1,6 +1,9 @@
-import React from "react";
+"use client";
+import React, { useContext } from "react";
+import { LanguageContext } from "../../app/context/LanguageContext";
 
 function OurNetwork() {
+  const { language, translations } = useContext(LanguageContext);
   return (
     <>
     <style>
@@ -8,13 +11,14 @@ function OurNetwork() {
         `
  .qqvbed-p83tee-V1ur5d {
     text-transform: capitalize !important;
-}
+} 
 `
       }
     </style>
     <div className="mx-auto w-11/12">
       <h1 className="pb-8 pt-12 text-center text-xl font-semibold text-custom-blue md:text-2xl">
-        A Network of Lawyers Around The World
+       
+        {translations.network.networkTitle}
       </h1>
       <div className="w-full bg-gray-800 py-1 text-white">
         <p className="p-4 font-semibold">Aarna Law - Our Networks</p>

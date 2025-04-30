@@ -16,7 +16,7 @@ const en = {
     podcasts: "Podcasts",
     careers: "Careers",
     contactus: "Contact Us",
-  }, 
+  },
 
   // Banner Titles
   practiceAreasTitle: {
@@ -289,6 +289,9 @@ const en = {
   },
   contactOurExpertsTitle: {
     contactOurExperts: "CONTACT OUR EXPERTS",
+  },
+  network: {
+    networkTitle: " A Network of Lawyers Around The World",
   },
 
 };

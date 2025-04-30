@@ -1,94 +1,99 @@
-const hi = {
+// import FounderMessage from "@/components/AboutUs/FounderMessage";
+// import JayasimhaFoundation from "@/components/AboutUs/JayasimhaFoundation";
+// import { practiceArea } from "@/utils/data";
+
+const en = {
   menu: {
-    about: "के बारे में",
-    thefirm: "फर्म",
+    about: "हमारे बारे में",
+    thefirm: "कंपनी",
     testimonials: "प्रशंसापत्र",
-    practiceareas: "अभ्यास क्षेत्र",
+    practiceareas: "प्रैक्टिस क्षेत्र",
     industries: "उद्योग",
     newsinsights: "समाचार और अंतर्दृष्टि",
     insights: "अंतर्दृष्टि",
-    aarnanews: "आर्णा समाचार",
+    aarnanews: "आर्ना समाचार",
     publications: "प्रकाशन",
     podcasts: "पॉडकास्ट",
     careers: "करियर",
-    contactus: "संपर्क करें"
+    contactus: "हमसे संपर्क करें",
   },
 
   // Banner Titles
   practiceAreasTitle: {
-    practiceAreas: "Practice Areas",
+    practiceAreas: "प्रैक्टिस क्षेत्र",
   },
   industriesTitle: {
-    industries: "Industries",
+    industries: "उद्योग",
   },
   insightsTitle: {
-    insights: "Insights",
+    insights: "अंतर्दृष्टि",
   },
+
   aarnaNewsTitle: {
-    aarnaNews: "Aarna News",
+    aarnaNews: "आर्ना समाचार",
   },
   publicationsTitle: {
-    publications: "Publications",
+    publications: "प्रकाशन",
   },
   podcastsTitle: {
-    podcasts: "Podcasts",
+    podcasts: "पॉडकास्ट",
   },
   careersTitle: {
-    careers: "Careers",
+    careers: "करियर",
   },
   contactUsTitle: {
-    contactUs: "Contact Us",
+    contactUs: "हमसे संपर्क करें",
   },
 
   // About Us 
   aboutTitle: {
-    aboutName: "About",
+    aboutName: "हमारे बारे में",
   },
 
   //About Us and Home Page
   whatWeDo: {
-    title: "What We Do",
-    headline: "We are an award-winning team of lawyers with a global perspective.",
+    title: "हम क्या करते हैं",
+    headline: "हम एक पुरस्कार विजेता वकीलों की टीम हैं, जिनका दृष्टिकोण वैश्विक है।",
     para1:
-      "Our counsel-led, tech-enabled practice envisions justice as an essential service in this global economy of international trade and fluid borders.",
+      "आरना लॉ की स्थापना एक दृढ़ प्रतिबद्धता के साथ की गई थी—गुणवत्ता-आधारित और मूल्य-आधारित कानूनी सेवाएं प्रदान करने के लिए, और जिनकी हम सेवा करते हैं उनके साथ गहरे और स्थायी संबंध बनाने के उद्देश्य से। हम अपने ग्राहकों के व्यवसाय और व्यावसायिक लक्ष्यों को समझने में समय और प्रयास समर्पित करते हैं, जिससे हम ऐसे समाधान तैयार कर सकें जो संदर्भ के अनुरूप और रणनीतिक रूप से प्रभावी हों।",
     para2:
-      "We counsel domestic, foreign, and diasporic clients on a range of issues. From minimizing regulatory, financial, and legal risk to navigating highly specialized areas of national and international law, we advise with uncompromising integrity.",
+      "हमारा दृष्टिकोण नवोन्मेषी और व्यावसायिक रूप से जागरूक है, जिसे अनुभवी वकीलों की एक ऐसी टीम का समर्थन प्राप्त है जो व्यावसायिक रूप से कुशल, व्यावहारिक और समाधान-केन्द्रित हैं।",
   },
 
   ourLegacy: {
-    legacyTitle: "Our Legacy",
-    legacyHeadline: "Across varied domains, industries and international borders, our legal services and solutions maintain the highest standards of integrity and confidentiality.",
+    legacyTitle: "हमारी विरासत",
+    legacyHeadline: "विभिन्न क्षेत्रों, उद्योगों और अंतर्राष्ट्रीय सीमाओं में हमारी कानूनी सेवाएं और समाधान अखंडता और गोपनीयता के उच्चतम मानकों को बनाए रखते हैं।",
     legacyPara:
-      "Above all, our award-winning practice is founded on the enduring relationships we cultivate with every client. The legal and commercial advice we provide reflects this conscious understanding of our client's business interests.",
+      "सबसे बढ़कर, हमारा पुरस्कार-विजेता अभ्यास हर ग्राहक के साथ हमारे द्वारा विकसित किए गए स्थायी संबंधों पर आधारित है। हम जो कानूनी और व्यावसायिक सलाह प्रदान करते हैं, वह हमारे ग्राहक के व्यावसायिक हितों की इस सचेत समझ को दर्शाता है।",
   },
 
   founderMessage: {
-    founderTitle: "MESSAGE FROM OUR FOUNDERS",
+    founderTitle: "हमारे संस्थापकों का संदेश",
     founderPara:
-      "We are very grateful for having had the privilege of serving clients across industries, small medium and large, and to have been on the counsel for the Republic of India. We humbly acknowledge the blessings and tall shoulders of previous generations. The deep values they have instilled continue to inspire us to create a platform that brings out the best versions of our selves collectively, while we seek to serve our clients and further the cause of justice",
-    founderName1: "Kamala Naganand",
-    founderDescription1: "MANAGING PARTNER",
-    founderName2: "Shreyas Jayasimha",
-    founderDescription2: "FOUNDING PARTNER",
+      "हम छोटे, मध्यम और बड़े उद्योगों में ग्राहकों की सेवा करने और भारत गणराज्य के लिए वकील बनने का सौभाग्य प्राप्त करने के लिए बहुत आभारी हैं। हम पिछली पीढ़ियों के आशीर्वाद और ऊंचे कंधों को विनम्रतापूर्वक स्वीकार करते हैं। उन्होंने जो गहरे मूल्य स्थापित किए हैं, वे हमें एक ऐसा मंच बनाने के लिए प्रेरित करते हैं जो सामूहिक रूप से हमारे स्वयं के सर्वश्रेष्ठ संस्करणों को सामने लाता है, जबकि हम अपने ग्राहकों की सेवा करना चाहते हैं और न्याय के उद्देश्य को आगे बढ़ाना चाहते हैं।",
+    founderName1: "कमला नागानंद",
+    founderDescription1: "प्रबंध भागीदार",
+    founderName2: "श्रेयस जयसिम्हा",
+    founderDescription2: "संस्थापक भागीदार",
   },
 
   jayasimhaFoundation: {
-    jayasimhaTitle: "JAYASIMHA FOUNDATION",
+    jayasimhaTitle: "जयसिंह फाउंडेशन",
     jayasimhaPara1:
-      "Established in memory of Late Justice R Jayasimha Babu (1942-2015), the Jayasimha Foundation carries forward an illustrious legacy rooted in the pursuit of excellence through a spirit of service.",
-    jayasimhaPara2: "The foundation embodies the guiding principles of integrity, courage and discipline that exemplified Justice Jayasimha Babu.",
-    jayasimhaPara3: "Through his distinguished appointments as Judge of the High Court of Madras, and earlier of the High Court of Karnataka, Justice Jayasimha Babu delivered widely cited judgments on constitutional law, company and commercial law, and taxation. Further, his astute approach to conflict resolution as an arbitrator in domestic and international disputes was widely regarded in high esteem.",
-    jayasimhaPara4: "A connoisseur of Carnatic, Hindustani and Western classical music, Justice Babu was keen on encouraging and empowering young talents in the law.",
+      "स्वर्गीय न्यायमूर्ति आर. जयसिम्हा बाबू (1942-2015) की स्मृति में स्थापित जयसिम्हा फाउंडेशन सेवा की भावना के माध्यम से उत्कृष्टता की खोज में निहित एक शानदार विरासत को आगे बढ़ा रहा है।",
+    jayasimhaPara2: "यह फाउंडेशन सत्यनिष्ठा, साहस और अनुशासन के मार्गदर्शक सिद्धांतों को अपनाता है, जिसका उदाहरण न्यायमूर्ति जयसिंह बाबू हैं।",
+    jayasimhaPara3: "मद्रास उच्च न्यायालय और उससे पहले कर्नाटक उच्च न्यायालय के न्यायाधीश के रूप में अपनी प्रतिष्ठित नियुक्तियों के माध्यम से, न्यायमूर्ति जयसिंह बाबू ने संवैधानिक कानून, कंपनी और वाणिज्यिक कानून और कराधान पर व्यापक रूप से उद्धृत निर्णय दिए। इसके अलावा, घरेलू और अंतरराष्ट्रीय विवादों में मध्यस्थ के रूप में संघर्ष समाधान के लिए उनके चतुर दृष्टिकोण को व्यापक रूप से उच्च सम्मान दिया गया।",
+    jayasimhaPara4: "कर्नाटक, हिंदुस्तानी और पश्चिमी शास्त्रीय संगीत के पारखी न्यायमूर्ति बाबू कानून के क्षेत्र में युवा प्रतिभाओं को प्रोत्साहित करने और उन्हें सशक्त बनाने के इच्छुक थे।",
   },
 
   joinTeam: {
-    joinTeamTitle: "Would You Like To Join Our Team?",
-    joinTeamPara: "We are an innovative organisation that empowers one another to grow and thrive. Integrity, efficiency, teamwork, and altruism are the cornerstones of our boutique practice.",
-    joinTeamOpening: "View Current Openings",
+    joinTeamTitle: "क्या आप हमारी टीम में शामिल होना चाहेंगे?",
+    joinTeamPara: "हम एक अभिनव संगठन हैं जो एक दूसरे को बढ़ने और फलने-फूलने के लिए सशक्त बनाता है। ईमानदारी, दक्षता, टीमवर्क और परोपकारिता हमारे बुटीक अभ्यास की आधारशिला हैं।",
+    joinTeamOpening: "वर्तमान उद्घाटन देखें",
   },
 
   aboutPracticeAreaTitle: {
-    aboutPracticeAreaName: "Practice Area",
+    aboutPracticeAreaName: "प्रैक्टिस क्षेत्र",
   },
 
   aboutPartner: {
@@ -98,46 +103,46 @@ const hi = {
 
   // Testimonials 
   testmonialBannerTitle: {
-    testmonialBannerName: "Testimonials",
+    testmonialBannerName: "प्रशंसापत्र",
   },
 
   testimonialDetails: [
     {
 
       imageUrl: "/testimonials/powerplay.png",
-      name: "Naveen Reddy",
+      name: "नवीन रेड्डी",
       post: "Powerplay",
       desingnation: "",
-      desc: "“Aarna law has supported me in all my legal needs from drafting employee agreement to commercial agreements.”",
-      fullTestimonial: `Aarna law has supported me in all my legal needs from drafting employee agreement to commercial agreements. All business-related issue were addressed and resolved by them with ease and attention to detail. They are the people I turn to for all my legal requirements.",`,
+      desc: "आरना लॉ ने कर्मचारी समझौते से लेकर वाणिज्यिक समझौतों तक मेरी सभी कानूनी ज़रूरतों में मेरा साथ दिया है। सभी व्यावसायिक-संबंधित मुद्दों को उन्होंने आसानी से और विस्तार से ध्यान देकर संबोधित और हल किया। वे ही वे लोग हैं जिनकी मदद से मैं अपनी सभी कानूनी ज़रूरतों को पूरा करता हूँ।",
+      fullTestimonial: `आरना लॉ ने कर्मचारी समझौते से लेकर वाणिज्यिक समझौतों तक मेरी सभी कानूनी ज़रूरतों में मेरा साथ दिया है। सभी व्यावसायिक-संबंधित मुद्दों को उन्होंने आसानी से और विस्तार से ध्यान देकर संबोधित और हल किया। वे ही वे लोग हैं जिनकी मदद से मैं अपनी सभी कानूनी ज़रूरतों को पूरा करता हूँ।"`,
     },
     {
       imageUrl: "/testimonials/dummy-white.png",
-      name: "Pawan Jain",
+      name: "पवन जैन",
       post: "VP",
-      desingnation: "Finance",
-      desc: "“ They showed a high degree of commitment to the work and respectful of deadlines and expectations.”",
-      fullTestimonial: `Ms Kamala and her entire team is uber professional in their approach and open to feedback at all times. They showed a high degree of commitment to the work and respectful of deadlines and expectations. It was indeed a pleasure to work with them and we look forward to work with them in future.,
+      desingnation: "वित्त",
+      desc: "सुश्री कमला और उनकी पूरी टीम अपने दृष्टिकोण में बेहद पेशेवर हैं और हर समय फीडबैक के लिए तैयार रहती हैं। उन्होंने काम के प्रति उच्च स्तर की प्रतिबद्धता दिखाई और समयसीमा और अपेक्षाओं का सम्मान किया। उनके साथ काम करना वाकई खुशी की बात थी और हम भविष्य में भी उनके साथ काम करने के लिए उत्सुक हैं।",
+      fullTestimonial: `सुश्री कमला और उनकी पूरी टीम अपने दृष्टिकोण में बेहद पेशेवर हैं और हर समय फीडबैक के लिए तैयार रहती हैं। उन्होंने काम के प्रति उच्च स्तर की प्रतिबद्धता दिखाई और समयसीमा और अपेक्षाओं का सम्मान किया। उनके साथ काम करना वाकई खुशी की बात थी और हम भविष्य में भी उनके साथ काम करने के लिए उत्सुक हैं।,
       `,
     },
 
     {
       imageUrl: "/testimonials/og_healthcare.jpg",
-      name: "Tony Hales",
+      name: "टोनी हेल्स",
       post: "CEO",
       desingnation: "OG Healthcare",
-      desc: "“Aarna Law was able to cater to our specific needs on time and within budget - truly a professional firm with knowledge, experience and network across many domains.”",
-      fullTestimonial: `Thank you, Shreyas and the team, at Aarna Law for your initial counsel and subsequent delivery of legal services. Not the run of the mill case, Aarna Law was able to cater to our specific needs on time and within budget - truly a professional firm with knowledge, experience and network across many domains. Once again thanks.,
+      desc: "“श्रेयस और आरना लॉ की टीम को आपके शुरुआती परामर्श और उसके बाद कानूनी सेवाएं प्रदान करने के लिए धन्यवाद। आरना लॉ कोई साधारण मामला नहीं था, बल्कि समय पर और बजट के भीतर हमारी विशिष्ट आवश्यकताओं को पूरा करने में सक्षम था - वास्तव में कई क्षेत्रों में ज्ञान, अनुभव और नेटवर्क के साथ एक पेशेवर फर्म। एक बार फिर धन्यवाद।,”",
+      fullTestimonial: `श्रेयस और आरना लॉ की टीम को आपके शुरुआती परामर्श और उसके बाद कानूनी सेवाएं प्रदान करने के लिए धन्यवाद। आरना लॉ कोई साधारण मामला नहीं था, बल्कि समय पर और बजट के भीतर हमारी विशिष्ट आवश्यकताओं को पूरा करने में सक्षम था - वास्तव में कई क्षेत्रों में ज्ञान, अनुभव और नेटवर्क के साथ एक पेशेवर फर्म। एक बार फिर धन्यवाद।,
       `,
     },
     {
       imageUrl: "/testimonials/daimler.jpg",
-      name: " Vinay Bhagwan",
-      post: "General Counsel",
+      name: "विनय भगवान",
+      post: "सामान्य वकील",
       desingnation: "Daimler Trucks India",
-      desc: "“I wholeheartedly recommend Aarna Law and its outstanding team to anyone seeking top-notch legal representation.”",
-      fullTestimonial: `My experience with Aarna Law has been nothing short of exceptional. The firm’s founding partners, Shreyas and Kamala, have managed the firm with remarkable vision and dedication, taking it to greater heights. Their leadership, coupled with their deep commitment to excellence, sets Aarna Law apart in the legal industry.,
-      "As a husband-and-wife team, Shreyas and Kamala bring a unique dynamism to the firm, blending their individual strengths to create a cohesive and highly effective partnership. Their strategic acumen and meticulous attention to detail have been instrumental in guiding us through complex legal challenges.",
+      desc: "“आरना लॉ के साथ मेरा अनुभव असाधारण रहा है। फर्म के संस्थापक साझेदार श्रेयस और कमला ने फर्म को उल्लेखनीय दृष्टि और समर्पण के साथ प्रबंधित किया है, और इसे नई ऊंचाइयों पर पहुंचाया है। उनका नेतृत्व, उत्कृष्टता के प्रति उनकी गहरी प्रतिबद्धता के साथ मिलकर आरना लॉ को कानूनी उद्योग में अलग बनाता है।",
+      fullTestimonial: `आरना लॉ के साथ मेरा अनुभव असाधारण रहा है। फर्म के संस्थापक साझेदार श्रेयस और कमला ने फर्म को उल्लेखनीय दृष्टि और समर्पण के साथ प्रबंधित किया है, और इसे नई ऊंचाइयों पर पहुंचाया है। उनका नेतृत्व, उत्कृष्टता के प्रति उनकी गहरी प्रतिबद्धता के साथ मिलकर आरना लॉ को कानूनी उद्योग में अलग बनाता है।,
+      "पति-पत्नी की टीम के रूप में, श्रेयस और कमला फर्म में एक अद्वितीय गतिशीलता लाते हैं, अपनी व्यक्तिगत शक्तियों को मिलाकर एक सुसंगत और अत्यधिक प्रभावी साझेदारी बनाते हैं। उनकी रणनीतिक सूझबूझ और विवरण पर सावधानीपूर्वक ध्यान देने से हमें जटिल कानूनी चुनौतियों से निपटने में मदद मिली है।",
       "I am particularly impressed by their appetite for innovation, especially their efforts to integrate cutting-edge technology into their practice. This forward-thinking approach not only enhances efficiency but also ensures that clients receive the most sophisticated and effective legal solutions available.",
       "Beyond their technical proficiency, Shreyas and Kamala are known for their integrity, ethical standards, and genuine care for their clients. They have built a culture of trust and excellence that permeates the entire firm.",
       "I wholeheartedly recommend Aarna Law and its outstanding team to anyone seeking top-notch legal representation.",
@@ -145,53 +150,53 @@ const hi = {
     },
     {
       imageUrl: "/testimonials/client_fabric.jpg",
-      name: "Pallavi Rao and Arun Kiezpadathil",
-      post: "Founders",
+      name: "पल्लवी राव और अरुण कीज़पदाथिल",
+      post: "संस्थापकों",
       desingnation: "Client Fabric Tech Ltd. ",
-      desc: "“ We found Aarna law after a global search and are thrilled that we did. ”",
-      fullTestimonial: `We have been on the hunt for a law firm that was personable, capable, responsive and understood our business and Aarna law has been all of those things and more for us. We found Aarna law after a global search and are thrilled that we did.,
+      desc: "हम एक ऐसी लॉ फर्म की तलाश में थे जो मिलनसार, सक्षम, उत्तरदायी हो और हमारे व्यवसाय को समझती हो और आरना लॉ हमारे लिए ये सभी चीजें और उससे भी बढ़कर रही है। हमने वैश्विक खोज के बाद आरना लॉ पाया और हम इस बात से रोमांचित हैं कि हमने ऐसा किया।,",
+      fullTestimonial: `हम एक ऐसी लॉ फर्म की तलाश में थे जो मिलनसार, सक्षम, उत्तरदायी हो और हमारे व्यवसाय को समझती हो और आरना लॉ हमारे लिए ये सभी चीजें और उससे भी बढ़कर रही है। हमने वैश्विक खोज के बाद आरना लॉ पाया और हम इस बात से रोमांचित हैं कि हमने ऐसा किया।,
       `,
     },
     {
       imageUrl: "/testimonials/dummy-white.png",
-      name: "Pranav Nahar",
+      name: "प्रणव नाहर",
       post: "",
-      desingnation: "Entrepreneur",
-      desc: "“Their client servicing and legal expertise was very professional. It was a pleasure working with them.”",
-      fullTestimonial: `Manjushree and the team at Aarna Law were given a mandate to find the most optimised and regulatory compatible structure to conduct our real estate fintech experience. They handled the mandate with clarity and detail. What impressed us that we had many doubts and queries that we persisted with and they patiently worked through all the details we requested. Their client servicing and legal expertise was very professional. It was a pleasure working with them.,
+      desingnation: "उद्यमी",
+      desc: "“मंजूश्री और आरना लॉ की टीम को हमारे रियल एस्टेट फिनटेक अनुभव को संचालित करने के लिए सबसे अनुकूलित और विनियामक संगत संरचना खोजने का काम सौंपा गया था। उन्होंने इस काम को स्पष्टता और विस्तार से संभाला। हमें इस बात ने प्रभावित किया कि हमारे पास कई संदेह और प्रश्न थे, जिन पर हमने लगातार काम किया और उन्होंने धैर्यपूर्वक हमारे द्वारा अनुरोधित सभी विवरणों पर काम किया। उनकी क्लाइंट सर्विसिंग और कानूनी विशेषज्ञता बहुत ही पेशेवर थी। उनके साथ काम करना एक खुशी की बात थी।,”",
+      fullTestimonial: `मंजूश्री और आरना लॉ की टीम को हमारे रियल एस्टेट फिनटेक अनुभव को संचालित करने के लिए सबसे अनुकूलित और विनियामक संगत संरचना खोजने का काम सौंपा गया था। उन्होंने इस काम को स्पष्टता और विस्तार से संभाला। हमें इस बात ने प्रभावित किया कि हमारे पास कई संदेह और प्रश्न थे, जिन पर हमने लगातार काम किया और उन्होंने धैर्यपूर्वक हमारे द्वारा अनुरोधित सभी विवरणों पर काम किया। उनकी क्लाइंट सर्विसिंग और कानूनी विशेषज्ञता बहुत ही पेशेवर थी। उनके साथ काम करना एक खुशी की बात थी।,
     `,
     },
     {
       imageUrl: "/testimonials/mamma-miya.jpg",
-      name: "Aashika Abraham",
-      post: "Founder",
+      name: "आशिका अब्राहम",
+      post: "संस्थापक",
       desingnation: "Mammamiya",
-      desc: "“ I have thoroughly enjoyed working with Shreyas & Kamala and their team at Aarna Law - mostly because their legal opinion always comes balanced with wisdom, perspective and commercial/ social/ political context too.”",
-      fullTestimonial: `I have thoroughly enjoyed working with Shreyas & Kamala and their team at Aarna Law - mostly because their legal opinion always comes balanced with wisdom, perspective and commercial/ social/ political context too.,
-      "Their internal calling for justice strengthens their practice and this comes through in their commitment to find legal solutions and settlements at the earliest.",
+      desc: "“ मुझे श्रेयस और कमला तथा आरना लॉ में उनकी टीम के साथ काम करने में बहुत आनंद आया - मुख्यतः इसलिए क्योंकि उनकी कानूनी राय हमेशा ज्ञान, परिप्रेक्ष्य और वाणिज्यिक/सामाजिक/राजनीतिक संदर्भ के साथ संतुलित होती है।”",
+      fullTestimonial: `मुझे श्रेयस और कमला तथा आरना लॉ में उनकी टीम के साथ काम करने में बहुत आनंद आया - मुख्यतः इसलिए क्योंकि उनकी कानूनी राय हमेशा ज्ञान, परिप्रेक्ष्य और वाणिज्यिक/सामाजिक/राजनीतिक संदर्भ के साथ संतुलित होती है।,
+      "न्याय के लिए उनकी आंतरिक पुकार उनके व्यवहार को मजबूत करती है और यह यथाशीघ्र कानूनी समाधान और समझौते खोजने की उनकी प्रतिबद्धता में झलकती है।",
     `,
     },
     {
       imageUrl: "/testimonials/one_paper.jpeg",
-      name: "Kunal Shah",
+      name: "कुणाल शाह",
       post: "OnePaper Research Analysts Private Limited",
       desingnation: "",
-      desc: "“ We greatly appreciate the team’s hard work and commitment to delivering satisfactory results.”",
-      fullTestimonial: `We are pleased to share that OnePaper is entirely satisfied with the services provided by Aarna Law. Vidhisha, Punti, and the entire team demonstrated exceptional skill and dedication in addressing our needs. Their efforts and timely assistance played a crucial role in achieving a favourable order for our matter.,
-        "We greatly appreciate the team’s hard work and commitment to delivering satisfactory results.",
-        "Thank you once again for your support."`,
+      desc: "“ हमें यह बताते हुए खुशी हो रही है कि वनपेपर आरना लॉ द्वारा प्रदान की गई सेवाओं से पूरी तरह संतुष्ट है। विदिशा, पुंती और पूरी टीम ने हमारी ज़रूरतों को पूरा करने में असाधारण कौशल और समर्पण का प्रदर्शन किया। उनके प्रयासों और समय पर सहायता ने हमारे मामले के लिए अनुकूल आदेश प्राप्त करने में महत्वपूर्ण भूमिका निभाई।,”",
+      fullTestimonial: `हमें यह बताते हुए खुशी हो रही है कि वनपेपर आरना लॉ द्वारा प्रदान की गई सेवाओं से पूरी तरह संतुष्ट है। विदिशा, पुंती और पूरी टीम ने हमारी ज़रूरतों को पूरा करने में असाधारण कौशल और समर्पण का प्रदर्शन किया। उनके प्रयासों और समय पर सहायता ने हमारे मामले के लिए अनुकूल आदेश प्राप्त करने में महत्वपूर्ण भूमिका निभाई।,,
+        "हम संतोषजनक परिणाम देने के लिए टीम की कड़ी मेहनत और प्रतिबद्धता की बहुत सराहना करते हैं।",
+        "आपके समर्थन के लिए एक बार फिर धन्यवाद।"`,
 
     },
     {
       imageUrl: "/testimonials/novalite.jpg",
-      name: "Mukesh Shah",
+      name: "मुकेश शाह",
       post: "Novalite limited",
       desingnation: "",
-      desc: "“ The experience was nothing short of exceptional. Mr. Jayasimha and his team demonstrated an outstanding level of professionalism, expertise, and dedication.”",
-      fullTestimonial: `We at Novalite Limited had the pleasure of working with Aarna Law, and specifically with Mr. Shreyas Jayasimha, on several complex legal matters. The experience was nothing short of exceptional. Mr. Jayasimha and his team demonstrated an outstanding level of professionalism, expertise, and dedication.,
-        "What truly sets Aarna Law apart is their holistic approach to legal services. They not only guide you through the legal formalities with precision but also provide invaluable advisory and consultation that aligns seamlessly with our business lifestyle. Their ability to understand our unique needs and tailor their services accordingly made all the difference.",
-        "We are extremely grateful for the support and insight provided by Mr. Jayasimha and the entire Aarna Law team. They have been more than just legal advisors; they have been true partners in our business journey.",
-        "Thank you, Aarna Law, for your unwavering commitment to excellence. We look forward to continuing our collaboration in the future.",
+      desc: "“ नोवालाइट लिमिटेड में हमें कई जटिल कानूनी मामलों पर आरना लॉ और विशेष रूप से श्री श्रेयस जयसिम्हा के साथ काम करने का सौभाग्य मिला। यह अनुभव असाधारण से कम नहीं था। श्री जयसिम्हा और उनकी टीम ने व्यावसायिकता, विशेषज्ञता और समर्पण का उत्कृष्ट स्तर प्रदर्शित किया।”",
+      fullTestimonial: `नोवालाइट लिमिटेड में हमें कई जटिल कानूनी मामलों पर आरना लॉ और विशेष रूप से श्री श्रेयस जयसिम्हा के साथ काम करने का सौभाग्य मिला। यह अनुभव असाधारण से कम नहीं था। श्री जयसिम्हा और उनकी टीम ने व्यावसायिकता, विशेषज्ञता और समर्पण का उत्कृष्ट स्तर प्रदर्शित किया।,
+        "आर्ना लॉ को जो चीज वास्तव में अलग बनाती है, वह है कानूनी सेवाओं के प्रति उनका समग्र दृष्टिकोण। वे न केवल कानूनी औपचारिकताओं के माध्यम से आपको सटीकता के साथ मार्गदर्शन करते हैं, बल्कि अमूल्य सलाह और परामर्श भी प्रदान करते हैं जो हमारी व्यावसायिक जीवनशैली के साथ सहजता से मेल खाता है। हमारी अनूठी जरूरतों को समझने और उसके अनुसार अपनी सेवाओं को तैयार करने की उनकी क्षमता ने सभी अंतरों को बदल दिया।"",
+        "हम श्री जयसिम्हा और आरना लॉ की पूरी टीम द्वारा प्रदान किए गए समर्थन और अंतर्दृष्टि के लिए अत्यंत आभारी हैं। वे केवल कानूनी सलाहकार ही नहीं रहे हैं; वे हमारी व्यावसायिक यात्रा में सच्चे साझेदार रहे हैं।",
+       "उत्कृष्टता के प्रति आपकी अटूट प्रतिबद्धता के लिए धन्यवाद, आरना लॉ। हम भविष्य में भी अपना सहयोग जारी रखने की आशा करते हैं।",
       `,
     },
   ],
@@ -199,74 +204,96 @@ const hi = {
   // Home Page
 
   ourLegacy1: {
-    legacyTitle1: "Our Legacy",
-    legacyHeadline1: "Founded on over nine decades of commitment and service",
+    legacyTitle1: "हमारी विरासत",
+    legacyHeadline1: "नब्बे से अधिक वर्षों की प्रतिबद्धता और सेवा की नींव पर स्थापित",
     legacyPara1:
-      "Across varied domains, industries, and international borders, our legal services and solutions are tailor-made to represent our clients’ best interests without compromising on our principles of natural law, justice, and compassion.",
-    legacyPara2: "We counsel domestic, foreign, and diasporic clients on a range of issues. From minimizing regulatory, financial, and legal risk to navigating highly specialized areas of national and international law, we advise with uncompromising integrity.",
+      "विभिन्न क्षेत्रों, उद्योगों और अंतरराष्ट्रीय सीमाओं में, हमारी कानूनी सेवाएं और समाधान हमारे ग्राहकों के सर्वोत्तम हितों की रक्षा के लिए विशेष रूप से तैयार किए गए हैं — बिना प्राकृतिक न्याय, कानून और करुणा के हमारे मूल सिद्धांतों से समझौता किए।",
+    legacyPara2: "हम देशी, विदेशी और प्रवासी ग्राहकों को विभिन्न मुद्दों पर परामर्श देते हैं। नियामक, वित्तीय और कानूनी जोखिम को कम करने से लेकर राष्ट्रीय और अंतरराष्ट्रीय कानून के विशेष क्षेत्रों में मार्गदर्शन देने तक — हम पूर्ण ईमानदारी और निष्कलंक निष्ठा के साथ सलाह प्रदान करते हैं।",
   },
 
   ourServicesTitle: {
-    ourServices: "Our Services",
+    ourServices: "हमारी सेवाएं",
   },
 
   ourFirmTitle: {
-    ourFirm: "Our Firm",
+    ourFirm: "हमारी फर्म",
   },
 
   disputes: {
-    disputesTitle: "Disputes We Resolve",
+    disputesTitle: "हम जो विवाद सुलझाते हैं",
   },
 
   disputesDetails: [
     {
-      name: "Commercial Litigation",
+      name: "वाणिज्यिक मुकदमेबाजी",
     },
     {
-      name: "Arbitration",
+      name: "मध्यस्थता",
     },
     {
-      name: "International Arbitration",
+      name: "अंतरराष्ट्रीय मध्यस्थता",
     },
     {
-      name: "Mediation",
+      name: "सुलह / मैडिएशन",
     },
     {
-      name: "Construction Disputes",
+      name: "निर्माण संबंधी विवाद",
     },
     {
-      name: "Real Estate Disputes",
+      name: "रियल एस्टेट (अचल संपत्ति) विवाद",
     },
     {
-      name: "Share Holder Disputes",
+      name: "शेयरधारक विवाद",
     },
     {
-      name: "Trial & Advocacy",
+      name: "परीक्षण और पक्षदारी",
     },
     {
-      name: "Corporate disputes",
+      name: "कॉर्पोरेट विवाद",
     },
     {
-      name: "Restructuring & Insolvency",
+      name: "पुनर्गठन और दिवालियापन",
     },
     {
-      name: "Regulatory disputes",
+      name: "नियामक विवाद",
     },
 
   ],
 
   trackRecord: {
-    trackRecordTitle: "Our Track Record by Numbers",
+    trackRecordTitle: "संख्याओं के आधार पर हमारा ट्रैक रिकॉर्ड",
   },
 
   awards: {
-    awardsTitle: "Awards & Accolades",
+    awardsTitle: "पुरस्कार एवं प्रशंसा",
   },
 
   //Practice Area Main Heading
   practiceAreaHeading: {
-    practiceAreaHeading: "Our dynamic team provides experienced counsel on a diverse range of practice areas.",
+    practiceAreaHeading: "हमारी गतिशील टीम विविध प्रकार के अभ्यास क्षेत्रों पर अनुभवी परामर्श प्रदान करती है।",
+  },
+
+  practiceAreaPara1: {
+    practiceAreaPara1: "पिछले कुछ वर्षों में, आरना लॉ ने एक विश्वसनीय सलाहकार के रूप में एक प्रतिष्ठित प्रतिष्ठा अर्जित की है। हमने जो दीर्घकालिक संबंध बनाए हैं, वे कानूनी परिदृश्य की हमारी गहरी समझ, हमारी संसाधनशीलता और व्यावहारिक, परिणाम-आधारित परामर्श प्रदान करने की हमारी क्षमता के प्रमाण हैं।",
+  },
+  practiceAreaPara2: {
+    practiceAreaPara2: "हम कानूनी सेवाओं की एक व्यापक श्रृंखला प्रदान करते हैं, जिनमें से प्रत्येक एक दूसरे की पूरक है, जिससे हमें अपने द्वारा किए जाने वाले प्रत्येक मामले पर एक समग्र, अंतर-अनुशासनात्मक दृष्टिकोण अपनाने की अनुमति मिलती है। हमारे मुख्य अभ्यास क्षेत्रों में कॉर्पोरेट, वाणिज्यिक और विनियामक सलाह, इक्विटी और ऋण वित्तपोषण, विलय और अधिग्रहण, और विवाद समाधान शामिल हैं।",
+  },
+
+  //Industries Main Heading
+  industriesHeading: {
+    industriesHeading: "हमारा प्रगतिशील अभ्यास उद्योग भर के ग्राहकों को विशेषज्ञ सहायता प्रदान करता है।",
+  },
+  industrieslistTitle: {
+    industrieslist: "हम जिन उद्योगों की सेवा करते हैं",
+  },
+  contactOurExpertsTitle: {
+    contactOurExperts: "हमारे विशेषज्ञों से संपर्क करें",
+  },
+  network: {
+    networkTitle: "दुनिया भर के वकीलों का नेटवर्क",
   },
 
 };
-export default hi;
+export default en;
+

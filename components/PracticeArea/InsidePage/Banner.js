@@ -47,7 +47,9 @@ export default function PracticeAreaBanner({
         ? titleText.acf.kannada_title
         : language === "te" && titleText?.acf?.telugu_title
           ? titleText.acf.telugu_title
-          : titleText?.rendered;
+          : language === "hi" && titleText?.acf?.hindi_title
+            ? titleText.acf.hindi_title
+            : titleText?.rendered;
   // Default to the English title 
 
 

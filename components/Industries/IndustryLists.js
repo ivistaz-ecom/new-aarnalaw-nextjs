@@ -77,7 +77,9 @@ function IndustryLists() {
                     ? item.acf.kannada_title
                     : language === "te" && item.acf.telugu_title
                       ? item.acf.telugu_title
-                      : item.title.rendered;
+                      : language === "hi" && item.acf.hindi_title
+                        ? item.acf.hindi_title
+                        : item.title.rendered;
 
               const description =
                 language === "ta" && item.acf.tamil_description

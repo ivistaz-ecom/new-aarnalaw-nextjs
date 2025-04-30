@@ -64,13 +64,15 @@ export default function PracticeArea() {
             <div key={colIndex} className={`space-y-4 px-6 ${colIndex < 2 ? "md:border-r md:border-gray-500" : ""}`}>
               {column.map((item, index) => {
                 const title =
-                language === "ta" && item.acf.tamil_title
-                  ? item.acf.tamil_title
-                  : language === "kn" && item.acf.kannada_title
-                    ? item.acf.kannada_title
-                    : language === "te" && item.acf.telugu_title
-                    ? item.acf.telugu_title
-                    : item.title.rendered;
+                  language === "ta" && item.acf.tamil_title
+                    ? item.acf.tamil_title
+                    : language === "kn" && item.acf.kannada_title
+                      ? item.acf.kannada_title
+                      : language === "te" && item.acf.telugu_title
+                        ? item.acf.telugu_title
+                        : language === "hi" && item.acf.hindi_title
+                          ? item.acf.hindi_title
+                          : item.title.rendered;
 
                 return (
                   <div key={index} className="group relative overflow-hidden md:p-4 py-2 text-white hover:text-white lg:p-1">
