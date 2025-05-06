@@ -97,8 +97,8 @@ const en = {
   },
 
   aboutPartner: {
-    aboutPartnerTitle: "PARTNERS",
-    aboutPartnerPara: "The expertise of our accomplished team anchors our practice in thought leadership, mentorship, and the pursuit of excellence...",
+    aboutPartnerTitle: "भागीदार",
+    aboutPartnerPara: "हमारी कुशल टीम की विशेषज्ञता हमारे कार्य को विचारशील नेतृत्व, मार्गदर्शन, और उत्कृष्टता की निरंतर खोज में मजबूत आधार प्रदान करती है...`",
   },
 
   // Testimonials 
@@ -143,9 +143,9 @@ const en = {
       desc: "“आरना लॉ के साथ मेरा अनुभव असाधारण रहा है। फर्म के संस्थापक साझेदार श्रेयस और कमला ने फर्म को उल्लेखनीय दृष्टि और समर्पण के साथ प्रबंधित किया है, और इसे नई ऊंचाइयों पर पहुंचाया है। उनका नेतृत्व, उत्कृष्टता के प्रति उनकी गहरी प्रतिबद्धता के साथ मिलकर आरना लॉ को कानूनी उद्योग में अलग बनाता है।",
       fullTestimonial: `आरना लॉ के साथ मेरा अनुभव असाधारण रहा है। फर्म के संस्थापक साझेदार श्रेयस और कमला ने फर्म को उल्लेखनीय दृष्टि और समर्पण के साथ प्रबंधित किया है, और इसे नई ऊंचाइयों पर पहुंचाया है। उनका नेतृत्व, उत्कृष्टता के प्रति उनकी गहरी प्रतिबद्धता के साथ मिलकर आरना लॉ को कानूनी उद्योग में अलग बनाता है।,
       "पति-पत्नी की टीम के रूप में, श्रेयस और कमला फर्म में एक अद्वितीय गतिशीलता लाते हैं, अपनी व्यक्तिगत शक्तियों को मिलाकर एक सुसंगत और अत्यधिक प्रभावी साझेदारी बनाते हैं। उनकी रणनीतिक सूझबूझ और विवरण पर सावधानीपूर्वक ध्यान देने से हमें जटिल कानूनी चुनौतियों से निपटने में मदद मिली है।",
-      "I am particularly impressed by their appetite for innovation, especially their efforts to integrate cutting-edge technology into their practice. This forward-thinking approach not only enhances efficiency but also ensures that clients receive the most sophisticated and effective legal solutions available.",
-      "Beyond their technical proficiency, Shreyas and Kamala are known for their integrity, ethical standards, and genuine care for their clients. They have built a culture of trust and excellence that permeates the entire firm.",
-      "I wholeheartedly recommend Aarna Law and its outstanding team to anyone seeking top-notch legal representation.",
+      "मैं उनकी नवाचार की इच्छा से विशेष रूप से प्रभावित हूं, खासकर उनकी प्रैक्टिस में अत्याधुनिक तकनीक को एकीकृत करने के प्रयासों से। यह दूरदर्शी दृष्टिकोण न केवल कार्यकुशलता को बढ़ाता है, बल्कि यह भी सुनिश्चित करता है कि ग्राहकों को सबसे उन्नत और प्रभावी कानूनी समाधान प्राप्त हों।",
+      "तकनीकी दक्षता के अलावा, श्रेयस और कमला अपनी ईमानदारी, नैतिक मानकों और अपने ग्राहकों के प्रति वास्तविक देखभाल के लिए जाने जाते हैं। उन्होंने भरोसे और उत्कृष्टता की ऐसी संस्कृति बनाई है जो पूरे फर्म में व्याप्त है।",
+      "मैं पूरे दिल से आर्णा लॉ और इसकी उत्कृष्ट टीम की सिफारिश उन सभी लोगों से करता/करती हूं जो उच्च स्तरीय कानूनी प्रतिनिधित्व की तलाश में हैं।",
     `,
     },
     {
