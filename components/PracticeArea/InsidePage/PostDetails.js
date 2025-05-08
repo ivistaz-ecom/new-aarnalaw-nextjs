@@ -67,7 +67,9 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
                         ? details.acf.telugu_description
                         : language === "hi" && details?.acf?.hindi_description
                           ? details.acf.hindi_description
-                          : details?.acf?.description, // Default to English
+                          : language === "ml" && details?.acf?.malayalam_description
+                            ? details.acf.malayalam_description
+                            : details?.acf?.description, // Default to English
               }}
             />
           </div>
@@ -126,7 +128,9 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
                         ? item.acf.telugu_title
                         : language === "hi" && item.acf.hindi_title
                           ? item.acf.hindi_title
-                          : item.title.rendered;
+                          : language === "ml" && item.acf.malayalam_title
+                            ? item.acf.malayalam_title
+                            : item.title.rendered;
 
                 return (
                   <Link

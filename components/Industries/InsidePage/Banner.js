@@ -49,7 +49,9 @@ export default function IndustriesBanner({
           ? titleText.acf.telugu_title
           : language === "hi" && titleText?.acf?.hindi_title
             ? titleText.acf.hindi_title
-            : titleText?.rendered; // Default to the English title
+            : language === "ml" && titleText?.acf?.malayalam_title
+              ? titleText.acf.malayalam_title
+              : titleText?.rendered; // Default to the English title
 
   return (
     <div className="relative lg:h-screen">

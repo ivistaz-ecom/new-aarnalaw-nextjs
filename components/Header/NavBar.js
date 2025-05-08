@@ -76,7 +76,7 @@ const NavBar = () => {
           </button>
 
           <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto `} id="navbar-dropdown">
-            <ul className="mt-1 flex flex-col rounded-lg borderfont-medium dark:border-gray-700 md:flex-row md:space-x-6">
+            <ul className="mt-1 flex flex-col rounded-lg borderfont-medium dark:border-gray-700 md:flex-row md:space-x-3">
               {HeaderMenu.map((item, index) => {
                 const isContactUs = item.menu === "Contact Us"; // define inside map
 

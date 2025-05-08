@@ -2,7 +2,7 @@
 // import JayasimhaFoundation from "@/components/AboutUs/JayasimhaFoundation";
 // import { practiceArea } from "@/utils/data";
 
-const en = {
+const hi = {
   menu: {
     about: "हमारे बारे में",
     thefirm: "कंपनी",
@@ -295,5 +295,5 @@ const en = {
   },
 
 };
-export default en;
+export default hi;
 
