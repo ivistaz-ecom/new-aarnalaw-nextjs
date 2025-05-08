@@ -87,8 +87,10 @@ function PracticeLists() {
                     : language === "te" && item.acf.telugu_title
                       ? item.acf.telugu_title
                       : language === "hi" && item.acf.hindi_title
-                      ? item.acf.hindi_title
-                      : item.title.rendered;
+                        ? item.acf.hindi_title
+                        : language === "ml" && item.acf.malayalam_title
+                          ? item.acf.malayalam_title
+                          : item.title.rendered;
 
               const description =
                 language === "ta" && item.acf.tamil_description
@@ -97,9 +99,11 @@ function PracticeLists() {
                     ? item.acf.kannada_description
                     : language === "te" && item.acf.telugu_description
                       ? item.acf.telugu_description
-                    : language === "hi" && item.acf.hindi_description
-                      ? item.acf.hindi_description
-                      : item.acf.description;
+                      : language === "hi" && item.acf.hindi_description
+                        ? item.acf.hindi_description
+                        : language === "ml" && item.acf.malayalam_description
+                          ? item.acf.malayalam_description
+                          : item.acf.description;
 
 
               return (
