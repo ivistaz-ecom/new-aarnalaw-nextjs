@@ -13,7 +13,7 @@ const LanguageDropdown = () => {
     { code: "ta", label: "தமிழ் (Tamil)" },
     { code: "te", label: "తెలుగు (Telugu)" }, 
     { code: "hi", label: "हिंदी (Hindi)" },
-    // { code: "ml", label: "മലയാളം (Malayalam)" },
+    { code: "ml", label: "മലയാളം (Malayalam)" },
     // { code: "mr", label: "मराठी (Marathi)" },
     // { code: "ur", label: "اردو (Urdu)" },
     // { code: "pa", label: "ਪੰਜਾਬੀ (Punjabi)" },
