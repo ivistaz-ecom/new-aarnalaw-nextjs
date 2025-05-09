@@ -93,7 +93,7 @@ const mr = {
   },
 
   aboutPracticeAreaTitle: {
-    aboutPracticeAreaName: "Practice Area",
+    aboutPracticeAreaName: "प्रॅक्टिस क्षेत्रे",
   },
 
   aboutPartner: {
