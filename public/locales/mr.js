@@ -5,17 +5,17 @@
 const mr = {
   menu: {
     about: "आमच्याबद्दल",
-    thefirm: "The Firm",
+    thefirm: "फर्म",
     testimonials: "प्रशंसापत्रे",
     practiceareas: "प्रॅक्टिस क्षेत्रे",
-    industries: "Industries",
-    newsinsights: "News & Insights",
-    insights: "Insights",
-    aarnanews: "Aarna News",
-    publications: "Publications",
-    podcasts: "Podcasts",
-    careers: "Careers",
-    contactus: "Contact Us",
+    industries: "उद्योग",
+    newsinsights: "बातम्या आणि अंतर्दृष्टी",
+    insights: "अंतर्दृष्टी",
+    aarnanews: "आर्ना बातम्या",
+    publications: "प्रकाशन",
+    podcasts: "पॉडकास्ट",
+    careers: "करिअर्स",
+    contactus: "आमच्याशी संपर्क साधा",
   },
 
   // Banner Titles
@@ -23,26 +23,26 @@ const mr = {
     practiceAreas: "प्रॅक्टिस क्षेत्रे",
   },
   industriesTitle: {
-    industries: "Industries",
+    industries: "उद्योग",
   },
   insightsTitle: {
-    insights: "Insights",
+    insights: "अंतर्दृष्टी",
   },
 
   aarnaNewsTitle: {
-    aarnaNews: "Aarna News",
+    aarnaNews: "आर्ना बातम्या",
   },
   publicationsTitle: {
-    publications: "Publications",
+    publications: "प्रकाशन",
   },
   podcastsTitle: {
-    podcasts: "Podcasts",
+    podcasts: "पॉडकास्ट",
   },
   careersTitle: {
-    careers: "Careers",
+    careers: "करिअर्स",
   },
   contactUsTitle: {
-    contactUs: "Contact Us",
+    contactUs: "आमच्याशी संपर्क साधा",
   },
 
   // Abomr Us 
@@ -140,12 +140,12 @@ const mr = {
       name: "विनय भगवान",
       post: "महासल्लागार",
       desingnation: " डेमलर ट्रक्स इंडिया",
-      desc: "“I wholeheartedly recommend Aarna Law and its outstanding team to anyone seeking top-notch legal representation.”",
-      fullTestimonial: `My experience with Aarna Law has been nothing short of exceptional. The firm’s founding partners, Shreyas and Kamala, have managed the firm with remarkable vision and dedication, taking it to greater heights. Their leadership, coupled with their deep commitment to excellence, sets Aarna Law apart in the legal industry.,
-        "As a husband-and-wife team, Shreyas and Kamala bring a unique dynamism to the firm, blending their individual strengths to create a cohesive and highly effective partnership. Their strategic acumen and meticulous attention to detail have been instrumental in guiding us through complex legal challenges.",
-        "I am particularly impressed by their appetite for innovation, especially their efforts to integrate cutting-edge technology into their practice. This forward-thinking approach not only enhances efficiency but also ensures that clients receive the most sophisticated and effective legal solutions available.",
-        "Beyond their technical proficiency, Shreyas and Kamala are known for their integrity, ethical standards, and genuine care for their clients. They have built a culture of trust and excellence that permeates the entire firm.",
-        "I wholeheartedly recommend Aarna Law and its outstanding team to anyone seeking top-notch legal representation.",
+      desc: "“माझा आर्ना लॉसोबतचा अनुभव अत्यंत उत्कृष्ट आहे. संस्थेचे संस्थापक भागीदार, श्रेयस आणि कमला, यांनी विलक्षण दृष्टी आणि समर्पणाने कंपनीचे नेतृत्व केले असून त्यांनी संस्थेला अधिक उंचीवर नेले आहे. त्यांच्या नेतृत्वात असलेली उत्कृष्टतेची खोल वचनबद्धता आर्ना लॉला कायदेशीर क्षेत्रात इतरांपेक्षा वेगळे स्थान मिळवून देते.”",
+      fullTestimonial: ` माझा आर्ना लॉसोबतचा अनुभव अत्यंत उत्कृष्ट आहे. संस्थेचे संस्थापक भागीदार, श्रेयस आणि कमला, यांनी विलक्षण दृष्टी आणि समर्पणाने कंपनीचे नेतृत्व केले असून त्यांनी संस्थेला अधिक उंचीवर नेले आहे. त्यांच्या नेतृत्वात असलेली उत्कृष्टतेची खोल वचनबद्धता आर्ना लॉला कायदेशीर क्षेत्रात इतरांपेक्षा वेगळे स्थान मिळवून देते. ,
+        "पती-पत्नीच्या जोडीने, श्रेयस आणि कमला यांनी संस्थेमध्ये एक अनोखी ऊर्जा आणि गतिशीलता आणली आहे. त्यांनी त्यांच्या वैयक्तिक ताकदी एकत्र करून एक सुसंगत आणि अत्यंत प्रभावी भागीदारी निर्माण केली आहे. त्यांच्या रणनीतिक कौशल्य आणि बारकाईने तपासण्याच्या क्षमतेमुळे आम्हाला गुंतागुंतीच्या कायदेशीर अडचणींमधून मार्ग काढण्यात मदत झाली आहे.",
+        "त्यांच्या नाविन्यपूर्ण दृष्टिकोनामुळे मी विशेषतः प्रभावित झालो आहे, विशेषतः त्यांनी अत्याधुनिक तंत्रज्ञान त्यांच्या कायदेशीर प्रक्रियेमध्ये समाविष्ट करण्यासाठी केलेल्या प्रयत्नांमुळे. त्यांचा पुढे पाहणारा दृष्टिकोन कार्यक्षमता वाढवतोच, पण ग्राहकांना अत्याधुनिक आणि प्रभावी कायदेशीर सल्ला मिळवून देण्याची खात्रीही देतो. ",
+        "तांत्रिक कौशल्याच्या पलीकडे, श्रेयस आणि कमला यांची प्रामाणिकपणा, नैतिक मूल्ये आणि त्यांच्या ग्राहकांप्रती असलेली खरी काळजी यासाठी ओळख आहे. त्यांनी विश्वास आणि उत्कृष्टतेची अशी एक संस्कृती निर्माण केली आहे जी संपूर्ण संस्थेमध्ये अनुभवता येते.",
+        "जो कोणी उच्च दर्जाचे कायदेशीर प्रतिनिधित्व शोधत आहे त्याला मी आर्ना लॉ आणि त्यांच्या उत्कृष्ट टीमची मनापासून शिफारस करतो.",
       `,
     },
     {
@@ -168,35 +168,35 @@ const mr = {
     },
     {
       imageUrl: "/testimonials/mamma-miya.jpg",
-      name: "Aashika Abraham",
-      post: "Founder",
-      desingnation: "Mammamiya",
-      desc: "“ I have thoroughly enjoyed working with Shreyas & Kamala and their team at Aarna Law - mostly because their legal opinion always comes balanced with wisdom, perspective and commercial/ social/ political context too.”",
-      fullTestimonial: `I have thoroughly enjoyed working with Shreyas & Kamala and their team at Aarna Law - mostly because their legal opinion always comes balanced with wisdom, perspective and commercial/ social/ political context too.,
-        "Their internal calling for justice strengthens their practice and this comes through in their commitment to find legal solutions and settlements at the earliest.",
+      name: "आशिका अब्राहम ",
+      post: "संस्थापक ",
+      desingnation: "मम्मामिया ",
+      desc: "“आर्ना लॉमधील श्रेयस, कमला आणि त्यांच्या टीमसोबत काम करताना मला खूप आनंद झाला – कारण त्यांचे कायदेशीर मत नेहमीच शहाणपण, व्यापक दृष्टिकोन आणि व्यावसायिक/सामाजिक/राजकीय संदर्भ यांचा समतोल साधून येते.”",
+      fullTestimonial: `आर्ना लॉमधील श्रेयस, कमला आणि त्यांच्या टीमसोबत काम करताना मला खूप आनंद झाला – कारण त्यांचे कायदेशीर मत नेहमीच शहाणपण, व्यापक दृष्टिकोन आणि व्यावसायिक/सामाजिक/राजकीय संदर्भ यांचा समतोल साधून येते.,
+        "न्याय मिळवण्याची त्यांची अंतःप्रेरणा त्यांच्या कायदेशीर कार्यपद्धतीला बळकटी देते आणि हे त्यांच्या लवकरात लवकर कायदेशीर समाधान व तोडग्याचा शोध घेण्याच्या वचनबद्धतेतून स्पष्टपणे दिसून येते.",
       `,
     },
     {
       imageUrl: "/testimonials/one_paper.jpeg",
-      name: "Kunal Shah",
-      post: "OnePaper Research Analysts Private Limited",
+      name: "कुणाल शाह ",
+      post: "वनपेपर रिसर्च अॅनालिस्ट्स प्रायव्हेट लिमिटेड ",
       desingnation: "",
-      desc: "“ We greatly appreciate the team’s hard work and commitment to delivering satisfactory results.”",
-      fullTestimonial: `We are pleased to share that OnePaper is entirely satisfied with the services provided by Aarna Law. Vidhisha, Punti, and the entire team demonstrated exceptional skill and dedication in addressing our needs. Their efforts and timely assistance played a crucial role in achieving a favourable order for our matter.,
-          "We greatly appreciate the team’s hard work and commitment to delivering satisfactory results.",
-          "Thank you once again for your support."`,
+      desc: "“ आम्हाला हे शेअर करताना आनंद होत आहे की वनपेपर आर्ना लॉने दिलेल्या सेवांमध्ये पूर्णपणे समाधानी आहे. विधीशा, पुन्टी आणि संपूर्ण टीमने आमच्या गरजा पूर्ण करताना उत्कृष्ट कौशल्य आणि समर्पण दाखवले. त्यांच्या प्रयत्नांनी आणि वेळेवर दिलेल्या सहाय्यामुळे आमच्या प्रकरणात अनुकूल आदेश मिळवण्यात महत्त्वाची भूमिका बजावली. ”",
+      fullTestimonial: `आम्हाला हे शेअर करताना आनंद होत आहे की वनपेपर आर्ना लॉने दिलेल्या सेवांमध्ये पूर्णपणे समाधानी आहे. विधीशा, पुन्टी आणि संपूर्ण टीमने आमच्या गरजा पूर्ण करताना उत्कृष्ट कौशल्य आणि समर्पण दाखवले. त्यांच्या प्रयत्नांनी आणि वेळेवर दिलेल्या सहाय्यामुळे आमच्या प्रकरणात अनुकूल आदेश मिळवण्यात महत्त्वाची भूमिका बजावली. ,
+          "आम्ही टीमच्या कठोर परिश्रमांचे आणि समाधानकारक निकाल देण्यासाठी त्यांच्या वचनबद्धतेचे मनःपूर्वक कौतुक करतो.",
+          "तुमच्या पाठिंब्याबद्दल पुन्हा एकदा धन्यवाद. "`,
 
     },
     {
       imageUrl: "/testimonials/novalite.jpg",
-      name: "Mukesh Shah",
-      post: "Novalite limited",
+      name: "मुकेश शाह ",
+      post: "नोव्हालाइट लिमिटेड ",
       desingnation: "",
-      desc: "“ The experience was nothing short of exceptional. Mr. Jayasimha and his team demonstrated an outstanding level of professionalism, expertise, and dedication.”",
-      fullTestimonial: `We at Novalite Limited had the pleasure of working with Aarna Law, and specifically with Mr. Shreyas Jayasimha, on several complex legal matters. The experience was nothing short of exceptional. Mr. Jayasimha and his team demonstrated an outstanding level of professionalism, expertise, and dedication.,
-          "What truly sets Aarna Law apart is their holistic approach to legal services. They not only guide you through the legal formalities with precision but also provide invaluable advisory and consultation that aligns seamlessly with our business lifestyle. Their ability to understand our unique needs and tailor their services accordingly made all the difference.",
-          "We are extremely grateful for the support and insight provided by Mr. Jayasimha and the entire Aarna Law team. They have been more than just legal advisors; they have been true partners in our business journey.",
-          "Thank you, Aarna Law, for your unwavering commitment to excellence. We look forward to continuing our collaboration in the future.",
+      desc: "“नोव्हालाइट लिमिटेडमध्ये आम्हाला आर्ना लॉ, विशेषतः श्री. श्रेयस जयसिंह यांच्यासोबत अनेक गुंतागुंतीच्या कायदेशीर प्रकरणांवर काम करण्याची संधी मिळाली. हा अनुभव अत्यंत उल्लेखनीय ठरला. श्री. जयसिंह आणि त्यांच्या टीमने व्यावसायिकता, तज्ज्ञता आणि समर्पण यांचे उत्कृष्ट उदाहरण सादर केले.”",
+      fullTestimonial: `नोव्हालाइट लिमिटेडमध्ये आम्हाला आर्ना लॉ, विशेषतः श्री. श्रेयस जयसिंह यांच्यासोबत अनेक गुंतागुंतीच्या कायदेशीर प्रकरणांवर काम करण्याची संधी मिळाली. हा अनुभव अत्यंत उल्लेखनीय ठरला. श्री. जयसिंह आणि त्यांच्या टीमने व्यावसायिकता, तज्ज्ञता आणि समर्पण यांचे उत्कृष्ट उदाहरण सादर केले.,
+          "आर्ना लॉला इतरांपेक्षा वेगळं ठरण्यासाठी त्यांची समग्र कायदेशीर सेवा पद्धत कारणीभूत आहे. ते फक्त कायदेशीर प्रक्रियांमध्ये अचूक मार्गदर्शन करत नाहीत, तर आमच्या व्यवसायाच्या शैलीशी सुसंगत असा अमूल्य सल्ला आणि सल्लामसलतही देतात. आमच्या विशिष्ट गरजा समजून घेऊन त्यानुसार सेवा सानुकूल करण्याची त्यांची क्षमता खूप उपयुक्त ठरली. ",
+          "श्री. जयसिंह आणि संपूर्ण आर्ना लॉ टीमने दिलेल्या पाठिंब्यासाठी आणि दूरदृष्टीपूर्ण सल्ल्यासाठी आम्ही अत्यंत आभारी आहोत. ते केवळ कायदेशीर सल्लागारच नव्हते, तर आमच्या व्यावसायिक प्रवासातील खरे भागीदार होते. ",
+          "आर्ना लॉ, तुमच्या सातत्यपूर्ण उत्कृष्टतेसाठी मनःपूर्वक धन्यवाद. भविष्यातही तुमच्याशी सहकार्य सुरू ठेवण्याची आम्हाला उत्सुकता आहे.",
         `,
     },
   ],
@@ -270,7 +270,7 @@ const mr = {
 
   //Practice Area Main Heading
   practiceAreaHeading: {
-    practiceAreaHeading: "Our dynamic team provides experienced counsel on a diverse range of practice areas.",
+    practiceAreaHeading: "आमची गतिशील टीम विविध प्रॅक्टिस क्षेत्रांमध्ये अनुभवी सल्ला प्रदान करते. ",
   },
 
   practiceAreaPara1: {
@@ -282,10 +282,10 @@ const mr = {
 
   //Industries Main Heading
   industriesHeading: {
-    industriesHeading: "Our progressive practice provides expert assistance to clients across industry.",
+    industriesHeading: "आमची प्रगतीशील पद्धत उद्योगातील ग्राहकांना तज्ञांची मदत प्रदान करते. ",
   },
   industrieslistTitle: {
-    industrieslist: "INDUSTRIES WE SERVE",
+    industrieslist: "आम्ही सेवा देत असलेले उद्योग ",
   },
   contactOurExpertsTitle: {
     contactOurExperts: "CONTACT OUR EXPERTS",
