@@ -5,6 +5,7 @@ import hi from "./hi";
 import te from "./te";
 import mr from "./mr";
 import ml from "./ml";
+import gu from "./gu";
 
 
 const translations = {
@@ -15,6 +16,7 @@ const translations = {
     te,
     mr,
     ml,
+    gu,
  
 };
 
