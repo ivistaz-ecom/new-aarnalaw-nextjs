@@ -90,20 +90,26 @@ function PracticeLists() {
                         ? item.acf.hindi_title
                         : language === "ml" && item.acf.malayalam_title
                           ? item.acf.malayalam_title
-                          : item.title.rendered;
+                          : language === "mr" && item.acf.marathi_title
+                            ? item.acf.marathi_title
+                            : language === "gu" && item.acf.gujarati_title
+                              ? item.acf.gujarati_title
+                              : item.title.rendered;
 
-              const description =
-                language === "ta" && item.acf.tamil_description
-                  ? item.acf.tamil_description
-                  : language === "kn" && item.acf.kannada_description
-                    ? item.acf.kannada_description
-                    : language === "te" && item.acf.telugu_description
-                      ? item.acf.telugu_description
-                      : language === "hi" && item.acf.hindi_description
-                        ? item.acf.hindi_description
-                        : language === "ml" && item.acf.malayalam_description
-                          ? item.acf.malayalam_description
-                          : item.acf.description;
+              // const description =
+              //   language === "ta" && item.acf.tamil_description
+              //     ? item.acf.tamil_description
+              //     : language === "kn" && item.acf.kannada_description
+              //       ? item.acf.kannada_description
+              //       : language === "te" && item.acf.telugu_description
+              //         ? item.acf.telugu_description
+              //         : language === "hi" && item.acf.hindi_description
+              //           ? item.acf.hindi_description
+              //           : language === "ml" && item.acf.malayalam_description
+              //             ? item.acf.malayalam_description
+              //             : language === "mr" && item.acf.marathi_description
+              //               ? item.acf.marathi_description
+              //               : item.acf.description;
 
 
               return (

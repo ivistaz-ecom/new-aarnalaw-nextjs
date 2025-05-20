@@ -73,10 +73,12 @@ export default function PracticeArea() {
                         : language === "hi" && item.acf.hindi_title
                           ? item.acf.hindi_title
                           : language === "ml" && item.acf.malayalam_title
-                          ? item.acf.malayalam_title
-                          : language === "mr" && item.acf.marathi_title
-                          ? item.acf.marathi_title
-                          : item.title.rendered;
+                            ? item.acf.malayalam_title
+                            : language === "mr" && item.acf.marathi_title
+                              ? item.acf.marathi_title
+                              : language === "gu" && item.acf.gujarati_title
+                                ? item.acf.gujarati_title
+                                : item.title.rendered;
 
                 return (
                   <div key={index} className="group relative overflow-hidden md:p-4 py-2 text-white hover:text-white lg:p-1">

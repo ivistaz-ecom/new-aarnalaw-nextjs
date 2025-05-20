@@ -1,45 +1,33 @@
 import { useEffect, useState, useContext } from "react";
-import { LanguageContext } from "../../../app/context/LanguageContext"; // Import LanguageContext
+import { LanguageContext } from "../../../app/context/LanguageContext";
 
 export default function IndustriesBanner({
   backgroundImage,
   mobileBackgroundImage,
   titleText,
 }) {
-  const [bgImage, setBgImage] = useState(null); // For setting the correct image based on screen size
-  const [isLoading, setIsLoading] = useState(true); // For loader
-  const [timer, setTimer] = useState(3); // Countdown timer (in seconds)
-  const { language } = useContext(LanguageContext); // Get selected language
+  const [bgImage, setBgImage] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { language } = useContext(LanguageContext);
 
   useEffect(() => {
-    // Set initial background image based on screen size
-    const handleResize = () => {
-      setBgImage(
-        window.innerWidth <= 768 ? mobileBackgroundImage : backgroundImage
-      );
+    const updateBgImage = () => {
+      const selectedImage = window.innerWidth <= 768 ? mobileBackgroundImage : backgroundImage;
+      setBgImage(selectedImage);
+
+      const img = new Image();
+      img.src = selectedImage;
+      img.onload = () => {
+        setIsLoading(false);
+      };
     };
 
-    handleResize(); // Initial image load
-    window.addEventListener("resize", handleResize); // Adjust on resize
+    updateBgImage();
+    window.addEventListener("resize", updateBgImage);
 
-    // Start a countdown for timer
-    const countdown = setInterval(() => {
-      setTimer((prev) => {
-        if (prev > 1) return prev - 1;
-        clearInterval(countdown);
-        setIsLoading(false); // Hide loader after countdown finishes
-        return 0;
-      });
-    }, 1000);
-
-    // Cleanup
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearInterval(countdown);
-    };
+    return () => window.removeEventListener("resize", updateBgImage);
   }, [backgroundImage, mobileBackgroundImage]);
 
-  // Select title based on language
   const title =
     language === "ta" && titleText?.acf?.tamil_title
       ? titleText.acf.tamil_title
@@ -51,7 +39,11 @@ export default function IndustriesBanner({
             ? titleText.acf.hindi_title
             : language === "ml" && titleText?.acf?.malayalam_title
               ? titleText.acf.malayalam_title
-              : titleText?.rendered; // Default to the English title
+              : language === "mr" && titleText?.acf?.marathi_title
+                ? titleText.acf.marathi_title
+                : language === "gu" && titleText?.acf?.gujarati_title
+                  ? titleText.acf.gujarati_title
+                  : titleText?.rendered;
 
   return (
     <div className="relative lg:h-screen">

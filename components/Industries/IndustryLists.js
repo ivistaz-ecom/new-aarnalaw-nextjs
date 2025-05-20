@@ -81,14 +81,18 @@ function IndustryLists() {
                         ? item.acf.hindi_title
                         : language === "ml" && item.acf.malayalam_title
                           ? item.acf.malayalam_title
-                          : item.title.rendered;
+                          : language === "mr" && item.acf.marathi_title
+                            ? item.acf.marathi_title
+                            : language === "gu" && item.acf.gujarati_title
+                              ? item.acf.gujarati_title
+                              : item.title.rendered;
 
-              const description =
-                language === "ta" && item.acf.tamil_description
-                  ? item.acf.tamil_description
-                  : language === "kn" && item.acf.kannada_description
-                    ? item.acf.kannada_description
-                    : item.acf.description;
+              // const description =
+              //   language === "ta" && item.acf.tamil_description
+              //     ? item.acf.tamil_description
+              //     : language === "kn" && item.acf.kannada_description
+              //       ? item.acf.kannada_description
+              //       : item.acf.description;
 
               return (
                 <Link href={`/industries/${item.slug}`} key={index} className="group block">
