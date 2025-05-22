@@ -225,47 +225,47 @@ const mr = {
 
   disputesDetails: [
     {
-      name: "Commercial Litigation",
+      name: " व्यावसायिक खटले",
     },
     {
-      name: "Arbitration",
+      name: " मध्यस्थी",
     },
     {
-      name: "International Arbitration",
+      name: " आंतरराष्ट्रीय मध्यस्थी",
     },
     {
-      name: "Mediation",
+      name: " माध्यमस्थता",
     },
     {
-      name: "Construction Disputes",
+      name: " बांधकाम वाद",
     },
     {
-      name: "Real Estate Disputes",
+      name: "मालमत्ता संबंधित वाद",
     },
     {
-      name: "Share Holder Disputes",
+      name: "शेअरधारकांचे वाद",
     },
     {
-      name: "Trial & Advocacy",
+      name: "चाचणी व वकिली",
     },
     {
-      name: "Corporate disputes",
+      name: " कॉर्पोरेट वाद",
     },
     {
-      name: "Restructuring & Insolvency",
+      name: " पुनर्रचना व दिवाळखोरी",
     },
     {
-      name: "Regulatory disputes",
+      name: " नियामक वाद",
     },
 
   ],
 
   trackRecord: {
-    trackRecordTitle: "Our Track Record by Numbers",
+    trackRecordTitle: " आमचा कामगिरीचा आकडेवारीतला आढावा",
   },
 
   awards: {
-    awardsTitle: "Awards & Accolades",
+    awardsTitle: " पुरस्कार आणि गौरव",
   },
 
   //Practice Area Main Heading
@@ -274,10 +274,10 @@ const mr = {
   },
 
   practiceAreaPara1: {
-    practiceAreaPara1: " Over the years, Aarna law has earned a distinguished reputation as a trusted advisor. The long-standing relationships we have cultivated stand as a testament to our deep understanding of the legal landscape, our resourcefulness, and our ability to provide pragmatic, results-driven counsel.",
+    practiceAreaPara1: "गेल्या काही वर्षांत, आरणा लॉने एक विश्वासार्ह सल्लागार म्हणून एक प्रतिष्ठित प्रतिष्ठा मिळवली आहे. आम्ही जोपासलेले दीर्घकालीन संबंध कायदेशीर क्षेत्राची आमची सखोल समज, आमची साधनसंपत्ती आणि व्यावहारिक, परिणाम-चालित सल्ला देण्याची आमची क्षमता यांचे प्रतीक आहेत. ",
   },
   practiceAreaPara2: {
-    practiceAreaPara2: "We offer a comprehensive range of legal services, each complementing the other, allowing us to adopt a holistic, cross-disciplinary perspective on every matter we undertake. Our core practice areas encompass corporate, commercial, and regulatory advisory, equity and debt financing, mergers and acquisitions, and dispute resolution.",
+    practiceAreaPara2: "आम्ही कायदेशीर सेवांची एक व्यापक श्रेणी ऑफर करतो, प्रत्येकी एकमेकांना पूरक आहे, ज्यामुळे आम्हाला आम्ही हाती घेतलेल्या प्रत्येक बाबीवर समग्र, आंतर-विद्याशाखीय दृष्टिकोन स्वीकारण्याची परवानगी मिळते. आमच्या मुख्य सराव क्षेत्रांमध्ये कॉर्पोरेट, व्यावसायिक आणि नियामक सल्लागार, इक्विटी आणि कर्ज वित्तपुरवठा, विलीनीकरण आणि अधिग्रहण आणि विवाद निराकरण यांचा समावेश आहे. ",
   },
 
   //Industries Main Heading
@@ -291,7 +291,7 @@ const mr = {
     contactOurExperts: "CONTACT OUR EXPERTS",
   },
   network: {
-    networkTitle: " A Network of Lawyers Around The World",
+    networkTitle: "जगभरातील वकिलांचे एक जाळे ",
   },
 
 };
