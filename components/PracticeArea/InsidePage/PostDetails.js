@@ -4,12 +4,22 @@ import Link from "next/link";
 import Image from "next/image";
 import ContactModal from "@/components/ModalContact/page";
 import { initFlowbite } from "flowbite";
-import { LanguageContext } from "../../../app/context/LanguageContext"; // Import LanguageContext
+import { LanguageContext } from "../../../app/context/LanguageContext";
+import Faq from "@/components/FAQ/Faq"; // Import Faq component
 
 function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
-  const { language } = useContext(LanguageContext); // Get selected language
+  const { language } = useContext(LanguageContext);
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  const faqs = [];
+  for (let i = 1; i <= 10; i++) {
+    const question = details?.acf?.[`faq_${i}`];
+    const answer = details?.acf?.[`faqs_description_${i}`];
+    if (question && answer) {
+      faqs.push({ question, answer });
+    }
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,7 +29,6 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
         );
         const result = await response.json();
         if (Array.isArray(result)) {
-          // Sort data alphabetically
           const sortedData = result.sort((a, b) =>
             a.title.rendered.localeCompare(b.title.rendered)
           );
@@ -42,19 +51,20 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
     <>
       <style>
         {`
-        .inner-content ol {
-          list-style: revert-layer;
-          padding-left: 20px;
-          padding-bottom: 10px;
-        }
-        .inner-content li {
-          padding-top: 10px;
-        }
+          .inner-content ol {
+            list-style: revert-layer;
+            padding-left: 20px;
+            padding-bottom: 10px;
+          }
+          .inner-content li {
+            padding-top: 10px;
+          }
         `}
       </style>
+
       <div className="flex w-full flex-col py-5 lg:flex-row">
+        {/* Left Content Section */}
         <div className="inner-content w-full md:px-6 md:w-9/12 md:p-14">
-          {/* Select details based on language */}
           <div className="prose px-6 pt-8 lg:px-20 lg:pt-0 [&_ol]:ml-8 [&_li]:ml-8">
             <div
               dangerouslySetInnerHTML={{
@@ -73,15 +83,18 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
                               ? details.acf.marathi_description
                               : language === "gu" && details?.acf?.gujarati_description
                                 ? details.acf.gujarati_description
-                                : details?.acf?.description, // Default to English
+                                : details?.acf?.description,
               }}
             />
           </div>
+
+          {/* Faqs */}
+          {faqs.length > 0 && <Faq faqs={faqs} />}
         </div>
 
         {/* Sidebar */}
         <div className="w-full bg-gray-50 md:w-3/12">
-          {/* Partners Data */}
+          {/* Partners */}
           {partnersData?.partnerNames?.map((name, index) => (
             <div
               key={index}
@@ -97,7 +110,9 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
                   loading="lazy"
                 />
               )}
-              {name && <p className="text-lg font-bold text-custom-red">{name}</p>}
+              {name && (
+                <p className="text-lg font-bold text-custom-red">{name}</p>
+              )}
               {partnersData.partnerDesignations?.[index] && (
                 <p className="text-sm font-semibold">
                   {partnersData.partnerDesignations[index]}
@@ -122,7 +137,6 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
             <hr className="my-4 border-t-2 border-red-500" />
             <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400 md:pr-10">
               {data.map((item, index) => {
-                // Select title based on language
                 const title =
                   language === "ta" && item.acf.tamil_title
                     ? item.acf.tamil_title
@@ -143,7 +157,9 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
                 return (
                   <Link
                     href={`/practice-areas/${item.slug}`}
-                    className={`flex border-b border-custom-red p-1 hover:text-custom-red ${item.slug === slug ? "font-semibold text-custom-red" : " text-black"
+                    className={`flex border-b border-custom-red p-1 hover:text-custom-red ${item.slug === slug
+                      ? "font-semibold text-custom-red"
+                      : "text-black"
                       }`}
                     key={index}
                   >
