@@ -3,6 +3,7 @@ import "./globals.css";
 import Header from "../components/Header/NavBar";
 import Footer from "../components/Footer/Footer";
 import Script from "next/script";
+import { headers } from 'next/headers';
 import { LanguageProvider } from "../app/context/LanguageContext"; // ✅ Import LanguageProvider
 
 export default function RootLayout({
@@ -10,10 +11,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Get the host from headers
+  const headersList = headers();
+  const host = headersList.get('host') || '';
+
+  // Determine if this is staging environment
+  const isStaging = host.includes('website.aarnalaw.com');
+
   return (
     <html lang="en">
       <head>
-        <meta name="robots" content="index, follow" />
+        <meta
+          name="robots"
+          content={isStaging ? "noindex, nofollow" : "index, follow"}
+        />
         <link rel="icon" href="/favicon.png" sizes="any" />
         <ThemeModeScript />
         <meta name="msvalidate.01" content="A827D56A91561DA21E2E94273F4D52D5" />
