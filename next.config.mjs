@@ -45,8 +45,159 @@ const nextConfig = {
         permanent: true,
       },
       // Insights
+
       {
-        source: "/copyright-in-fashion-safeguarding-designers-creative-works",
+        source: "/about",
+        destination:
+          "/about-us",
+        permanent: true,
+      },
+      {
+        source: "/insights/ai-criminal-liability-and-financial-",
+        destination:
+          "/insights/ai-criminal-liability-and-financial-crimes",
+        permanent: true,
+      },
+      {
+        source: "/why-independent-directors-can-help-strengthen-corporate-governance",
+        destination:
+          "/insights/why-independent-directors-can-help-strengthen-corporate-governance",
+        permanent: true,
+      },
+      {
+        source: "/women-in-leadership-and-ip-ms-nidhi-madesh-of-we-storytellers",
+        destination:
+          "/insights/women-in-leadership-and-ip-ms-nidhi-mahesh-of-we-storytellers",
+        permanent: true,
+      },
+      {
+        source: "/emaar-india-limited-v-tarun-aggarwal-projects-llp",
+        destination:
+          "/insights/emaar-india-limited-v-tarun-aggarwal-projects-llp",
+        permanent: true,
+      },
+      {
+        source: "/new-free-trade-agreement-between-efta-and-india-offers-enhanced-ip-rights-for-business-owners",
+        destination:
+          "/insights/new-free-trade-agreement-between-efta-and-india-offers-enhanced-ip-rights-for-business-owners",
+        permanent: true,
+      },
+      {
+        source: "/how-mediation-is-revolutionizing-ip-",
+        destination:
+          "/insights/how-mediation-is-revolutionizing-ip-disputes",
+        permanent: true,
+      },
+      {
+        source: "/why-independent-directors-can-help-strengthen-corporate-governance",
+        destination:
+          "/insights/why-independent-directors-can-help-strengthen-corporate-governance",
+        permanent: true,
+      },
+      {
+        source: "/amway-india-enterprises-ltd-v-ravindranath-rao-sindhia-anr",
+        destination:
+          "/insights/amway-india-enterprises-ltd-v-ravindranath-rao-sindhia-anr-2",
+        permanent: true,
+      },
+      {
+        source: "/desh-raj-and-ors-v-rohtash-singh",
+        destination:
+          "/insights/desh-raj-and-ors-v-rohtash-singh",
+        permanent: true,
+      },
+      {
+        source: "/uk-supreme-court-delivers-blow-to-litigation-funders",
+        destination:
+          "/insights/uk-supreme-court-delivers-blow-to-litigation-funders",
+        permanent: true,
+      },
+      {
+        source: "/moser-baer-karamchari-union-thr-president-mahesh-chand-sharma-v-union-of-india-and-others",
+        destination:
+          "/insights/moser-baer-karamchari-union-thr-president-mahesh-chand-sharma-v-union-of-india-and-others",
+        permanent: true,
+      },
+      {
+        source: "/non-payment-of-stamp-duty-does-not-invalidate-an-arbitration-agreement",
+        destination:
+          "/insights/non-payment-of-stamp-duty-does-not-invalidate-an-arbitration-agreement",
+        permanent: true,
+      },
+      {
+        source: "/indian-constitution-reinforces-the-right-to-be-forgotten",
+        destination:
+          "/insights/indian-constitution-reinforces-the-right-to-be-forgotten",
+        permanent: true,
+      },
+      {
+        source: "/vijay-kumar-ghai-v-pritpal-singh-babbar1",
+        destination:
+          "/insights/vijay-kumar-ghai-v-pritpal-singh-babbar1",
+        permanent: true,
+      },
+      {
+        source: "/decoding-5th-report-of-insolvency-law-committee-may-2022",
+        destination:
+          "/insights/decoding-5th-report-of-insolvency-law-committee-may-2022",
+        permanent: true,
+      },
+      {
+        source: "/knit-pro-international-vs-state-of-nct-of-delhi-criminal-appeal-no-807-of-2022",
+        destination:
+          "/insights/knit-pro-international-vs-state-of-nct-of-delhi-criminal-appeal-no-807-of-2022",
+        permanent: true,
+      },
+      {
+        source: "/the-less-known-benefits-of-well-known-trademarks",
+        destination:
+          "/insights/the-less-known-benefits-of-well-known-trademarks",
+        permanent: true,
+      },
+      {
+        source: "/arbitration-clauses-are-not-valid-in-consumer-insurance",
+        destination:
+          "/insights/arbitration-clauses-are-not-valid-in-consumer-insurance",
+        permanent: true,
+      },
+      {
+        source: "/nominees-cannot-evade-the-rules-on-succession-to-retain-shares-in-mutual-funds",
+        destination:
+          "/insights/nominees-cannot-evade-the-rules-on-succession-to-retain-shares-in-mutual-funds",
+        permanent: true,
+      },
+      {
+        source: "/arbitrability-of-fraud",
+        destination:
+          "/insights/arbitrability-of-fraud",
+        permanent: true,
+      },
+      {
+        source: "/parties-must-present-evidence-of-governing-law-to-prevent-the-default-application-of-indian-law",
+        destination:
+          "/insights/parties-must-present-evidence-of-governing-law-to-prevent-the-default-application-of-indian-law",
+        permanent: true,
+      },
+      {
+        source: "/how-co-owners-can-seek-division-of-jointly-held-property",
+        destination:
+          "/insights/how-co-owners-can-seek-division-of-jointly-held-property",
+        permanent: true,
+      },
+      {
+        source: "/lic-v-sanjeev-builders-private-limited",
+        destination:
+          "/insights/lic-v-sanjeev-builders-private-limited",
+        permanent: true,
+      },
+      {
+        source: "/the-crucial-role-of-indemnity-clauses-in-software-licensing-agreements",
+        destination:
+          "/insights/the-crucial-role-of-indemnity-clauses-in-software-licensing-agreements",
+        permanent: true,
+      },
+      {
+        source: "/copyright-in-fashion-safeguarding-designers-creative-work",
         destination:
           "/insights/copyright-in-fashion-safeguarding-designers-creative-works",
         permanent: true,
@@ -584,12 +735,12 @@ const nextConfig = {
 
 
       //Aarna News
-      {
-        source: "/aarna-law-is-pleased-to-announce-the-appointment-of-srihari-saranathan-as-partner",
-        destination:
-          "/aarna-news/aarna-law-is-pleased-to-announce-the-appointment-of-srihari-saranathan-as-partner",
-        permanent: true,
-      },
+      // {
+      //   source: "/aarna-law-is-pleased-to-announce-the-appointment-of-srihari-saranathan-as-partner",
+      //   destination:
+      //     "/aarna-news/aarna-law-is-pleased-to-announce-the-appointment-of-srihari-saranathan-as-partner",
+      //   permanent: true,
+      // },
       {
         source: "/aarna-law-is-pleased-to-announce-the-appointment-of-meghna-talwar-as-partner",
         destination:
