@@ -89,6 +89,18 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: "/the-art-law-review-india-chapter-2021",
+        destination:
+          "/insights/the-art-law-review-india-chapter-2021",
+        permanent: true,
+      },
+      {
+        source: "/aarna-news/the-art-law-review-india-chapter-2021",
+        destination:
+          "/insights/the-art-law-review-india-chapter-2021",
+        permanent: true,
+      },
+      {
         source: "/insights/ai-criminal-liability-and-financial-",
         destination:
           "/insights/ai-criminal-liability-and-financial-crimes",
