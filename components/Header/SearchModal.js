@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { search } from "@/utils/icons";
 import Link from "next/link";
+import configData from "../../config.json";
 
 function SearchModal() {
   const [openModal, setOpenModal] = useState(false);
@@ -17,12 +18,33 @@ function SearchModal() {
       }
 
       setLoading(true);
-      const response = await fetch(
-        `https://docs.aarnalaw.com/wp-json/custom/v1/search?search=${searchQuery}`
-      );
-      const data = await response.json();
-      setResults(data);
-      setLoading(false);
+
+      try {
+        const domain = typeof window !== "undefined" ? window.location.hostname : "";
+        let server;
+
+        if (
+          domain === `${configData.LIVE_SITE_URL}` ||
+          domain === `${configData.LIVE_SITE_URL_WWW}`
+        ) {
+          server = `${configData.LIVE_PRODUCTION_SERVER_ID}`;
+        } else if (domain === `${configData.STAGING_SITE_URL}`) {
+          server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
+        } else {
+          server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
+        }
+
+        const response = await fetch(
+          `https://docs.aarnalaw.com/wp-json/custom/v1/search?search=${searchQuery}&production_mode=${server}`
+        );
+        const data = await response.json();
+        setResults(data);
+      } catch (error) {
+        console.error("Error fetching search results:", error);
+        setResults([]);
+      } finally {
+        setLoading(false);
+      }
     };
 
     const debounceTimer = setTimeout(() => {
@@ -46,9 +68,8 @@ function SearchModal() {
         id="default-modal"
         tabIndex="-1"
         aria-hidden={!openModal}
-        className={`fixed inset-x-0 top-0 z-50 max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0 ${
-          openModal ? "flex h-screen bg-black/80" : "hidden"
-        }`}
+        className={`fixed inset-x-0 top-0 z-50 max-h-full w-full items-center justify-center overflow-y-auto overflow-x-hidden md:inset-0 ${openModal ? "flex h-screen bg-black/80" : "hidden"
+          }`}
       >
         <div className="relative max-h-full w-full max-w-2xl p-4">
           <button
