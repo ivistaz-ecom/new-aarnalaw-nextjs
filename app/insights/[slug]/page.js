@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Banner from "@/components/Insights/InsidePage/Banner";
 import Link from "next/link";
 import ErrorPage from "@/components/404/page";
+import configData from "../../../config.json";
 
 export default function Page({ params }) {
   const paramUrl = params.slug;
@@ -15,10 +16,29 @@ export default function Page({ params }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        const domain = typeof window !== "undefined" ? window.location.hostname : "";
+        let server;
+        let productionModeFilter = '';
+
+        if (
+          domain === `${configData.LIVE_SITE_URL}` ||
+          domain === `${configData.LIVE_SITE_URL_WWW}`
+        ) {
+          server = `${configData.LIVE_PRODUCTION_SERVER_ID}`;
+          productionModeFilter = `&production_mode=${server}`;
+        } else if (domain === `${configData.STAGING_SITE_URL}`) {
+          server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
+          productionModeFilter = `&production_mode=${server}`;
+        } else {
+          server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
+          productionModeFilter = `&production_mode=${server}`;
+        }
+
         const response = await fetch(
-          `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&slug=${paramUrl}`,
+          `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&slug=${paramUrl}&status=publish${productionModeFilter}`,
         );
         const data = await response.json();
+
         if (data && data.length > 0) {
           const post = data[0];
           setTitle(post.title.rendered);
@@ -38,11 +58,12 @@ export default function Page({ params }) {
             }
           }
         } else {
-          console.error("No post data found.");
-          setError(true); // Set error state if no post found
+          console.error("No post data found or post not available in this environment.");
+          setError(true);
         }
       } catch (error) {
         console.error("Error fetching data:", error);
+        setError(true);
       }
     };
 

@@ -9,17 +9,17 @@ import OurCredentials from "../components/HomePage/OurCredentials";
 import OurNetwork from "../components/HomePage/OurNetwork";
 
 export const metadata = {
-  title: "Expert Legal Representation | Aarna Law - Advocates & Consultants",
+  title: "Aarna Law - Top Litigation, Dispute & Corporate Law Firm in India",
   description:
-    "Discover award-winning legal services in Bangalore. Aarna Law offers full-service representation with expertise and dedication.",
+    "Leading corporate law firm in India offering legal services in business law, litigation, arbitration, and compliance for Indian and international companies.",
   alternates: {
-    canonical: "https://aarnalaw.com/",
+    canonical: "https://www.aarnalaw.com/",
   },
   openGraph: {
-    title: "Expert Legal Representation | Aarna Law - Advocates & Consultants",
+    title: "Aarna Law - Top Litigation, Dispute & Corporate Law Firm in India",
     description:
-      "Discover award-winning legal services in Bangalore. Aarna Law offers full-service representation with expertise and dedication.",
-    url: "https://aarnalaw.com/",
+      "Leading corporate law firm in India offering legal services in business law, litigation, arbitration, and compliance for Indian and international companies.",
+    url: "https://www.aarnalaw.com/",
     images: "/banner/desktop_home_banner_2.jpg",
   },
 };
