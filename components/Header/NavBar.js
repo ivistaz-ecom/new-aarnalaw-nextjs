@@ -19,6 +19,13 @@ const NavBar = () => {
   const formatKey = (key) => key.toLowerCase().replace(/[^a-z0-9]+/g, "");
 
   useEffect(() => {
+    // Scroll to top whenever pathname changes (page load or route change)
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+
     if (pathname === "/podcast") {
       router.replace("/podcasts");
     }
@@ -29,7 +36,7 @@ const NavBar = () => {
 
   return (
     <div className="relative z-50 mx-auto w-11/12">
-      <div className="origin-top-right absolute right-0 mt-5 ring-1 ring-black ring-opacity-5 focus:outline-none">
+      <div className="absolute right-0 mt-5 origin-top-right ring-1 ring-black ring-opacity-5 focus:outline-none">
         <LanguageDropdown handleOptionClick={setLanguage} />
       </div>
 
@@ -41,12 +48,12 @@ const NavBar = () => {
               alt="Aarna Law Logo"
               width={600}
               height={600}
-              className="md:h-24 md:w-24 h-20 w-20"
+              className="size-20 md:size-24"
               loading="lazy"
             />
           </Link>
 
-          <div className="flex w-[40%] justify-end lg:hidden">
+          <div className="flex w-2/5 justify-end lg:hidden">
             <SearchModal />
           </div>
 
@@ -76,17 +83,17 @@ const NavBar = () => {
           </button>
 
           <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto `} id="navbar-dropdown">
-            <ul className="mt-1 flex flex-col rounded-lg borderfont-medium dark:border-gray-700 md:flex-row md:space-x-3">
+            <ul className="borderfont-medium mt-1 flex flex-col rounded-lg dark:border-gray-700 md:flex-row md:space-x-3">
               {HeaderMenu.map((item, index) => {
-                const isContactUs = item.menu === "Contact Us"; // define inside map
+                const isContactUs = item.menu === "Contact Us";
 
                 return (
                   <li
                     key={index}
-                    className={`relative group ${isContactUs ? "md:hidden" : ""}`} // hide "Contact Us" on desktop in menu
+                    className={`group relative ${isContactUs ? "md:hidden" : ""}`}
                   >
                     {item.aboutSubMenu || item.subMenu ? (
-                      <span className="flex items-center px-3 py-2 md:hover:text-custom-red cursor-pointer">
+                      <span className="flex cursor-pointer items-center px-3 py-2 md:hover:text-custom-red">
                         {translations.menu[formatKey(item.menu)] || item.menu}
                         <span className="ml-1 text-sm">&#9662;</span>
                       </span>
@@ -94,14 +101,14 @@ const NavBar = () => {
                       <Link
                         href={item.slug || "#"}
                         className="flex items-center px-3 py-2 md:hover:text-custom-red"
-                        onClick={() => setIsMenuOpen(false)} // Close menu on click
+                        onClick={() => setIsMenuOpen(false)}
                       >
                         {translations.menu[formatKey(item.menu)] || item.menu}
                       </Link>
                     )}
 
                     {(item.aboutSubMenu || item.subMenu) && (
-                      <ul className="absolute hidden group-hover:block bg-white shadow-lg rounded-lg p-2 w-48 z-10">
+                      <ul className="absolute z-10 hidden w-48 rounded-lg bg-white p-2 shadow-lg group-hover:block">
                         {(item.aboutSubMenu || item.subMenu).map((sub, subIndex) => (
                           <li key={subIndex}>
                             <Link
@@ -119,7 +126,6 @@ const NavBar = () => {
                 );
               })}
             </ul>
-
           </div>
 
           {/* Contact us for desktop view */}
@@ -127,8 +133,8 @@ const NavBar = () => {
             <SearchModal />
             <Link
               href="/contact-us"
-              className="mb-2 me-2 mt-2 border border-custom-red bg-white px-5 py-2.5 text-sm font-medium text-custom-red hover:bg-custom-red hover:text-white"
-              onClick={() => setIsMenuOpen(false)} // Also close here just in case
+              className="my-2 me-2 border border-custom-red bg-white px-5 py-2.5 text-sm font-medium text-custom-red hover:bg-custom-red hover:text-white"
+              onClick={() => setIsMenuOpen(false)}
             >
               {translations.menu.contactus || "CONTACT US"}
             </Link>
