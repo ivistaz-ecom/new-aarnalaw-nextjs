@@ -46,10 +46,10 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "Aarna Law - Advocates & Consultants",
-              url: "https://aarnalaw.com/",
+              url: "https://www.aarnalaw.com/",
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://aarnalaw.com/search?q={search_term_string}",
+                target: "https://www.aarnalaw.com/search?q={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             }),
