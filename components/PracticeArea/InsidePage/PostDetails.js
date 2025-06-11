@@ -89,7 +89,8 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
           </div>
 
           {/* Faqs */}
-          {/* {faqs.length > 0 && <Faq faqs={faqs} />} */}
+          {faqs.length > 0 && <Faq faqs={faqs} />}
+          
         </div>
 
         {/* Sidebar */}
