@@ -1,15 +1,15 @@
 export const metadata = {
-    title: "Legal Conversations Podcast",
+    title: "Customer Testimonials | Aarna Law - Trusted Lawyers in Bangalore",
     description:
-      "Tune into Aarna Law's podcast for insightful conversations with legal professionals. Explore in-depth discussions on current legal issues and emerging trends.",
+      "Discover why clients choose Aarna Law as their legal advisors. Read customer testimonials and reviews of our lawyer's firm in Bangalore.",
     metadataBase: new URL("https://www.aarnalaw.com"),
     alternates: {
       canonical: "/testimonials",
     },
     openGraph: {
-      title: "Legal Conversations Podcast",
+      title: "Customer Testimonials | Aarna Law - Trusted Lawyers in Bangalore",
       description:
-        "Tune into Aarna Law's podcast for insightful conversations with legal professionals. Explore in-depth discussions on current legal issues and emerging trends.",
+        "Discover why clients choose Aarna Law as their legal advisors. Read customer testimonials and reviews of our lawyer's firm in Bangalore.",
       url: "/testimonials",
       images: "/aarnalaw_new_banner.jpg",
     },
