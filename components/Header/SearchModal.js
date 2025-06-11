@@ -9,15 +9,18 @@ function SearchModal() {
   const [searchQuery, setSearchQuery] = useState("");
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchResults = async () => {
       if (!searchQuery) {
         setResults([]);
+        setError(null);
         return;
       }
 
       setLoading(true);
+      setError(null);
 
       try {
         const domain = typeof window !== "undefined" ? window.location.hostname : "";
@@ -37,10 +40,22 @@ function SearchModal() {
         const response = await fetch(
           `https://docs.aarnalaw.com/wp-json/custom/v1/search?search=${searchQuery}&production_mode=${server}`
         );
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch search results');
+        }
+
         const data = await response.json();
-        setResults(data);
+
+        // Only set results if we have valid data
+        if (Array.isArray(data)) {
+          setResults(data);
+        } else {
+          setResults([]);
+        }
       } catch (error) {
         console.error("Error fetching search results:", error);
+        setError("Failed to fetch search results. Please try again.");
         setResults([]);
       } finally {
         setLoading(false);
@@ -113,15 +128,20 @@ function SearchModal() {
             {/* Modal body */}
             <div className="space-y-4 p-4">
               {loading ? (
-                <div className="animate-pulse">
-                  <div className="mb-2 h-6 rounded bg-gray-200"></div>
-                  <div className="mb-2 h-6 rounded bg-gray-200"></div>
+                <div className="space-y-4">
+                  {[...Array(3)].map((_, index) => (
+                    <div key={index} className="animate-pulse">
+                      <div className="h-12 rounded bg-gray-200"></div>
+                    </div>
+                  ))}
                 </div>
+              ) : error ? (
+                <p className="text-red-500">{error}</p>
               ) : (
                 <>
                   {searchQuery && (
                     <>
-                      {results.length > 0 ? (
+                      {results && results.length > 0 ? (
                         <>
                           <p className="mb-6 mt-2 border-b-0">
                             Results for{" "}
@@ -138,7 +158,7 @@ function SearchModal() {
                                 <li key={index}>
                                   <Link
                                     href={dynamicUrl}
-                                    className="flex justify-between border-b p-2"
+                                    className="flex justify-between border-b p-2 hover:bg-gray-50"
                                     onClick={() => setOpenModal(false)}
                                   >
                                     <span
@@ -153,9 +173,9 @@ function SearchModal() {
                           </ul>
                         </>
                       ) : (
-                        <p>
+                        <p className="text-center text-gray-500">
                           No results found for{" "}
-                          <span className="italic">"{searchQuery}"</span>.
+                          <span className="italic">"{searchQuery}"</span>
                         </p>
                       )}
                     </>
