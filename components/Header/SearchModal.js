@@ -10,10 +10,18 @@ function SearchModal() {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [currentDomain, setCurrentDomain] = useState("");
+
+  useEffect(() => {
+    // Set the current domain when component mounts
+    if (typeof window !== "undefined") {
+      setCurrentDomain(window.location.hostname);
+    }
+  }, []);
 
   useEffect(() => {
     const fetchResults = async () => {
-      if (!searchQuery) {
+      if (!searchQuery || !currentDomain) {
         setResults([]);
         setError(null);
         return;
@@ -23,22 +31,22 @@ function SearchModal() {
       setError(null);
 
       try {
-        const domain = typeof window !== "undefined" ? window.location.hostname : "";
+        // Determine the server based on the current domain
         let server;
-
         if (
-          domain === `${configData.LIVE_SITE_URL}` ||
-          domain === `${configData.LIVE_SITE_URL_WWW}`
+          currentDomain === configData.LIVE_SITE_URL ||
+          currentDomain === configData.LIVE_SITE_URL_WWW
         ) {
-          server = `${configData.LIVE_PRODUCTION_SERVER_ID}`;
-        } else if (domain === `${configData.STAGING_SITE_URL}`) {
-          server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
+          server = configData.LIVE_PRODUCTION_SERVER_ID;
+        } else if (currentDomain === configData.STAGING_SITE_URL) {
+          server = configData.STAG_PRODUCTION_SERVER_ID;
         } else {
-          server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
+          // Default to staging for local development
+          server = configData.STAG_PRODUCTION_SERVER_ID;
         }
 
         const response = await fetch(
-          `https://docs.aarnalaw.com/wp-json/custom/v1/search?search=${searchQuery}&production_mode=${server}`
+          `https://docs.aarnalaw.com/wp-json/custom/v1/search?search=${encodeURIComponent(searchQuery)}&production_mode=${server}`
         );
 
         if (!response.ok) {
@@ -47,9 +55,11 @@ function SearchModal() {
 
         const data = await response.json();
 
-        // Only set results if we have valid data
+        // Only set results if we have valid data and it's an array
         if (Array.isArray(data)) {
-          setResults(data);
+          // Filter out any null or undefined items
+          const validResults = data.filter(item => item && item.title && item.slug);
+          setResults(validResults);
         } else {
           setResults([]);
         }
@@ -67,7 +77,7 @@ function SearchModal() {
     }, 300);
 
     return () => clearTimeout(debounceTimer);
-  }, [searchQuery]);
+  }, [searchQuery, currentDomain]);
 
   return (
     <div className="text-black">

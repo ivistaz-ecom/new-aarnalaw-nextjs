@@ -798,6 +798,18 @@ const nextConfig = {
           "/insights/new-free-trade-agreement-between-efta-and-india-offers-enhanced-ip-rights-for-business-owners",
         permanent: true,
       },
+      {
+        source: "/vidarbha-industries-power-ltd-vs-axis-bank-limited",
+        destination:
+          "/insights/vidarbha-industries-power-ltd-vs-axis-bank-limited",
+        permanent: true,
+      },
+      {
+        source: "/world-phone-internet-services-pvt-ltd-vs-one-ott-entertainment-ltd",
+        destination:
+          "/insights/world-phone-internet-services-pvt-ltd-vs-one-ott-entertainment-ltd",
+        permanent: true,
+      },
 
       //Aarna News
       // {
