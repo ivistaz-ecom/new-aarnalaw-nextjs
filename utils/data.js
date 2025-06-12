@@ -128,6 +128,11 @@ export const testimonials = [
 
 export const credentials = [
   {
+    imageUrl: "/credentials/indian_business_law.png", //Chambers & Partners 2025
+    title: "IBLJ 2025",
+    desc: "Arbitration & ADR",
+  }, 
+  {
     imageUrl: "/credentials/our-credentials-img-5.jpg", //Chambers & Partners 2025
     title: "Chambers & Partners",
     desc: "Dispute Resolution: Arbitration award",

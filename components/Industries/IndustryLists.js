@@ -1,55 +1,11 @@
 "use client";
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import configData from "../../config.json";
 import { LanguageContext } from "../../app/context/LanguageContext";
 
-function IndustryLists() {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(100);
-  const { language, translations } = useContext(LanguageContext); // Get selected language
-
-  const domain = typeof window !== "undefined" ? window.location.hostname : "";
-
-  const fetchContent = useCallback(async () => {
-    setLoading(true);
-    try {
-      let server;
-      if (domain === `${configData.LIVE_SITE_URL}`) {
-        server = `${configData.LIVE_PRODUCTION_SERVER_ID}`;
-      } else if (domain === `${configData.STAGING_SITE_URL}`) {
-        server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
-      } else {
-        server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
-      }
-
-      const response = await fetch(
-        `${configData.SERVER_URL}industries?_embed&status[]=publish&production_mode[]=${server}&per_page=${page}`
-      );
-
-      const industryData = await response.json();
-
-      if (industryData.length === 0) {
-        setHasMore(false);
-      } else {
-        const sortedData = industryData.sort((a, b) =>
-          a.title.rendered.localeCompare(b.title.rendered)
-        );
-        setData(sortedData);
-      }
-
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setLoading(false);
-    }
-  }, [page, domain]);
-
-  useEffect(() => {
-    fetchContent();
-  }, [page, fetchContent]);
+function IndustryLists({ data = [], loading = true }) {
+  const { language, translations } = useContext(LanguageContext);
 
   return (
     <div>
@@ -61,7 +17,7 @@ function IndustryLists() {
           {translations.industriesHeading.industriesHeading}
         </p>
         <div className="grid gap-4 pt-12 lg:grid-cols-4">
-          {loading
+          {loading && (!data || data.length === 0)
             ? [...Array(12)].map((_, index) => (
               <div key={index} className="animate-pulse">
                 <div className="h-[200px] w-full bg-gray-300"></div>
@@ -69,7 +25,6 @@ function IndustryLists() {
               </div>
             ))
             : data.map((item, index) => {
-              // Choose title & description based on language selection
               const title =
                 language === "ta" && item.acf.tamil_title
                   ? item.acf.tamil_title
@@ -87,13 +42,6 @@ function IndustryLists() {
                               ? item.acf.gujarati_title
                               : item.title.rendered;
 
-              // const description =
-              //   language === "ta" && item.acf.tamil_description
-              //     ? item.acf.tamil_description
-              //     : language === "kn" && item.acf.kannada_description
-              //       ? item.acf.kannada_description
-              //       : item.acf.description;
-
               return (
                 <Link href={`/industries/${item.slug}`} key={index} className="group block">
                   <div className="overflow-hidden">
@@ -110,7 +58,6 @@ function IndustryLists() {
                     <p dangerouslySetInnerHTML={{ __html: title }} />
                   </div>
                 </Link>
-
               );
             })}
         </div>

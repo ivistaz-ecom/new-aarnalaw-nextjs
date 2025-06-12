@@ -67,7 +67,7 @@ const Podcasts = () => {
         >
           {credentials.map((item, index) => (
             <div
-              className="inset-0 flex h-[200px] flex-col items-center justify-center"
+              className="inset-0 flex h-[200px] flex-col items-center justify-start"
               key={index}
             >
               <Image
@@ -78,7 +78,7 @@ const Podcasts = () => {
                 alt={item.title}
                 loading="lazy"
               />
-              <h2 className="font-bold">{item.title}</h2>
+              <h2 className="font-bold mt-3">{item.title}</h2>
               <p className="text-center text-sm">{item.desc}</p>
             </div>
           ))}
