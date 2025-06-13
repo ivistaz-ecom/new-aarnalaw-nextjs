@@ -7,35 +7,27 @@ export default function PracticeAreaBanner({
   titleText,
 }) {
   const [bgImage, setBgImage] = useState(null); // For setting the correct image based on screen size
-  const [isLoading, setIsLoading] = useState(true); // For loader
-  const [timer, setTimer] = useState(3); // Countdown timer (in seconds)
+  const [imageLoaded, setImageLoaded] = useState(false); // Track if image is loaded
   const { language } = useContext(LanguageContext); // Get selected language
 
   useEffect(() => {
     // Set initial background image based on screen size
     const handleResize = () => {
-      setBgImage(
-        window.innerWidth <= 768 ? mobileBackgroundImage : backgroundImage
-      );
+      const img = window.innerWidth <= 768 ? mobileBackgroundImage : backgroundImage;
+      setBgImage(img);
+      setImageLoaded(false); // Reset loader when image changes
+      // Preload image
+      const preloadImg = new window.Image();
+      preloadImg.src = img;
+      preloadImg.onload = () => setImageLoaded(true);
     };
 
     handleResize(); // Initial image load
     window.addEventListener("resize", handleResize); // Adjust on resize
 
-    // Start a countdown for timer
-    const countdown = setInterval(() => {
-      setTimer((prev) => {
-        if (prev > 1) return prev - 1;
-        clearInterval(countdown);
-        setIsLoading(false); // Hide loader after countdown finishes
-        return 0;
-      });
-    }, 1000);
-
     // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
-      clearInterval(countdown);
     };
   }, [backgroundImage, mobileBackgroundImage]);
 
@@ -58,12 +50,11 @@ export default function PracticeAreaBanner({
                   : titleText?.rendered;
   // Default to the English title 
 
-
   return (
     <div className="relative lg:h-screen">
-      {isLoading ? (
-        <div className="relative h-screen animate-pulse bg-gray-300">
-          <div className="absolute bottom-0 flex h-screen w-full items-center justify-center">
+      {!imageLoaded ? (
+        <div className="relative h-[500px] lg:h-screen animate-pulse bg-gray-300">
+          <div className="absolute bottom-0 flex h-[500px] w-full items-center justify-center lg:h-screen">
             <div className="flex h-12 w-48 animate-pulse items-center justify-center bg-gray-500 text-white">
               Loading
             </div>
