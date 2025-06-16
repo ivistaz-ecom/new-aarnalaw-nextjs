@@ -9,7 +9,7 @@ export const homeBanner = [
   {
     bannerUrl: "/banner/desktop_home_banner_1.jpg",
     mobileBannerUrl: "/banner/mobile_home_banner_01.jpg",
-    bannerText: "Rooted in India, Global in Practice.",
+    bannerText: "Rooted in India, Global in Practice",
     bannerPara: "",
   },
   {

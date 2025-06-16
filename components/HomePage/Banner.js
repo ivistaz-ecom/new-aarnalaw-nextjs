@@ -39,10 +39,8 @@ export default function Banner() {
                 height={500}
                 loading="eager"
                 priority
-
                 placeholder="blur"
                 blurDataURL={banner.mobileBannerUrl}
-
               />
               {/* Desktop Banner */}
               <Image
