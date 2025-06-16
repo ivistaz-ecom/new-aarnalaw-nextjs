@@ -89,8 +89,8 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
           </div>
 
           {/* Faqs */}
-          {faqs.length > 0 && <Faq faqs={faqs} />} 
-          
+          {/* {faqs.length > 0 && <Faq faqs={faqs} />} */}
+
         </div>
 
         {/* Sidebar */}
@@ -122,19 +122,21 @@ function PracticeAreaPostDetails({ details, partnersData, slug, titleText }) {
             </div>
           ))}
 
-          <div className="flex w-full justify-center">
-            <ContactModal
-              btnName="CONTACT PARTNER"
-              textColor="text-black"
-              modalTitle={titleText}
-              btnType="contactPartner"
-              id="contactPartner"
-            />
-          </div>
+          {partnersData?.partnerNames?.length > 0 && (
+            <div className="flex w-full justify-center">
+              <ContactModal
+                btnName="CONTACT PARTNER"
+                textColor="text-black"
+                modalTitle={titleText}
+                btnType="contactPartner"
+                id="contactPartner"
+              />
+            </div>
+          )}
 
           {/* Quick Links */}
           <div className="w-full md:p-2 p-5 pt-10">
-            <h2 className="font-bold">Quick Links</h2>
+            <h2 className="font-bold md:pt-5">Quick Links</h2>
             <hr className="my-4 border-t-2 border-red-500" />
             <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400 md:pr-10">
               {data.map((item, index) => {

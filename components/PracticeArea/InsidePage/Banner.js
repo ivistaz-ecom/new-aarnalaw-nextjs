@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { LanguageContext } from "../../../app/context/LanguageContext"; // Import LanguageContext
+import Image from "next/image";
 
 export default function PracticeAreaBanner({
   backgroundImage,
@@ -16,10 +17,12 @@ export default function PracticeAreaBanner({
       const img = window.innerWidth <= 768 ? mobileBackgroundImage : backgroundImage;
       setBgImage(img);
       setImageLoaded(false); // Reset loader when image changes
-      // Preload image
+
+      // Preload image with higher priority
       const preloadImg = new window.Image();
       preloadImg.src = img;
       preloadImg.onload = () => setImageLoaded(true);
+      preloadImg.onerror = () => setImageLoaded(true); // Handle error case
     };
 
     handleResize(); // Initial image load
@@ -53,10 +56,10 @@ export default function PracticeAreaBanner({
   return (
     <div className="relative lg:h-screen">
       {!imageLoaded ? (
-        <div className="relative h-[500px] lg:h-screen animate-pulse bg-gray-300">
+        <div className="relative h-[500px] lg:h-screen bg-gray-100">
           <div className="absolute bottom-0 flex h-[500px] w-full items-center justify-center lg:h-screen">
-            <div className="flex h-12 w-48 animate-pulse items-center justify-center bg-gray-500 text-white">
-              Loading
+            <div className="flex h-8 w-32 items-center justify-center bg-gray-200 text-gray-600 rounded-md">
+              Loading...
             </div>
           </div>
         </div>
