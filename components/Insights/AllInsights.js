@@ -2,136 +2,141 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import configData from "../../config.json";
 
-function AllInsights({ searchTerm }) {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [archives, setArchives] = useState([]);
-  const [selectedArchive, setSelectedArchive] = useState(null);
-  const [visibleItems, setVisibleItems] = useState(6);
-  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
+function LoadingDots() {
+  return (
+    <div className="inline-flex items-center text-black">
+      Loading
+      <span className="loading-dots">
+        <span className="dot">.</span>
+        <span className="dot">.</span>
+        <span className="dot">.</span>
+      </span>
+      <style jsx>{`
+        .loading-dots {
+          display: inline-flex;
+        }
+        .dot {
+          animation: dotFade 1.4s infinite;
+          opacity: 0;
+          margin-left: 2px;
+        }
+        .dot:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+        .dot:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+        @keyframes dotFade {
+          0%, 100% { opacity: 0; }
+          50% { opacity: 1; }
+        }
+      `}</style>
+    </div>
+  );
+}
 
-  const loadMore = () => {
-    setVisibleItems((prev) => prev + 6);
-  };
+function AllInsights({ searchTerm, initialData = [], initialArchives = [], initialYear }) {
+  const [data, setData] = useState(initialData);
+  const [filteredData, setFilteredData] = useState(initialData);
+  const [archives, setArchives] = useState(initialArchives);
+  const [selectedArchive, setSelectedArchive] = useState(initialYear || (initialArchives[0]?.name ?? null));
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [isChangingArchive, setIsChangingArchive] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedSearchTerm(searchTerm);
-    }, 500);
+  const fetchData = async (year, pageNum = 1, append = false) => {
+    const cat1 = 12;
+    const cat2 = 13;
+    const after = `${year}-01-01T00:00:00`;
+    const before = `${year}-12-31T23:59:59`;
+    const url = `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&per_page=6&page=${pageNum}&categories=${cat1},${cat2}&after=${after}&before=${before}&status[]=publish`;
 
-    return () => clearTimeout(timer);
-  }, [searchTerm]);
-
-  const cat1 = 12;
-  const cat2 = 13;
-
-  const fetchData = async (year) => {
-    setLoading(true);
-    // let web_url = "https://docs.aarnalaw.com/wp-json/wp/v2/posts";
     try {
-      const after = `${year}-01-01T00:00:00`;
-      const before = `${year}-12-31T23:59:59`;
+      const response = await fetch(url, {
+        cache: 'no-store',
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
 
-      const domain =
-        typeof window !== "undefined" ? window.location.hostname : "";
-
-      let server;
-
-      if (
-        domain === `${configData.LIVE_SITE_URL}` ||
-        domain === `${configData.LIVE_SITE_URL_WWW}`
-      ) {
-        server = `${configData.LIVE_PRODUCTION_SERVER_ID}`;
-      } else if (domain === `${configData.STAGING_SITE_URL}`) {
-        server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
-      } else {
-        server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
-      }
-
-      const url = `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&per_page=100&categories=${cat1},${cat2}&after=${after}&before=${before}&status[]=publish&production_mode[]=${server}`;
-      const response = await fetch(url);
       const result = await response.json();
-      // console.log(result);
 
       if (Array.isArray(result)) {
-        const sortedData = result.sort(
-          (a, b) => new Date(b.date) - new Date(a.date),
-        );
-
-        setData(
-          sortedData.map((item) => ({
-            ...item,
-            featured_image_url: null,
-            isImageLoading: true,
-          })),
-        );
+        const sortedData = result.sort((a, b) => new Date(b.date) - new Date(a.date));
+        if (append) {
+          const newData = [...data, ...sortedData];
+          setData(newData);
+          filterData(newData, searchTerm);
+        } else {
+          // Only update if we're still on the same archive
+          if (year === selectedArchive) {
+            setData(sortedData);
+            filterData(sortedData, searchTerm);
+          }
+        }
+        setHasMore(sortedData.length === 6);
       }
+      setIsChangingArchive(false);
     } catch (error) {
       console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
+      setIsChangingArchive(false);
     }
   };
 
+  const filterData = (dataToFilter, term) => {
+    if (!term) {
+      setFilteredData(dataToFilter);
+      setHasMore(dataToFilter.length >= 6);
+      return;
+    }
+
+    const searchLower = term.toLowerCase();
+    const filtered = dataToFilter.filter(item => {
+      const title = item.title.rendered.toLowerCase();
+      const content = item.content.rendered.toLowerCase();
+      const excerpt = item.excerpt.rendered.toLowerCase();
+
+      return (
+        title.includes(searchLower) ||
+        content.includes(searchLower) ||
+        excerpt.includes(searchLower)
+      );
+    });
+
+    setFilteredData(filtered);
+    setHasMore(filtered.length >= 6 && filtered.length === dataToFilter.length && dataToFilter.length === 6);
+  };
+
   useEffect(() => {
-    const fetchArchives = async () => {
-      try {
-        const response = await fetch(
-          `https://docs.aarnalaw.com/wp-json/wp/v2/archives`,
-        );
-        const archivesData = await response.json();
-
-        const sortedArchives = archivesData.sort((a, b) => {
-          const yearA = parseInt(a.name, 10);
-          const yearB = parseInt(b.name, 10);
-          return yearB - yearA;
-        });
-
-        setArchives(sortedArchives);
-
-        const defaultArchive =
-          sortedArchives.find((archive) => archive.name === "2025") ||
-          sortedArchives[0];
-
-        setSelectedArchive(defaultArchive);
-        fetchData(defaultArchive.name);
-      } catch (error) {
-        console.error("Error fetching archives:", error);
-      }
-    };
-
-    fetchArchives();
-  }, []);
+    filterData(data, searchTerm);
+  }, [searchTerm, data]);
 
   useEffect(() => {
     if (selectedArchive) {
-      fetchData(selectedArchive.name);
+      setIsChangingArchive(true);
+      fetchData(selectedArchive, 1, false);
     }
   }, [selectedArchive]);
+
+  const loadMore = async () => {
+    setIsLoadingMore(true);
+    const nextPage = page + 1;
+    setPage(nextPage);
+    await fetchData(selectedArchive, nextPage, true);
+    setIsLoadingMore(false);
+  };
 
   const stripHTMLAndLimit = (htmlContent) => {
     const text = htmlContent.replace(/<\/?[^>]+(>|$)/g, "");
     return text.length > 255 ? text.substring(0, 255) + "..." : text;
   };
 
-  const filteredInsights = data
-    .filter(
-      (item) =>
-        item.title.rendered
-          .toLowerCase()
-          .includes(debouncedSearchTerm.toLowerCase()) ||
-        item.excerpt.rendered
-          .toLowerCase()
-          .includes(debouncedSearchTerm.toLowerCase()),
-    )
-    .slice(0, visibleItems);
-
   const formatDateString = (dateString) => {
     const date = new Date(dateString);
     const monthAbbreviations = [
-      "JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC", 
+      "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC",
     ];
     const day = date.getDate();
     const month = monthAbbreviations[date.getMonth()];
@@ -139,73 +144,74 @@ function AllInsights({ searchTerm }) {
     return `${day}\n${month}\n${year}`;
   };
 
-  const SkeletonLoader = () => (
-    <div className="flex animate-pulse border border-gray-200 bg-white p-5 shadow dark:border-gray-700 dark:bg-gray-800">
-      <div className="flex h-40 w-full items-center justify-center bg-gray-300"></div>
-      <div className="">
-        <div className="mb-2 h-6 w-3/4 rounded bg-gray-400" />
-        <div className="h-4 w-full rounded bg-gray-400" />
-      </div>
-    </div>
-  );
-
   return (
     <div className="flex w-full flex-col md:flex-row">
       <div className="mx-auto grid w-full grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:w-9/12 lg:p-12">
-        {loading ? (
-          Array(4)
-            .fill()
-            .map((_, index) => <SkeletonLoader key={index} />)
-        ) : filteredInsights.length > 0 ? (
-          filteredInsights.map((item) => (
-            <div
-              className="rounded-lg border border-gray-200 bg-white shadow"
-              key={item.id}
-            >
-              <Image
-                 src={
-                   item._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-                   "/PracticeArea/Aarna-Law-Banner-img.png"
-                 }
-                 alt={item.title.rendered}
-                 className="h-[200px] w-full rounded-t-lg object-cover"
-                 width={500}
-                 height={300}
-                  loading="lazy"
-                 />               
-
-              <div className="p-5">
-                <h5
-                  className="mb-2 line-clamp-2 min-h-10 text-lg font-bold tracking-tight text-gray-900"
-                  dangerouslySetInnerHTML={{ __html: item.title.rendered }}
-                ></h5>
-                <p
-                  className="my-5 min-h-28 text-sm font-normal text-gray-700"
-                  dangerouslySetInnerHTML={{
-                    __html: stripHTMLAndLimit(item.excerpt.rendered),
-                  }}
-                ></p>
-                <p className="pb-4 text-xs text-gray-500">
-                  {formatDateString(item.date)}
-                </p>
-                <Link href={`/insights/${item.slug}`} className="text-red-500">
-                  Read more
-                </Link>
-              </div>
-            </div>
-          ))
-        ) : (
-          <div>No results found</div>
-        )}
-        {data.length > visibleItems && (
-          <div className="col-span-1 mt-6 text-center sm:col-span-2">
-            <button
-              onClick={loadMore}
-              className="bg-custom-red px-4 py-2 text-white"
-            >
-              Load More
-            </button>
+        {filteredData.length === 0 ? (
+          <div className="col-span-1 sm:col-span-2 text-center py-8">
+            {isChangingArchive ? (
+              <LoadingDots />
+            ) : (
+              <p className="text-gray-500">No results found {searchTerm ? `for "${searchTerm}"` : ""}</p>
+            )}
           </div>
+        ) : (
+          <>
+            {filteredData.map((item) => (
+              <div
+                className="rounded-lg border border-gray-200 bg-white shadow transition-opacity duration-300"
+                key={item.id}
+                style={{ opacity: isChangingArchive ? 0.5 : 1 }}
+              >
+                <Image
+                  src={
+                    item._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+                    "/PracticeArea/Aarna-Law-Banner-img.png"
+                  }
+                  alt={item.title.rendered}
+                  className="h-[200px] w-full rounded-t-lg object-cover"
+                  width={500}
+                  height={300}
+                  priority={true}
+                />
+                <div className="p-5">
+                  <h5
+                    className="mb-2 line-clamp-2 min-h-10 text-lg font-bold tracking-tight text-gray-900"
+                    dangerouslySetInnerHTML={{ __html: item.title.rendered }}
+                  ></h5>
+                  <p
+                    className="my-5 min-h-28 text-sm font-normal text-gray-700"
+                    dangerouslySetInnerHTML={{
+                      __html: stripHTMLAndLimit(item.excerpt.rendered),
+                    }}
+                  ></p>
+                  <p className="pb-4 text-xs text-gray-500">
+                    {formatDateString(item.date)}
+                  </p>
+                  <Link href={`/insights/${item.slug}`} className="text-red-500">
+                    Read more
+                  </Link>
+                </div>
+              </div>
+            ))}
+            {hasMore && filteredData.length >= 6 && (
+              <div className="col-span-1 mt-6 text-center sm:col-span-2">
+                {isLoadingMore ? (
+                  <div className="inline-block px-4 py-2">
+                    <LoadingDots />
+                  </div>
+                ) : (
+                  <button
+                    onClick={loadMore}
+                    className="bg-custom-red px-4 py-2 text-white hover:bg-red-600 active:bg-red-700"
+                    disabled={isChangingArchive}
+                  >
+                    Load More
+                  </button>
+                )}
+              </div>
+            )}
+          </>
         )}
       </div>
       <div className="mt-8 w-full bg-gray-50 p-4 pb-12 md:mt-0 md:w-3/12 md:p-4 lg:ml-8">
@@ -214,13 +220,16 @@ function AllInsights({ searchTerm }) {
         <ul className="space-y-4 text-left text-gray-500">
           {archives.map((archive) => (
             <button
-              onClick={() => setSelectedArchive(archive)}
-              className={`flex w-full border-b border-red-500 p-1 ${
-                selectedArchive?.id === archive.id
-                  ? "font-bold text-red-500"
-                  : "hover:text-red-500"
-              }`}
+              onClick={() => {
+                setSelectedArchive(archive.name);
+                setPage(1);
+              }}
+              className={`flex w-full border-b border-red-500 p-1 ${selectedArchive === archive.name
+                ? "font-bold text-red-500"
+                : "hover:text-red-500"
+                }`}
               key={archive.id}
+              disabled={isChangingArchive}
             >
               <p dangerouslySetInnerHTML={{ __html: archive.name }} />
             </button>
@@ -232,5 +241,3 @@ function AllInsights({ searchTerm }) {
 }
 
 export default AllInsights;
-
-
