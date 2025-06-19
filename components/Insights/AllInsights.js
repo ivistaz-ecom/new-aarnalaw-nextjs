@@ -161,7 +161,7 @@ function AllInsights({ searchTerm, initialData = [], initialArchives = [], initi
               <div
                 className="rounded-lg border border-gray-200 bg-white shadow transition-opacity duration-300"
                 key={item.id}
-                style={{ opacity: isChangingArchive ? 0.5 : 1 }}
+                // style={{ opacity: isChangingArchive ? 0.5 : 1 }}
               >
                 <Image
                   src={
