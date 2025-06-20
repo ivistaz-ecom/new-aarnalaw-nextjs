@@ -4,7 +4,7 @@ import HomeInsights from "@/components/HomePage/HomeInsights";
 import WhatWeDo from "../components/HomePage/WhatWeDo";
 import KindOfDispute from "../components/HomePage/KindOfDisputesWeDo";
 import Testimonials from "../components/HomePage/Testimonials";
-import TrackRecords from "../components/HomePage/TrackRecords";
+import TrackRecords from "../components/HomePage/Trackrecords";
 import OurCredentials from "../components/HomePage/OurCredentials";
 import OurNetwork from "../components/HomePage/OurNetwork";
 import configData from "../config.json";
