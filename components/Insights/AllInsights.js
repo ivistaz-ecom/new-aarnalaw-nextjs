@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -36,7 +36,7 @@ function LoadingDots() {
   );
 }
 
-function AllInsights({ searchTerm, initialData = [], initialArchives = [], initialYear }) {
+function AllInsights({ searchTerm, initialData = [], initialArchives = [], initialYear, productionMode }) {
   const [data, setData] = useState(initialData);
   const [filteredData, setFilteredData] = useState(initialData);
   const [archives, setArchives] = useState(initialArchives);
@@ -51,14 +51,12 @@ function AllInsights({ searchTerm, initialData = [], initialArchives = [], initi
     const cat2 = 13;
     const after = `${year}-01-01T00:00:00`;
     const before = `${year}-12-31T23:59:59`;
-    const url = `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&per_page=6&page=${pageNum}&categories=${cat1},${cat2}&after=${after}&before=${before}&status[]=publish`;
+    const url = `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&per_page=6&page=${pageNum}&categories=${cat1},${cat2}&after=${after}&before=${before}&status[]=publish&production_mode[]=${productionMode}`;
 
     try {
       const response = await fetch(url, {
         cache: 'no-store',
-        headers: {
-          'Content-Type': 'application/json',
-        }
+        headers: { 'Content-Type': 'application/json' },
       });
 
       const result = await response.json();
@@ -70,7 +68,6 @@ function AllInsights({ searchTerm, initialData = [], initialArchives = [], initi
           setData(newData);
           filterData(newData, searchTerm);
         } else {
-          // Only update if we're still on the same archive
           if (year === selectedArchive) {
             setData(sortedData);
             filterData(sortedData, searchTerm);
@@ -97,7 +94,6 @@ function AllInsights({ searchTerm, initialData = [], initialArchives = [], initi
       const title = item.title.rendered.toLowerCase();
       const content = item.content.rendered.toLowerCase();
       const excerpt = item.excerpt.rendered.toLowerCase();
-
       return (
         title.includes(searchLower) ||
         content.includes(searchLower) ||
@@ -135,9 +131,7 @@ function AllInsights({ searchTerm, initialData = [], initialArchives = [], initi
 
   const formatDateString = (dateString) => {
     const date = new Date(dateString);
-    const monthAbbreviations = [
-      "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC",
-    ];
+    const monthAbbreviations = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
     const day = date.getDate();
     const month = monthAbbreviations[date.getMonth()];
     const year = date.getFullYear();
@@ -161,13 +155,9 @@ function AllInsights({ searchTerm, initialData = [], initialArchives = [], initi
               <div
                 className="rounded-lg border border-gray-200 bg-white shadow transition-opacity duration-300"
                 key={item.id}
-                // style={{ opacity: isChangingArchive ? 0.5 : 1 }}
               >
                 <Image
-                  src={
-                    item._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-                    "/PracticeArea/Aarna-Law-Banner-img.png"
-                  }
+                  src={item._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/PracticeArea/Aarna-Law-Banner-img.png"}
                   alt={item.title.rendered}
                   className="h-[200px] w-full rounded-t-lg object-cover"
                   width={500}
@@ -178,13 +168,11 @@ function AllInsights({ searchTerm, initialData = [], initialArchives = [], initi
                   <h5
                     className="mb-2 line-clamp-2 min-h-10 text-lg font-bold tracking-tight text-gray-900"
                     dangerouslySetInnerHTML={{ __html: item.title.rendered }}
-                  ></h5>
+                  />
                   <p
                     className="my-5 min-h-28 text-sm font-normal text-gray-700"
-                    dangerouslySetInnerHTML={{
-                      __html: stripHTMLAndLimit(item.excerpt.rendered),
-                    }}
-                  ></p>
+                    dangerouslySetInnerHTML={{ __html: stripHTMLAndLimit(item.excerpt.rendered) }}
+                  />
                   <p className="pb-4 text-xs text-gray-500">
                     {formatDateString(item.date)}
                   </p>
@@ -224,10 +212,11 @@ function AllInsights({ searchTerm, initialData = [], initialArchives = [], initi
                 setSelectedArchive(archive.name);
                 setPage(1);
               }}
-              className={`flex w-full border-b border-red-500 p-1 ${selectedArchive === archive.name
-                ? "font-bold text-red-500"
-                : "hover:text-red-500"
-                }`}
+              className={`flex w-full border-b border-red-500 p-1 ${
+                selectedArchive === archive.name
+                  ? "font-bold text-red-500"
+                  : "hover:text-red-500"
+              }`}
               key={archive.id}
               disabled={isChangingArchive}
             >
