@@ -41,7 +41,7 @@ function AllInsights({
   initialData = [],
   initialArchives = [],
   initialYear,
-  productionMode, // ✅ Make sure this is received here
+  productionMode,
 }) {
   const [data, setData] = useState(initialData);
   const [filteredData, setFilteredData] = useState(initialData);
@@ -61,7 +61,6 @@ function AllInsights({
 
     try {
       const response = await fetch(url, {
-        cache: 'no-store',
         headers: { 'Content-Type': 'application/json' },
       });
 
