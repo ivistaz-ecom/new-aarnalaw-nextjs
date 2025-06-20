@@ -66,10 +66,10 @@ export default async function AarnaInsightsPage() {
 
   return (
     <InsightsClient
-      initialData={initialData}
-      initialArchives={archives}
-      initialYear={initialYear}
-      productionMode={productionMode}
-    />
+    initialData={initialData}
+    initialArchives={archives}
+    initialYear={initialYear}
+    productionMode={productionMode} // ✅ Pass it here
+  />
   );
 }
