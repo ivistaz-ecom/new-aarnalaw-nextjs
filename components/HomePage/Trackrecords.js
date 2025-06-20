@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import CountUp from "react-countup";
 import { LanguageContext } from "../../app/context/LanguageContext";
 
-export default function Trackrecords() {
+export default function TrackRecords() {
   const { language, translations } = useContext(LanguageContext);
   return (
     <div className="py-12">
