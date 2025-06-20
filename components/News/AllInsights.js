@@ -8,14 +8,53 @@ import configData from "../../config.json";
 
 const domain = typeof window !== "undefined" ? window.location.hostname : "";
 
-function AllNews({ searchTerm }) {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(6);
-  const [hasMore, setHasMore] = useState(true);
+function LoadingDots() {
+  return (
+    <div className="inline-flex items-center text-black">
+      Loading
+      <span className="loading-dots">
+        <span className="dot">.</span>
+        <span className="dot">.</span>
+        <span className="dot">.</span>
+      </span>
+      <style jsx>{`
+        .loading-dots {
+          display: inline-flex;
+        }
+        .dot {
+          animation: dotFade 1.4s infinite;
+          opacity: 0;
+          margin-left: 2px;
+        }
+        .dot:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+        .dot:nth-child(3) {
+          animation-delay: 0.4s;
+        }
+        @keyframes dotFade {
+          0%, 100% { opacity: 0; }
+          50% { opacity: 1; }
+        }
+      `}</style>
+    </div>
+  );
+}
 
-  const fetchContent = useCallback(async () => {
-    setLoading(true);
+function AllNews({ searchTerm, initialData = [] }) {
+  const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
+
+  const fetchContent = async (pageNum = 1, append = false) => {
+    if (append) {
+      setIsLoadingMore(true);
+    } else {
+      setLoading(true);
+    }
+
     try {
       let server;
       if (domain === `${configData.LIVE_SITE_URL}`) {
@@ -25,40 +64,35 @@ function AllNews({ searchTerm }) {
       } else {
         server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
       }
-  
+
       const response = await fetch(
-        `${configData.SERVER_URL}posts?_embed&categories[]=9&status[]=publish&production_mode[]=${server}&per_page=${page}`
+        `${configData.SERVER_URL}posts?_embed&categories[]=9&status[]=publish&production_mode[]=${server}&per_page=6&page=${pageNum}`
       );
       const newsData = await response.json();
-  
-      if (newsData.length === 0) {
-        setHasMore(false);
+
+      if (Array.isArray(newsData)) {
+        const sortedData = newsData.sort((a, b) => new Date(b.date) - new Date(a.date));
+        if (append) {
+          const newData = [...data, ...sortedData];
+          setData(newData);
+        } else {
+          setData(sortedData);
+        }
+        setHasMore(sortedData.length === 6);
       } else {
-        const enrichedData = newsData.map((item) => {
-          const featuredImage =
-            item._embedded?.['wp:featuredmedia']?.[0]?.source_url;
-          return {
-            ...item,
-            featured_image_url: featuredImage || null,
-          };
-        });
-        const sortedData = enrichedData.sort(
-          (a, b) => new Date(b.date) - new Date(a.date)
-        );
-        setData(sortedData);
-        setHasMore(sortedData.length === page);
+        setHasMore(false);
       }
-      setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
+      setHasMore(false);
+    }
+
+    if (append) {
+      setIsLoadingMore(false);
+    } else {
       setLoading(false);
     }
-  }, [page]);
-  
-
-  const debouncedFetchContent = useCallback(debounce(fetchContent, 500), [
-    page,
-  ]);
+  };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -66,15 +100,15 @@ function AllNews({ searchTerm }) {
     }
   }, []);
 
-  useEffect(() => {
-    fetchContent();
-    debouncedFetchContent();
-  }, [page, debouncedFetchContent]);
+  const loadMore = async () => {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    await fetchContent(nextPage, true);
+  };
 
   const formatDateString = (dateString) => {
     const date = new Date(dateString);
-    const monthAbbreviations = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC",
-    ];
+    const monthAbbreviations = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
     const day = date.getDate();
     const month = monthAbbreviations[date.getMonth()];
     const year = date.getFullYear();
@@ -86,18 +120,6 @@ function AllNews({ searchTerm }) {
     return text.length > 300 ? text.substring(0, 300) + "..." : text;
   };
 
-  const SkeletonLoader = () => (
-    <div className="flex w-full animate-pulse border border-gray-200 bg-white p-5 shadow dark:border-gray-700 dark:bg-gray-800">
-      <div className="flex h-[200px] w-full items-center justify-center rounded-lg bg-gray-300 md:h-[400px]"></div>
-      <div className="mt-4 space-y-2">
-        <div className="h-6 w-3/4 rounded bg-gray-400" />
-        <div className="h-4 w-full rounded bg-gray-400" />
-      </div>
-    </div>
-  );
-
-  const loadMorePosts = () => setPage((prevPage) => prevPage + 6);
-
   const filteredInsights = data.filter((data) =>
     data.title.rendered.toLowerCase().includes(searchTerm.toLowerCase())
   );
@@ -105,41 +127,20 @@ function AllNews({ searchTerm }) {
   return (
     <div className="p-4 md:p-8 lg:p-12">
       <div className="mx-auto grid grid-cols-1 gap-4 p-4 lg:grid-cols-2 lg:p-0">
-        {loading && filteredInsights.length === 0 ? (
-          Array.from({ length: 4 }).map((_, index) => (
-            <SkeletonLoader key={index} />
-          ))
-        ) : filteredInsights.length > 0 ? (
+        {filteredInsights.length > 0 ? (
           filteredInsights.map((items) => (
             <div
               className="rounded-lg border border-gray-200 bg-white shadow dark:border-gray-700 dark:bg-gray-800"
               key={items.id}
             >
-              <a href="#">
-                {items.featured_image_url ? (
-                  <Image
-                  src={items.featured_image_url}
-                  alt={items.title.rendered}
-                  className="h-[200px] w-full md:h-[300px] object-cover"
-                  width={500}
-                  height={300}
-                   loading="lazy"
-                />
-                
-                ) : (
-                  <div className="h-[300px] w-full rounded-t-lg bg-gray-200">
-                    <Image
-                      src="/PracticeArea/Aarna-Law-Banner-img.png" // Path to your default image
-                      alt="Default Image"
-                      className="h-full w-full object-cover"
-                      width={500}
-                      height={300}
-                       loading="lazy"
-                    />
-                  </div>
-                )}
-              </a>
-
+              <Image
+                src={items._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/PracticeArea/Aarna-Law-Banner-img.png"}
+                alt={items.title.rendered}
+                className="h-[200px] w-full md:h-[300px] object-cover"
+                width={500}
+                height={300}
+                priority={true}
+              />
               <div className="p-5">
                 <h5
                   className="mb-2 min-h-20 text-lg font-bold tracking-tight text-gray-900 dark:text-white md:text-xl"
@@ -171,25 +172,21 @@ function AllNews({ searchTerm }) {
         )}
 
         {/* Load More Button */}
-        {!loading && data.length >= 6 && hasMore && (
-          <div
-            className={`col-span-1 mt-6 justify-center md:col-span-2 ${
-              filteredInsights.length === 0 ? "hidden" : "flex"
-            }`}
-          >
-            <button
-              onClick={loadMorePosts}
-              className="bg-custom-red px-4 py-2 text-white"
-            >
-              Load More
-            </button>
-          </div>
-        )}
-
-        {/* No More Details Message */}
-        {!loading && (!hasMore || data.length < 6) && (
-          <div className="col-span-1 mt-4 text-center text-gray-500 md:col-span-2">
-            No more details available
+        {hasMore && filteredInsights.length >= 6 && (
+          <div className="col-span-1 mt-6 text-center sm:col-span-2">
+            {isLoadingMore ? (
+              <div className="inline-block px-4 py-2">
+                <LoadingDots />
+              </div>
+            ) : (
+              <button
+                onClick={loadMore}
+                className="bg-custom-red px-4 py-2 text-white hover:bg-red-600 active:bg-red-700"
+                disabled={isLoadingMore}
+              >
+                Load More
+              </button>
+            )}
           </div>
         )}
       </div>

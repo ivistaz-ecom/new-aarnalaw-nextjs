@@ -1,19 +1,18 @@
 // app/page.tsx
 import Banner from "../components/HomePage/Banner";
-import HomeInsights from "../components/HomePage/HomeInsights";
-import Podcast from "../components/HomePage/PodCast";
+import HomeInsights from "@/components/HomePage/HomeInsights";
 import WhatWeDo from "../components/HomePage/WhatWeDo";
-import TrackRecords from "../components/HomePage/Trackrecords";
-import Testimonials from "../components/HomePage/Testimonials";
 import KindOfDispute from "../components/HomePage/KindOfDisputesWeDo";
+import Testimonials from "../components/HomePage/Testimonials";
+import TrackRecords from "../components/HomePage/TrackRecords";
 import OurCredentials from "../components/HomePage/OurCredentials";
 import OurNetwork from "../components/HomePage/OurNetwork";
+import configData from "../config.json";
 
-// Example metadata
 export const metadata = {
-  title: "Aarna Law - Top Litigation, Dispute & Corporate Law Firm in India",
+  title: "Aarna Law - Leading Law Firm in India",
   description:
-    "Leading corporate law firm in India offering legal services in business law, litigation, arbitration, and compliance for Indian and international companies.",
+    "Aarna Law is a leading law firm in India specializing in arbitration, litigation, and corporate advisory services.",
   alternates: {
     canonical: "https://aarnalaw.com/",
   },
@@ -26,38 +25,68 @@ export const metadata = {
   },
 };
 
-// Server-side fetch
+interface InsightPost {
+  id: number;
+  date: string;
+  title: { rendered: string };
+  excerpt: { rendered: string };
+  slug: string;
+  _embedded?: {
+    "wp:featuredmedia"?: Array<{ source_url: string }>;
+  };
+}
+
 async function getInsights() {
-  const res = await fetch(
-    `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&categories[]=13&status[]=publish&per_page=6`,
-    {
-      next: { revalidate: 60 }, // Optional ISR (caching)
-    },
-  );
+  try {
+    const domain =
+      process.env.NODE_ENV === "production"
+        ? configData.LIVE_SITE_URL
+        : configData.STAGING_SITE_URL;
 
-  const posts = await res.json();
+    const server =
+      domain === configData.LIVE_SITE_URL
+        ? configData.LIVE_PRODUCTION_SERVER_ID
+        : configData.STAG_PRODUCTION_SERVER_ID;
 
-  return posts.map((item: any) => ({
-    id: item.id,
-    slug: item.slug,
-    title: item.title.rendered,
-    desc: item.excerpt.rendered,
-    imageUrl: item._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
-  }));
+    const page = 8;
+    const insightsResponse = await fetch(
+      `${configData.SERVER_URL}posts?_embed&categories[]=13&status[]=publish&production_mode[]=${server}&per_page=${page}`,
+      { cache: "no-store" }
+    );
+
+    if (!insightsResponse.ok) {
+      throw new Error("Failed to fetch insights");
+    }
+
+    const posts: InsightPost[] = await insightsResponse.json();
+
+    return posts
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .slice(0, 6)
+      .map((item) => ({
+        id: item.id,
+        imageUrl: item._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
+        title: item.title.rendered,
+        desc: item.excerpt.rendered,
+        slug: item.slug,
+      }));
+  } catch (error) {
+    console.error("Error fetching insights:", error);
+    return [];
+  }
 }
 
 export default async function Home() {
-  const insights = await getInsights();
+  const initialInsights = await getInsights();
 
   return (
     <>
       <Banner />
-      <HomeInsights insights={insights} />
-      {/* <Podcast /> */}
+      <HomeInsights />
       <WhatWeDo />
       <KindOfDispute />
-      <TrackRecords />
       <Testimonials />
+      <TrackRecords />
       <OurCredentials />
       <OurNetwork />
     </>

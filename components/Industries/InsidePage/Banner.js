@@ -1,4 +1,5 @@
-import { useEffect, useState, useContext } from "react";
+"use client";
+import { useContext } from "react";
 import { LanguageContext } from "../../../app/context/LanguageContext";
 
 export default function IndustriesBanner({
@@ -6,28 +7,9 @@ export default function IndustriesBanner({
   mobileBackgroundImage,
   titleText,
 }) {
-  const [bgImage, setBgImage] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
   const { language } = useContext(LanguageContext);
 
-  useEffect(() => {
-    const updateBgImage = () => {
-      const selectedImage = window.innerWidth <= 768 ? mobileBackgroundImage : backgroundImage;
-      setBgImage(selectedImage);
-
-      const img = new Image();
-      img.src = selectedImage;
-      img.onload = () => {
-        setIsLoading(false);
-      };
-    };
-
-    updateBgImage();
-    window.addEventListener("resize", updateBgImage);
-
-    return () => window.removeEventListener("resize", updateBgImage);
-  }, [backgroundImage, mobileBackgroundImage]);
-
+  // Get the correct title based on language
   const title =
     language === "ta" && titleText?.acf?.tamil_title
       ? titleText.acf.tamil_title
@@ -43,31 +25,27 @@ export default function IndustriesBanner({
                 ? titleText.acf.marathi_title
                 : language === "gu" && titleText?.acf?.gujarati_title
                   ? titleText.acf.gujarati_title
-                  : titleText?.rendered;
+                  : titleText?.title?.rendered;
+
+  // Get banner images with fallback
+  const desktopBanner = backgroundImage?.url || backgroundImage;
+  const mobileBanner = mobileBackgroundImage?.url || mobileBackgroundImage || desktopBanner;
+  const currentBanner = typeof window !== 'undefined' && window.innerWidth <= 768 ? mobileBanner : desktopBanner;
 
   return (
-    <div className="relative lg:h-screen">
-      {isLoading ? (
-        <div className="relative h-screen animate-pulse bg-gray-300">
-          <div className="absolute bottom-0 flex h-screen w-full items-center justify-center">
-            <div className="flex h-12 w-48 animate-pulse items-center justify-center bg-gray-500 text-white">
-              Loading
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div
-          className="h-[500px] bg-cover bg-center lg:h-screen"
-          style={{ backgroundImage: `url(${bgImage})` }}
-        >
-          <div className="absolute bottom-0 flex h-[500px] w-full items-center justify-center lg:h-screen">
-            <h1
-              className="rounded bg-black/50 lg:p-5 p-3 text-center text-4xl font-bold text-white lg:text-start lg:text-5xl"
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-          </div>
-        </div>
-      )}
+    <div className="relative h-[500px] lg:h-screen">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-gray-100"
+        style={currentBanner ? { backgroundImage: `url(${currentBanner})` } : {}}
+      />
+      <div className="relative flex h-full items-center justify-center px-4">
+        {title && (
+          <h1
+            className="max-w-4xl text-center text-3xl font-bold text-white md:text-4xl lg:text-5xl bg-black/50 p-4"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+        )}
+      </div>
     </div>
   );
 }

@@ -1,22 +1,23 @@
 "use client";
 import React, { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import configData from "../../config.json";   
+import configData from "../../config.json";
 import PublicationPopupForm from "../../utils/Forms/PublicationForms/PublicationPopupForm";
 import { useRouter } from "next/navigation";
 
-function AllInsights({ searchTerm }) {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
+function AllInsights({ searchTerm, initialData = [] }) {
+  const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(false);
   const [page, setPage] = useState(6);
   const [error, setError] = useState(null);
   const [showForm, setShowForm] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(null); // Added state to store selected item
+  const [selectedItem, setSelectedItem] = useState(null);
   const router = useRouter();
 
   const domain = typeof window !== "undefined" ? window.location.hostname : "";
 
   const fetchContent = useCallback(async () => {
+    if (!data.length) return;
     setLoading(true);
     setError(null);
 
@@ -52,11 +53,13 @@ function AllInsights({ searchTerm }) {
       setLoading(false);
       setError("Something went wrong. Please try again later.");
     }
-  }, [domain]);
+  }, [domain, data.length]);
 
   useEffect(() => {
-    fetchContent();
-  }, [fetchContent]);
+    if (data.length === 0) {
+      fetchContent();
+    }
+  }, [fetchContent, data.length]);
 
   const loadMore = () => {
     if (data.length > page) {
@@ -66,7 +69,7 @@ function AllInsights({ searchTerm }) {
 
   const formatDateString = (dateString) => {
     const date = new Date(dateString);
-    const monthAbbreviations = [ "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC",
+    const monthAbbreviations = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC",
     ];
     return (
       <div className="flex flex-row items-center gap-2 lg:flex-col lg:gap-0">
@@ -102,7 +105,6 @@ function AllInsights({ searchTerm }) {
     .slice(0, page);
 
   const handleFormSubmit = (formData) => {
-    // console.log("Item:", selectedItem); // Logs selected item
     if (selectedItem && selectedItem.acf && selectedItem.acf.publication_url) {
       window.location.href = selectedItem.acf.publication_url;
     } else if (selectedItem && selectedItem.slug) {
@@ -114,7 +116,7 @@ function AllInsights({ searchTerm }) {
 
   const handleCloseForm = () => {
     setShowForm(false);
-    setSelectedItem(null); // Clear selected item on form close
+    setSelectedItem(null);
   };
 
   return (
@@ -154,7 +156,7 @@ function AllInsights({ searchTerm }) {
                       <PublicationPopupForm
                         onSubmit={handleFormSubmit}
                         onClose={handleCloseForm}
-                        item={selectedItem} // Pass the selected item to the form
+                        item={selectedItem}
                       />
                     </div>
                   ) : (
@@ -163,7 +165,7 @@ function AllInsights({ searchTerm }) {
                       className="font-semibold text-custom-red"
                       onClick={() => {
                         setShowForm(true);
-                        setSelectedItem(item); // Store the selected item
+                        setSelectedItem(item);
                       }}
                     >
                       Read more
