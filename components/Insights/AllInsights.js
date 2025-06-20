@@ -36,7 +36,13 @@ function LoadingDots() {
   );
 }
 
-function AllInsights({ searchTerm, initialData = [], initialArchives = [], initialYear, productionMode }) {
+function AllInsights({
+  searchTerm,
+  initialData = [],
+  initialArchives = [],
+  initialYear,
+  productionMode, // ✅ Make sure this is received here
+}) {
   const [data, setData] = useState(initialData);
   const [filteredData, setFilteredData] = useState(initialData);
   const [archives, setArchives] = useState(initialArchives);

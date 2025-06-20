@@ -4,7 +4,12 @@ import Banner from "@/components/Insights/Banner";
 import AllInsights from "@/components/Insights/AllInsights";
 import Navigation from "@/components/InsightsNavigation/Navigation";
 
-export default function InsightsClient({ initialData, initialArchives, initialYear, productionMode }) {
+export default function InsightsClient({
+  initialData,
+  initialArchives,
+  initialYear,
+  productionMode,
+}) {
   const [searchTerm, setSearchTerm] = useState("");
 
   return (
@@ -16,7 +21,7 @@ export default function InsightsClient({ initialData, initialArchives, initialYe
         initialData={initialData}
         initialArchives={initialArchives}
         initialYear={initialYear}
-        productionMode={productionMode}
+        productionMode={productionMode} // ✅ Passed here
       />
     </div>
   );
