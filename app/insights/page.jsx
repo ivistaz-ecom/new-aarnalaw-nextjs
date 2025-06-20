@@ -1,11 +1,14 @@
 import InsightsClient from "./InsightsClient";
 import config from "../../config.json";
 import { getProductionMode } from "@/lib/getProductionMode";
+import { headers } from "next/headers";
+
+// ✅ Tell Next.js: render this page on each request (server-side)
+export const dynamic = "force-dynamic";
 
 export const metadata = {
   title: "Legal Insights and Expertise",
-  description:
-    "Stay informed with the latest legal insights and expert analyses...",
+  description: "Stay informed with the latest legal insights and expert analyses...",
   metadataBase: new URL("https://www.aarnalaw.com"),
   alternates: { canonical: "/insights" },
   openGraph: {
@@ -31,8 +34,10 @@ async function fetchInsights(year, productionMode, page = 1) {
 }
 
 export default async function AarnaInsightsPage() {
-  const hostname = process.env.NEXT_PUBLIC_HOSTNAME || "localhost";
+  const headersList = headers();
+  const hostname = headersList.get("host") || "localhost";
   const productionMode = getProductionMode(hostname);
+
   const archives = await fetchArchives();
   const initialYear = archives[0]?.name || new Date().getFullYear().toString();
   const initialData = await fetchInsights(initialYear, productionMode);
