@@ -7,34 +7,28 @@ export default function PracticeAreaBanner({
   mobileBackgroundImage,
   titleText,
 }) {
-  const [bgImage, setBgImage] = useState(null); // For setting the correct image based on screen size
-  const [imageLoaded, setImageLoaded] = useState(false); // Track if image is loaded
+  const [bgImage, setBgImage] = useState(backgroundImage?.url || backgroundImage);
   const { language } = useContext(LanguageContext); // Get selected language
 
   useEffect(() => {
-    // Set initial background image based on screen size
     const handleResize = () => {
-      const img = window.innerWidth <= 768 ? mobileBackgroundImage : backgroundImage;
+      const img = window.innerWidth <= 768
+        ? (mobileBackgroundImage?.url || mobileBackgroundImage)
+        : (backgroundImage?.url || backgroundImage);
       setBgImage(img);
-      setImageLoaded(false); // Reset loader when image changes
-
-      // Preload image with higher priority
-      const preloadImg = new window.Image();
-      preloadImg.src = img;
-      preloadImg.onload = () => setImageLoaded(true);
-      preloadImg.onerror = () => setImageLoaded(true); // Handle error case
     };
 
-    handleResize(); // Initial image load
-    window.addEventListener("resize", handleResize); // Adjust on resize
+    if (backgroundImage || mobileBackgroundImage) {
+      handleResize();
+      window.addEventListener("resize", handleResize);
+    }
 
-    // Cleanup
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [backgroundImage, mobileBackgroundImage]);
 
-  // Select title based on language
+  // Get the correct title based on language
   const title =
     language === "ta" && titleText?.acf?.tamil_title
       ? titleText.acf.tamil_title
@@ -50,32 +44,23 @@ export default function PracticeAreaBanner({
                 ? titleText.acf.marathi_title
                 : language === "gu" && titleText?.acf?.gujarati_title
                   ? titleText.acf.gujarati_title
-                  : titleText?.rendered;
-  // Default to the English title 
+                  : titleText?.title?.rendered || titleText?.rendered || '';
 
   return (
-    <div className="relative lg:h-screen">
-      {!imageLoaded ? (
-        <div className="relative h-[500px] lg:h-screen bg-gray-100">
-          <div className="absolute bottom-0 flex h-[500px] w-full items-center justify-center lg:h-screen">
-            <div className="flex h-8 w-32 items-center justify-center bg-gray-200 text-gray-600 rounded-md">
-              Loading...
-            </div>
-          </div>
-        </div>
-      ) : (
-        <div
-          className="h-[500px] bg-cover bg-center lg:h-screen"
-          style={{ backgroundImage: `url(${bgImage})` }}
-        >
-          <div className="absolute bottom-0 flex h-[500px] w-full items-center justify-center lg:h-screen">
-            <h1
-              className="rounded bg-black/50 lg:p-5 p-3 text-center text-4xl font-bold text-white lg:text-start lg:text-5xl"
-              dangerouslySetInnerHTML={{ __html: title }}
-            />
-          </div>
-        </div>
-      )}
+    <div className="relative h-[500px] lg:h-screen">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-gray-100"
+        style={bgImage ? { backgroundImage: `url(${bgImage})` } : {}}
+      />
+      {/* <div className="absolute inset-0 bg-black/50" /> Overlay */}
+      <div className="relative flex h-full items-center justify-center px-4">
+        {title && (
+          <h1
+            className="max-w-4xl text-center text-3xl font-bold text-white md:text-4xl lg:text-5xl bg-black/50 p-4"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+        )}
+      </div>
     </div>
   );
 }

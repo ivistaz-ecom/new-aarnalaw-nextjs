@@ -43,7 +43,7 @@ function AllInsights({ searchTerm, initialData = [], initialArchives = [], initi
   const [selectedArchive, setSelectedArchive] = useState(initialYear || (initialArchives[0]?.name ?? null));
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const [isLoadingMore, setIsLoadingMore] = useState(false);
+  const [isLoadingMore, setIsLoadingMore] = useState(false); 
   const [isChangingArchive, setIsChangingArchive] = useState(false);
 
   const fetchData = async (year, pageNum = 1, append = false) => {

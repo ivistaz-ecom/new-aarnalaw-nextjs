@@ -7,10 +7,10 @@ import FloatingAudioPlayer from "./FloatingAudioPlayer";
 import { initFlowbite } from "flowbite";
 import configData from "../../config.json";
 
-function AllPodCasts({ searchTerm }) {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(6);
+function AllPodCasts({ searchTerm, initialData = [] }) {
+  const [data, setData] = useState(initialData);
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [currentPodcastIndex, setCurrentPodcastIndex] = useState(null);
   const [volume, setVolume] = useState(1.0);
@@ -61,22 +61,20 @@ function AllPodCasts({ searchTerm }) {
   };
 
   const handleSeek = (index, newTime, newProgress) => {
-    // Update the current time and progress for the specific podcast
     setCurrentTime((prev) => ({ ...prev, [index]: newTime }));
     setProgress((prev) => ({ ...prev, [index]: newProgress }));
 
-    // Seek audio element
     const audioElement = audioRefs.current[index];
     if (audioElement) {
       audioElement.currentTime = newTime;
     }
   };
 
-
-
-  const fetchContent = useCallback(async () => {
-    setLoading(true);
-    setError(null); // Reset the error state before each fetch
+  const fetchContent = async (pageNum = 1, append = false) => {
+    if (append) {
+      setLoading(true);
+    }
+    setError(null);
 
     try {
       let server;
@@ -88,53 +86,37 @@ function AllPodCasts({ searchTerm }) {
         server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
       }
 
-      const publicationsResponse = await fetch(
-        `${configData.SERVER_URL}podcast?_embed&status[]=publish&production_mode[]=${server}&per_page=${page}`
+      const response = await fetch(
+        `${configData.SERVER_URL}podcast?_embed&status[]=publish&production_mode[]=${server}&per_page=6&page=${pageNum}`
       );
 
-      if (!publicationsResponse.ok) {
+      if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
 
-      const result = await publicationsResponse.json();
+      const result = await response.json();
 
-      if (result.length === 0) {
+      if (Array.isArray(result)) {
+        const transformedData = result.map((item) => ({
+          ...item,
+          featured_image_url: item.episode_featured_image || "",
+        }));
+
+        if (append) {
+          setData(prevData => [...prevData, ...transformedData]);
+        } else {
+          setData(transformedData);
+        }
+        setHasMore(result.length === 6);
+      } else {
         setHasMore(false);
-        setLoading(false);
-        return;
       }
-
-      const transformedData = result.map((item) => ({
-        ...item,
-        featured_image_url: item.episode_featured_image || "", // Use episode_featured_image for the featured image
-      }));
-
-      setData((prevData) => [
-        ...prevData,
-        ...transformedData.filter(
-          (newPost) => !prevData.some((prevPost) => prevPost.id === newPost.id)
-        ),
-      ]);
-      setHasMore(result.length === page);
-      setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
-      setLoading(false);
       setError("Something went wrong. Please try again later.");
     }
-  }, [page, domain]);
-
-
-
-
-
-
-  // Run fetchContent on page change
-  useEffect(() => {
-    fetchContent();
-  }, [page, fetchContent]);
-
-
+    setLoading(false);
+  };
 
   useEffect(() => {
     const currentAudioRefs = audioRefs.current;
@@ -174,17 +156,11 @@ function AllPodCasts({ searchTerm }) {
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
-  const SkeletonLoader = () => (
-    <div className="flex animate-pulse rounded-lg border border-gray-200 bg-white p-5 shadow dark:border-gray-700 dark:bg-gray-800">
-      <div className="flex h-[400px] w-full items-center justify-center bg-gray-300"></div>
-      <div className="">
-        <div className="mb-2 h-20 w-3/4 rounded bg-gray-400" />
-        <div className="h-20 w-full rounded bg-gray-400" />
-      </div>
-    </div>
-  );
-
-  const loadMorePosts = () => setPage((prevPage) => prevPage + 6);
+  const loadMore = async () => {
+    const nextPage = page + 1;
+    setPage(nextPage);
+    await fetchContent(nextPage, true);
+  };
 
   const filteredInsights = data.filter((data) =>
     data.title.rendered.toLowerCase().includes(searchTerm.toLowerCase()),
@@ -200,20 +176,15 @@ function AllPodCasts({ searchTerm }) {
   return (
     <div className="flex flex-col">
       <div className="mx-auto grid w-full gap-4 p-4 md:grid-cols-2 md:p-12">
-        {loading && filteredInsights.length === 0 ? (
-          Array.from({ length: 4 }).map((_, index) => (
-            <SkeletonLoader key={index} />
-          ))
-        ) : filteredInsights.length > 0 ? (
+        {filteredInsights.length > 0 ? (
           filteredInsights.map((item, index) => (
             <div
               className={`rounded-lg border ${currentPodcastIndex === index
-                  ? "border-red-500"
-                  : "border-gray-200"
+                ? "border-red-500"
+                : "border-gray-200"
                 } bg-white shadow dark:border-gray-700 dark:bg-gray-800`}
               key={item.id}
             >
-              {/* Render Podcast Card */}
               <div className="relative">
                 {item.featured_image_url && (
                   <Image
@@ -222,7 +193,7 @@ function AllPodCasts({ searchTerm }) {
                     className="w-full rounded-t-lg lg:h-[300px]"
                     width={500}
                     height={500}
-                    loading="lazy"
+                    priority={true}
                   />
                 )}
               </div>
@@ -250,7 +221,6 @@ function AllPodCasts({ searchTerm }) {
                   )}
               </div>
 
-              {/* Player Controls */}
               {item.player_link && (
                 <div className="flex items-center justify-between px-4 pb-4">
                   <button
@@ -299,20 +269,15 @@ function AllPodCasts({ searchTerm }) {
         )}
       </div>
 
-      {!loading && hasMore && filteredInsights.length > 0 && (
+      {hasMore && filteredInsights.length >= 6 && (
         <div className="col-span-1 mt-6 flex justify-center md:col-span-2">
           <button
-            onClick={loadMorePosts}
-            className="bg-custom-red px-4 py-2 text-white"
+            onClick={loadMore}
+            className="bg-custom-red px-4 py-2 text-white hover:bg-red-600 active:bg-red-700"
+            disabled={loading}
           >
-            Load More
+            {loading ? "Loading..." : "Load More"}
           </button>
-        </div>
-      )}
-
-      {!loading && !hasMore && (
-        <div className="col-span-1 mt-6 flex justify-center text-gray-500 md:col-span-2">
-          No more details available
         </div>
       )}
 
@@ -332,7 +297,6 @@ function AllPodCasts({ searchTerm }) {
         formatTime={formatTime}
       />
     </div>
-
   );
 }
 
