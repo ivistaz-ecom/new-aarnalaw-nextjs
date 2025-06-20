@@ -1,9 +1,11 @@
 import InsightsClient from "./InsightsClient";
-import configData from "../../config.json";
+import config from "../../config.json";
+import { getProductionMode } from "@/lib/getProductionMode";
 
 export const metadata = {
   title: "Legal Insights and Expertise",
-  description: "Stay informed with the latest legal insights...",
+  description:
+    "Stay informed with the latest legal insights and expert analyses...",
   metadataBase: new URL("https://www.aarnalaw.com"),
   alternates: { canonical: "/insights" },
   openGraph: {
@@ -14,42 +16,23 @@ export const metadata = {
   },
 };
 
-function getProductionMode() {
-  const domain = process.env.NEXT_PUBLIC_HOSTNAME || "localhost";
-
-  if (
-    domain === configData.LIVE_SITE_URL ||
-    domain === configData.LIVE_SITE_URL_WWW
-  ) {
-    return configData.LIVE_PRODUCTION_SERVER_ID;
-  } else if (domain === configData.STAGING_SITE_URL) {
-    return configData.STAG_PRODUCTION_SERVER_ID;
-  } else {
-    return configData.STAG_PRODUCTION_SERVER_ID;
-  }
-}
-
 async function fetchArchives() {
-  const res = await fetch("https://docs.aarnalaw.com/wp-json/wp/v2/archives", {
-    cache: "no-store",
-  });
+  const res = await fetch(config.SERVER_URL + "archives", { cache: "no-store" });
   const archives = await res.json();
   return archives.sort((a, b) => parseInt(b.name, 10) - parseInt(a.name, 10));
 }
 
 async function fetchInsights(year, productionMode, page = 1) {
-  const cat1 = 12;
-  const cat2 = 13;
   const after = `${year}-01-01T00:00:00`;
   const before = `${year}-12-31T23:59:59`;
-  const url = `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&per_page=6&page=${page}&categories=${cat1},${cat2}&after=${after}&before=${before}&status[]=publish&production_mode[]=${productionMode}`;
-
+  const url = `${config.SERVER_URL}posts?_embed&per_page=6&page=${page}&categories=12,13&after=${after}&before=${before}&status[]=publish&production_mode[]=${productionMode}`;
   const res = await fetch(url, { cache: "no-store" });
   return await res.json();
 }
 
 export default async function AarnaInsightsPage() {
-  const productionMode = getProductionMode();
+  const hostname = process.env.NEXT_PUBLIC_HOSTNAME || "localhost";
+  const productionMode = getProductionMode(hostname);
   const archives = await fetchArchives();
   const initialYear = archives[0]?.name || new Date().getFullYear().toString();
   const initialData = await fetchInsights(initialYear, productionMode);
