@@ -33,7 +33,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo/NewAarnalawLogo.jpg"
-                alt="Aarna Law Logo"
+                alt=""
                 width={600}
                 height={600}
                 className="md:h-24 md:w-24 h-20 w-20"
