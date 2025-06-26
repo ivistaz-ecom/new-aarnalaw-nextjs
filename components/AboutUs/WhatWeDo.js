@@ -16,7 +16,7 @@ const WhatWeDo = () => {
             width={500}
             height={500}
             className="w-full"
-            alt="What We Do"
+            alt=""
              loading="lazy"
           />
         </div>

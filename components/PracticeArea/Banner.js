@@ -15,7 +15,7 @@ export default function Banner() {
           fill
           priority
           className="hidden md:block object-cover"
-          alt="Practice Areas Banner"
+          alt=""
           quality={90}
         />
         {/* Mobile banner */}
@@ -24,7 +24,7 @@ export default function Banner() {
           fill
           priority
           className="block md:hidden object-cover"
-          alt="Practice Areas Mobile Banner"
+          alt=""
           quality={90}
         />
       </div>

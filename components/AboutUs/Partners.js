@@ -136,7 +136,7 @@ export default function Partners() {
                   <Image
                     src={imageUrl}
                     className="mx-auto size-48 rounded-full bg-[#0e1333]"
-                    alt="team member"
+                    alt=""
                     width={200}
                     height={200}
                     loading="lazy"

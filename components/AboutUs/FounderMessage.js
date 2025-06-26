@@ -13,7 +13,7 @@ function FounderMessage() {
             width={100}
             height={100}
             className="h-[30px] w-full lg:-mt-10"
-            alt="MESSAGE FROM OUR FOUNDERS"
+            alt=""
             loading="lazy"
           />
         </div>
@@ -27,7 +27,7 @@ function FounderMessage() {
           width={500}
           height={500}
           className="w-full"
-          alt="MESSAGE FROM OUR FOUNDERS"
+          alt=""
           loading="lazy"
         />
       </div>
@@ -38,7 +38,7 @@ function FounderMessage() {
             width={100}
             height={100}
             className="h-[30px] w-full lg:-mt-10"
-            alt="MESSAGE FROM OUR FOUNDERS"
+            alt=""
             loading="lazy"
           />
         </div>

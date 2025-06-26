@@ -31,7 +31,7 @@ export default function JayasimhaFoundation() {
             width={500}
             height={500}
             className="w-full"
-            alt="JAYASIMHA FOUNDATION"
+            alt=""
              loading="lazy"
           />
         </div>

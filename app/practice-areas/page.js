@@ -1,4 +1,5 @@
-// app/practice-area/page.tsx
+// app/practice-area/page.js
+import { headers } from "next/headers";
 import Banner from "@/components/PracticeArea/Banner";
 import PracticeLists from "@/components/PracticeArea/PracticeLists";
 import configData from "@/config.json";
@@ -22,14 +23,29 @@ export const metadata = {
 
 async function getPracticeAreas() {
   try {
-    const server = configData.LIVE_PRODUCTION_SERVER_ID; // default to live
+    const headersList = headers();
+    const host = headersList.get("host") || "";
+
+    // Default to live server
+    let server = configData.LIVE_PRODUCTION_SERVER_ID;
+
+    // If on staging domain or localhost, switch to staging
+    if (
+      host.includes(configData.STAGING_SITE_URL) ||
+      host.includes("localhost")
+    ) {
+      server = configData.STAG_PRODUCTION_SERVER_ID;
+    }
+
     const res = await fetch(
       `${configData.SERVER_URL}practice-areas?_embed&status[]=publish&production_mode[]=${server}&per_page=100`,
       { next: { revalidate: 60 } }
     );
 
     const data = await res.json();
-    return data.sort((a, b) => a.title.rendered.localeCompare(b.title.rendered));
+    return data.sort((a, b) =>
+      a.title.rendered.localeCompare(b.title.rendered)
+    );
   } catch (error) {
     console.error("Practice Areas fetch error:", error);
     return [];
@@ -46,3 +62,4 @@ export default async function PracticeAreaPage() {
     </>
   );
 }
+

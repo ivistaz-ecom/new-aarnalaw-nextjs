@@ -8,7 +8,7 @@ export default function Banner() {
     <div className="relative h-[600px]">
       <Image
         src="/aboutUs/aboutusbanner.png"
-        alt="About Us Banner"
+        alt="About Us"
         fill
         priority={true}
         className="object-cover"
