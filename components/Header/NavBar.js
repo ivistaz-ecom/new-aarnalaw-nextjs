@@ -15,23 +15,37 @@ const NavBar = () => {
   const { language, setLanguage, translations } = useContext(LanguageContext);
   const newsPaths = ["/aarna-news", "/insight", "/publication", "/podcast"];
 
-  // Function to format translation keys
   const formatKey = (key) => key.toLowerCase().replace(/[^a-z0-9]+/g, "");
 
-  useEffect(() => {
-    // Scroll to top whenever pathname changes (page load or route change)
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth"
-    });
 
+  useEffect(() => {
+    const handleScrollTop = () => {
+      if (window.scrollY > 0) {
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: "smooth"
+        });
+      }
+    };
+
+    // Scroll after full page load (reliable for hard reload)
+    if (document.readyState === "complete") {
+      setTimeout(handleScrollTop, 50); // Delay slightly to allow DOM to paint
+    } else {
+      window.addEventListener("load", handleScrollTop);
+    }
+
+    // Redirect /podcast to /podcasts
     if (pathname === "/podcast") {
       router.replace("/podcasts");
     }
 
-    // Close menu on route change
     setIsMenuOpen(false);
+
+    return () => {
+      window.removeEventListener("load", handleScrollTop);
+    };
   }, [pathname, router]);
 
   return (
@@ -82,7 +96,10 @@ const NavBar = () => {
             </svg>
           </button>
 
-          <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto `} id="navbar-dropdown">
+          <div
+            className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
+            id="navbar-dropdown"
+          >
             <ul className="borderfont-medium mt-1 flex flex-col rounded-lg dark:border-gray-700 md:flex-row md:space-x-3">
               {HeaderMenu.map((item, index) => {
                 const isContactUs = item.menu === "Contact Us";
