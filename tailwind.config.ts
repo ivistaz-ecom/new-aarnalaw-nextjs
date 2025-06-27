@@ -19,8 +19,8 @@ const config: Config = {
         bgDark3: "#16396e",
         bgDark4: "#0E1333",
         "custom-blue": "#1E396A",
-        "custom-red": "#EE3E23",
-        "custom-gray": "#7E838B",
+        "custom-red": "#E6331C",
+        "custom-gray": "#4A4A4A",
       },
       backgroundColor: {
         "151C4A": "#151C4A",

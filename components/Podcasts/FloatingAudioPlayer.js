@@ -46,12 +46,12 @@ const FloatingAudioPlayer = ({
         <div className="flex items-center justify-between">
           <div className="flex w-full flex-col justify-between lg:flex-row ">
             <div className="w-full lg:w-1/2">
-              <h5
+              <p
                 className="text-sm font-bold text-white"
                 dangerouslySetInnerHTML={{
                   __html: currentPodcast?.title?.rendered,
                 }}
-              ></h5>
+              />
               <span className="text-sm text-white">
                 {formatTime(currentTime[currentPodcastIndex] || 0)} /{" "}
                 {formatTime(duration[currentPodcastIndex] || 0)}

@@ -170,7 +170,7 @@ function AllInsights({
                   priority={true}
                 />
                 <div className="p-5">
-                  <h5
+                  <p
                     className="mb-2 line-clamp-2 min-h-10 text-lg font-bold tracking-tight text-gray-900"
                     dangerouslySetInnerHTML={{ __html: item.title.rendered }}
                   />

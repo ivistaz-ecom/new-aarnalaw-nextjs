@@ -142,10 +142,10 @@ function AllNews({ searchTerm, initialData = [] }) {
                 priority={true}
               />
               <div className="p-5">
-                <h5
+                <p
                   className="mb-2 min-h-20 text-lg font-bold tracking-tight text-gray-900 dark:text-white md:text-xl"
                   dangerouslySetInnerHTML={{ __html: items.title.rendered }}
-                ></h5>
+                ></p>
 
                 <p
                   className="mb-3 min-h-28 text-sm font-normal text-gray-700 dark:text-gray-400 md:h-20"

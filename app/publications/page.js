@@ -1,7 +1,10 @@
 // app/publications/page.js
-import { headers } from "next/headers";
+
 import PublicationsClient from "./PublicationsClient";
 import configData from "../../config.json";
+
+// Enable ISR (revalidate every 60 seconds)
+export const revalidate = 60;
 
 export const metadata = {
   title: "Legal Publications and Research",
@@ -22,24 +25,18 @@ export const metadata = {
 
 async function fetchInitialPublications() {
   try {
-    const headersList = headers();
-    const host = headersList.get("host") || "";
-
-    // Default to live server
-    let server = configData.LIVE_PRODUCTION_SERVER_ID;
-
-    // Use staging server if host matches
-    if (
-      host.includes(configData.STAGING_SITE_URL) ||
-      host.includes("localhost")
-    ) {
-      server = configData.STAG_PRODUCTION_SERVER_ID;
-    }
+    // Determine server based on environment
+    const isProduction = process.env.NODE_ENV === "production";
+    const server = isProduction
+      ? configData.LIVE_PRODUCTION_SERVER_ID
+      : configData.STAG_PRODUCTION_SERVER_ID;
 
     const url = `${configData.SERVER_URL}publications?_embed&status[]=publish&production_mode[]=${server}`;
-    const res = await fetch(url, { cache: "no-store" });
-    const data = await res.json();
+    const res = await fetch(url, {
+      next: { revalidate: 60 }, // Use ISR
+    });
 
+    const data = await res.json();
     return data.sort((a, b) => new Date(b.date) - new Date(a.date));
   } catch (error) {
     console.error("Publications fetch error:", error);

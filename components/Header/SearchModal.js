@@ -84,6 +84,7 @@ function SearchModal() {
       <button
         className="block cursor-pointer text-center text-2xl text-black focus:outline-none"
         onClick={() => setOpenModal(true)}
+        aria-label="Open search modal"
       >
         {search}
       </button>

@@ -1,7 +1,8 @@
-// app/podcasts/page.js
-import { headers } from "next/headers";
 import PodcastsClient from "./PodcastsClient";
 import configData from "../../config.json";
+
+// Static ISR support
+export const revalidate = 60;
 
 export const metadata = {
   title: "Legal Podcasts and Audio Content",
@@ -22,22 +23,19 @@ export const metadata = {
 
 async function fetchInitialPodcasts() {
   try {
-    const headersList = headers();
-    const host = headersList.get("host") || "";
-
-    // Default to live server
-    let server = configData.LIVE_PRODUCTION_SERVER_ID;
-
-    // Use staging server if host matches
-    if (
-      host.includes(configData.STAGING_SITE_URL) ||
-      host.includes("localhost")
-    ) {
-      server = configData.STAG_PRODUCTION_SERVER_ID;
-    }
+    // Use environment instead of headers
+    const isProd = process.env.NODE_ENV === "production";
+    const server = isProd
+      ? configData.LIVE_PRODUCTION_SERVER_ID
+      : configData.STAG_PRODUCTION_SERVER_ID;
 
     const url = `${configData.SERVER_URL}podcast?_embed&status[]=publish&production_mode[]=${server}&per_page=6`;
-    const res = await fetch(url, { cache: "no-store" });
+
+    const res = await fetch(url, {
+      // Use static generation + revalidation
+      next: { revalidate: 60 },
+    });
+
     const data = await res.json();
 
     return data.map((item) => ({

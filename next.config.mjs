@@ -72,14 +72,14 @@ const nextConfig = {
         destination:
           "/contact-us",
         permanent: true,
-      },
+      }, 
       // Teams
-      {
-        source: "/apoorva-guruprasad",
-        destination:
-          "/team/apoorva-guruprasad",
-        permanent: true,
-      },
+      // {
+      //   source: "/apoorva-guruprasad",
+      //   destination:
+      //     "/team/apoorva-guruprasad",
+      //   permanent: true,
+      // },
       // Insights
 
       {

@@ -139,7 +139,7 @@ function AllInsights({ searchTerm, initialData = [] }) {
               {formatDateString(item.date)}
             </div>
             <div className="p-5">
-              <h5
+              <p
                 className="mb-2 line-clamp-2 min-h-14 text-xl font-medium tracking-tight text-gray-900 dark:text-white sm:text-xl"
                 dangerouslySetInnerHTML={{ __html: item.title.rendered }}
               />
