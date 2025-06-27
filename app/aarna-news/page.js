@@ -1,7 +1,10 @@
 // app/aarna-news/page.js
-import { headers } from "next/headers";
+
 import NewsClient from "./NewsClient";
 import configData from "../../config.json";
+
+// Enable ISR (Incremental Static Regeneration)
+export const revalidate = 60;
 
 export const metadata = {
   title: "Aarna Law News and Updates",
@@ -22,22 +25,18 @@ export const metadata = {
 
 async function fetchInitialNews() {
   try {
-    const headersList = headers();
-    const host = headersList.get("host") || "";
-
-    // Default to live server
-    let server = configData.LIVE_PRODUCTION_SERVER_ID;
-
-    // Use staging server if host matches
-    if (
-      host.includes(configData.STAGING_SITE_URL) ||
-      host.includes("localhost")
-    ) {
-      server = configData.STAG_PRODUCTION_SERVER_ID;
-    }
+    // Determine server mode based on environment
+    const isProd = process.env.NODE_ENV === "production";
+    const server = isProd
+      ? configData.LIVE_PRODUCTION_SERVER_ID
+      : configData.STAG_PRODUCTION_SERVER_ID;
 
     const url = `${configData.SERVER_URL}posts?_embed&categories[]=9&status[]=publish&production_mode[]=${server}&per_page=6`;
-    const res = await fetch(url, { cache: "no-store" });
+
+    const res = await fetch(url, {
+      next: { revalidate: 60 }, // ISR
+    });
+
     return await res.json();
   } catch (error) {
     console.error("News fetch error:", error);

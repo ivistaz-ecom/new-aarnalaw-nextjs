@@ -1,8 +1,11 @@
 // app/practice-area/page.js
-import { headers } from "next/headers";
+
 import Banner from "@/components/PracticeArea/Banner";
 import PracticeLists from "@/components/PracticeArea/PracticeLists";
 import configData from "@/config.json";
+
+// Optional: use static rendering (ISR)
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export const metadata = {
   title: "India's leading law firm offering legal counsel in practice areas",
@@ -21,25 +24,19 @@ export const metadata = {
   },
 };
 
-async function getPracticeAreas() {
+async function getPracticeAreas(page = 1, perPage = 20) {
   try {
-    const headersList = headers();
-    const host = headersList.get("host") || "";
-
-    // Default to live server
-    let server = configData.LIVE_PRODUCTION_SERVER_ID;
-
-    // If on staging domain or localhost, switch to staging
-    if (
-      host.includes(configData.STAGING_SITE_URL) ||
-      host.includes("localhost")
-    ) {
-      server = configData.STAG_PRODUCTION_SERVER_ID;
-    }
+    // Determine environment and use appropriate server ID
+    const isProduction = process.env.NODE_ENV === "production";
+    const server = isProduction
+      ? configData.LIVE_PRODUCTION_SERVER_ID
+      : configData.STAG_PRODUCTION_SERVER_ID;
 
     const res = await fetch(
-      `${configData.SERVER_URL}practice-areas?_embed&status[]=publish&production_mode[]=${server}&per_page=100`,
-      { next: { revalidate: 60 } }
+      `${configData.SERVER_URL}practice-areas?status[]=publish&production_mode[]=${server}&per_page=${perPage}&page=${page}`,
+      {
+        next: { revalidate: 60 }, // ISR (optional)
+      }
     );
 
     const data = await res.json();
@@ -53,7 +50,7 @@ async function getPracticeAreas() {
 }
 
 export default async function PracticeAreaPage() {
-  const practiceAreas = await getPracticeAreas();
+  const practiceAreas = await getPracticeAreas(1, 13);
 
   return (
     <>
@@ -62,4 +59,3 @@ export default async function PracticeAreaPage() {
     </>
   );
 }
-

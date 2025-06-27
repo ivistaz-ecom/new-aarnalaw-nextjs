@@ -31,33 +31,38 @@ export default function Banner() {
               data-carousel-item
             >
               {/* Mobile Banner */}
-              <Image
-                src={banner.mobileBannerUrl}
-                className="absolute left-1/2 top-1/2 h-[70vh] w-full -translate-x-1/2 lg:hidden"
-                alt={banner.bannerText}
-                width={600}
-                height={500}
-                loading="eager"
-                priority
-                placeholder="blur"
-                blurDataURL={banner.mobileBannerUrl}
-              />
+              <div className="relative w-full h-[70vh] aspect-[414/500] lg:hidden">
+                <Image
+                  src={banner.mobileBannerUrl}
+                  alt={banner.bannerText}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  loading="eager"
+                  priority
+                  placeholder="blur"
+                  blurDataURL={banner.mobileBannerUrl}
+                />
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-4 text-center text-white mt-40 ">
+                  <h2 className="text-4xl font-bold lg:text-5xl">{banner.bannerText}</h2>
+                  <p className="py-8 text-xl lg:w-7/12">{banner.bannerPara}</p>
+                </div>
+              </div>
               {/* Desktop Banner */}
-              <Image
-                src={banner.bannerUrl}
-                className="absolute left-1/2 top-1/2 hidden h-screen w-full -translate-x-1/2 lg:block"
-                alt={banner.bannerText}
-                width={600}
-                height={500}
-                loading="eager"
-                priority
-                placeholder="blur"
-                blurDataURL={banner.bannerUrl}
-              />
-
-              <div className="absolute flex h-screen w-full flex-col items-center justify-center p-4 text-center text-white">
-                <h2 className="text-4xl font-bold lg:text-5xl">{banner.bannerText}</h2>
-                <p className="py-8 text-xl lg:w-7/12">{banner.bannerPara}</p>
+              <div className="relative w-full h-screen aspect-[1335/940] hidden lg:block">
+                <Image
+                  src={banner.bannerUrl}
+                  alt={banner.bannerText}
+                  fill
+                  style={{ objectFit: 'cover' }}
+                  loading="eager"
+                  priority
+                  placeholder="blur"
+                  blurDataURL={banner.bannerUrl}
+                />
+                <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-4 text-center text-white">
+                  <h2 className="text-4xl font-bold lg:text-5xl">{banner.bannerText}</h2>
+                  <p className="py-8 text-xl lg:w-7/12">{banner.bannerPara}</p>
+                </div>
               </div>
             </div>
           ))

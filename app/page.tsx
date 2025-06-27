@@ -1,27 +1,64 @@
-// app/page.tsx
-import Banner from "../components/HomePage/Banner";
-import HomeInsights from "@/components/HomePage/HomeInsights";
-import WhatWeDo from "../components/HomePage/WhatWeDo";
-import KindOfDispute from "../components/HomePage/KindOfDisputesWeDo";
-import Testimonials from "../components/HomePage/Testimonials";
-import TrackRecords from "../components/HomePage/Trackrecords";
-import OurCredentials from "../components/HomePage/OurCredentials";
-import OurNetwork from "../components/HomePage/OurNetwork";
-import configData from "../config.json";
+import dynamic from 'next/dynamic';
+import configData from '../config.json';
+
+// Dynamically import all homepage components
+const Banner = dynamic(() => import('../components/HomePage/Banner'), {
+  ssr: false,
+  loading: () => <div className="h-[70vh] w-full bg-gray-100 animate-pulse" />,
+});
+
+const HomeInsights = dynamic(
+  () => import('@/components/HomePage/HomeInsights'),
+  {
+    ssr: false,
+    loading: () => <div className="h-96 bg-gray-100 animate-pulse" />,
+  }
+);
+
+const WhatWeDo = dynamic(() => import('../components/HomePage/WhatWeDo'), {
+  ssr: false,
+});
+const KindOfDispute = dynamic(
+  () => import('../components/HomePage/KindOfDisputesWeDo'),
+  {
+    ssr: false,
+  }
+);
+const Testimonials = dynamic(
+  () => import('../components/HomePage/Testimonials'),
+  {
+    ssr: false,
+  }
+);
+const TrackRecords = dynamic(
+  () => import('../components/HomePage/Trackrecords'),
+  {
+    ssr: false,
+  }
+);
+const OurCredentials = dynamic(
+  () => import('../components/HomePage/OurCredentials'),
+  {
+    ssr: false,
+  }
+);
+const OurNetwork = dynamic(() => import('../components/HomePage/OurNetwork'), {
+  ssr: false,
+});
 
 export const metadata = {
-  title: "Aarna Law - Leading Law Firm in India",
+  title: 'Aarna Law - Leading Law Firm in India',
   description:
-    "Aarna Law is a leading law firm in India specializing in arbitration, litigation, and corporate advisory services.",
+    'Aarna Law is a leading law firm in India specializing in arbitration, litigation, and corporate advisory services.',
   alternates: {
-    canonical: "https://aarnalaw.com/",
+    canonical: 'https://aarnalaw.com/',
   },
   openGraph: {
-    title: "Aarna Law - Top Litigation, Dispute & Corporate Law Firm in India",
+    title: 'Aarna Law - Top Litigation, Dispute & Corporate Law Firm in India',
     description:
-      "Leading corporate law firm in India offering legal services in business law, litigation, arbitration, and compliance for Indian and international companies.",
-    url: "https://aarnalaw.com/",
-    images: "/banner/desktop_home_banner_2.jpg",
+      'Leading corporate law firm in India offering legal services in business law, litigation, arbitration, and compliance for Indian and international companies.',
+    url: 'https://aarnalaw.com/',
+    images: '/banner/desktop_home_banner_2.jpg',
   },
 };
 
@@ -32,14 +69,14 @@ interface InsightPost {
   excerpt: { rendered: string };
   slug: string;
   _embedded?: {
-    "wp:featuredmedia"?: Array<{ source_url: string }>;
+    'wp:featuredmedia'?: Array<{ source_url: string }>;
   };
 }
 
 async function getInsights() {
   try {
     const domain =
-      process.env.NODE_ENV === "production"
+      process.env.NODE_ENV === 'production'
         ? configData.LIVE_SITE_URL
         : configData.STAGING_SITE_URL;
 
@@ -51,11 +88,11 @@ async function getInsights() {
     const page = 8;
     const insightsResponse = await fetch(
       `${configData.SERVER_URL}posts?_embed&categories[]=13&status[]=publish&production_mode[]=${server}&per_page=${page}`,
-      { cache: "no-store" }
+      { cache: 'no-store' }
     );
 
     if (!insightsResponse.ok) {
-      throw new Error("Failed to fetch insights");
+      throw new Error('Failed to fetch insights');
     }
 
     const posts: InsightPost[] = await insightsResponse.json();
@@ -65,13 +102,13 @@ async function getInsights() {
       .slice(0, 6)
       .map((item) => ({
         id: item.id,
-        imageUrl: item._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "",
+        imageUrl: item._embedded?.['wp:featuredmedia']?.[0]?.source_url || '',
         title: item.title.rendered,
         desc: item.excerpt.rendered,
         slug: item.slug,
       }));
   } catch (error) {
-    console.error("Error fetching insights:", error);
+    console.error('Error fetching insights:', error);
     return [];
   }
 }

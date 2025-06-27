@@ -136,7 +136,7 @@ export default function HomeInsights({ initialInsights = [] }) {
                           />
                         </div>
                         <div className="flex grow flex-col items-start p-5 text-black transition-colors duration-300 md:group-hover:text-white">
-                          <h5
+                          <p
                             className="mb-3 line-clamp-2 max-h-[4.5rem] min-h-12 overflow-hidden text-lg font-semibold text-custom-blue transition-colors duration-300 md:text-2xl md:group-hover:text-white"
                             dangerouslySetInnerHTML={{ __html: item.title }}
                           />

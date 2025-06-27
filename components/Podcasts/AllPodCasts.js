@@ -198,10 +198,10 @@ function AllPodCasts({ searchTerm, initialData = [] }) {
                 )}
               </div>
               <div className="p-5">
-                <h5
+                <p
                   className="mb-2 min-h-16 text-xl font-bold tracking-tight text-gray-900 dark:text-white"
                   dangerouslySetInnerHTML={{ __html: item.title?.rendered }}
-                ></h5>
+                />
                 <p
                   className="text-gray-700 dark:text-gray-300"
                   dangerouslySetInnerHTML={{

@@ -1,9 +1,11 @@
 // app/industries/page.js
-import { headers } from "next/headers";
 import React from "react";
 import Banner from "@/components/Industries/Banner";
 import Industries from "@/components/Industries/IndustryLists";
 import configData from "@/config.json";
+
+// Enable ISR
+export const revalidate = 60;
 
 export const metadata = {
   title: "Industry-Specific Legal Solutions | Aarna Law",
@@ -24,19 +26,10 @@ export const metadata = {
 
 async function getIndustries() {
   try {
-    const headersList = headers();
-    const host = headersList.get("host") || "";
-
-    // Default to live server
-    let server = configData.LIVE_PRODUCTION_SERVER_ID;
-
-    // Switch to staging if host matches staging domain or local
-    if (
-      host.includes(configData.STAGING_SITE_URL) ||
-      host.includes("localhost")
-    ) {
-      server = configData.STAG_PRODUCTION_SERVER_ID;
-    }
+    const isProd = process.env.NODE_ENV === "production";
+    const server = isProd
+      ? configData.LIVE_PRODUCTION_SERVER_ID
+      : configData.STAG_PRODUCTION_SERVER_ID;
 
     const res = await fetch(
       `${configData.SERVER_URL}industries?_embed&status[]=publish&production_mode[]=${server}&per_page=100`,
