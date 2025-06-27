@@ -15,37 +15,23 @@ const NavBar = () => {
   const { language, setLanguage, translations } = useContext(LanguageContext);
   const newsPaths = ["/aarna-news", "/insight", "/publication", "/podcast"];
 
+  // Function to format translation keys
   const formatKey = (key) => key.toLowerCase().replace(/[^a-z0-9]+/g, "");
 
-
   useEffect(() => {
-    const handleScrollTop = () => {
-      if (window.scrollY > 0) {
-        window.scrollTo({
-          top: 0,
-          left: 0,
-          behavior: "smooth"
-        });
-      }
-    };
+    // Scroll to top whenever pathname changes (page load or route change)
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
 
-    // Scroll after full page load (reliable for hard reload)
-    if (document.readyState === "complete") {
-      setTimeout(handleScrollTop, 50); // Delay slightly to allow DOM to paint
-    } else {
-      window.addEventListener("load", handleScrollTop);
-    }
-
-    // Redirect /podcast to /podcasts
     if (pathname === "/podcast") {
       router.replace("/podcasts");
     }
 
+    // Close menu on route change
     setIsMenuOpen(false);
-
-    return () => {
-      window.removeEventListener("load", handleScrollTop);
-    };
   }, [pathname, router]);
 
   return (
@@ -55,14 +41,14 @@ const NavBar = () => {
       </div>
 
       <nav className="absolute z-50 mx-auto mt-20 w-full border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 md:px-0">
+        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 md:px-0 py-2">
           <Link href="/" className="flex items-center">
             <Image
-              src="/logo/NewAarnalawLogo.jpg"
+              src="/logo/aarna-logo.png"
               alt=""
-              width={600}
+              width={700}
               height={600}
-              className="size-20 md:size-24"
+              className="size-16 md:size-20"
               loading="lazy"
             />
           </Link>
@@ -96,10 +82,7 @@ const NavBar = () => {
             </svg>
           </button>
 
-          <div
-            className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto`}
-            id="navbar-dropdown"
-          >
+          <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto `} id="navbar-dropdown">
             <ul className="borderfont-medium mt-1 flex flex-col rounded-lg dark:border-gray-700 md:flex-row md:space-x-3">
               {HeaderMenu.map((item, index) => {
                 const isContactUs = item.menu === "Contact Us";
