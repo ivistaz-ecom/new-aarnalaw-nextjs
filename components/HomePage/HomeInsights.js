@@ -108,9 +108,9 @@ export default function HomeInsights({ initialInsights = [] }) {
       <div className="z-10 flex h-auto flex-col bg-white lg:mt-10 lg:w-11/12 lg:flex-row">
         <div className="flex justify-between lg:w-2/12">
           <div className="flex w-full items-center justify-evenly gap-7 lg:flex-col">
-            <h2 className="m-0 py-5 text-2xl font-bold text-custom-red md:p-0 md:text-[80px] lg:-rotate-90">
+            <h3 className="m-0 py-5 text-2xl font-bold text-custom-red md:p-0 md:text-[80px] lg:-rotate-90">
               Insights
-            </h2>
+            </h3>
             <div className="hidden gap-4 md:flex">
               <PrevArrow />
               <NextArrow />

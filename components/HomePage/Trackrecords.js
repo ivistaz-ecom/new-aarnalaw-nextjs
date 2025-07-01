@@ -8,9 +8,9 @@ export default function TrackRecords() {
   return (
     <div className="py-12">
       <div className="mx-auto w-11/12">
-        <h1 className="text-center text-2xl font-semibold text-custom-red">
+        <p className="text-center text-2xl font-semibold text-custom-red">
           {translations.trackRecord.trackRecordTitle}
-        </h1>
+        </p>
         <div className="grid gap-12 py-12 lg:grid-cols-3 lg:gap-0">
           <div className="text-center text-5xl text-custom-blue">
             <CountUp start={1} end={100} duration={2.75} suffix=" +"></CountUp>
