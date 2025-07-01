@@ -68,9 +68,9 @@ const Testimonials = () => {
   return (
     <>
       <div className="relative mx-auto mb-14 w-11/12">
-        <h2 className="block py-5 text-center text-2xl font-semibold text-custom-blue md:hidden">
+        <p className="block py-5 text-center text-2xl font-semibold text-custom-blue md:hidden">
           Client’s Testimonials
-        </h2>
+        </p>
 
         <div className="mr-1 flex justify-end ">
           <Image
@@ -85,9 +85,9 @@ const Testimonials = () => {
         <div className="mt-2 flex justify-between md:-mt-36">
           <div className="h-96 w-[260px] bg-custom-blue md:h-[437px] md:w-[559px]"></div>
           <div className="mr-1 space-y-6 self-end text-right md:mr-28">
-            <h2 className="hidden p-2 text-xl font-semibold text-custom-blue md:block md:text-2xl">
+            <p className="hidden p-2 text-xl font-semibold text-custom-blue md:block md:text-2xl">
               Client’s <br /> Testimonials
-            </h2>
+            </p>
             <div className="flex justify-end gap-2">
               <PrevArrow />
               <NextArrow />

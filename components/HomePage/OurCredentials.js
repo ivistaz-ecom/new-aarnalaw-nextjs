@@ -7,7 +7,7 @@ import { credentials } from "../../utils/data";
 import Image from "next/image";
 import { LanguageContext } from "../../app/context/LanguageContext";
 
-const Podcasts = () => {
+const OurCredentials = () => {
   const { language, translations } = useContext(LanguageContext);
   const sliderRef = useRef(null);
   const sectionRef = useRef(null);
@@ -57,9 +57,9 @@ const Podcasts = () => {
   return (
     <div className="bg-[#EFEFEF] py-12" ref={sectionRef}>
       <div className="mx-auto w-11/12">
-        <h1 className="mb-10 text-center text-2xl font-semibold text-custom-red">
+        <p className="mb-10 text-center text-2xl font-semibold text-custom-red">
           {translations.awards.awardsTitle}
-        </h1>
+        </p>
 
         <Carousel
           ref={sliderRef}
@@ -85,7 +85,7 @@ const Podcasts = () => {
                 alt={item.title}
                 loading="lazy"
               />
-              <h2 className="font-bold mt-3">{item.title}</h2>
+              <h3 className="font-bold mt-3">{item.title}</h3>
               <p className="text-center text-sm">{item.desc}</p>
             </div>
           ))}
@@ -95,4 +95,4 @@ const Podcasts = () => {
   );
 };
 
-export default Podcasts;
+export default OurCredentials;

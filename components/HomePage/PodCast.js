@@ -95,9 +95,9 @@ const Podcasts = () => {
 
   return (
     <div className="mx-auto w-11/12 py-12 lg:p-10 lg:py-12">
-      <h1 className="mb-8 text-center text-2xl font-semibold text-custom-blue">
+      <p className="mb-8 text-center text-2xl font-semibold text-custom-blue">
         Podcasts
-      </h1>
+      </p>
 
      
       {loading ? (
@@ -139,7 +139,7 @@ const Podcasts = () => {
                      loading="lazy"
                   />
                   <div className="w-full flex-col p-8 lg:p-10">
-                    <h1
+                    <p
                       className="mb-4 mt-4 w-full text-lg font-semibold text-custom-blue transition-colors duration-300 md:line-clamp-3 md:h-[100px] md:text-start md:text-2xl md:group-hover:text-white"
                       dangerouslySetInnerHTML={{ __html: item.title.rendered }}
                     />

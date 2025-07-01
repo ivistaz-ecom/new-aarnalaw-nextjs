@@ -22,12 +22,12 @@ const WhatWeDo = () => {
           />
         </div>
         <div className="flex flex-col items-start justify-center lg:px-8">
-          <h1 className="pb-1 text-2xl font-bold text-custom-red mt-6 lg:mt-0">
+          <h2 className="pb-1 text-2xl font-bold text-custom-red mt-6 lg:mt-0">
             {translations.whatWeDo.title}
-          </h1>
-          <h2 className="lg:mt-4 md:py-8 py-4 text-2xl font-semibold text-custom-blue md:mt-0 lg:text-4xl">
-            {translations.whatWeDo.headline}
           </h2>
+          <h3 className="lg:mt-4 md:py-8 py-4 text-2xl font-semibold text-custom-blue md:mt-0 lg:text-4xl">
+            {translations.whatWeDo.headline}
+          </h3>
           <p className=" text-custom-gray md:mt-0 ">
 
             {translations.whatWeDo.para1}
@@ -46,12 +46,12 @@ const WhatWeDo = () => {
 
       <div className="mx-auto  grid w-11/12 lg:grid-cols-2">
         <div className="order-2 flex flex-col items-start justify-center lg:order-1 lg:p-12">
-          <h1 className="text-2xl font-bold text-custom-blue mt-4 lg:mt-0">
+          <h2 className="text-2xl font-bold text-custom-blue mt-4 lg:mt-0">
             {translations.ourLegacy1.legacyTitle1}
-          </h1>
-          <h2 className="lg:mt-4 md:py-12 py-4 text-2xl font-semibold text-custom-blue md:mt-0 lg:text-4xl">
-            {translations.ourLegacy1.legacyHeadline1}
           </h2>
+          <h3 className="lg:mt-4 md:py-12 py-4 text-2xl font-semibold text-custom-blue md:mt-0 lg:text-4xl">
+            {translations.ourLegacy1.legacyHeadline1}
+          </h3>
           <p className=" text-custom-gray md:mt-0 ">
             {translations.ourLegacy1.legacyPara1}
           </p>
