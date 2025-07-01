@@ -32,11 +32,11 @@ export default function Footer() {
           <div className="pt-4">
             <Link href="/" className="flex items-center">
               <Image
-                src="/logo/aarna-logo.png"
+                src="/logo/NewAarnalawLogo.jpg"
                 alt=""
                 width={600}
                 height={600}
-                className="md:h-20 md:w-20 h-20 w-20"
+                className="md:h-24 md:w-24 h-20 w-20"
                 loading="lazy"
               />
             </Link>

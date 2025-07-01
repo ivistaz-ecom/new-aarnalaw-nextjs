@@ -44,11 +44,11 @@ const NavBar = () => {
         <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 md:px-0 py-2">
           <Link href="/" className="flex items-center">
             <Image
-              src="/logo/aarna-logo.png"
+              src="/logo/NewAarnalawLogo.jpg"
               alt=""
               width={700}
               height={600}
-              className="size-16 md:size-20"
+              className="size-16 md:size-24"
               loading="lazy"
             />
           </Link>
