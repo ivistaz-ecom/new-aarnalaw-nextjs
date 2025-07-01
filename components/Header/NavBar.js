@@ -133,7 +133,7 @@ const NavBar = () => {
             <SearchModal />
             <Link
               href="/contact-us"
-              className="my-2 me-2 border border-custom-red bg-white px-5 py-2.5 text-sm font-medium text-custom-red hover:bg-custom-red hover:text-white"
+              className="my-2 border border-custom-red bg-white px-5 py-2.5 text-sm font-medium text-custom-red hover:bg-custom-red hover:text-white"
               onClick={() => setIsMenuOpen(false)}
             >
               {translations.menu.contactus || "CONTACT US"}

@@ -14,6 +14,7 @@ export default function HomeInsights({ initialInsights = [] }) {
   const [insightsData, setInsightsData] = useState(initialInsights);
   const isInitialLoading = insightsData.length === 0;
 
+
   useEffect(() => {
     const fetchInsights = async () => {
       try {
@@ -27,10 +28,10 @@ export default function HomeInsights({ initialInsights = [] }) {
           : configData.STAG_PRODUCTION_SERVER_ID;
 
         const page = 8;
-        const insightsResponse = await fetch(
+        const response = await fetch(
           `${configData.SERVER_URL}posts?_embed&categories[]=13&status[]=publish&production_mode[]=${server}&per_page=${page}`
         );
-        const posts = await insightsResponse.json();
+        const posts = await response.json();
 
         const latestInsights = posts
           .sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -122,41 +123,41 @@ export default function HomeInsights({ initialInsights = [] }) {
             {isInitialLoading
               ? [...Array(2)].map((_, i) => <SkeletonCard key={i} />)
               : insightsData.map((item, index) => (
-                  <div key={item.id} className="w-full">
-                    <div className="lg:ms-5 lg:p-4">
-                      <div className="group relative my-auto h-[450px] w-full flex-col border border-gray-200 bg-white shadow transition-colors duration-300 dark:border-gray-700 dark:bg-gray-800 md:hover:bg-custom-red md:hover:text-white lg:flex lg:h-[620px]">
-                        <div className="relative h-[200px] w-full overflow-hidden bg-gray-200 md:h-[280px]">
-                          <Image
-                            src={item.imageUrl}
-                            alt={item.title}
-                            width={600}
-                            height={400}
-                            className="size-full object-cover"
-                            priority={index < 2}
-                          />
-                        </div>
-                        <div className="flex grow flex-col items-start p-5 text-black transition-colors duration-300 md:group-hover:text-white">
+                <div key={item.id} className="w-full">
+                  <div className="lg:ms-5 lg:p-4">
+                    <div className="group relative my-auto h-[450px] w-full flex-col border border-gray-200 bg-white shadow transition-colors duration-300 dark:border-gray-700 dark:bg-gray-800 md:hover:bg-custom-red md:hover:text-white lg:flex lg:h-[620px]">
+                      <div className="relative h-[200px] w-full overflow-hidden bg-gray-200 md:h-[280px]">
+                        <Image
+                          src={item.imageUrl}
+                          alt={item.title}
+                          width={600}
+                          height={400}
+                          className="size-full object-cover"
+                          priority={index < 2}
+                        />
+                      </div>
+                      <div className="flex grow flex-col items-start p-5 text-black transition-colors duration-300 md:group-hover:text-white">
+                        <p
+                          className="mb-3 line-clamp-2 max-h-[4.5rem] min-h-12 overflow-hidden text-lg font-semibold text-custom-blue transition-colors duration-300 md:text-2xl md:group-hover:text-white"
+                          dangerouslySetInnerHTML={{ __html: item.title }}
+                        />
+                        {item.desc && (
                           <p
-                            className="mb-3 line-clamp-2 max-h-[4.5rem] min-h-12 overflow-hidden text-lg font-semibold text-custom-blue transition-colors duration-300 md:text-2xl md:group-hover:text-white"
-                            dangerouslySetInnerHTML={{ __html: item.title }}
+                            className="mb-5 line-clamp-3 text-left text-sm font-normal text-custom-gray transition-colors duration-300 md:text-base md:group-hover:text-white lg:mt-10"
+                            dangerouslySetInnerHTML={{ __html: item.desc }}
                           />
-                          {item.desc && (
-                            <p
-                              className="mb-5 line-clamp-3 text-left text-sm font-normal text-custom-gray transition-colors duration-300 md:text-base md:group-hover:text-white lg:mt-10"
-                              dangerouslySetInnerHTML={{ __html: item.desc }}
-                            />
-                          )}
-                          <Link
-                            href={`/insights/${item.slug}`}
-                            className="absolute bottom-0 left-[35%] m-5 mx-auto block border border-custom-red p-2 text-custom-red transition-colors duration-300 hover:bg-white hover:text-black md:left-5 md:mx-0 md:px-6 md:group-hover:bg-white md:group-hover:text-black"
-                          >
-                            View Article
-                          </Link>
-                        </div>
+                        )}
+                        <Link
+                          href={`/insights/${item.slug}`}
+                          className="absolute bottom-0 left-[35%] m-5 mx-auto block border border-custom-red p-2 text-custom-red transition-colors duration-300 hover:bg-white hover:text-black md:left-5 md:mx-0 md:px-6 md:group-hover:bg-white md:group-hover:text-black"
+                        >
+                          View Article
+                        </Link>
                       </div>
                     </div>
                   </div>
-                ))}
+                </div>
+              ))}
           </InsightSlider>
 
           <div className="mt-6 flex justify-center md:ms-3">
