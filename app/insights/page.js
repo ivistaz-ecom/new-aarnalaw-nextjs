@@ -1,5 +1,6 @@
 import InsightsClient from "./InsightsClient";
 import config from "../../config.json";
+import { headers } from "next/headers";
 
 export const revalidate = 60;
 
@@ -16,14 +17,31 @@ export const metadata = {
   },
 };
 
+// Utility to determine productionMode based on domain
+function getProductionModeFromHost(hostname) {
+  const isLiveDomain =
+    hostname === config.LIVE_SITE_URL || hostname === config.LIVE_SITE_URL_WWW;
+
+  return isLiveDomain
+    ? config.LIVE_PRODUCTION_SERVER_ID
+    : config.STAG_PRODUCTION_SERVER_ID;
+}
+
+// Fetch archive years
 async function fetchArchives() {
   const res = await fetch(config.SERVER_URL + "archives", {
     next: { revalidate: 60 },
   });
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch archives: ${res.statusText}`);
+  }
+
   const archives = await res.json();
   return archives.sort((a, b) => parseInt(b.name, 10) - parseInt(a.name, 10));
 }
 
+// Fetch insights based on year and productionMode
 async function fetchInsights(year, productionMode, page = 1) {
   const after = `${year}-01-01T00:00:00`;
   const before = `${year}-12-31T23:59:59`;
@@ -40,11 +58,12 @@ async function fetchInsights(year, productionMode, page = 1) {
   return await res.json();
 }
 
+// Main server component
 export default async function AarnaInsightsPage() {
-  const isProd = process.env.NODE_ENV === "production";
-  const productionMode = isProd
-    ? config.LIVE_PRODUCTION_SERVER_ID
-    : config.STAG_PRODUCTION_SERVER_ID;
+  const headersList = headers();
+  const hostname = headersList.get("host")?.replace(/^www\./, "") ?? "";
+
+  const productionMode = getProductionModeFromHost(hostname);
 
   const archives = await fetchArchives();
   const initialYear = archives[0]?.name || new Date().getFullYear().toString();

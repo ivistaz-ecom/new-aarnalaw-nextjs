@@ -41,14 +41,14 @@ const NavBar = () => {
       </div>
 
       <nav className="absolute z-50 mx-auto mt-20 w-full border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 md:px-0">
+        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 md:px-0 py-1">
           <Link href="/" className="flex items-center">
             <Image
-              src="/logo/NewAarnalawLogo.jpg"
+              src="/logo/aarna-logo.png"
               alt=""
               width={700}
               height={600}
-              className="size-16 md:size-24"
+              className="size-16 md:size-20"
               loading="lazy"
             />
           </Link>
