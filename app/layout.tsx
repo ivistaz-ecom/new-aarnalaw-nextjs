@@ -63,6 +63,7 @@ export default function RootLayout({
                 },
                 sameAs: ["https://www.linkedin.com/company/aarna-law1/"],
                 areaServed: "India",
+                priceRange: "$$",
                 founder: [
                   { "@type": "Person", name: "Shreyas Jayasimha" },
                   { "@type": "Person", name: "Kamala Naganand" },
