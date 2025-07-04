@@ -43,9 +43,22 @@ async function fetchArchives() {
 
 // Fetch insights based on year and productionMode
 async function fetchInsights(year, productionMode, page = 1) {
+  if (
+    !productionMode ||
+    (Array.isArray(productionMode) && productionMode.length === 0)
+  ) {
+    return []; // Return nothing if no productionMode is selected
+  }
+
   const after = `${year}-01-01T00:00:00`;
   const before = `${year}-12-31T23:59:59`;
-  const url = `${config.SERVER_URL}posts?_embed&per_page=6&page=${page}&categories=12,13&after=${after}&before=${before}&status[]=publish&production_mode[]=${productionMode}`;
+
+  // Handle array or single value for production_mode
+  const productionModeParam = Array.isArray(productionMode)
+    ? productionMode.map((mode) => `production_mode[]=${mode}`).join("&")
+    : `production_mode[]=${productionMode}`;
+
+  const url = `${config.SERVER_URL}posts?_embed&per_page=6&page=${page}&categories=12,13&after=${after}&before=${before}&status[]=publish&${productionModeParam}`;
 
   const res = await fetch(url, {
     next: { revalidate: 60 },
@@ -57,6 +70,7 @@ async function fetchInsights(year, productionMode, page = 1) {
 
   return await res.json();
 }
+
 
 // Main server component
 export default async function AarnaInsightsPage() {
