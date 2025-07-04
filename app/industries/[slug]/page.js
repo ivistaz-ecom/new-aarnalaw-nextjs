@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation"; // <-- ✅ Required import
 import LandingPage from "@/components/Industries/InsidePage/LandingPage";
 
 export const metadata = {
@@ -57,9 +58,15 @@ export default async function IndustryPage({ params }) {
     fetchIndustryDetails(params.slug)
   ]);
 
-  return <LandingPage
-    slug={params.slug}
-    initialData={initialData}
-    initialIndustry={industryDetails}
-  />;
+  if (!industryDetails) {
+    return notFound(); // <-- Works now
+  }
+
+  return (
+    <LandingPage
+      slug={params.slug}
+      initialData={initialData}
+      initialIndustry={industryDetails}
+    />
+  );
 }
