@@ -1,4 +1,5 @@
 import LandingPage from "@/components/PracticeArea/InsidePage/LandingPage";
+import { notFound } from "next/navigation"; // <-- ✅ Required import
 
 export const metadata = {
   title: "Practice Areas - Aarna Law",
@@ -56,7 +57,9 @@ export default async function PracticeAreaPage({ params }) {
     fetchPracticeAreas(),
     fetchPracticeAreaDetails(params.slug)
   ]);
-
+  if (!practiceAreaDetails) {
+    return notFound();
+  }
   return <LandingPage
     slug={params.slug}
     initialData={initialData}
