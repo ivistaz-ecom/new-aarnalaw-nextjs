@@ -45,7 +45,7 @@ const NavBar = () => {
           <Link href="/" className="flex items-center">
             <Image
               src="/logo/aarna-logo.png"
-              alt=""
+              alt="Aarna Law"
               width={700}
               height={600}
               className="size-16 md:size-20"
