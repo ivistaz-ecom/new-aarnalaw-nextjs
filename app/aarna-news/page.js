@@ -1,9 +1,9 @@
 // app/aarna-news/page.js
 
 import NewsClient from "./NewsClient";
-import configData from "../../config.json";
+import config from "../../config.json";
+import { headers } from "next/headers";
 
-// Enable ISR (Incremental Static Regeneration)
 export const revalidate = 60;
 
 export const metadata = {
@@ -23,18 +23,25 @@ export const metadata = {
   },
 };
 
-async function fetchInitialNews() {
+// Utility to determine productionMode based on domain
+function getProductionModeFromHost(hostname) {
+  const isLiveDomain =
+    hostname === config.LIVE_SITE_URL || hostname === config.LIVE_SITE_URL_WWW;
+
+  return isLiveDomain
+    ? config.LIVE_PRODUCTION_SERVER_ID
+    : config.STAG_PRODUCTION_SERVER_ID;
+}
+
+// Fetch initial news data
+async function fetchInitialNews(productionMode) {
+  if (!productionMode) return [];
+
+  const url = `${config.SERVER_URL}posts?_embed&categories[]=9&status[]=publish&production_mode[]=${productionMode}&per_page=6`;
+
   try {
-    // Determine server mode based on environment
-    const isProd = process.env.NODE_ENV === "production";
-    const server = isProd
-      ? configData.LIVE_PRODUCTION_SERVER_ID
-      : configData.STAG_PRODUCTION_SERVER_ID;
-
-    const url = `${configData.SERVER_URL}posts?_embed&categories[]=9&status[]=publish&production_mode[]=${server}&per_page=6`;
-
     const res = await fetch(url, {
-      next: { revalidate: 60 }, // ISR
+      next: { revalidate: 60 },
     });
 
     return await res.json();
@@ -45,6 +52,11 @@ async function fetchInitialNews() {
 }
 
 export default async function AarnaNewsPage() {
-  const initialData = await fetchInitialNews();
+  const headersList = headers();
+  const hostname = headersList.get("host")?.replace(/^www\./, "") ?? "";
+  const productionMode = getProductionModeFromHost(hostname);
+
+  const initialData = await fetchInitialNews(productionMode);
+
   return <NewsClient initialData={initialData} />;
 }

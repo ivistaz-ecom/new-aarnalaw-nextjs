@@ -1,10 +1,11 @@
 // app/industries/page.js
+
 import React from "react";
 import Banner from "@/components/Industries/Banner";
 import Industries from "@/components/Industries/IndustryLists";
-import configData from "@/config.json";
+import config from "@/config.json";
+import { headers } from "next/headers";
 
-// Enable ISR
 export const revalidate = 60;
 
 export const metadata = {
@@ -19,24 +20,34 @@ export const metadata = {
     title: "Industry-Specific Legal Solutions | Aarna Law",
     description:
       "We offer tailored legal services for diverse industries, addressing unique needs across sectors with specialized expertise.",
-    url: "/industries",
+    url: "https://www.aarnalaw.com/industries",
     images: "/Industries/IndutriesBanner.jpg",
   },
 };
 
-async function getIndustries() {
-  try {
-    const isProd = process.env.NODE_ENV === "production";
-    const server = isProd
-      ? configData.LIVE_PRODUCTION_SERVER_ID
-      : configData.STAG_PRODUCTION_SERVER_ID;
+// Utility to determine productionMode based on domain
+function getProductionModeFromHost(hostname) {
+  const isLiveDomain =
+    hostname === config.LIVE_SITE_URL || hostname === config.LIVE_SITE_URL_WWW;
 
-    const res = await fetch(
-      `${configData.SERVER_URL}industries?_embed&status[]=publish&production_mode[]=${server}&per_page=100`,
-      { next: { revalidate: 60 } }
-    );
+  return isLiveDomain
+    ? config.LIVE_PRODUCTION_SERVER_ID
+    : config.STAG_PRODUCTION_SERVER_ID;
+}
+
+// Fetch industries based on production mode
+async function getIndustries(productionMode) {
+  if (!productionMode) return [];
+
+  try {
+    const url = `${config.SERVER_URL}industries?_embed&status[]=publish&production_mode[]=${productionMode}&per_page=100`;
+
+    const res = await fetch(url, {
+      next: { revalidate: 60 },
+    });
 
     const data = await res.json();
+
     return data.sort((a, b) =>
       a.title.rendered.localeCompare(b.title.rendered)
     );
@@ -47,7 +58,11 @@ async function getIndustries() {
 }
 
 export default async function IndustriesPage() {
-  const industries = await getIndustries();
+  const headersList = headers();
+  const hostname = headersList.get("host")?.replace(/^www\./, "") ?? "";
+  const productionMode = getProductionModeFromHost(hostname);
+
+  const industries = await getIndustries(productionMode);
 
   return (
     <>

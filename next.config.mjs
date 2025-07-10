@@ -72,7 +72,7 @@ const nextConfig = {
         destination:
           "/contact-us",
         permanent: true,
-      }, 
+      },
       // Teams
       {
         source: "/apoorva-guruprasad",
@@ -80,7 +80,14 @@ const nextConfig = {
           "/team/apoorva-guruprasad",
         permanent: true,
       },
-      
+      {
+        source: "/team",
+        destination:
+          "/about-us",
+        permanent: true,
+      },
+
+
       // Insights
 
       {
@@ -809,6 +816,78 @@ const nextConfig = {
         source: "/world-phone-internet-services-pvt-ltd-vs-one-ott-entertainment-ltd",
         destination:
           "/insights/world-phone-internet-services-pvt-ltd-vs-one-ott-entertainment-ltd",
+        permanent: true,
+      },
+      {
+        source: "/enabling-procedural-efficacies-parallel-isds-arbitrations",
+        destination:
+          "/insights/enabling-procedural-efficacies-parallel-isds-arbitrations",
+        permanent: true,
+      },
+      {
+        source: "/does-india-have-enough-insurance-coverage-nuclear-disaster",
+        destination:
+          "/insights/does-india-have-enough-insurance-coverage-nuclear-disaster",
+        permanent: true,
+      },
+      {
+        source: "/new-ruling-supports-third-party-funding-for-disputes",
+        destination:
+          "/insights/new-ruling-supports-third-party-funding-for-disputes",
+        permanent: true,
+      },
+      {
+        source: "/setting-a-strategy-to-tackle-counterfeits",
+        destination:
+          "/insights/setting-a-strategy-to-tackle-counterfeits",
+        permanent: true,
+      },
+      {
+        source: "/the-role-of-arbitration-and-mediation-in-insolvency",
+        destination:
+          "/insights/the-role-of-arbitration-and-mediation-in-insolvency",
+        permanent: true,
+      },
+      {
+        source: "/the-role-of-arbitration-and-mediation-in-insolvency/",
+        destination:
+          "/insights/the-role-of-arbitration-and-mediation-in-insolvency",
+        permanent: true,
+      },
+      {
+        source: "/fldg-guidelines-regulating-digital-lending",
+        destination:
+          "/insights/fldg-guidelines-regulating-digital-lending",
+        permanent: true,
+      },
+      {
+        source: "/howartificial-intelligence-can-assist-insolvency-practitioners/",
+        destination:
+          "/insights/how-artificial-intelligence-can-assist-insolvency-practitioners",
+        permanent: true,
+      },
+      {
+        source: "/new-free-trade-agreement-between-efta-and-india-offer",
+        destination:
+          "/insights/new-free-trade-agreement-between-efta-and-india-offers-enhanced-ip-rights-for-business-owners",
+        permanent: true,
+      },
+      {
+        source: "/arunachala-gounder-vs-ponnuswamy",
+        destination:
+          "/insights/arunachala-gounder-vs-ponnuswamy",
+        permanent: true,
+      },
+      {
+        source: "/new-market-entrants-must-be-wary-of-confusing-customers-through-their-trademarks",
+        destination:
+          "/insights/new-market-entrants-must-be-wary-of-confusing-customers-through-their-trademarks",
+        permanent: true,
+      },
+      {
+        source: "/updates-from-the-ai-safety-summit-and-the-way-ahead",
+        destination:
+          "/insights/updates-from-the-ai-safety-summit-and-the-way-ahead",
         permanent: true,
       },
 

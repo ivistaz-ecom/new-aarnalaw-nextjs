@@ -11,14 +11,14 @@ export default function Page({ params }) {
   const [date, setDate] = useState(null);
   const [featureImage, setFeatureImage] = useState(null);
   const [content, setContent] = useState(null);
-  const [error, setError] = useState(false); // Error state to handle error page
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const domain = typeof window !== "undefined" ? window.location.hostname : "";
         let server;
-        let productionModeFilter = '';
+        let productionModeFilter = "";
 
         if (
           domain === `${configData.LIVE_SITE_URL}` ||
@@ -35,12 +35,19 @@ export default function Page({ params }) {
         }
 
         const response = await fetch(
-          `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&slug=${paramUrl}&status=publish${productionModeFilter}`,
+          `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&slug=${paramUrl}&status=publish${productionModeFilter}`
         );
         const data = await response.json();
 
         if (data && data.length > 0) {
           const post = data[0];
+          const allowedCategory = post.categories.includes(13) || post.categories.includes(14);
+
+          if (!allowedCategory) {
+            setError(true);
+            return;
+          }
+
           setTitle(post.title.rendered);
           setDate(post.date);
           setContent(post.content.rendered);
@@ -48,21 +55,20 @@ export default function Page({ params }) {
           if (post.featured_media) {
             try {
               const mediaResponse = await fetch(
-                `https://docs.aarnalaw.com/wp-json/wp/v2/media/${post.featured_media}`,
+                `https://docs.aarnalaw.com/wp-json/wp/v2/media/${post.featured_media}`
               );
               const mediaResult = await mediaResponse.json();
               setFeatureImage(mediaResult.source_url || null);
-            } catch (error) {
-              console.error("Error fetching media for post:", error);
+            } catch (mediaErr) {
+              console.error("Error fetching media:", mediaErr);
               setFeatureImage(null);
             }
           }
         } else {
-          console.error("No post data found or post not available in this environment.");
           setError(true);
         }
-      } catch (error) {
-        console.error("Error fetching data:", error);
+      } catch (err) {
+        console.error("Error fetching post:", err);
         setError(true);
       }
     };
@@ -72,56 +78,49 @@ export default function Page({ params }) {
 
   const formatDateString = (dateString) => {
     const date = new Date(dateString);
-    const monthAbbreviations = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC",];
-    const day = date.getDate();
-    const month = monthAbbreviations[date.getMonth()];
-    const year = date.getFullYear();
-    return `${day}\n${month}\n${year}`;
+    const monthAbbreviations = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    return `${date.getDate()}\n${monthAbbreviations[date.getMonth()]}\n${date.getFullYear()}`;
   };
 
-  // If error, show the error page
   if (error) {
     return <ErrorPage />;
   }
 
+  // Wait until data is loaded
+  if (!title || !content) return null;
+
   return (
     <>
-      <style>
-        {`
-          .insight-blog ul {
-            list-style-type: disc; /* Show dots for unordered lists */
-            margin-left: 30px; /* Indentation for unordered list */
-          }
-
-          .insight-blog ol {
-            list-style-type: decimal; /* Show numbers for ordered lists */
-            margin-left: 30px; /* Indentation for ordered list */
-          }
-
-          .insight-blog li {
-            margin-bottom: 0px; /* Optional: space between list items */
-          }
-
-          .insight-blog a {
-            margin-bottom: 0px; /* Optional: space between list items */
-            padding-top: 0px;
-          }
-        `}
-      </style>
+      <style>{`
+        .insight-blog ul {
+          list-style-type: disc;
+          margin-left: 30px;
+        }
+        .insight-blog ol {
+          list-style-type: decimal;
+          margin-left: 30px;
+        }
+        .insight-blog li {
+          margin-bottom: 0px;
+        }
+        .insight-blog a {
+          margin-bottom: 0px;
+          padding-top: 0px;
+        }
+      `}</style>
 
       <div className="mx-auto w-11/12">
         <div className="h-[200px]"></div>
         <h1
           className="py-4 text-4xl font-bold tracking-wide text-black"
           dangerouslySetInnerHTML={{ __html: title }}
-        ></h1>
+        />
         <p className="py-4">Published: {formatDateString(date)}</p>
         <Banner backgroundImage={featureImage} />
       </div>
 
       <div className="py-10">
         <div className="mx-auto w-11/12">
-          {/* Render the content with HTML tags (like <ul>, <ol>, <li>) */}
           <div
             dangerouslySetInnerHTML={{ __html: content }}
             className="insight-blog"
@@ -130,10 +129,7 @@ export default function Page({ params }) {
       </div>
 
       <div className="mx-auto w-11/12">
-        <Link
-          className="mt-6 bg-custom-red px-4 py-2 text-white"
-          href="/insights/"
-        >
+        <Link className="mt-6 bg-custom-red px-4 py-2 text-white" href="/insights/">
           Back to Insights
         </Link>
       </div>

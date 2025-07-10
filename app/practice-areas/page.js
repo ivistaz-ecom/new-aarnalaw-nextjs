@@ -2,10 +2,10 @@
 
 import Banner from "@/components/PracticeArea/Banner";
 import PracticeLists from "@/components/PracticeArea/PracticeLists";
-import configData from "@/config.json";
+import config from "@/config.json";
+import { headers } from "next/headers";
 
-// Optional: use static rendering (ISR)
-export const revalidate = 60; // Revalidate every 60 seconds
+export const revalidate = 60;
 
 export const metadata = {
   title: "India's leading law firm offering legal counsel in practice areas",
@@ -19,27 +19,34 @@ export const metadata = {
     title: "India's leading law firm offering legal counsel in practice areas",
     description:
       "We offer legal services for a range of practice areas including corporate advisory, arbitration, mediation, litigation, IP, risk assessment, and compliance",
-    url: "/practice-area",
+    url: "https://www.aarnalaw.com/practice-area",
     images: "/PracticeArea/PracticeAreas.png",
   },
 };
 
-async function getPracticeAreas(page = 1, perPage = 20) {
-  try {
-    // Determine environment and use appropriate server ID
-    const isProduction = process.env.NODE_ENV === "production";
-    const server = isProduction
-      ? configData.LIVE_PRODUCTION_SERVER_ID
-      : configData.STAG_PRODUCTION_SERVER_ID;
+// Utility to determine productionMode based on domain
+function getProductionModeFromHost(hostname) {
+  const isLiveDomain =
+    hostname === config.LIVE_SITE_URL || hostname === config.LIVE_SITE_URL_WWW;
 
-    const res = await fetch(
-      `${configData.SERVER_URL}practice-areas?status[]=publish&production_mode[]=${server}&per_page=${perPage}&page=${page}`,
-      {
-        next: { revalidate: 60 }, // ISR (optional)
-      }
-    );
+  return isLiveDomain
+    ? config.LIVE_PRODUCTION_SERVER_ID
+    : config.STAG_PRODUCTION_SERVER_ID;
+}
+
+// Fetch practice areas based on production mode
+async function getPracticeAreas(productionMode, page = 1, perPage = 13) {
+  if (!productionMode) return [];
+
+  const url = `${config.SERVER_URL}practice-areas?status[]=publish&production_mode[]=${productionMode}&per_page=${perPage}&page=${page}`;
+
+  try {
+    const res = await fetch(url, {
+      next: { revalidate: 60 },
+    });
 
     const data = await res.json();
+
     return data.sort((a, b) =>
       a.title.rendered.localeCompare(b.title.rendered)
     );
@@ -49,8 +56,13 @@ async function getPracticeAreas(page = 1, perPage = 20) {
   }
 }
 
+// Main server component
 export default async function PracticeAreaPage() {
-  const practiceAreas = await getPracticeAreas(1, 13);
+  const headersList = headers();
+  const hostname = headersList.get("host")?.replace(/^www\./, "") ?? "";
+  const productionMode = getProductionModeFromHost(hostname);
+
+  const practiceAreas = await getPracticeAreas(productionMode, 1, 13);
 
   return (
     <>

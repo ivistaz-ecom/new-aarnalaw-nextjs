@@ -1,0 +1,26 @@
+# llms.txt for https://www.aarnalaw.com/
+# This file allows all major AI bots to access and use website content for training.
+
+# ✅ Allow OpenAI's GPTBot
+User-agent: GPTBot
+Allow: /
+
+# ✅ Allow OpenAI’s ChatGPT-User (used in browsing mode)
+User-agent: ChatGPT-User
+Allow: /
+
+# ✅ Allow Google's Gemini (Google-Extended)
+User-agent: Google-Extended
+Allow: /
+
+# ✅ Allow Claude (Anthropic)
+User-agent: anthropic-ai
+Allow: /
+
+# ✅ Allow Common Crawl (used by multiple AI training projects)
+User-agent: CCBot
+Allow: /
+
+# ✅ Allow Perplexity AI
+User-agent: PerplexityBot
+Allow: /

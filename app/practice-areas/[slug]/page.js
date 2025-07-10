@@ -1,20 +1,20 @@
 import LandingPage from "@/components/PracticeArea/InsidePage/LandingPage";
 import { notFound } from "next/navigation"; // <-- ✅ Required import
 
-export const metadata = {
-  title: "Practice Areas - Aarna Law",
-  description: "Explore our diverse legal practice areas at Aarna Law. We offer expert legal services across various domains with a focus on excellence and client satisfaction.",
-  metadataBase: new URL("https://www.aarnalaw.com"),
-  alternates: {
-    canonical: "/practice-areas",
-  },
-  openGraph: {
-    title: "Practice Areas - Aarna Law",
-    description: "Explore our diverse legal practice areas at Aarna Law. We offer expert legal services across various domains with a focus on excellence and client satisfaction.",
-    url: "/practice-areas",
-    images: "/PracticeArea/PracticeAreas.png",
-  },
-};
+// export const metadata = {
+//   title: "Practice Areas - Aarna Law",
+//   description: "Explore our diverse legal practice areas at Aarna Law. We offer expert legal services across various domains with a focus on excellence and client satisfaction.",
+//   metadataBase: new URL("https://www.aarnalaw.com"),
+//   alternates: {
+//     canonical: "/practice-areas",
+//   },
+//   openGraph: {
+//     title: "Practice Areas - Aarna Law",
+//     description: "Explore our diverse legal practice areas at Aarna Law. We offer expert legal services across various domains with a focus on excellence and client satisfaction.",
+//     url: "/practice-areas",
+//     images: "/PracticeArea/PracticeAreas.png",
+//   },
+// };
 
 async function fetchPracticeAreas() {
   try {
