@@ -1,20 +1,20 @@
 import { notFound } from "next/navigation"; // <-- ✅ Required import
 import LandingPage from "@/components/Industries/InsidePage/LandingPage";
 
-export const metadata = {
-  title: "Industries - Aarna Law",
-  description: "Explore our industry-specific legal expertise at Aarna Law. We provide specialized legal services across various industry sectors.",
-  metadataBase: new URL("https://www.aarnalaw.com"),
-  alternates: {
-    canonical: "/industries",
-  },
-  openGraph: {
-    title: "Industries - Aarna Law",
-    description: "Explore our industry-specific legal expertise at Aarna Law. We provide specialized legal services across various industry sectors.",
-    url: "/industries",
-    images: "/PracticeArea/PracticeAreas.png",
-  },
-};
+// export const metadata = {
+//   title: "Industries - Aarna Law",
+//   description: "Explore our industry-specific legal expertise at Aarna Law. We provide specialized legal services across various industry sectors.",
+//   metadataBase: new URL("https://www.aarnalaw.com"),
+//   alternates: {
+//     canonical: "/industries",
+//   },
+//   openGraph: {
+//     title: "Industries - Aarna Law",
+//     description: "Explore our industry-specific legal expertise at Aarna Law. We provide specialized legal services across various industry sectors.",
+//     url: "/industries",
+//     images: "/PracticeArea/PracticeAreas.png",
+//   },
+// };
 
 async function fetchIndustries() {
   try {

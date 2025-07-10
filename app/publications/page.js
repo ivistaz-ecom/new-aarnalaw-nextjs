@@ -1,7 +1,8 @@
 // app/publications/page.js
 
 import PublicationsClient from "./PublicationsClient";
-import configData from "../../config.json";
+import config from "../../config.json";
+import { headers } from "next/headers";
 
 // Enable ISR (revalidate every 60 seconds)
 export const revalidate = 60;
@@ -18,22 +19,30 @@ export const metadata = {
     title: "Legal Publications and Research",
     description:
       "Access a comprehensive collection of legal publications and research papers authored by Aarna Law's experts. Stay up-to-date with cutting-edge legal scholarship.",
-    url: "/publications",
+    url: "https://www.aarnalaw.com/publications",
     images: "/insights/InsightsBanner.jpg",
   },
 };
 
-async function fetchInitialPublications() {
-  try {
-    // Determine server based on environment
-    const isProduction = process.env.NODE_ENV === "production";
-    const server = isProduction
-      ? configData.LIVE_PRODUCTION_SERVER_ID
-      : configData.STAG_PRODUCTION_SERVER_ID;
+// Utility to determine productionMode from domain
+function getProductionModeFromHost(hostname) {
+  const isLiveDomain =
+    hostname === config.LIVE_SITE_URL || hostname === config.LIVE_SITE_URL_WWW;
 
-    const url = `${configData.SERVER_URL}publications?_embed&status[]=publish&production_mode[]=${server}`;
+  return isLiveDomain
+    ? config.LIVE_PRODUCTION_SERVER_ID
+    : config.STAG_PRODUCTION_SERVER_ID;
+}
+
+// Fetch publications using correct production mode
+async function fetchInitialPublications(productionMode) {
+  if (!productionMode) return [];
+
+  try {
+    const url = `${config.SERVER_URL}publications?_embed&status[]=publish&production_mode[]=${productionMode}`;
+
     const res = await fetch(url, {
-      next: { revalidate: 60 }, // Use ISR
+      next: { revalidate: 60 },
     });
 
     const data = await res.json();
@@ -45,6 +54,11 @@ async function fetchInitialPublications() {
 }
 
 export default async function AarnaPublicationsPage() {
-  const initialData = await fetchInitialPublications();
+  const headersList = headers();
+  const hostname = headersList.get("host")?.replace(/^www\./, "") ?? "";
+  const productionMode = getProductionModeFromHost(hostname);
+
+  const initialData = await fetchInitialPublications(productionMode);
+
   return <PublicationsClient initialData={initialData} />;
 }
