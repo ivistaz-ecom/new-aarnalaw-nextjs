@@ -51,7 +51,7 @@ const NavBar = () => {
         </div>
 
         <nav className="absolute z-50 mx-auto mt-20 w-full border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-          <div className="mx-auto flex max-w-screen-xl items-center justify-between px-4 md:px-0 py-1 nav-menu">
+          <div className="mx-auto flex max-w-screen-xl items-center flex-wrap justify-between px-4 md:px-0 py-1 nav-menu">
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo/aarna-logo.png"
