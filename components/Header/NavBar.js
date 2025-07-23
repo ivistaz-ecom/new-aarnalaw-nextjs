@@ -35,113 +35,124 @@ const NavBar = () => {
   }, [pathname, router]);
 
   return (
-    <div className="relative z-50 mx-auto w-11/12">
-      <div className="absolute right-0 mt-5 origin-top-right ring-1 ring-black ring-opacity-5 focus:outline-none">
-        <LanguageDropdown handleOptionClick={setLanguage} />
-      </div>
-
-      <nav className="absolute z-50 mx-auto mt-20 w-full border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between px-4 md:px-0 py-1">
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/logo/aarna-logo.png"
-              alt="Aarna Law"
-              width={700}
-              height={600}
-              className="size-16 md:size-20"
-              loading="lazy"
-            />
-          </Link>
-
-          <div className="flex w-2/5 justify-end lg:hidden">
-            <SearchModal />
-          </div>
-
-          <button
-            type="button"
-            onClick={() => setIsMenuOpen((prev) => !prev)}
-            className="inline-flex size-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
-            aria-controls="navbar-dropdown"
-            aria-expanded={isMenuOpen}
-          >
-            <span className="sr-only">Open main menu</span>
-            <svg
-              className="size-5"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 17 14"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M1 1h15M1 7h15M1 13h15"
-              />
-            </svg>
-          </button>
-
-          <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto `} id="navbar-dropdown">
-            <ul className="borderfont-medium mt-1 flex flex-col rounded-lg dark:border-gray-700 md:flex-row md:space-x-3">
-              {HeaderMenu.map((item, index) => {
-                const isContactUs = item.menu === "Contact Us";
-
-                return (
-                  <li
-                    key={index}
-                    className={`group relative ${isContactUs ? "md:hidden" : ""}`}
-                  >
-                    {item.aboutSubMenu || item.subMenu ? (
-                      <span className="flex cursor-pointer items-center px-3 py-2 md:hover:text-custom-red">
-                        {translations.menu[formatKey(item.menu)] || item.menu}
-                        <span className="ml-1 text-sm">&#9662;</span>
-                      </span>
-                    ) : (
-                      <Link
-                        href={item.slug || "#"}
-                        className="flex items-center px-3 py-2 md:hover:text-custom-red"
-                        onClick={() => setIsMenuOpen(false)}
-                      >
-                        {translations.menu[formatKey(item.menu)] || item.menu}
-                      </Link>
-                    )}
-
-                    {(item.aboutSubMenu || item.subMenu) && (
-                      <ul className="absolute z-10 hidden w-48 rounded-lg bg-white p-2 shadow-lg group-hover:block">
-                        {(item.aboutSubMenu || item.subMenu).map((sub, subIndex) => (
-                          <li key={subIndex}>
-                            <Link
-                              href={sub.slug || "#"}
-                              className="block px-4 py-2 hover:bg-gray-100"
-                              onClick={() => setIsMenuOpen(false)}
-                            >
-                              {translations.menu[formatKey(sub.name)] || sub.name}
-                            </Link>
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-
-          {/* Contact us for desktop view */}
-          <div className="hidden w-3/12 items-center justify-evenly lg:flex">
-            <SearchModal />
-            <Link
-              href="/contact-us"
-              className="my-2 border border-custom-red bg-white px-5 py-2.5 text-sm font-medium text-custom-red hover:bg-custom-red hover:text-white"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              {translations.menu.contactus || "CONTACT US"}
-            </Link>
-          </div>
+    <>
+      <style>
+        {
+          `
+        @media (max-width: 1200px) and (min-width: 992px) {
+          .nav-menu {
+            font-size: 12px; 
+        }`
+        }
+      </style>
+      <div className="relative z-50 mx-auto w-11/12">
+        <div className="absolute right-0 mt-5 origin-top-right ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <LanguageDropdown handleOptionClick={setLanguage} />
         </div>
-      </nav>
-    </div>
+
+        <nav className="absolute z-50 mx-auto mt-20 w-full border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
+          <div className="mx-auto flex max-w-screen-xl items-center justify-between px-4 md:px-0 py-1 nav-menu">
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/logo/aarna-logo.png"
+                alt="Aarna Law"
+                width={700}
+                height={600}
+                className="size-16 md:size-20"
+                loading="lazy"
+              />
+            </Link>
+
+            <div className="flex w-2/5 justify-end lg:hidden">
+              <SearchModal />
+            </div>
+
+            <button
+              type="button"
+              onClick={() => setIsMenuOpen((prev) => !prev)}
+              className="inline-flex size-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
+              aria-controls="navbar-dropdown"
+              aria-expanded={isMenuOpen}
+            >
+              <span className="sr-only">Open main menu</span>
+              <svg
+                className="size-5"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 17 14"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 1h15M1 7h15M1 13h15"
+                />
+              </svg>
+            </button>
+
+            <div className={`${isMenuOpen ? "block" : "hidden"} w-full md:block md:w-auto `} id="navbar-dropdown">
+              <ul className="borderfont-medium mt-1 flex flex-col rounded-lg dark:border-gray-700 md:flex-row md:space-x-3">
+                {HeaderMenu.map((item, index) => {
+                  const isContactUs = item.menu === "Contact Us";
+
+                  return (
+                    <li
+                      key={index}
+                      className={`group relative ${isContactUs ? "md:hidden" : ""}`}
+                    >
+                      {item.aboutSubMenu || item.subMenu ? (
+                        <span className="flex cursor-pointer items-center px-3 py-2 md:hover:text-custom-red">
+                          {translations.menu[formatKey(item.menu)] || item.menu}
+                          <span className="ml-1 text-sm">&#9662;</span>
+                        </span>
+                      ) : (
+                        <Link
+                          href={item.slug || "#"}
+                          className="flex items-center px-3 py-2 md:hover:text-custom-red"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {translations.menu[formatKey(item.menu)] || item.menu}
+                        </Link>
+                      )}
+
+                      {(item.aboutSubMenu || item.subMenu) && (
+                        <ul className="absolute z-10 hidden w-48 rounded-lg bg-white p-2 shadow-lg group-hover:block">
+                          {(item.aboutSubMenu || item.subMenu).map((sub, subIndex) => (
+                            <li key={subIndex}>
+                              <Link
+                                href={sub.slug || "#"}
+                                className="block px-4 py-2 hover:bg-gray-100"
+                                onClick={() => setIsMenuOpen(false)}
+                              >
+                                {translations.menu[formatKey(sub.name)] || sub.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+
+            {/* Contact us for desktop view */}
+            <div className="hidden w-3/12 items-center justify-evenly lg:flex">
+              <SearchModal />
+              <Link
+                href="/contact-us"
+                className="my-2 border border-custom-red bg-white px-5 py-2.5 text-sm font-medium text-custom-red hover:bg-custom-red hover:text-white nav-menu"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {translations.menu.contactus || "CONTACT US"}
+              </Link>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </>
   );
 };
 

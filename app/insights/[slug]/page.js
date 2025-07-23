@@ -4,6 +4,7 @@ import Banner from "@/components/Insights/InsidePage/Banner";
 import Link from "next/link";
 import ErrorPage from "@/components/404/page";
 import configData from "../../../config.json";
+import Faq from "@/components/FAQ/Faq";
 
 export default function Page({ params }) {
   const paramUrl = params.slug;
@@ -11,6 +12,7 @@ export default function Page({ params }) {
   const [date, setDate] = useState(null);
   const [featureImage, setFeatureImage] = useState(null);
   const [content, setContent] = useState(null);
+  const [faqs, setFaqs] = useState([]);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -21,16 +23,13 @@ export default function Page({ params }) {
         let productionModeFilter = "";
 
         if (
-          domain === `${configData.LIVE_SITE_URL}` ||
-          domain === `${configData.LIVE_SITE_URL_WWW}`
+          domain === configData.LIVE_SITE_URL ||
+          domain === configData.LIVE_SITE_URL_WWW
         ) {
-          server = `${configData.LIVE_PRODUCTION_SERVER_ID}`;
-          productionModeFilter = `&production_mode=${server}`;
-        } else if (domain === `${configData.STAGING_SITE_URL}`) {
-          server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
+          server = configData.LIVE_PRODUCTION_SERVER_ID;
           productionModeFilter = `&production_mode=${server}`;
         } else {
-          server = `${configData.STAG_PRODUCTION_SERVER_ID}`;
+          server = configData.STAG_PRODUCTION_SERVER_ID;
           productionModeFilter = `&production_mode=${server}`;
         }
 
@@ -52,6 +51,7 @@ export default function Page({ params }) {
           setDate(post.date);
           setContent(post.content.rendered);
 
+          // Feature image
           if (post.featured_media) {
             try {
               const mediaResponse = await fetch(
@@ -64,6 +64,18 @@ export default function Page({ params }) {
               setFeatureImage(null);
             }
           }
+
+          // FAQs from ACF
+          const acfData = post.acf || {};
+          const newFaqs = [];
+          for (let i = 1; i <= 10; i++) {
+            const question = acfData[`faq_${i}`];
+            const answer = acfData[`faqs_description_${i}`];
+            if (question && answer) {
+              newFaqs.push({ question, answer });
+            }
+          }
+          setFaqs(newFaqs);
         } else {
           setError(true);
         }
@@ -86,7 +98,6 @@ export default function Page({ params }) {
     return <ErrorPage />;
   }
 
-  // Wait until data is loaded
   if (!title || !content) return null;
 
   return (
@@ -119,7 +130,7 @@ export default function Page({ params }) {
         <Banner backgroundImage={featureImage} />
       </div>
 
-      <div className="py-10">
+      <div className="pt-10">
         <div className="mx-auto w-11/12">
           <div
             dangerouslySetInnerHTML={{ __html: content }}
@@ -127,6 +138,15 @@ export default function Page({ params }) {
           />
         </div>
       </div>
+
+      {/* FAQs */}
+      {faqs.length > 0 && (
+        <div className="w-11/12 flex justify-start items-start mx-auto">
+          <div className="text-left">
+            <Faq faqs={faqs} className="text-left" />
+          </div>
+        </div>
+      )}
 
       <div className="mx-auto w-11/12">
         <Link className="mt-6 bg-custom-red px-4 py-2 text-white" href="/insights/">
