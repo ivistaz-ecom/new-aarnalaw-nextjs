@@ -57,7 +57,7 @@ const Faq = ({ faqs = [] }) => {
   return (
     <div className="max-w-4xl container mx-auto py-6 sm:py-12 px-4 md:px-0">
       {faqs.length > 0 && (
-        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-8">
+        <h2 className="text-2xl sm:text-3xl font-semibold  mb-8">
           Frequently Asked Questions
         </h2>
       )}
