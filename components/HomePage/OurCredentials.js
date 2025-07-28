@@ -55,7 +55,7 @@ const OurCredentials = () => {
   };
 
   return (
-    <div className="bg-[#EFEFEF] py-12" ref={sectionRef}>
+    <div className="bg-[#EFEFEF] md:py-10 py-5 " ref={sectionRef}>
       <div className="mx-auto container ">
         <p className="mb-10 text-center text-2xl font-semibold text-custom-red">
           {translations.awards.awardsTitle}
@@ -74,7 +74,7 @@ const OurCredentials = () => {
         >
           {credentials.map((item, index) => (
             <div
-              className="inset-0 flex h-[200px] flex-col items-center justify-start"
+              className="inset-0 flex  flex-col items-center justify-start"
               key={index}
             >
               <Image

@@ -10,13 +10,13 @@ export default function OurLegacy() {
       {/* Text Section */}
       <div className="order-2 flex items-center justify-center lg:order-1">
         <div className="flex flex-col items-start justify-center p-2 lg:pe-12">
-          <h1 className="mt-4 text-2xl font-bold uppercase text-custom-blue lg:mt-0">
+          <h2 className=" text-2xl font-bold uppercase text-custom-blue lg:mt-0 mt-4">
             {translations.ourLegacy.legacyTitle}
-          </h1>
-          <h2 className="mt-4 py-4 text-2xl lg:text-[34px] font-semibold text-custom-red md:mt-0">
-            {translations.ourLegacy.legacyHeadline}
           </h2>
-          <p className="mt-4 py-2 text-custom-gray md:mt-0">
+          <h3 className="py-2 text-2xl lg:text-[32px] md:leading-10 font-semibold text-custom-red md:mt-0">
+            {translations.ourLegacy.legacyHeadline}
+          </h3>
+          <p className="py-2 text-custom-gray md:mt-0">
             {translations.ourLegacy.legacyPara}
           </p>
         </div>
