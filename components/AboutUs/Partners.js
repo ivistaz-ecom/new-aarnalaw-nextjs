@@ -101,7 +101,7 @@ export default function Partners() {
   );
 
   return (
-    <div className="bg-bgDark3 py-12">
+    <div className="bg-bgDark3 py-14">
       <div className="text-center">
         <p className="mb-4 text-2xl font-bold tracking-wider text-custom-red">
           {/* PARTNERS */}  {translations.aboutPartner.aboutPartnerTitle}
@@ -112,7 +112,7 @@ export default function Partners() {
 
           {translations.aboutPartner.aboutPartnerPara}
         </p>
-        <div className="mx-auto w-11/12 gap-4">
+        <div className="mx-auto container gap-4 px-4 md:px-0">
           <Credentials
             ref={sliderRef}
             responsive={responsive}

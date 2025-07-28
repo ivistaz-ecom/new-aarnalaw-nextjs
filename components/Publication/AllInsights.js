@@ -120,7 +120,7 @@ function AllInsights({ searchTerm, initialData = [] }) {
   };
 
   return (
-    <div className="mx-auto grid w-11/12 gap-4 py-12 lg:grid-cols-2">
+    <div className="mx-auto container grid px-4 md:px-0 gap-4 py-12 lg:grid-cols-2">
       {loading && filteredInsights.length === 0 ? (
         Array.from({ length: 6 }).map((_, index) => (
           <SkeletonLoader key={index} />

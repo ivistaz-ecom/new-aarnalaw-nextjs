@@ -28,7 +28,7 @@ export default function Footer() {
   return (
     <div className="pt-12">
       <div className="bg-white border-t-2 border-custom-blue">
-        <div className="mx-auto grid w-11/12 lg:grid-cols-2">
+        <div className="mx-auto grid container lg:grid-cols-2 px-4 md:px-0">
           <div className="pt-4">
             <Link href="/" className="flex items-center">
               <Image

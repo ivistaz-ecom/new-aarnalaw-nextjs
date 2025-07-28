@@ -8,7 +8,7 @@ function PracticeLists({ data = [], loading = true }) {
   const { language, translations } = useContext(LanguageContext);
 
   return (
-    <div className="mx-auto w-11/12 py-12">
+    <div className="mx-auto container py-12 px-4 md:px-0">
       {/* <p className="py-4 text-center font-bold text-gray-500">
         {translations.practiceAreasTitle.practiceAreas}
       </p> */}

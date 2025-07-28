@@ -174,8 +174,8 @@ function AllPodCasts({ searchTerm, initialData = [] }) {
   };
 
   return (
-    <div className="flex flex-col">
-      <div className="mx-auto grid w-full gap-4 p-4 md:grid-cols-2 md:p-12">
+    <div className="flex flex-col md:pt-10">
+      <div className="mx-auto container grid w-full gap-4 p-4 md:grid-cols-2 md:p-0">
         {filteredInsights.length > 0 ? (
           filteredInsights.map((item, index) => (
             <div
