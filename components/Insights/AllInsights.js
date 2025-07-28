@@ -144,8 +144,8 @@ function AllInsights({
   };
 
   return (
-    <div className="flex w-full flex-col md:flex-row">
-      <div className="mx-auto grid w-full grid-cols-1 gap-4 p-4 sm:grid-cols-2 lg:w-9/12 lg:p-12">
+    <div className="flex w-full flex-col md:flex-row container mx-auto pt-10 px-4 md:px-0">
+      <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 lg:w-9/12">
         {filteredData.length === 0 ? (
           <div className="col-span-1 sm:col-span-2 text-center py-8">
             {isChangingArchive ? (

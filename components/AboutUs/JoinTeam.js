@@ -6,7 +6,7 @@ export default function JoinTeam() {
   const { translations } = useContext(LanguageContext);
 
   return (
-    <div className="mx-auto flex w-11/12 flex-col  py-8 ">
+    <div className="mx-auto flex container flex-col py-8 px-4 md:px-0">
       <div className="flex flex-col justify-center ">
         <p className="pb-3 text-3xl font-semibold leading-normal text-custom-blue">
         {translations.joinTeam.joinTeamTitle} 

@@ -125,8 +125,8 @@ function AllNews({ searchTerm, initialData = [] }) {
   );
 
   return (
-    <div className="p-4 md:p-8 lg:p-12">
-      <div className="mx-auto grid grid-cols-1 gap-4 p-4 lg:grid-cols-2 lg:p-0">
+    <div className="px-4 md:p-8 lg:p-12">
+      <div className="mx-auto container grid grid-cols-1 gap-4 px-4 lg:grid-cols-2 lg:p-0">
         {filteredInsights.length > 0 ? (
           filteredInsights.map((items) => (
             <div

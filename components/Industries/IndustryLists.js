@@ -9,7 +9,7 @@ function IndustryLists({ data = [], loading = true }) {
 
   return (
     <div>
-      <div className="mx-auto w-11/12 py-12">
+      <div className="mx-auto container py-12 px-4 md:px-0">
         <p className="py-4 text-center font-bold text-gray-500">
           {translations.industrieslistTitle.industrieslist}
         </p>

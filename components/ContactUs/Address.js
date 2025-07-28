@@ -6,7 +6,7 @@ import { location, phone, direction } from "@/utils/icons";
 function Address() {
   return (
     <>
-      <div className="mx-auto w-11/12 py-12">
+      <div className="mx-auto container py-12 px-4 md:px-0">
         <p className="mb-4 border-b-2 border-[#EE3C23] pb-[15px] text-left text-[26px] font-semibold leading-normal tracking-[1.6px] text-[#1C386A]">
           Aarna Law
         </p>

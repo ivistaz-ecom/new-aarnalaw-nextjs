@@ -55,7 +55,7 @@ export default function PracticeArea() {
 
   return (
     <div className="bg-[#151C4A] py-12">
-      <div className="mx-auto md:w-10/12">
+      <div className="mx-auto container ">
         <h2 className="mb-12 text-center text-3xl font-bold text-white">
           {translations.aboutPracticeAreaTitle.aboutPracticeAreaName}
         </h2>
