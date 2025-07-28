@@ -104,9 +104,9 @@ export default function HomeInsights({ initialInsights = [] }) {
   );
 
   return (
-    <div className="">
-      <div className="z-10 flex h-auto flex-col bg-white lg:mt-10 lg:w-11/12 lg:flex-row">
-        <div className="flex justify-between lg:w-2/12">
+    <div className="container mx-auto ">
+      <div className="z-10 flex h-auto flex-col bg-white lg:mt-10 lg:flex-row">
+        <div className="flex justify-between lg:w-1/12">
           <div className="flex w-full items-center justify-evenly gap-7 lg:flex-col">
             <h3 className="m-0 py-5 text-2xl font-bold text-custom-red md:p-0 md:text-[80px] lg:-rotate-90">
               Insights
@@ -160,7 +160,7 @@ export default function HomeInsights({ initialInsights = [] }) {
               ))}
           </InsightSlider>
 
-          <div className="mt-6 flex justify-center md:ms-3">
+          <div className="mt-6 flex justify-center md:-ms-20 ms-1">
             <Link
               href="/insights"
               className="border border-custom-blue px-6 py-2 text-custom-blue md:hover:bg-custom-blue md:hover:text-white"
@@ -170,7 +170,7 @@ export default function HomeInsights({ initialInsights = [] }) {
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-4 pt-8 lg:hidden">
+        <div className="flex items-center justify-center gap-4 pt-8 lg:hidden ms-1 ">
           <PrevArrow />
           <NextArrow />
         </div>

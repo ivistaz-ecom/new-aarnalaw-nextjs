@@ -49,13 +49,13 @@ function FounderMessage() {
         <p className="mt-4 text-custom-gray md:mt-0 ">
           {translations.founderMessage.founderPara}
         </p>
-        <div className="flex w-full justify-between py-8">
+        <div className="md:flex w-full justify-between py-8">
           <div>
-            <p className="font-bold text-custom-blue"> {translations.founderMessage.founderName1} </p>{" "}
+            <p className="font-bold text-custom-blue py-2"> {translations.founderMessage.founderName1} </p>{" "}
             <p> {translations.founderMessage.founderDescription1}</p>
           </div>
           <div>
-            <p className="font-bold text-custom-blue">{translations.founderMessage.founderName2}</p>{" "}
+            <p className="font-bold text-custom-blue py-2">{translations.founderMessage.founderName2}</p>{" "}
             <p>{translations.founderMessage.founderDescription2}</p>
           </div>
         </div>

@@ -8,6 +8,8 @@ function PracticeLists() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(100);
+  const [openIndexes, setOpenIndexes] = useState([]);
+
 
   const domain = typeof window !== "undefined" ? window.location.hostname : "";
 
@@ -61,14 +63,14 @@ function PracticeLists() {
           international outlook
         </p>
 
-        <p className="pt-12">
+        <p className="pt-6">
           Aarna Law is an India-based international legal advisory rooted in
           dharmic principles of natural law, justice, and compassion. Through
           our wide range of practice areas, we provide progressive legal counsel
           to a clientele that spans Nation States, International Organisations,
           Multinational Companies, Niche Start-ups, and Individual Interests.
         </p>
-        <p className="py-8 font-semibold text-custom-blue">
+        <p className="py-6 font-semibold text-custom-blue">
           RECRUITMENT FOR LEGAL AND ADMINISTRATIVE PROFESSIONALS
         </p>
         <p>
@@ -80,7 +82,7 @@ function PracticeLists() {
           service and a passion for excellence in the law, please get in touch.
         </p>
 
-        <div className="py-12">
+        <div className="py-6">
           <h2 className="border-b-2 border-custom-red pb-4 text-3xl font-semibold text-custom-blue">
             Current Openings
           </h2>
@@ -90,58 +92,65 @@ function PracticeLists() {
             data-active-classes="bg-white text-gray-900"
             data-inactive-classes="text-custom-blue"
           >
-            {data.map((item, index) => (
-              <div key={index}>
-                <h2 id={`accordion-flush-heading-${index}`}>
-                  <button
-                    type="button"
-                    className="flex w-full text-start items-center justify-between gap-3 border-b border-gray-200 py-5 text-lg font-medium text-custom-blue dark:border-gray-700 dark:text-gray-400"
-                    data-accordion-target={`#accordion-flush-body-${index}`}
-                    aria-expanded="false"
-                    aria-controls={`accordion-flush-body-${index}`}
-                    onClick={() =>
-                      document
-                        .querySelector(`#accordion-flush-body-${index}`)
-                        .classList.toggle("hidden")
-                    }
-                  >
-                    <span
-                      dangerouslySetInnerHTML={{ __html: item.title.rendered }}
-                    ></span>
-                    <svg
-                      className="size-3 shrink-0"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 10 6"
+            {data.map((item, index) => {
+              const isOpen = openIndexes.includes(index);
+
+              const toggleAccordion = () => {
+                if (isOpen) {
+                  setOpenIndexes(openIndexes.filter((i) => i !== index));
+                } else {
+                  setOpenIndexes([...openIndexes, index]);
+                }
+              };
+
+              return (
+                <div key={index} className="transition-all duration-300 ease-in-out">
+                  <h2>
+                    <button
+                      type="button"
+                      onClick={toggleAccordion}
+                      className="flex w-full items-center justify-between gap-3 border-b border-gray-200 py-5 text-lg font-medium text-custom-blue transition-colors duration-300"
                     >
-                      <path
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M9 5 5 1 1 5"
+                      <span
+                        dangerouslySetInnerHTML={{ __html: item.title.rendered }}
+                      ></span>
+                      <svg
+                        className={`size-3 shrink-0 transform transition-transform duration-300 ${isOpen ? "rotate-180" : "rotate-0"
+                          }`}
+                        aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 10 6"
+                      >
+                        <path
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          d="M9 5 5 1 1 5"
+                        />
+                      </svg>
+                    </button>
+                  </h2>
+
+                  <div
+                    className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"
+                      }`}
+                  >
+                    <div className="border-b border-gray-200 py-5 dark:border-gray-700">
+                      <p
+                        className="careers mb-2 text-black dark:text-gray-400"
+                        dangerouslySetInnerHTML={{
+                          __html: item.content?.rendered || "No content available.",
+                        }}
                       />
-                    </svg>
-                  </button>
-                </h2>
-                <div
-                  id={`accordion-flush-body-${index}`}
-                  className="hidden"
-                  aria-labelledby={`accordion-flush-heading-${index}`}
-                >
-                  <div className="border-b border-gray-200 py-5 dark:border-gray-700">
-                    <p
-                      className="careers mb-2 text-black dark:text-gray-400"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          item.content?.rendered || "No content available.",
-                      }}
-                    />
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
+
+
 
             <div className="flex w-full justify-start mt-5">
               <ContactModal

@@ -1,31 +1,24 @@
 "use client"
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css'; // Import styles for react-multi-carousel
+import 'react-multi-carousel/lib/styles.css';
 import { LanguageContext } from "../../app/context/LanguageContext";
 
 const KindOfDisputes = () => {
   const sliderRef = useRef(null);
   const { language, translations } = useContext(LanguageContext);
-
-  // State to track screen size 
   const [isDesktop, setIsDesktop] = useState(false);
 
   useEffect(() => {
-    // Update screen size state on component mount
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1024); // Adjust 1024px for desktop threshold
+      setIsDesktop(window.innerWidth >= 1024);
     };
 
-    handleResize(); // Initialize on mount
+    handleResize();
     window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize); // Clean up the event listener
-    };
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Carousel responsive settings
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 1024 },
@@ -46,7 +39,7 @@ const KindOfDisputes = () => {
   };
 
   return (
-    <div className="py-8 px-4 md:mx-10">
+    <div className="py-8 md:mx-auto container">
       <h2 className="text-center text-2xl font-semibold text-custom-red mb-6">
         {translations.disputes.disputesTitle}
       </h2>
@@ -55,16 +48,18 @@ const KindOfDisputes = () => {
         ref={sliderRef}
         infinite={true}
         showDots={false}
-        arrows={false} // Disable arrows
-        autoPlay={true} // Enable auto-slide
-        autoPlaySpeed={3000} // Set the auto-slide interval (in milliseconds)
+        arrows={false}
+        autoPlay={true}
+        autoPlaySpeed={3000}
       >
-        {translations.disputesDetails.map((items, index) => (
+        {translations.disputesDetails.flat().map((item, index) => (
           <div
             key={index}
-            className="border border-red-400 py-10 text-center rounded-lg shadow-md m-5"
+            className="border border-red-400 py-5 px-4 text-center rounded-lg shadow-md flex flex-col justify-center h-full min-h-[120px] mx-4"
           >
-            <h3 className="text-blue-900 font-medium text-lg">{items.name}</h3>
+            <h3 className="text-blue-900 font-medium text-lg">
+              {item.name}
+            </h3>
           </div>
         ))}
       </Carousel>

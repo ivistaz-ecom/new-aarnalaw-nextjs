@@ -17,7 +17,7 @@ function PracticeAreaPostDetails({ details = {}, partnersData = {}, slug, titleT
     const answer = details?.acf?.[`faqs_description_${i}`];
     if (question && answer) {
       faqs.push({ question, answer });
-    }
+    } 
   }
 
   useEffect(() => {
