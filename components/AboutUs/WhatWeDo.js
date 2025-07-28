@@ -25,7 +25,7 @@ const WhatWeDo = () => {
         <h1 className="text-2xl font-bold uppercase text-custom-red mt-4 lg:mt-0">
           {translations.whatWeDo.title}
         </h1>
-        <h2 className="py-4 text-4xl font-semibold text-custom-blue md:mt-0">
+        <h2 className="py-4 text-2xl lg:text-[34px] font-semibold text-custom-blue md:mt-0">
           {translations.whatWeDo.headline}
         </h2>
         <p className="mt-4 text-custom-gray md:mt-0">
