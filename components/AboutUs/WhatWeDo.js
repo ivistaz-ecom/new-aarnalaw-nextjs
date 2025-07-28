@@ -21,7 +21,7 @@ const WhatWeDo = () => {
           />
         </div>
         <div className="flex flex-col items-start justify-center p-2 lg:pl-12">
-          <h1 className="pb-4 text-2xl font-bold uppercase text-custom-red mt-4 lg:mt-0">
+          <h1 className="text-2xl font-bold uppercase text-custom-red mt-4 lg:mt-0">
           {translations.whatWeDo.title}
           </h1>
           <h2 className="py-4 text-4xl font-semibold text-custom-blue md:mt-0">

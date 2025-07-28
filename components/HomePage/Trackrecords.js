@@ -29,7 +29,7 @@ export default function TrackRecords() {
 
   return (
     <div className="py-12" ref={sectionRef}>
-      <div className="mx-auto w-11/12">
+      <div className="mx-auto container">
         <p className="text-center text-2xl font-semibold text-custom-red">
           {translations.trackRecord.trackRecordTitle}
         </p>

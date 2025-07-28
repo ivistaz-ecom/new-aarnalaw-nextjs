@@ -4,7 +4,7 @@
 
 const en = {
   menu: {
-    about: "About",
+    about: "About Us",
     thefirm: "The Firm",
     testimonials: "Testimonials",
     practiceareas: "Practice Areas",
@@ -47,7 +47,7 @@ const en = {
 
   // About Us 
   aboutTitle: {
-    aboutName: "About",
+    aboutName: "About Us",
   },
 
   //About Us and Home Page

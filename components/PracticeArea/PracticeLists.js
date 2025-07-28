@@ -9,9 +9,9 @@ function PracticeLists({ data = [], loading = true }) {
 
   return (
     <div className="mx-auto w-11/12 py-12">
-      <p className="py-4 text-center font-bold text-gray-500">
+      {/* <p className="py-4 text-center font-bold text-gray-500">
         {translations.practiceAreasTitle.practiceAreas}
-      </p>
+      </p> */}
       <p className="mx-auto text-center text-3xl lg:w-8/12">
         {translations.practiceAreaHeading.practiceAreaHeading}
       </p>

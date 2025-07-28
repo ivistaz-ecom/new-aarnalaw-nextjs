@@ -1,4 +1,5 @@
 // app/insights/[slug]/layout.js
+
 export async function generateMetadata({ params }) {
   const { slug } = params;
 
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }) {
     ? blog._embedded["wp:featuredmedia"][0].source_url
     : `https://docs.aarnalaw.com${blog._embedded["wp:featuredmedia"][0].source_url}`;
 
-  // ✅ Extract FAQs from ACF
+  // FAQs from ACF
   const faqs = [];
   for (let i = 1; i <= 10; i++) {
     const question = blog.acf?.[`faq_${i}`];
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }) {
     }
   }
 
-  // ✅ Generate JSON-LD for FAQ schema
+  // Generate FAQ JSON-LD
   const faqSchema =
     faqs.length > 0
       ? {
@@ -74,7 +75,7 @@ export async function generateMetadata({ params }) {
         },
       ],
     },
-    // ✅ Pass JSON-LD in metadata
+    // Optionally pass FAQ schema as JSON string if needed elsewhere
     other: {
       faqJsonLd: faqSchema ? JSON.stringify(faqSchema) : "",
     },
@@ -83,7 +84,52 @@ export async function generateMetadata({ params }) {
 
 export const revalidate = 10;
 
-// ✅ Export layout wrapper
-export default function InsightPostLayout({ children }) {
-  return <>{children}</>;
+export default async function InsightPostLayout({ children, params }) {
+  const { slug } = params;
+
+  const res = await fetch(
+    `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&slug=${slug}`,
+    { cache: "no-store" }
+  );
+  const data = await res.json();
+  const blog = data?.[0];
+
+  const faqs = [];
+  for (let i = 1; i <= 10; i++) {
+    const question = blog?.acf?.[`faq_${i}`];
+    const answer = blog?.acf?.[`faqs_description_${i}`];
+    if (question && answer) {
+      faqs.push({ question, answer });
+    }
+  }
+
+  const faqSchema =
+    faqs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": faqs.map((faq) => ({
+            "@type": "Question",
+            "name": faq.question,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": faq.answer,
+            },
+          })),
+        }
+      : null;
+
+  return (
+    <>
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema, null, 2), // <- pretty-print with 2-space indentation
+          }}
+        />
+      )}
+      {children}
+    </>
+  );
 }

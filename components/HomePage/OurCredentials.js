@@ -56,7 +56,7 @@ const OurCredentials = () => {
 
   return (
     <div className="bg-[#EFEFEF] py-12" ref={sectionRef}>
-      <div className="mx-auto w-11/12">
+      <div className="mx-auto container ">
         <p className="mb-10 text-center text-2xl font-semibold text-custom-red">
           {translations.awards.awardsTitle}
         </p>

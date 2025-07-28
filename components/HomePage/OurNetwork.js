@@ -45,7 +45,7 @@ function OurNetwork() {
         }
       </style>
 
-      <div className="mx-auto w-11/12">
+      <div className="mx-auto container">
         <p className="pb-8 pt-12 text-center text-xl font-semibold text-custom-blue md:text-2xl">
           {translations.network.networkTitle}
         </p>
