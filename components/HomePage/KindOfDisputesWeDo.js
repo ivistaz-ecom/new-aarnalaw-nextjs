@@ -39,7 +39,7 @@ const KindOfDisputes = () => {
   };
 
   return (
-    <div className="md:py-8 pb-5 md:pb-0 md:mx-auto container">
+    <div className="md:py-8 pb-5 md:pb-20 md:mx-auto container">
       <h2 className="text-center text-2xl font-semibold text-custom-red mb-6">
         {translations.disputes.disputesTitle}
       </h2>
