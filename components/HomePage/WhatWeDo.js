@@ -10,7 +10,7 @@ const WhatWeDo = () => {
   return (
     <>
       {/* Section 1 */}
-      <div className="mx-auto grid container py-12 lg:grid-cols-2 mt-6 gap-2">
+      <div className="mx-auto grid container py-12 lg:grid-cols-2 mt-6 gap-2 px-4 md:px-0">
         <div className="flex items-center justify-center">
           <Image
             src="/whatWeDo/What_we_do.jpg"
@@ -21,11 +21,11 @@ const WhatWeDo = () => {
             loading="lazy"
           />
         </div>
-        <div className="flex flex-col items-center justify-center text-center lg:items-start lg:text-left lg:px-8">
-          <h2 className="pb-1 text-2xl font-bold text-custom-red mt-6 lg:mt-0">
+        <div className="flex flex-col md:items-center justify-center md:text-center lg:items-start lg:text-left lg:px-8">
+          <h2 className=" text-2xl font-bold text-custom-red mt-6 lg:mt-0 pb-2 ">
             {translations.whatWeDo.title}
           </h2>
-          <h3 className="md:my-6 my-4 text-2xl font-semibold text-custom-blue lg:text-[34px]">
+          <h3 className="mb-4 text-2xl font-semibold text-custom-blue lg:text-[34px] md:leading-10">
             {translations.whatWeDo.headline}
           </h3>
           <p className="text-custom-gray">{translations.whatWeDo.para1}</p>
@@ -40,15 +40,15 @@ const WhatWeDo = () => {
       </div>
 
       {/* Section 2 */}
-      <div className="mx-auto grid container pb-12 lg:grid-cols-2 gap-2">
-        <div className="order-2 flex flex-col items-center justify-center text-center lg:order-1 lg:items-start lg:text-left lg:pe-12">
+      <div className="mx-auto grid container pb-12 lg:grid-cols-2 gap-2 px-4 md:px-0">
+        <div className="order-2 flex flex-col md:items-center justify-center md:text-center lg:order-1 lg:items-start lg:text-left lg:pe-12">
           <h2 className="text-2xl font-bold text-custom-blue md:mt-0 mt-6">
             {translations.ourLegacy1.legacyTitle1}
           </h2>
-          <h3 className="md:mt-4 py-4 text-2xl font-semibold text-custom-blue lg:text-[34px]">
+          <h3 className="py-4 text-2xl font-semibold text-custom-blue lg:text-[32px] md:leading-10">
             {translations.ourLegacy1.legacyHeadline1}
           </h3>
-          <p className="text-custom-gray">{translations.ourLegacy1.legacyPara1}</p>
+          <p className="text-custom-gray ">{translations.ourLegacy1.legacyPara1}</p>
           <p className="py-4 text-custom-gray">{translations.ourLegacy1.legacyPara2}</p>
           <Link
             href="/about-us"
