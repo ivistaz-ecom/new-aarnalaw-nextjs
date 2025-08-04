@@ -54,7 +54,7 @@ function PracticeLists() {
 
   return (
     <div>
-      <div className="mx-auto container py-12">
+      <div className="mx-auto container py-12 px-4 md:px-0">
         <p className="py-4 text-center font-bold text-gray-500">
           CAREERS AT AARNA LAW
         </p>

@@ -86,18 +86,24 @@ export default function HomeInsights({ initialInsights = [] }) {
           slidesToShow: 1,
         },
       },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
     ],
   };
 
   const SkeletonCard = () => (
-    <div className="animate-pulse lg:ms-5 lg:p-4">
-      <div className="h-[450px] w-full flex-col border border-gray-200 bg-white shadow lg:h-[620px]">
-        <div className="h-[200px] w-full bg-gray-200 md:h-[280px]" />
-        <div className="p-5 space-y-3">
-          <div className="h-6 w-3/4 rounded bg-gray-300" />
-          <div className="h-4 w-full rounded bg-gray-300" />
-          <div className="h-4 w-5/6 rounded bg-gray-300" />
-          <div className="h-10 w-24 rounded bg-gray-300 mt-5" />
+    <div className="animate-pulse lg:ms-5 lg:p-4 md:ms-3 md:p-3">
+      <div className="h-[450px] w-full flex-col border border-gray-200 bg-white shadow lg:h-[620px] md:h-[500px]">
+        <div className="h-[200px] w-full bg-gray-200 md:h-[220px] lg:h-[280px]" />
+        <div className="p-5 space-y-3 md:p-4 md:space-y-2">
+          <div className="h-6 w-3/4 rounded bg-gray-300 md:h-5" />
+          <div className="h-4 w-full rounded bg-gray-300 md:h-3" />
+          <div className="h-4 w-5/6 rounded bg-gray-300 md:h-3" />
+          <div className="h-10 w-24 rounded bg-gray-300 mt-5 md:h-8 md:w-20" />
         </div>
       </div>
     </div>
@@ -105,28 +111,28 @@ export default function HomeInsights({ initialInsights = [] }) {
 
   return (
     <div className="container mx-auto ">
-      <div className="z-10 flex h-auto flex-col bg-white lg:mt-10 lg:flex-row">
-        <div className="flex justify-between lg:w-1/12">
-          <div className="flex w-full items-center justify-evenly gap-7 lg:flex-col">
-            <h3 className="m-0 py-5 text-2xl font-bold text-custom-red md:p-0 md:text-[80px] lg:-rotate-90">
+      <div className="z-10 flex h-auto flex-col bg-white lg:mt-10 lg:flex-row md:mt-6">
+        <div className="flex justify-between lg:w-1/12 md:w-1/6">
+          <div className="flex w-full items-center justify-evenly gap-7 lg:flex-col md:flex-row md:gap-4">
+            <h3 className="m-0 py-5 text-2xl font-bold text-custom-red md:p-0 md:text-3xl md:py-3 lg:text-[80px] lg:-rotate-90">
               Insights
             </h3>
-            <div className="hidden gap-4 md:flex">
+            <div className="hidden gap-4 md:flex lg:flex">
               <PrevArrow />
               <NextArrow />
             </div>
           </div>
         </div>
 
-        <div className="mx-auto w-11/12 lg:w-10/12">
+        <div className="mx-auto w-11/12 lg:w-10/12 md:w-5/6">
           <InsightSlider ref={sliderRef} {...settings}>
             {isInitialLoading
               ? [...Array(2)].map((_, i) => <SkeletonCard key={i} />)
               : insightsData.map((item, index) => (
                 <div key={item.id} className="w-full">
-                  <div className="lg:ms-5 lg:p-4">
-                    <div className="group relative my-auto h-[450px] w-full flex-col border border-gray-200 bg-white shadow transition-colors duration-300 dark:border-gray-700 dark:bg-gray-800 md:hover:bg-custom-red md:hover:text-white lg:flex lg:h-[620px]">
-                      <div className="relative h-[200px] w-full overflow-hidden bg-gray-200 md:h-[280px]">
+                  <div className="lg:ms-5 lg:p-4 md:ms-3 md:p-3">
+                    <div className="group relative my-auto h-[450px] w-full flex-col border border-gray-200 bg-white shadow transition-colors duration-300 dark:border-gray-700 dark:bg-gray-800 md:hover:bg-custom-red md:hover:text-white lg:flex lg:h-[620px] md:h-[500px] md:flex">
+                      <div className="relative h-[200px] w-full overflow-hidden bg-gray-200 md:h-[220px] lg:h-[280px]">
                         <Image
                           src={item.imageUrl}
                           alt={item.title}
@@ -136,20 +142,20 @@ export default function HomeInsights({ initialInsights = [] }) {
                           priority={index < 2}
                         />
                       </div>
-                      <div className="flex grow flex-col items-start p-5 text-black transition-colors duration-300 md:group-hover:text-white">
+                      <div className="flex grow flex-col items-start p-5 text-black transition-colors duration-300 md:group-hover:text-white md:p-4">
                         <p
-                          className="mb-3 line-clamp-2 max-h-[4.5rem] min-h-12 overflow-hidden text-lg font-semibold text-custom-blue transition-colors duration-300 md:text-2xl md:group-hover:text-white"
+                          className="mb-3 line-clamp-2 max-h-[4.5rem] min-h-12 overflow-hidden text-lg font-semibold text-custom-blue transition-colors duration-300 md:text-xl md:mb-2 md:min-h-10 lg:text-2xl lg:group-hover:text-white"
                           dangerouslySetInnerHTML={{ __html: item.title }}
                         />
                         {item.desc && (
                           <p
-                            className="mb-5 line-clamp-3 text-left text-sm font-normal text-custom-gray transition-colors duration-300 md:text-base md:group-hover:text-white lg:mt-10"
+                            className="mb-5 line-clamp-3 text-left text-sm font-normal text-custom-gray transition-colors duration-300 md:text-sm md:mb-4 md:mt-6 lg:text-base lg:mt-10 lg:group-hover:text-white"
                             dangerouslySetInnerHTML={{ __html: item.desc }}
                           />
                         )}
                         <Link
                           href={`/insights/${item.slug}`}
-                          className="absolute bottom-0 left-[35%] m-5 mx-auto block border border-custom-red p-2 text-custom-red transition-colors duration-300 hover:bg-white hover:text-black md:left-5 md:mx-0 md:px-6 md:group-hover:bg-white md:group-hover:text-black"
+                          className="absolute bottom-0 left-[35%] m-5 mx-auto block border border-custom-red p-2 text-custom-red transition-colors duration-300 hover:bg-white hover:text-black md:left-4 md:m-4 md:px-4 md:text-sm lg:left-5 lg:mx-0 lg:px-6 lg:group-hover:bg-white lg:group-hover:text-black"
                         >
                           View Article
                         </Link>
@@ -160,17 +166,17 @@ export default function HomeInsights({ initialInsights = [] }) {
               ))}
           </InsightSlider>
 
-          <div className="mt-6 flex justify-center md:-ms-20 ms-1">
+          <div className="mt-6 flex justify-center md:-ms-10 ms-1 lg:-ms-20">
             <Link
               href="/insights"
-              className="border border-custom-blue px-6 py-2 text-custom-blue md:hover:bg-custom-blue md:hover:text-white"
+              className="border border-custom-blue px-6 py-2 text-custom-blue md:hover:bg-custom-blue md:hover:text-white md:px-4 md:py-1.5 md:text-sm lg:px-6 lg:py-2 lg:text-base"
             >
               View all
             </Link>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-4 pt-8 lg:hidden ms-1 ">
+        <div className="flex items-center justify-center gap-4 pt-8 lg:hidden ms-1 md:hidden">
           <PrevArrow />
           <NextArrow />
         </div>

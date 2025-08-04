@@ -7,21 +7,21 @@ const WhatWeDo = () => {
   const { translations } = useContext(LanguageContext);
 
   return (
-    <div className="mx-auto grid container py-12 lg:grid-cols-2 lg:min-h-[600px] px-4 md:px-0">
+    <div className="mx-auto grid container py-12 lg:grid-cols-2 gap-8 px-4 md:px-0">
       {/* Image Section */}
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center min-h-[400px] lg:min-h-[500px]">
         <Image
           src="/whatWeDo/What_we_do.jpg"
           width={500}
           height={500}
-          className="w-full h-auto max-h-[600px] object-contain"
-          alt=""
+          className="w-full h-full max-h-[600px] object-cover"
+          alt="What We Do"
           loading="lazy"
         />
       </div>
 
       {/* Text Section */}
-      <div className="flex flex-col items-start justify-center p-2 lg:pl-12">
+      <div className="flex flex-col justify-center min-h-[400px] lg:min-h-[500px] p-2 lg:pl-5">
         <h1 className="text-2xl font-bold uppercase text-custom-red mt-4 lg:mt-0">
           {translations.whatWeDo.title}
         </h1>

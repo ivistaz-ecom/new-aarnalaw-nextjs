@@ -47,16 +47,16 @@ export default function PracticeAreaBanner({
                   : titleText?.title?.rendered || titleText?.rendered || '';
 
   return (
-    <div className="relative h-[500px] lg:h-screen">
+    <div className="relative h-[550px]">
       <div
         className="absolute inset-0 bg-cover bg-center bg-gray-100"
         style={bgImage ? { backgroundImage: `url(${bgImage})` } : {}}
       />
       {/* <div className="absolute inset-0 bg-black/50" /> Overlay */}
-      <div className="relative flex h-full items-center justify-center px-4">
+      <div className="absolute bottom-0 flex h-[50vh] w-full items-center justify-center">
         {title && (
           <h1
-            className="max-w-4xl text-center text-3xl font-bold text-white md:text-4xl lg:text-5xl bg-black/50 p-4"
+            className="max-w-4xl text-center text-2xl font-bold text-white md:text-3xl bg-black/50 px-4 py-2"
             dangerouslySetInnerHTML={{ __html: title }}
           />
         )}
