@@ -14,7 +14,7 @@ function Testimonials() {
 
   return (
     <>
-      <div className="mx-auto w-11/12 py-12">
+      <div className="mx-auto container py-12">
         <div className="grid gap-10 lg:grid-cols-3">
           {translations.testimonialDetails.map((items, index) => (
             <div

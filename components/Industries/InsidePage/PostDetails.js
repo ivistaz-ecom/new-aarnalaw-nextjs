@@ -110,7 +110,7 @@ function PracticeAreaPostDetails({ details = {}, partnersData = {}, slug, titleT
           </div>
 
           {/* Faqs */}
-          {/* {faqs.length > 0 && <Faq faqs={faqs} />} */}
+          {faqs.length > 0 && <Faq faqs={faqs} />}
         </div>
 
         {/* Sidebar */}

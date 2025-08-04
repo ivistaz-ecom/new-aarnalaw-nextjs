@@ -100,7 +100,7 @@ function PracticeAreaPostDetails({ details = {}, partnersData = {}, slug, titleT
         `}
       </style>
 
-      <div className="flex w-full flex-col py-5 lg:flex-row">
+      <div className="flex w-full flex-col py-5 lg:flex-row ">
         {/* Left Content Section */}
         <div className="inner-content w-full md:px-6 md:w-9/12 md:p-14">
           <div className="prose px-6 pt-8 lg:px-20 lg:pt-0 [&_ol]:ml-8 [&_li]:ml-8">
@@ -110,7 +110,7 @@ function PracticeAreaPostDetails({ details = {}, partnersData = {}, slug, titleT
           </div>
 
           {/* Faqs */}
-          {/* {faqs.length > 0 && <Faq faqs={faqs} />} */}
+          {faqs.length > 0 && <Faq faqs={faqs} />}
         </div>
 
         {/* Sidebar */}
