@@ -51,13 +51,17 @@ const NavBar = () => {
     <>
       <style>
         {`
-          @media (max-width: 1920px) and (min-width: 1600px) {
+          @media (max-width: 1200px) and (min-width: 992px) {
             .nav-menu {
-              font-size: 11px !important; 
-              // margin-left: 10px;
+              font-size: ${language === 'ta' || language === 'ml' ? '12px' : '12px'} !important; 
             }
           }
-          
+
+           @media (max-width: 1920px) and (min-width: 1600px) {
+            .nav-menu {
+              font-size: ${language === 'ta' || language === 'ml' ? '13px' : '16px'} !important; 
+            }
+          }
           
           /* Mobile submenu styles */
           .mobile-submenu {
@@ -84,18 +88,18 @@ const NavBar = () => {
         </div>
 
         <nav className="absolute z-50 mx-auto mt-20 w-full border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900">
-          <div className="mx-auto flex max-w-screen-xl items-center flex-wrap justify-between px-4 md:px-0 py-1 nav-menu">
+          <div className="mx-auto flex max-w-screen-xl items-center  justify-between px-4 md:px-0 py-1 nav-menu">
             <div className="">
-            <Link href="/" className="flex items-center">
-              <Image
-                src="/logo/aarna-logo.png"
-                alt="Aarna Law"
-                width={700}
-                height={600}
-                className="size-16 md:size-20"
-                loading="lazy"
-              />
-            </Link></div>
+              <Link href="/" className="flex items-center">
+                <Image
+                  src="/logo/aarna-logo.png"
+                  alt="Aarna Law"
+                  width={700}
+                  height={600}
+                  className="size-16 md:size-20"
+                  loading="lazy"
+                />
+              </Link></div>
 
             <div className="flex w-2/5 justify-end lg:hidden">
               <SearchModal />
