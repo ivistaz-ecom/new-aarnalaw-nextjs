@@ -51,12 +51,13 @@ const NavBar = () => {
     <>
       <style>
         {`
-          @media (max-width: 1200px) and (min-width: 992px) {
+          @media (max-width: 1920px) and (min-width: 1600px) {
             .nav-menu {
               font-size: 11px !important; 
               // margin-left: 10px;
             }
           }
+          
           
           /* Mobile submenu styles */
           .mobile-submenu {
