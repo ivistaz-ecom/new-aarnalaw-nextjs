@@ -91,30 +91,26 @@ function PracticeAreaPostDetails({ details = {}, partnersData = {}, slug, titleT
         {`
           .inner-content ol {
             list-style: revert-layer;
-            padding-left: 20px;
+            // padding-left: 20px;
             padding-bottom: 10px;
-          }
-          .inner-content li {
-            padding-top: 10px;
           }
         `}
       </style>
 
-      <div className="flex w-full flex-col py-5 lg:flex-row ">
+      <div className="flex w-full flex-col py-5 lg:flex-row container mx-auto">
         {/* Left Content Section */}
-        <div className="inner-content w-full md:px-6 md:w-9/12 md:p-14">
-          <div className="prose px-6 pt-8 lg:px-20 lg:pt-0 [&_ol]:ml-8 [&_li]:ml-8">
+        <div className="inner-content w-full md:px-6 md:w-[70%] md:pt-14">
+          <div className="px-6 pt-8 md:pe-20 md:pt-0 [&_ol]:ml-8 [&_li]:ml-8">
             {description && (
               <div dangerouslySetInnerHTML={{ __html: description }} />
             )}
-          </div>
-
-          {/* Faqs */}
+               {/* Faqs */}
           {faqs.length > 0 && <Faq faqs={faqs} />}
+          </div>
         </div>
 
         {/* Sidebar */}
-        <div className="w-full bg-gray-50 md:w-3/12">
+        <div className="w-full bg-gray-50 md:w-[30%]">
           {/* Partners */}
           {partnersData?.partnerNames?.map((name, index) => (
             <div
@@ -125,7 +121,7 @@ function PracticeAreaPostDetails({ details = {}, partnersData = {}, slug, titleT
                 <Image
                   src={partnersData.partnerImages[index]}
                   alt={name}
-                  className="mb-4 size-[200px] rounded-full bg-[#0e1333]"
+                  className="mb-4 size-[180px] rounded-full bg-[#0e1333]"
                   width={200}
                   height={200}
                   priority={true}
