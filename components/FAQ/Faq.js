@@ -65,13 +65,13 @@ const Faq = ({ faqs = [] }) => {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="bg-white shadow-md rounded-2xl p-4 sm:p-6 transition-all duration-300"
+            className="bg-white shadow-md rounded-2xl p-4  transition-all duration-300"
           >
             <button
               onClick={() => toggleFAQ(index)}
               className="w-full flex justify-between items-center text-left"
             >
-              <h3 className="flex-1 text-base sm:text-lg font-semibold mr-3">
+              <h3 className="flex-1 text-md font-semibold mr-3">
                 {faq.question}
               </h3>
               <span className="flex-shrink-0 w-6 h-6 flex items-center justify-center">

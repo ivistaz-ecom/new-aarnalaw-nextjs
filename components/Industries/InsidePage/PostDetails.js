@@ -91,19 +91,18 @@ function PracticeAreaPostDetails({ details = {}, partnersData = {}, slug, titleT
         {`
           .inner-content ol {
             list-style: revert-layer;
-            padding-left: 20px;
             padding-bottom: 10px;
           }
           .inner-content li {
-            padding-top: 10px;
+            // padding-top: 10px;
           }
         `}
       </style>
 
-      <div className="flex w-full flex-col py-5 lg:flex-row">
+      <div className="flex w-full flex-col py-5 lg:flex-row container mx-auto gap-10 md:px-0 px-4">
         {/* Left Content Section */}
-        <div className="inner-content w-full md:px-6 md:w-9/12 md:p-14">
-          <div className="prose px-6 pt-8 lg:px-20 lg:pt-0 [&_ol]:ml-8 [&_li]:ml-8">
+        <div className="inner-content w-full md:w-[70%] md:p-4 ">
+          <div className="prose [&_ol]:ml-8 [&_li]:ml-8">
             {description && (
               <div dangerouslySetInnerHTML={{ __html: description }} />
             )}
@@ -114,7 +113,7 @@ function PracticeAreaPostDetails({ details = {}, partnersData = {}, slug, titleT
         </div>
 
         {/* Sidebar */}
-        <div className="w-full bg-gray-50 md:w-3/12">
+        <div className="w-full bg-gray-50 md:w-[30%]">
           {/* Partners */}
           {partnersData?.partnerNames?.map((name, index) => (
             <div

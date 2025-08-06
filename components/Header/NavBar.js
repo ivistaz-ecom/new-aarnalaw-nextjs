@@ -51,34 +51,16 @@ const NavBar = () => {
     <>
       <style>
         {`
-          @media (max-width: 1200px) and (min-width: 992px) {
-            .nav-menu {
-              font-size: ${language === 'ta' || language === 'ml' ? '12px' : '12px'} !important; 
-            }
+          /* Common font size for Tamil and Malayalam across all screen sizes */
+          .nav-menu {
+            font-size: ${language === 'ta' || language === 'ml' ? '12px' : '16px'} !important; 
           }
 
-           @media (max-width: 1920px) and (min-width: 1600px) {
+          /* Specific adjustments for larger screens if needed */
+          @media (min-width: 1600px) {
             .nav-menu {
-              font-size: ${language === 'ta' || language === 'ml' ? '13px' : '16px'} !important; 
+              font-size: ${language === 'ta' || language === 'ml' ? '12px' : '16px'} !important; 
             }
-          }
-          
-          /* Mobile submenu styles */
-          .mobile-submenu {
-            background-color: #f8f9fa;
-            border-left: 3px solid #dc2626;
-            margin-left: 1rem;
-            margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
-          }
-          
-          .mobile-submenu-item { 
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid #e5e7eb;
-          }
-          
-          .mobile-submenu-item:last-child {
-            border-bottom: none;
           }
         `}
       </style>
@@ -212,12 +194,12 @@ const NavBar = () => {
                           </span>
                         </button>
                         {isSubmenuOpen && (
-                          <ul className="mobile-submenu">
+                          <ul className="bg-gray-50 border-l-4 border-red-600 ml-4 mt-2 mb-2">
                             {(item.aboutSubMenu || item.subMenu).map((sub, subIndex) => (
                               <li key={subIndex}>
                                 <Link
                                   href={sub.slug || "#"}
-                                  className="mobile-submenu-item block text-sm text-gray-600 hover:text-custom-red"
+                                  className="block px-4 py-3 text-sm text-gray-600 hover:text-custom-red border-b border-gray-200 last:border-b-0"
                                   onClick={handleSubmenuClick}
                                 >
                                   {translations.menu[formatKey(sub.name)] || sub.name}
