@@ -1,9 +1,18 @@
 "use client"
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { LanguageContext } from "../../app/context/LanguageContext";
 
 export default function Banner({ title }) {
-  const { language, translations } = useContext(LanguageContext);
+  const { translations } = useContext(LanguageContext);
+  const [navHeight, setNavHeight] = useState(0);
+
+  useEffect(() => {
+    const nav = document.querySelector("nav"); // change selector if navbar element is different
+    if (nav) {
+      setNavHeight(nav.offsetHeight);
+    }
+  }, []);
+
   const getTitle = () => {
     switch (title) {
       case "insight":
@@ -15,16 +24,25 @@ export default function Banner({ title }) {
       case "podcast":
         return "Podcast";
       default:
-        return "Aarna Law"; // Fallback title if input is not recognized
+        return "Aarna Law";
     }
   };
 
   return (
-    <div className="relative h-[600px] md:bg-[url('/insights/InsightsBanner.jpg')] bg-[url('/insights/InsightsMobileBanner.jpg')] bg-cover bg-center">
-      <div className="absolute bottom-0 flex h-[50vh] w-full items-center justify-center">
-        <h1 className="text-5xl font-bold tracking-wide text-white  bg-black/50 p-4">
+    <div
+      className="relative md:bg-[url('/insights/InsightsBanner.jpg')] bg-[url('/insights/InsightsMobileBanner.jpg')] bg-cover bg-center"
+      style={{ height: "550px" }}
+    >
+      <div
+        className="absolute flex w-full items-center justify-center"
+        style={{
+          top: navHeight ? `${(550 - navHeight) / 1.8 + navHeight}px` : "50%",
+          transform: "translateY(-50%)"
+        }}
+      >
+        <h1 className="md:text-3xl text-2xl font-bold text-white bg-black/50 px-4 py-2">
           {/* {getTitle()} */}
-          {translations.insightsTitle.insights} 
+          {translations.insightsTitle.insights}
         </h1>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { LanguageContext } from "../../../app/context/LanguageContext"; // Import LanguageContext
+import { LanguageContext } from "../../../app/context/LanguageContext"; 
 import Image from "next/image";
 
 export default function PracticeAreaBanner({
@@ -8,8 +8,10 @@ export default function PracticeAreaBanner({
   titleText,
 }) {
   const [bgImage, setBgImage] = useState(backgroundImage?.url || backgroundImage);
-  const { language } = useContext(LanguageContext); // Get selected language
+  const [navHeight, setNavHeight] = useState(0);
+  const { language } = useContext(LanguageContext);
 
+  // Detect background image based on screen size
   useEffect(() => {
     const handleResize = () => {
       const img = window.innerWidth <= 768
@@ -22,13 +24,20 @@ export default function PracticeAreaBanner({
       handleResize();
       window.addEventListener("resize", handleResize);
     }
-
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [backgroundImage, mobileBackgroundImage]);
 
-  // Get the correct title based on language
+  // Detect navbar height for proper text centering
+  useEffect(() => {
+    const nav = document.querySelector("nav"); // adjust selector if your navbar element is different
+    if (nav) {
+      setNavHeight(nav.offsetHeight);
+    }
+  }, []);
+
+  // Get correct title based on language
   const title =
     language === "ta" && titleText?.acf?.tamil_title
       ? titleText.acf.tamil_title
@@ -47,13 +56,18 @@ export default function PracticeAreaBanner({
                   : titleText?.title?.rendered || titleText?.rendered || '';
 
   return (
-    <div className="relative h-[550px]">
+    <div className="relative" style={{ height: "550px" }}>
       <div
         className="absolute inset-0 bg-cover bg-center bg-gray-100"
         style={bgImage ? { backgroundImage: `url(${bgImage})` } : {}}
       />
-      {/* <div className="absolute inset-0 bg-black/50" /> Overlay */}
-      <div className="absolute bottom-0 flex h-[50vh] w-full items-center justify-center">
+      <div
+        className="absolute flex w-full items-center justify-center"
+        style={{
+          top: navHeight ? `${(550 - navHeight) / 1.8 + navHeight}px` : "50%",
+          transform: "translateY(-50%)"
+        }}
+      >
         {title && (
           <h1
             className="max-w-4xl text-center text-2xl font-bold text-white md:text-3xl bg-black/50 px-4 py-2"

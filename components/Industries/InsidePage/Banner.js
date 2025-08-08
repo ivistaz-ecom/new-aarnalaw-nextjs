@@ -1,5 +1,5 @@
 "use client";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "../../../app/context/LanguageContext";
 
 export default function IndustriesBanner({
@@ -8,6 +8,30 @@ export default function IndustriesBanner({
   titleText,
 }) {
   const { language } = useContext(LanguageContext);
+  const [navHeight, setNavHeight] = useState(0);
+  const [currentBanner, setCurrentBanner] = useState("");
+
+  // Detect navbar height
+  useEffect(() => {
+    const nav = document.querySelector("nav"); // adjust if your navbar selector is different
+    if (nav) {
+      setNavHeight(nav.offsetHeight);
+    }
+  }, []);
+
+  // Handle responsive background switching
+  useEffect(() => {
+    const updateBanner = () => {
+      const desktopBanner = backgroundImage?.url || backgroundImage;
+      const mobileBanner =
+        mobileBackgroundImage?.url || mobileBackgroundImage || desktopBanner;
+      setCurrentBanner(window.innerWidth <= 768 ? mobileBanner : desktopBanner);
+    };
+
+    updateBanner();
+    window.addEventListener("resize", updateBanner);
+    return () => window.removeEventListener("resize", updateBanner);
+  }, [backgroundImage, mobileBackgroundImage]);
 
   // Get the correct title based on language
   const title =
@@ -27,18 +51,19 @@ export default function IndustriesBanner({
                   ? titleText.acf.gujarati_title
                   : titleText?.title?.rendered;
 
-  // Get banner images with fallback
-  const desktopBanner = backgroundImage?.url || backgroundImage;
-  const mobileBanner = mobileBackgroundImage?.url || mobileBackgroundImage || desktopBanner;
-  const currentBanner = typeof window !== 'undefined' && window.innerWidth <= 768 ? mobileBanner : desktopBanner;
-
   return (
-    <div className="relative h-[550px]">
+    <div className="relative" style={{ height: "550px" }}>
       <div
         className="absolute inset-0 bg-cover bg-center bg-gray-100"
         style={currentBanner ? { backgroundImage: `url(${currentBanner})` } : {}}
       />
-      <div className="absolute bottom-0 flex h-[50vh] w-full items-center justify-center">
+      <div
+        className="absolute flex w-full items-center justify-center"
+        style={{
+          top: navHeight ? `${(550 - navHeight) / 1.8 + navHeight}px` : "50%",
+          transform: "translateY(-50%)",
+        }}
+      >
         {title && (
           <h1
             className="max-w-4xl text-center text-2xl font-bold text-white md:text-3xl bg-black/50 px-4 py-2"
