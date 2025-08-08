@@ -13,19 +13,16 @@ const Faq = ({ faqs = [] }) => {
   const renderAnswer = (answer) => {
     const hasList = /<ul>|<li>|•/i.test(answer);
     const hasParagraphs = /<p>/i.test(answer);
-
-    // Clean malformed paragraph HTML
+  
     let cleanedAnswer = answer
-      .replace(/<p>(\s*)<\/p>/gi, "") // remove empty <p></p>
-      .replace(/<p>(.*?)<p>/gi, "<p>$1</p><p>") // fix missing </p> before a new <p>
-      .replace(/<\/p>\s*<\/p>/gi, "</p>"); // remove duplicate </p>
-
+      .replace(/<p>(\s*)<\/p>/gi, "")
+      .replace(/<p>(.*?)<p>/gi, "<p>$1</p><p>")
+      .replace(/<\/p>\s*<\/p>/gi, "</p>")
+      .replace(/•/g, ""); // remove literal bullet characters
+  
     if (hasList) {
-      cleanedAnswer = cleanedAnswer.replace(
-        /<li>/g,
-        `<li class="pl-5 py-2 relative before:content-[''] before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:w-1.5 before:h-1.5 before:bg-red-500 before:rounded-full">`
-      );
-
+     
+  
       return (
         <div
           className="mt-3 text-gray-700 text-sm sm:text-base"
@@ -33,7 +30,7 @@ const Faq = ({ faqs = [] }) => {
         />
       );
     }
-
+  
     if (hasParagraphs) {
       return (
         <div
@@ -42,9 +39,8 @@ const Faq = ({ faqs = [] }) => {
         />
       );
     }
-
-    // Fallback for plain text answers
-    const paragraphs = answer.split(/\n\s*\n/);
+  
+    const paragraphs = cleanedAnswer.split(/\n\s*\n/);
     return (
       <div className="mt-3 text-gray-700 text-sm sm:text-base space-y-3">
         {paragraphs.map((para, idx) => (
@@ -53,19 +49,18 @@ const Faq = ({ faqs = [] }) => {
       </div>
     );
   };
+  
 
   return (
     <div className="max-w-4xl container mx-auto py-4 md:px-0">
       {faqs.length > 0 && (
-        <h2 className="text-2xl">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-2xl">Frequently Asked Questions</h2>
       )}
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="bg-white shadow-md rounded-2xl p-4  transition-all duration-300"
+            className="bg-white shadow-md rounded-2xl p-4 transition-all duration-300"
           >
             <button
               onClick={() => toggleFAQ(index)}
