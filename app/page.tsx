@@ -54,7 +54,7 @@ const OurNetwork = dynamic(() => import('../components/HomePage/OurNetwork'), {
 });
 
 export const metadata = {
-  title: 'Aarna Law - Top Litigation, Dispute & Corporate Law Firm in India',
+  title: 'Aarna Law - Litigation, Dispute & Corporate Law Firm in India',
   description:
     'Leading corporate law firm in India offering legal services in business law, litigation, arbitration, and compliance for Indian and international companies.',
   alternates: {
