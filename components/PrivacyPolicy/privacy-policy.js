@@ -40,13 +40,6 @@ const TermsOfUse = () => {
             margin-bottom: 0.5rem;
             line-height: 1.5;
           }
-          a {
-            color: #3498db; /* Custom link color */
-            text-decoration: underline;
-          }
-          strong {
-            font-weight: bold;
-          }
         `}
       </style>
       {/* Center the entire content */}

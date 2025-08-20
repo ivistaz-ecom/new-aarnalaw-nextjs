@@ -6,6 +6,10 @@ export const metadata = {
   alternates: {
     canonical: "/disclaimer",
   },
+  robots: {
+    index: false,   // prevents indexing
+    follow: false,  // prevents following links
+  },
   openGraph: {
     title: "Disclaimer | Aarna Law - Law Firm in India",
     description:

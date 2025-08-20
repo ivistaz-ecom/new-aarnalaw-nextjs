@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
-import Banner from "../../components/PrivacyPolicy/Banner";
-import PrivacyPolicy from "../../components/PrivacyPolicy/privacy-policy";
+import Banner from "../../components/PrivacyPolicyTest/Banner";
+import PrivacyPolicyTest from "../../components/PrivacyPolicyTest/privacy-policy";
 import { initFlowbite } from "flowbite";
 
 export default function Careers() {
@@ -12,7 +12,7 @@ export default function Careers() {
   return (
     <>
       <Banner />
-      <PrivacyPolicy />
+      <PrivacyPolicyTest />
     </>
   );
 }
