@@ -102,7 +102,7 @@ function AllPodCasts({ searchTerm, initialData = [] }) {
                   href={`/podcasts/${item.slug}`}
                   className="mt-3 inline-block rounded   py-2 font-semibold text-[#E6331C]"
                 >
-                  Listen more
+                Listen Now
                 </Link>
               </div>
             </div>
