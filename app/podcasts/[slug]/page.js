@@ -161,7 +161,8 @@ export default function PodcastPost({ params }) {
 
   return (
     <>
-      <div className="mx-auto w-11/12">
+    <div className="px-4">
+      <div className="mx-auto w-11/12 lg:w-1/2">
         <div className="h-[200px]" />
         <h1
           className="py-4 lg:text-4xl text-2xl font-bold tracking-wide text-black"
@@ -171,7 +172,7 @@ export default function PodcastPost({ params }) {
         {featureImage && <Banner backgroundImage={featureImage} />}
       </div>
 
-      <div className="mx-auto w-11/12 pt-5">
+      <div className="mx-auto w-11/12 lg:w-1/2 pt-5">
         <div
           dangerouslySetInnerHTML={{ __html: content }}
           className="insight-blog "
@@ -180,8 +181,8 @@ export default function PodcastPost({ params }) {
 
       {/* 🎵 Audio Player */}
       {playerLink && (
-        <div className="mx-auto my-6 w-11/12 rounded-lg border p-4 shadow">
-          <h2 className="mb-4 text-xl font-bold">Podcast Player</h2>
+        <div className=" mx-auto my-6 w-11/12 lg:w-1/2 rounded-lg border p-4 shadow">
+          {/* <h2 className="mb-4 text-xl font-bold">Podcast Player</h2> */}
           <div className="flex items-center space-x-4">
             {/* Play / Pause */}
             <button
@@ -226,6 +227,7 @@ export default function PodcastPost({ params }) {
         </div>
       )}
 
+
       <FloatingAudioPlayer
         currentPodcastIndex={currentPodcastIndex}
         podcasts={[
@@ -247,13 +249,14 @@ export default function PodcastPost({ params }) {
         formatTime={formatTime}
       />
 
-      <div className="mx-auto w-11/12">
+      <div className="mx-auto w-11/12 lg:w-1/2">
         <Link
           href="/podcasts"
           className="mt-6 inline-block bg-custom-red px-4 py-2 text-white transition hover:bg-red-700"
         >
           ← Back to Podcasts
         </Link>
+      </div>
       </div>
     </>
   );
