@@ -92,17 +92,38 @@ export default function PodcastPost({ params }) {
 
         if (index !== -1) {
           const post = data[index];
+          console.log("Full post data:", post);
+          console.log("Featured media data:", post._embedded?.["wp:featuredmedia"]);
+          console.log("ACF data:", post.acf);
+
           setTitle(post.title?.rendered || post.slug);
           setDate(post.date);
           setContent(
             post.content?.rendered ||
-              post.excerpt?.rendered ||
-              post.acf?.description ||
-              "<p>No description available.</p>"
+            post.excerpt?.rendered ||
+            post.acf?.description ||
+            "<p>No description available.</p>"
           );
-          setFeatureImage(
-            post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null
-          );
+
+          // Improved featured image handling
+          const featuredMedia = post._embedded?.["wp:featuredmedia"]?.[0];
+          if (post.episode_featured_image) {
+            console.log("Episode featured image URL:", post.episode_featured_image);
+            setFeatureImage(post.episode_featured_image);
+          } else if (featuredMedia?.source_url) {
+            console.log("Featured image URL:", featuredMedia.source_url);
+            setFeatureImage(featuredMedia.source_url);
+          } else if (featuredMedia?.media_details?.sizes?.medium?.source_url) {
+            console.log("Medium size image URL:", featuredMedia.media_details.sizes.medium.source_url);
+            setFeatureImage(featuredMedia.media_details.sizes.medium.source_url);
+          } else if (post.acf?.featured_image) {
+            console.log("ACF featured image:", post.acf.featured_image);
+            setFeatureImage(post.acf.featured_image);
+          } else {
+            console.log("No featured image found");
+            setFeatureImage(null);
+          }
+
           setPlayerLink(post.player_link || null);
         } else {
           setError(true);
@@ -161,9 +182,8 @@ export default function PodcastPost({ params }) {
       "NOV",
       "DEC",
     ];
-    return `${date.getDate()} ${
-      monthAbbreviations[date.getMonth()]
-    } ${date.getFullYear()}`;
+    return `${date.getDate()} ${monthAbbreviations[date.getMonth()]
+      } ${date.getFullYear()}`;
   };
 
   if (error) return <ErrorPage />;
@@ -179,7 +199,25 @@ export default function PodcastPost({ params }) {
             dangerouslySetInnerHTML={{ __html: title }}
           />
           <p className="py-4">Published: {formatDateString(date)}</p>
-          {featureImage && <Banner backgroundImage={featureImage} />}
+          {featureImage ? (
+            <div className="my-6">
+              <img
+                src={featureImage}
+                alt={title || "Podcast featured image"}
+                className="w-full h-[500px] object-cover rounded-lg"
+                onError={(e) => {
+                  console.error("Image failed to load:", featureImage);
+                  e.target.style.display = 'none';
+                }}
+                onLoad={() => console.log("Image loaded successfully:", featureImage)}
+              />
+            </div>
+          ) : (
+            <div className="w-full h-[400px] bg-gray-200 rounded-lg my-6 flex items-center justify-center">
+              <p className="text-gray-500 text-lg">No featured image available</p>
+            </div>
+          )}
+
         </div>
 
         <div className=" pt-5">
@@ -252,8 +290,8 @@ export default function PodcastPost({ params }) {
           duration={duration}
           mutedStatus={mutedStatus}
           volume={volume}
-          handleNext={() => {}}
-          handlePrevious={() => {}}
+          handleNext={() => { }}
+          handlePrevious={() => { }}
           formatTime={formatTime}
         />
 
