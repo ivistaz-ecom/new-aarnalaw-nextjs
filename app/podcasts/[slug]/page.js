@@ -3,18 +3,25 @@
 import React, { useEffect, useState, useRef } from "react";
 import Banner from "@/components/Insights/InsidePage/Banner";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import ErrorPage from "@/components/404/page";
 import { play, pause, sound, mute } from "@/utils/icons";
 import FloatingAudioPlayer from "@/components/Podcasts/FloatingAudioPlayer";
 
 export default function PodcastPost({ params }) {
   const { slug } = params;
+  const router = useRouter();
+
   const [title, setTitle] = useState(null);
   const [date, setDate] = useState(null);
   const [featureImage, setFeatureImage] = useState(null);
   const [content, setContent] = useState(null);
   const [playerLink, setPlayerLink] = useState(null);
   const [error, setError] = useState(false);
+
+  // 🔑 For prev / next
+  const [allPodcasts, setAllPodcasts] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(null);
 
   // 🎵 Audio states
   const [currentPodcastIndex, setCurrentPodcastIndex] = useState(null);
@@ -70,28 +77,53 @@ export default function PodcastPost({ params }) {
     return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
   };
 
-  // Fetch Podcast by slug
+  // ✅ Fetch all podcasts for navigation
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAll = async () => {
       try {
-        const response = await fetch(
-          `https://docs.aarnalaw.com/wp-json/wp/v2/podcast?_embed&slug=${slug}`,
+        const res = await fetch(
+          `https://docs.aarnalaw.com/wp-json/wp/v2/podcast?_embed&per_page=100`
         );
-        const data = await response.json();
+        const data = await res.json();
+        setAllPodcasts(data);
 
-        if (data && data.length > 0) {
-          const post = data[0];
+        const index = data.findIndex((p) => p.slug === slug);
+        setCurrentIndex(index);
+
+        if (index !== -1) {
+          const post = data[index];
+          console.log("Full post data:", post);
+          console.log("Featured media data:", post._embedded?.["wp:featuredmedia"]);
+          console.log("ACF data:", post.acf);
+
           setTitle(post.title?.rendered || post.slug);
           setDate(post.date);
           setContent(
             post.content?.rendered ||
-              post.excerpt?.rendered ||
-              post.acf?.description ||
-              "<p>No description available.</p>",
+            post.excerpt?.rendered ||
+            post.acf?.description ||
+            "<p>No description available.</p>"
           );
-          setFeatureImage(
-            post._embedded?.["wp:featuredmedia"]?.[0]?.source_url || null,
-          );
+
+          // Improved featured image handling
+          const featuredMedia = post._embedded?.["wp:featuredmedia"]?.[0];
+          if (post.episode_featured_image) {
+            console.log("Episode featured image URL:", post.episode_featured_image);
+            setFeatureImage(post.episode_featured_image);
+          } else if (featuredMedia?.source_url) {
+            console.log("Featured image URL:", featuredMedia.source_url);
+            setFeatureImage(featuredMedia.source_url);
+          } else if (featuredMedia?.media_details?.sizes?.medium?.source_url) {
+            console.log("Medium size image URL:", featuredMedia.media_details.sizes.medium.source_url);
+            setFeatureImage(featuredMedia.media_details.sizes.medium.source_url);
+          } else if (post.acf?.featured_image) {
+            console.log("ACF featured image:", post.acf.featured_image);
+            setFeatureImage(post.acf.featured_image);
+          } else {
+            console.log("No featured image found");
+            setFeatureImage(null);
+          }
+
           setPlayerLink(post.player_link || null);
         } else {
           setError(true);
@@ -101,8 +133,7 @@ export default function PodcastPost({ params }) {
         setError(true);
       }
     };
-
-    fetchData();
+    fetchAll();
   }, [slug]);
 
   // Setup audio refs
@@ -151,9 +182,8 @@ export default function PodcastPost({ params }) {
       "NOV",
       "DEC",
     ];
-    return `${date.getDate()} ${
-      monthAbbreviations[date.getMonth()]
-    } ${date.getFullYear()}`;
+    return `${date.getDate()} ${monthAbbreviations[date.getMonth()]
+      } ${date.getFullYear()}`;
   };
 
   if (error) return <ErrorPage />;
@@ -161,102 +191,129 @@ export default function PodcastPost({ params }) {
 
   return (
     <>
-    <div className="px-4">
-      <div className="mx-auto w-11/12 lg:w-1/2">
-        <div className="h-[200px]" />
-        <h1
-          className="py-4 lg:text-4xl text-2xl font-bold tracking-wide text-black"
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
-        <p className="py-4">Published: {formatDateString(date)}</p>
-        {featureImage && <Banner backgroundImage={featureImage} />}
-      </div>
-
-      <div className="mx-auto w-11/12 lg:w-1/2 pt-5">
-        <div
-          dangerouslySetInnerHTML={{ __html: content }}
-          className="insight-blog "
-        />
-      </div>
-
-      {/* 🎵 Audio Player */}
-      {playerLink && (
-        <div className=" mx-auto my-6 w-11/12 lg:w-1/2 rounded-lg border p-4 shadow">
-          {/* <h2 className="mb-4 text-xl font-bold">Podcast Player</h2> */}
-          <div className="flex items-center space-x-4">
-            {/* Play / Pause */}
-            <button
-              className="rounded-full bg-custom-blue p-3 text-white hover:bg-custom-red"
-              onClick={() => handlePlayPause(0, playerLink)}
-            >
-              {currentPodcastIndex === 0 ? pause : play}
-            </button>
-
-            {/* Progress bar */}
-            <div className="flex-1">
-              <span>
-                {formatTime(currentTime[0] || 0)} /{" "}
-                {formatTime(duration[0] || 0)}
-              </span>
-              <div
-                className="relative mt-2 h-2 w-full cursor-pointer rounded-full bg-gray-200"
-                onClick={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect();
-                  const clickPosition = e.clientX - rect.left;
-                  const newTime =
-                    (clickPosition / e.currentTarget.offsetWidth) *
-                    (duration[0] || 0);
-                  handleSeek(0, newTime, progress[0]);
+      <div className="px-4 md:w-[70%] w-full mx-auto">
+        <div className="">
+          <div className="h-[200px]" />
+          <h1
+            className="py-4 lg:text-4xl text-2xl font-bold tracking-wide text-black"
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+          <p className="py-4">Published: {formatDateString(date)}</p>
+          {featureImage ? (
+            <div className="my-6">
+              <img
+                src={featureImage}
+                alt={title || "Podcast featured image"}
+                className="w-full h-[500px] object-cover rounded-lg border"
+                onError={(e) => {
+                  console.error("Image failed to load:", featureImage);
+                  e.target.style.display = 'none';
                 }}
-              >
-                <div
-                  className="h-2 rounded-full bg-red-500"
-                  style={{ width: `${progress[0] || 0}%` }}
-                />
-              </div>
+                onLoad={() => console.log("Image loaded successfully:", featureImage)}
+              />
             </div>
+          ) : (
+            <div className="w-full h-[400px] bg-gray-200 rounded-lg my-6 flex items-center justify-center">
+              <p className="text-gray-500 text-lg">No featured image available</p>
+            </div>
+          )}
 
-            {/* Volume */}
-            <button
-              className="rounded-full bg-custom-blue p-3 text-white hover:bg-custom-red"
-              onClick={() => handleVolumeToggle(0)}
-            >
-              {mutedStatus[0] ? mute : sound}
-            </button>
-          </div>
         </div>
-      )}
 
-{/* 
-      <FloatingAudioPlayer
-        currentPodcastIndex={currentPodcastIndex}
-        podcasts={[
-          {
-            title: { rendered: title },
-            player_link: playerLink,
-          },
-        ]}
-        handlePlayPause={handlePlayPause}
-        handleVolumeToggle={handleVolumeToggle}
-        handleSeek={handleSeek}
-        progress={progress}
-        currentTime={currentTime}
-        duration={duration}
-        mutedStatus={mutedStatus}
-        volume={volume}
-        handleNext={() => {}} 
-        handlePrevious={() => {}} 
-        formatTime={formatTime}
-      /> */}
+        <div className=" pt-5">
+          <div
+            dangerouslySetInnerHTML={{ __html: content }}
+            className="insight-blog "
+          />
+        </div>
 
-      <div className="mx-auto w-11/12 lg:w-1/2">
-        <Link
-          href="/podcasts"
-          className="mt-6 inline-block bg-custom-red px-4 py-2 text-white transition hover:bg-red-700"
-        >
-          ← Back to Podcasts
-        </Link>
-      </div>
+        {/* 🎵 Audio Player */}
+        {playerLink && (
+          <div className="my-6 rounded-lg border p-4 shadow">
+            <div className="flex items-center space-x-4">
+              {/* Play / Pause */}
+              <button
+                className="rounded-full bg-custom-blue p-3 text-white hover:bg-custom-red"
+                onClick={() => handlePlayPause(0, playerLink)}
+              >
+                {currentPodcastIndex === 0 ? pause : play}
+              </button>
+
+              {/* Progress bar */}
+              <div className="flex-1">
+                <span>
+                  {formatTime(currentTime[0] || 0)} /{" "}
+                  {formatTime(duration[0] || 0)}
+                </span>
+                <div
+                  className="relative mt-2 h-2 w-full cursor-pointer rounded-full bg-gray-200"
+                  onClick={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const clickPosition = e.clientX - rect.left;
+                    const newTime =
+                      (clickPosition / e.currentTarget.offsetWidth) *
+                      (duration[0] || 0);
+                    handleSeek(0, newTime, progress[0]);
+                  }}
+                >
+                  <div
+                    className="h-2 rounded-full bg-red-500"
+                    style={{ width: `${progress[0] || 0}%` }}
+                  />
+                </div>
+              </div>
+
+              {/* Volume */}
+              <button
+                className="rounded-full bg-custom-blue p-3 text-white hover:bg-custom-red"
+                onClick={() => handleVolumeToggle(0)}
+              >
+                {mutedStatus[0] ? mute : sound}
+              </button>
+            </div>
+          </div>
+        )}
+
+        <FloatingAudioPlayer
+          currentPodcastIndex={currentPodcastIndex}
+          podcasts={[
+            {
+              title: { rendered: title },
+              player_link: playerLink,
+            },
+          ]}
+          handlePlayPause={handlePlayPause}
+          handleVolumeToggle={handleVolumeToggle}
+          handleSeek={handleSeek}
+          progress={progress}
+          currentTime={currentTime}
+          duration={duration}
+          mutedStatus={mutedStatus}
+          volume={volume}
+          handleNext={() => { }}
+          handlePrevious={() => { }}
+          formatTime={formatTime}
+        />
+
+        {/* ✅ Prev / Next buttons */}
+        <div className="mt-6 flex justify-between">
+          {currentIndex > 0 && (
+            <button
+              onClick={() => router.push(`/podcasts/${allPodcasts[currentIndex - 1].slug}`)}
+              className="bg-custom-red px-4 py-2 text-white transition hover:bg-red-700"
+            >
+              ← Previous Podcast
+            </button>
+          )}
+          {currentIndex < allPodcasts.length - 1 && (
+            <button
+              onClick={() => router.push(`/podcasts/${allPodcasts[currentIndex + 1].slug}`)}
+              className="bg-custom-red px-4 py-2 text-white transition hover:bg-red-700 ml-auto"
+            >
+              Next Podcast →
+            </button>
+          )}
+        </div>
       </div>
     </>
   );
