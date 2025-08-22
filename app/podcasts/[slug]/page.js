@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import ErrorPage from "@/components/404/page";
 import { play, pause, sound, mute } from "@/utils/icons";
-import FloatingAudioPlayer from "@/components/Podcasts/FloatingAudioPlayer";
+
 
 export default function PodcastPost({ params }) {
   const { slug } = params;
@@ -274,26 +274,6 @@ export default function PodcastPost({ params }) {
           </div>
         )}
 
-        <FloatingAudioPlayer
-          currentPodcastIndex={currentPodcastIndex}
-          podcasts={[
-            {
-              title: { rendered: title },
-              player_link: playerLink,
-            },
-          ]}
-          handlePlayPause={handlePlayPause}
-          handleVolumeToggle={handleVolumeToggle}
-          handleSeek={handleSeek}
-          progress={progress}
-          currentTime={currentTime}
-          duration={duration}
-          mutedStatus={mutedStatus}
-          volume={volume}
-          handleNext={() => { }}
-          handlePrevious={() => { }}
-          formatTime={formatTime}
-        />
 
         {/* ✅ Prev / Next buttons */}
         <div className="mt-6 flex justify-between">
