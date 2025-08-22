@@ -227,7 +227,7 @@ export default function PodcastPost({ params }) {
         </div>
       )}
 
-
+{/* 
       <FloatingAudioPlayer
         currentPodcastIndex={currentPodcastIndex}
         podcasts={[
@@ -247,7 +247,7 @@ export default function PodcastPost({ params }) {
         handleNext={() => {}} 
         handlePrevious={() => {}} 
         formatTime={formatTime}
-      />
+      /> */}
 
       <div className="mx-auto w-11/12 lg:w-1/2">
         <Link
