@@ -94,7 +94,7 @@ function AllPodCasts({ searchTerm, initialData = [] }) {
                   <Image
                     src={item.featured_image_url}
                     alt={item.title?.rendered || "Podcast Image"}
-                    className="w-full rounded-t-lg lg:h-[300px]"
+                    className="w-full rounded-t-lg "
                     width={500}
                     height={300}
                   />
