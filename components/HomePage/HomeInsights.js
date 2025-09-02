@@ -9,9 +9,13 @@ import Image from "next/image";
 import { leftArrow, rightArrow } from "../../utils/icons";
 import configData from "../../config"; // Adjust the path if needed
 
+// Base64 blur placeholder for better performance
+const BLUR_DATA_URL = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q==";
+
 export default function HomeInsights({ initialInsights = [] }) {
   const sliderRef = useRef(null);
   const [insightsData, setInsightsData] = useState(initialInsights);
+  const [imagesLoaded, setImagesLoaded] = useState(new Set());
   const isInitialLoading = insightsData.length === 0;
 
 
@@ -47,13 +51,34 @@ export default function HomeInsights({ initialInsights = [] }) {
           }));
 
         setInsightsData(latestInsights);
+
+        // Preload images for better performance
+        latestInsights.forEach((item, index) => {
+          const img = new window.Image();
+          img.onload = () => {
+            setImagesLoaded(prev => new Set([...prev, index]));
+          };
+          img.src = item.imageUrl;
+        });
       } catch (error) {
         console.error("Failed to fetch insights:", error);
       }
     };
 
-    fetchInsights();
-  }, []);
+    // Only fetch if no initial data provided
+    if (initialInsights.length === 0) {
+      fetchInsights();
+    } else {
+      // Preload images for initial data
+      initialInsights.forEach((item, index) => {
+        const img = new window.Image();
+        img.onload = () => {
+          setImagesLoaded(prev => new Set([...prev, index]));
+        };
+        img.src = item.imageUrl;
+      });
+    }
+  }, [initialInsights]);
 
   const NextArrow = () => (
     <div
@@ -140,6 +165,10 @@ export default function HomeInsights({ initialInsights = [] }) {
                           height={400}
                           className="size-full object-cover"
                           priority={index < 2}
+                          placeholder="blur"
+                          blurDataURL={BLUR_DATA_URL}
+                          quality={85}
+                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                         />
                       </div>
                       <div className="flex grow flex-col items-start p-5 text-black transition-colors duration-300 md:group-hover:text-white md:p-4">
