@@ -5,18 +5,18 @@ import ContactUs from "@/components/ContactUs/ContactForm";
 import Testimonials from "@/components/ContactUs/Testimonials";
 
 export const metadata = {
-  title: "Get in Touch with Aarna Law | Trusted Bangalore-based Legal Experts",
+  title: "Get in Touch with Aarna Law | Boutique Law Firm",
   description:
-    "Contact us, the premier Bangalore-based law firm, for expert legal assistance and guidance.",
+    "Contact us, a Bangalore-based law firm, for legal assistance and guidance.",
   metadataBase: new URL("https://www.aarnalaw.com"),
   alternates: {
     canonical: "/contact-us",
   },
   openGraph: {
     title:
-      "Get in Touch with Aarna Law | Trusted Bangalore-based Legal Experts",
+      "Get in Touch with Aarna Law | Boutique Law Firm",
     description:
-      "Contact us, the premier Bangalore-based law firm, for expert legal assistance and guidance.",
+      "Contact us, a Bangalore-based law firm, for legal assistance and guidance.",
     url: "/contact-us",
     images: "/contactUs/ContactBanner.jpg"
   },
