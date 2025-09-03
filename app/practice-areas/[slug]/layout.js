@@ -58,7 +58,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: post?.acf?.meta_title
-      ? `${post.acf.meta_title} - India's leading law firm offering legal counsel in practice areas`
+      ? `${post.acf.meta_title}`
       : "India's leading law firm offering legal counsel in practice areas",
     description: post?.acf?.meta_description || "",
     metadataBase: new URL("https://www.aarnalaw.com/"),

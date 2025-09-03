@@ -57,7 +57,7 @@ export async function generateMetadata({ params }) {
 
   return {
     title: post?.acf?.meta_title
-      ? `${post.acf.meta_title} - Industry-Specific Legal Solutions | Aarna Law`
+      ? `${post.acf.meta_title}`
       : "Industry-Specific Legal Solutions | Aarna Law",
     description: post?.acf?.meta_description || "Industry-Specific Legal Solutions | Aarna Law",
     metadataBase: new URL("https://www.aarnalaw.com/industries/"),
