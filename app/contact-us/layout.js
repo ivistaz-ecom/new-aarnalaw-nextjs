@@ -1,15 +1,15 @@
 export const metadata = {
-  title: "Contact Us | Law Firm in India - Aarna Law",
+  title: "Get in Touch with Aarna Law | Boutique Law Firm",
   description:
-    "Get in touch with the internationally recognised law firm in India - Aarna Law. Contact us now for professional legal assistance.",
+    "Contact us, a Bangalore-based law firm, for legal assistance and guidance.",
   metadataBase: new URL("https://www.aarnalaw.com"),
   alternates: {
     canonical: "/contact-us",
   },
   openGraph: {
-    title: "Contact Us | Law Firm in India - Aarna Law",
+    title: "Get in Touch with Aarna Law | Boutique Law Firm",
     description:
-      "Get in touch with the internationally recognised law firm in India - Aarna Law. Contact us now for professional legal assistance.",
+      "Contact us, a Bangalore-based law firm, for legal assistance and guidance.",
     url: "/contact-us",
     images: "/aarnalaw_new_banner.jpg ",
   },

@@ -8,17 +8,17 @@ import { headers } from "next/headers";
 export const revalidate = 60;
 
 export const metadata = {
-  title: "India's leading law firm offering legal counsel in practice areas",
+  title: "Experienced Legal Services| Aarna Law Practice Areas",
   description:
-    "We offer legal services for a range of practice areas including corporate advisory, arbitration, mediation, litigation, IP, risk assessment, and compliance",
+    "Our dynamic team provides experienced counsel on a diverse range of practice areas.",
   metadataBase: new URL("https://www.aarnalaw.com"),
   alternates: {
     canonical: "/practice-area",
   },
   openGraph: {
-    title: "India's leading law firm offering legal counsel in practice areas",
+    title: "Experienced Legal Services| Aarna Law Practice Areas",
     description:
-      "We offer legal services for a range of practice areas including corporate advisory, arbitration, mediation, litigation, IP, risk assessment, and compliance",
+      "Our dynamic team provides experienced counsel on a diverse range of practice areas.",
     url: "https://www.aarnalaw.com/practice-area",
     images: "/PracticeArea/PracticeAreas.png",
   },
