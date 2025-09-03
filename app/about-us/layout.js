@@ -1,15 +1,15 @@
 export const metadata = {
-  title: "Learn About Aarna Law: Leading Legal Services in Bangalore",
+  title: "Learn About Aarna Law | Boutique Legal Services in India",
   description:
-    "Aarna Law: Your Go-To for Tailored Legal Solutions. Trusted Advisors Offering International Legal Expertise from India",
+    "Tailored Legal Solutions at Aarna Law | Trusted Advisors Offering International Legal Solutions from India",
   metadataBase: new URL("https://www.aarnalaw.com"),
   alternates: {
     canonical: "/about-us",
   },
   openGraph: {
-    title: "Learn About Aarna Law: Leading Legal Services in Bangalore",
+    title: "Learn About Aarna Law | Boutique Legal Services in India",
     description:
-      "Aarna Law: Your Go-To for Tailored Legal Solutions. Trusted Advisors Offering International Legal Expertise from India",
+      "Tailored Legal Solutions at Aarna Law | Trusted Advisors Offering International Legal Solutions from India",
     url: "/about-us",
     images: "/aboutUs/aboutusbanner.png",
   },
