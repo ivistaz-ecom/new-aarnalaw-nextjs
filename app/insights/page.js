@@ -19,12 +19,24 @@ export const metadata = {
 
 // Utility to determine productionMode based on domain
 function getProductionModeFromHost(hostname) {
-  const isLiveDomain =
-    hostname === config.LIVE_SITE_URL || hostname === config.LIVE_SITE_URL_WWW;
+  if (!hostname) return config.STAG_PRODUCTION_SERVER_ID;
 
-  return isLiveDomain
-    ? config.LIVE_PRODUCTION_SERVER_ID
-    : config.STAG_PRODUCTION_SERVER_ID;
+  // Clean the hostname by removing www. prefix and trailing slash
+  const cleanHostname = hostname.replace(/^www\./, '').replace(/\/$/, '');
+
+  const isLiveDomain =
+    cleanHostname === config.LIVE_SITE_URL || cleanHostname === config.LIVE_SITE_URL_WWW;
+
+  const isStagingDomain = cleanHostname === config.STAGING_SITE_URL;
+
+  if (isLiveDomain) {
+    return config.LIVE_PRODUCTION_SERVER_ID;
+  } else if (isStagingDomain) {
+    return config.STAG_PRODUCTION_SERVER_ID;
+  } else {
+    // Default to staging for development/localhost
+    return config.STAG_PRODUCTION_SERVER_ID;
+  }
 }
 
 // Fetch archive years
