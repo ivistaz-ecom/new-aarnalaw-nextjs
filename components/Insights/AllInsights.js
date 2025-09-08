@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import config from "../../config.json";
 
 function LoadingDots() {
   return (
@@ -49,7 +50,7 @@ function AllInsights({
   const [selectedArchive, setSelectedArchive] = useState(initialYear || (initialArchives[0]?.name ?? null));
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
-  const [isLoadingMore, setIsLoadingMore] = useState(false); 
+  const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [isChangingArchive, setIsChangingArchive] = useState(false);
 
   const fetchData = async (year, pageNum = 1, append = false) => {
@@ -57,7 +58,7 @@ function AllInsights({
     const cat2 = 13;
     const after = `${year}-01-01T00:00:00`;
     const before = `${year}-12-31T23:59:59`;
-    const url = `https://docs.aarnalaw.com/wp-json/wp/v2/posts?_embed&per_page=6&page=${pageNum}&categories=${cat1},${cat2}&after=${after}&before=${before}&status[]=publish&production_mode[]=${productionMode}`;
+    const url = `${config.SERVER_URL}posts?_embed&per_page=6&page=${pageNum}&categories=${cat1},${cat2}&after=${after}&before=${before}&status[]=publish&production_mode[]=${productionMode}`;
 
     try {
       const response = await fetch(url, {
@@ -217,11 +218,10 @@ function AllInsights({
                 setSelectedArchive(archive.name);
                 setPage(1);
               }}
-              className={`flex w-full border-b border-red-500 p-1 ${
-                selectedArchive === archive.name
-                  ? "font-bold text-red-500"
-                  : "hover:text-red-500"
-              }`}
+              className={`flex w-full border-b border-red-500 p-1 ${selectedArchive === archive.name
+                ? "font-bold text-red-500"
+                : "hover:text-red-500"
+                }`}
               key={archive.id}
               disabled={isChangingArchive}
             >

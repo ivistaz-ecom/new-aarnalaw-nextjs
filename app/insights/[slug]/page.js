@@ -140,13 +140,13 @@ export default function Page({ params }) {
       </div>
 
       {/* FAQs */}
-      {/* {faqs.length > 0 && (
+      {faqs.length > 0 && (
         <div className="w-11/12 flex justify-start items-start mx-auto">
           <div className="text-left">
             <Faq faqs={faqs} className="text-left" />
           </div>
         </div>
-      )} */}
+      )}
 
       <div className="mx-auto w-11/12">
         <Link className="mt-6 bg-custom-red px-4 py-2 text-white" href="/insights/">
