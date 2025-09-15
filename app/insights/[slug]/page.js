@@ -120,7 +120,7 @@ export default function Page({ params }) {
         }
       `}</style>
 
-      <div className="mx-auto w-11/12">
+      <div className="mx-auto container">
         <div className="h-[200px]"></div>
         <h1
           className="py-4 text-4xl font-bold tracking-wide text-black"
@@ -131,7 +131,7 @@ export default function Page({ params }) {
       </div>
 
       <div className="pt-10">
-        <div className="mx-auto w-11/12">
+        <div className="mx-auto container">
           <div
             dangerouslySetInnerHTML={{ __html: content }}
             className="insight-blog"
@@ -141,14 +141,14 @@ export default function Page({ params }) {
 
       {/* FAQs */}
       {faqs.length > 0 && (
-        <div className="w-11/12 flex justify-start items-start mx-auto">
+        <div className="container flex justify-start items-start mx-auto">
           <div className="text-left">
             <Faq faqs={faqs} className="text-left" />
           </div>
         </div>
       )}
 
-      <div className="mx-auto w-11/12">
+      <div className="mx-auto container mt-8">
         <Link className="mt-6 bg-custom-red px-4 py-2 text-white" href="/insights/">
           Back to Insights
         </Link>

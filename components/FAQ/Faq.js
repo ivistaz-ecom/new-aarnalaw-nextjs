@@ -54,7 +54,7 @@ const Faq = ({ faqs = [] }) => {
   return (
     <div className="max-w-4xl container mx-auto py-4 md:px-0">
       {faqs.length > 0 && (
-        <h2 className="text-2xl">Frequently Asked Questions</h2>
+        <h2 className="text-2xl pb-5">Frequently Asked Questions</h2>
       )}
       <div className="space-y-4">
         {faqs.map((faq, index) => (
