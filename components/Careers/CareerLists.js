@@ -109,7 +109,7 @@ function PracticeLists() {
                     <button
                       type="button"
                       onClick={toggleAccordion}
-                      className="flex w-full items-center justify-between gap-3 border-b border-gray-200 py-5 text-lg font-medium text-custom-blue transition-colors duration-300"
+                      className="flex w-full text-start items-center justify-between gap-3 border-b border-gray-200 py-5 text-lg font-medium text-custom-blue transition-colors duration-300"
                     >
                       <span
                         dangerouslySetInnerHTML={{ __html: item.title.rendered }}
