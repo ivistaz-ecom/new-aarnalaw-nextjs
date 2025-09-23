@@ -112,11 +112,25 @@ export default function Page({ params }) {
           margin-left: 30px;
         }
         .insight-blog li {
-          margin-bottom: 0px;
+          margin-bottom: 0px !important;
         }
         .insight-blog a {
-          margin-bottom: 0px;
-          padding-top: 0px;
+          margin-bottom: 0px !important;
+          padding-top: 0px !important;
+        }
+        p {
+        padding-top: 5px !important;
+        }
+        h6{
+         padding-top: 10px !important;
+         padding-bottom: 0px !important;
+        }
+         li {
+          padding-top: 0px !important;
+          padding-bottom: 0px !important;
+        }
+        strong {
+          padding-top: 0px !important;
         }
       `}</style>
 
