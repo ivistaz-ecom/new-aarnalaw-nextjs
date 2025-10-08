@@ -73,7 +73,7 @@ const en = {
       "We are very grateful for having had the privilege of serving clients across industries, small medium and large, and to have been on the counsel for the Republic of India. We humbly acknowledge the blessings and tall shoulders of previous generations. The deep values they have instilled continue to inspire us to create a platform that brings out the best versions of our selves collectively, while we seek to serve our clients and further the cause of justice",
     founderName1: "Kamlla Nagganand",
     founderDescription1: "MANAGING PARTNER",
-    founderName2: "Shraeyas Jayasimha R",
+    founderName2: "Shreyas Jayasimha",
     founderDescription2: "FOUNDING PARTNER",
   },
 
