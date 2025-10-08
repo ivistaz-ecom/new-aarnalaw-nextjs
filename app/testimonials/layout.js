@@ -1,5 +1,5 @@
 export const metadata = {
-    title: "Customer Testimonials | Aarna Law - Trusted Lawyers in Bangalore",
+    title: "Customer Testimonials | Aarna Law",
     description:
       "Discover why clients choose Aarna Law as their legal advisors. Read customer testimonials and reviews of our lawyer's firm in Bangalore.",
     metadataBase: new URL("https://www.aarnalaw.com"),
@@ -7,7 +7,7 @@ export const metadata = {
       canonical: "/testimonials",
     },
     openGraph: {
-      title: "Customer Testimonials | Aarna Law - Trusted Lawyers in Bangalore",
+      title: "Customer Testimonials | Aarna Law",
       description:
         "Discover why clients choose Aarna Law as their legal advisors. Read customer testimonials and reviews of our lawyer's firm in Bangalore.",
       url: "/testimonials",
