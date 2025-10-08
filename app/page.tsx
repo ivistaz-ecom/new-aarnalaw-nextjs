@@ -54,17 +54,17 @@ const OurNetwork = dynamic(() => import('../components/HomePage/OurNetwork'), {
 });
 
 export const metadata = {
-  title: 'Aarna Law - Litigation, Dispute & Corporate Law Firm in India',
+  title: 'Aarna Law | Litigation, Dispute Resolution & Corporate Law Practice in India',
   description:
-    'Discover legal services in India. Aarna Law offers premier full-service representation with dedication.',
+    'Discover legal services in India. Aarna Law offers full-service representation with dedication.',
   alternates: {
     metadataBase: new URL('https://www.aarnalaw.com'),
     canonical: 'https://www.aarnalaw.com/',
   },
   openGraph: {
-    title: 'Aarna Law - Top Litigation, Dispute & Corporate Law Firm in India',
+    title: 'Aarna Law | Litigation, Dispute Resolution & Corporate Law Practice in India',
     description:
-      'Discover legal services in India. Aarna Law offers premier full-service representation with dedication.',
+      'Discover legal services in India. Aarna Law offers full-service representation with dedication.',
     url: 'https://www.aarnalaw.com/',
     images: '/banner/desktop_home_banner_2.jpg',
   },
