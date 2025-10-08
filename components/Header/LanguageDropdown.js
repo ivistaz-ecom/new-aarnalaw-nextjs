@@ -16,6 +16,7 @@ const LanguageDropdown = () => {
     { code: "ml", label: "മലയാളം (Malayalam)" },
     { code: "mr", label: "मराठी (Marathi)" },
     { code: "gu", label: "ગુજરાતી (Gujarati)" },
+    { code: "fr", label: "Français (French)" },
     // { code: "ur", label: "اردو (Urdu)" },
     // { code: "pa", label: "ਪੰਜਾਬੀ (Punjabi)" },
     // { code: "bn", label: "বাংলা (Bengali)" },

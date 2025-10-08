@@ -49,7 +49,9 @@ export default function IndustriesBanner({
                 ? titleText.acf.marathi_title
                 : language === "gu" && titleText?.acf?.gujarati_title
                   ? titleText.acf.gujarati_title
-                  : titleText?.title?.rendered;
+                  : language === "fr" && titleText?.acf?.french_title
+                    ? titleText.acf.french_title
+                    : titleText?.title?.rendered;
 
   return (
     <div className="relative" style={{ height: "550px" }}>

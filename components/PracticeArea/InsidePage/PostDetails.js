@@ -62,6 +62,8 @@ function PracticeAreaPostDetails({ details = {}, partnersData = {}, slug, titleT
                 ? item.acf.marathi_title
                 : language === "gu" && item.acf?.gujarati_title
                   ? item.acf.gujarati_title
+                  : language === "fr" && item.acf?.french_title
+                    ? item.acf.french_title
                   : item.title?.rendered || '';
   };
 
@@ -80,6 +82,8 @@ function PracticeAreaPostDetails({ details = {}, partnersData = {}, slug, titleT
                 ? details.acf.marathi_description
                 : language === "gu" && details?.acf?.gujarati_description
                   ? details.acf.gujarati_description
+                  : language === "fr" && details?.acf?.french_description
+                    ? details.acf.french_description
                   : details?.acf?.description || '';
   };
 

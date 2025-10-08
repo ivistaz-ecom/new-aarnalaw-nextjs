@@ -40,6 +40,8 @@ function IndustryLists({ data = [], loading = true }) {
                             ? item.acf.marathi_title
                             : language === "gu" && item.acf.gujarati_title
                               ? item.acf.gujarati_title
+                              : language === "fr" && item.acf.french_title
+                                ? item.acf.french_title
                               : item.title.rendered;
 
               return (

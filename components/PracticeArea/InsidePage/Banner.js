@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import { LanguageContext } from "../../../app/context/LanguageContext"; 
+import { LanguageContext } from "../../../app/context/LanguageContext";
 import Image from "next/image";
 
 export default function PracticeAreaBanner({
@@ -53,7 +53,9 @@ export default function PracticeAreaBanner({
                 ? titleText.acf.marathi_title
                 : language === "gu" && titleText?.acf?.gujarati_title
                   ? titleText.acf.gujarati_title
-                  : titleText?.title?.rendered || titleText?.rendered || '';
+                  : language === "fr" && titleText?.acf?.french_title
+                    ? titleText.acf.french_title
+                    : titleText?.title?.rendered || titleText?.rendered || '';
 
   return (
     <div className="relative" style={{ height: "550px" }}>
