@@ -14,8 +14,8 @@ const en = {
       aarnanews: "Nouvelles d’Aarna",
       publications: "Publications",
       podcasts: "Podcasts",
-      careers: "Careers",
-      contactus: "Contact Us",
+      careers: "Carrières",
+      contactus: "Contactez-nous",
     },
   
     // Banner Titles
@@ -39,10 +39,10 @@ const en = {
       podcasts: "Podcasts",
     },
     careersTitle: {
-      careers: "Careers",
+      careers: "Carrières",
     },
     contactUsTitle: {
-      contactUs: "Contact Us",
+      contactUs: "Contactez-nous",
     },
   
     // About Us 
