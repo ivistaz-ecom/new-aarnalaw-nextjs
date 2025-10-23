@@ -9,9 +9,9 @@ const en = {
       testimonials: "Témoignages ",
       practiceareas: "Domaines de Pratiques",
       industries: "Secteurs d'activité ",
-      newsinsights: "News & Insights",
-      insights: "Insights",
-      aarnanews: "Aarna News",
+      newsinsights: "Nouvelles et Analyses",
+      insights: "Analyses",
+      aarnanews: "Nouvelles d’Aarna",
       publications: "Publications",
       podcasts: "Podcasts",
       careers: "Careers",
@@ -26,11 +26,11 @@ const en = {
       industries: "Secteurs d'activité ",
     },
     insightsTitle: {
-      insights: "Insights",
+      insights: "Analyses",
     },
   
     aarnaNewsTitle: {
-      aarnaNews: "Aarna News",
+      aarnaNews: "Nouvelles d’Aarna",
     },
     publicationsTitle: {
       publications: "Publications",
@@ -97,8 +97,8 @@ const en = {
     },
   
     aboutPartner: {
-      aboutPartnerTitle: "PARTNERS",
-      aboutPartnerPara: "The expertise of our accomplished team anchors our practice in thought leadership, mentorship, and the pursuit of excellence...",
+      aboutPartnerTitle: "ASSOCIÉS",
+      aboutPartnerPara: "L’expertise de notre équipe accomplie fonde notre pratique sur le leadership éclairé, le mentorat et la recherche constante de l’excellence…",
     },
   
     // Testimonials 
@@ -265,7 +265,7 @@ const en = {
     },
   
     awards: {
-      awardsTitle: "Awards & Accolades",
+      awardsTitle: "Prix et Distinctions",
     },
   
     //Practice Area Main Heading
