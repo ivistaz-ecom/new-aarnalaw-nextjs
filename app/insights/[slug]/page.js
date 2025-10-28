@@ -137,7 +137,7 @@ export default function Page({ params }) {
       <div className="mx-auto container px-4 md-px">
         <div className="h-[200px]"></div>
         <h1
-          className="py-4 text-4xl font-bold tracking-wide text-black"
+          className="py-4 md:text-4xl text-2xl font-bold tracking-wide text-black"
           dangerouslySetInnerHTML={{ __html: title }}
         />
         <p className="py-4">Published: {formatDateString(date)}</p>
