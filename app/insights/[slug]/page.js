@@ -134,7 +134,7 @@ export default function Page({ params }) {
         }
       `}</style>
 
-      <div className="mx-auto container">
+      <div className="mx-auto container px-4 md-px">
         <div className="h-[200px]"></div>
         <h1
           className="py-4 text-4xl font-bold tracking-wide text-black"
@@ -145,7 +145,7 @@ export default function Page({ params }) {
       </div>
 
       <div className="pt-10">
-        <div className="mx-auto container">
+        <div className="mx-auto container px-4 md-px">
           <div
             dangerouslySetInnerHTML={{ __html: content }}
             className="insight-blog"
@@ -162,7 +162,7 @@ export default function Page({ params }) {
         </div>
       )}
 
-      <div className="mx-auto container mt-8">
+      <div className="mx-auto container mt-8 px-4 md-px">
         <Link className="mt-6 bg-custom-red px-4 py-2 text-white" href="/insights/">
           Back to Insights
         </Link>
