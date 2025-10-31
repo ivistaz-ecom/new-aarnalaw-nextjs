@@ -173,7 +173,7 @@ export const credentials = [
 export const legalLinks = [
   { name: "Privacy Policy", href: "/privacy-policy" },
   { name: "Terms of Use", href: "/terms-of-use" },
-  { name: "Disclaimer", href: "/disclaimer" },
+  // { name: "Disclaimer", href: "/disclaimer" },
 ];
 
 export const practiceArea = [

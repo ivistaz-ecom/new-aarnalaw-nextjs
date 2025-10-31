@@ -31,6 +31,14 @@ const KindOfDispute = dynamic(
     ssr: false,
   }
 );
+
+const DisclaimerModal = dynamic(
+  () => import('../components/DisclaimerModel/DisclaimerModal'),
+  {
+    ssr: false,
+  }
+);
+
 const Testimonials = dynamic(
   () => import('../components/HomePage/Testimonials'),
   {
@@ -126,6 +134,7 @@ export default async function Home() {
 
   return (
     <>
+      <DisclaimerModal />
       <Banner />
       <HomeInsights />
       <WhatWeDo />
