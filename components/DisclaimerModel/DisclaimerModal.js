@@ -7,10 +7,8 @@ const DisclaimerModal = () => {
     const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        const hasAgreed = localStorage.getItem('disclaimerAgreed');
-        if (!hasAgreed) {
-            setTimeout(() => setShowModal(true), 500);
-        }
+        // Show modal every time on page load
+        setTimeout(() => setShowModal(true), 500);
     }, []);
 
     // Prevent body scroll when modal is open
@@ -26,7 +24,7 @@ const DisclaimerModal = () => {
     }, [showModal]);
 
     const handleAgree = () => {
-        localStorage.setItem('disclaimerAgreed', 'true');
+        // Just close the modal without storing consent
         setShowModal(false);
     };
 
@@ -42,9 +40,9 @@ const DisclaimerModal = () => {
             <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
 
             {/* Modal Content */}
-            <div className="relative bg-white rounded-2xl shadow-2xl dark:bg-gray-700 w-full max-w-7xl max-h-[90vh] overflow-hidden flex flex-col transform transition-all duration-300 ease-out">
+            <div className="relative flex max-h-[90vh] w-full max-w-7xl flex-col overflow-hidden rounded-2xl bg-white shadow-2xl transition-all duration-300 ease-out dark:bg-gray-700">
                 {/* Modal Header */}
-                <div className="flex items-center justify-center px-6 pt-6 pb-4 border-b dark:border-gray-600">
+                <div className="flex items-center justify-center border-b px-6 pb-4 pt-6 dark:border-gray-600">
                     <h3 className="text-2xl font-semibold text-custom-red dark:text-custom-red">
                         Disclaimer
                     </h3>
@@ -59,16 +57,16 @@ const DisclaimerModal = () => {
                 </div>
 
                 {/* Modal Footer */}
-                <div className="flex items-center justify-end gap-4 px-6 py-4 border-t dark:border-gray-600 bg-gray-50 dark:bg-gray-800">
+                <div className="flex items-center justify-end gap-4 border-t bg-gray-50 px-6 py-4 dark:border-gray-600 dark:bg-gray-800">
                     <button
                         onClick={handleDisagree}
-                        className="px-6 py-2.5 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:bg-gray-600 dark:focus:ring-gray-700 transition-colors duration-200"
+                        className="rounded-lg border border-gray-300 bg-white px-6 py-2.5 text-base font-medium text-gray-700 transition-colors duration-200 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:border-gray-500 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600 dark:focus:ring-gray-700"
                     >
                         Disagree
                     </button>
                     <button
                         onClick={handleAgree}
-                        className="px-6 py-2.5 text-base font-medium text-white bg-custom-red border border-transparent rounded-lg hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800 transition-colors duration-200"
+                        className="rounded-lg border border-transparent bg-custom-red px-6 py-2.5 text-base font-medium text-white transition-colors duration-200 hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800"
                     >
                         I Agree
                     </button>

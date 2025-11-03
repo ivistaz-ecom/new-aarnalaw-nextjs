@@ -1,5 +1,5 @@
-import dynamic from 'next/dynamic';
-import configData from '../config.json';
+import dynamic from "next/dynamic";
+import configData from "../config.json";
 
 type Insight = {
   id: number;
@@ -10,71 +10,67 @@ type Insight = {
 };
 
 // Dynamically import all homepage components
-const Banner = dynamic(() => import('../components/HomePage/Banner'), {
+const Banner = dynamic(() => import("../components/HomePage/Banner"), {
   ssr: true,
-  loading: () => <div className="h-[70vh] w-full bg-gray-100 animate-pulse" />,
+  loading: () => <div className="h-[70vh] w-full animate-pulse bg-gray-100" />,
 });
 
-const HomeInsights = dynamic(() => import('@/components/HomePage/HomeInsights'), {
-  ssr: true,
-  loading: () => <div className="h-96 bg-gray-100 animate-pulse" />,
-});
+const HomeInsights = dynamic(
+  () => import("@/components/HomePage/HomeInsights"),
+  {
+    ssr: true,
+    loading: () => <div className="h-96 animate-pulse bg-gray-100" />,
+  },
+);
 
-
-
-const WhatWeDo = dynamic(() => import('../components/HomePage/WhatWeDo'), {
+const WhatWeDo = dynamic(() => import("../components/HomePage/WhatWeDo"), {
   ssr: true,
 });
 const KindOfDispute = dynamic(
-  () => import('../components/HomePage/KindOfDisputesWeDo'),
+  () => import("../components/HomePage/KindOfDisputesWeDo"),
   {
     ssr: false,
-  }
-);
-
-const DisclaimerModal = dynamic(
-  () => import('../components/DisclaimerModel/DisclaimerModal'),
-  {
-    ssr: false,
-  }
+  },
 );
 
 const Testimonials = dynamic(
-  () => import('../components/HomePage/Testimonials'),
+  () => import("../components/HomePage/Testimonials"),
   {
     ssr: false,
-  }
+  },
 );
 const TrackRecords = dynamic(
-  () => import('../components/HomePage/Trackrecords'),
+  () => import("../components/HomePage/Trackrecords"),
   {
     ssr: false,
-  }
+  },
 );
 const OurCredentials = dynamic(
-  () => import('../components/HomePage/OurCredentials'),
+  () => import("../components/HomePage/OurCredentials"),
   {
     ssr: false,
-  }
+  },
 );
-const OurNetwork = dynamic(() => import('../components/HomePage/OurNetwork'), {
+const OurNetwork = dynamic(() => import("../components/HomePage/OurNetwork"), {
   ssr: false,
 });
 
 export const metadata = {
-  title: 'Aarna Law | Litigation, Dispute Resolution & Corporate Law Practice in India',
+  title:
+    "Aarna Law | Litigation, Dispute Resolution & Corporate Law Practice in India",
   description:
-    'Discover legal services in India. Aarna Law offers full-service representation with dedication.',
+    "Discover legal services in India. Aarna Law offers full-service representation with dedication.",
   alternates: {
-    metadataBase: new URL('https://www.aarnalaw.com'),
-    canonical: 'https://www.aarnalaw.com/',
+    metadataBase: new URL("https://www.aarnalaw.com"),
+    canonical: "https://www.aarnalaw.com/",
   },
   openGraph: {
-    title: 'Aarna Law | Litigation, Dispute Resolution & Corporate Law Practice in India',
+    title:
+      "Aarna Law | Litigation, Dispute Resolution & Corporate Law Practice in India",
     description:
-      'Discover legal services in India. Aarna Law offers full-service representation with dedication.',
-    url: 'https://www.aarnalaw.com/',
-    images: '/banner/desktop_home_banner_2.jpg',
+      "Discover legal services in India. Aarna Law offers full-service representation with dedication.",
+    url: "https://www.aarnalaw.com/",
+    images: "/banner/desktop_home_banner_2.jpg",
   },
 };
 
@@ -85,7 +81,7 @@ interface InsightPost {
   excerpt: { rendered: string };
   slug: string;
   _embedded?: {
-    'wp:featuredmedia'?: Array<{ source_url: string }>;
+    "wp:featuredmedia"?: Array<{ source_url: string }>;
   };
 }
 
@@ -134,7 +130,6 @@ export default async function Home() {
 
   return (
     <>
-      <DisclaimerModal />
       <Banner />
       <HomeInsights />
       <WhatWeDo />

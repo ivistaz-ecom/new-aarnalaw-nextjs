@@ -87,6 +87,14 @@ const nextConfig = {
         permanent: true,
       },
 
+      // Partners
+      {
+        source: "/team/evneet-kaur-uppal",
+        destination:
+          "/about-us",
+        permanent: true,
+      },
+
 
       // Insights
 
@@ -986,6 +994,18 @@ const nextConfig = {
         source: "/aarna-law-welcomes-partner-apoorva-guruprasad",
         destination:
           "/aarna-news/aarna-law-welcomes-partner-apoorva-guruprasad",
+        permanent: true,
+      },
+      {
+        source: "/aarna-news/aarna-law-is-pleased-to-announce-the-appointment-of-evneet-uppal-as-partner",
+        destination:
+          "/aarna-news",
+        permanent: true,
+      },
+      {
+        source: "/insights/aarna-law-is-pleased-to-announce-the-appointment-of-evneet-uppal-as-partner",
+        destination:
+          "/aarna-news",
         permanent: true,
       },
       {
