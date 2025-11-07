@@ -5,7 +5,7 @@
 const en = {
     menu: {
       about: "À Propos de Nous ",
-      thefirm: "The Firm",
+      thefirm: "L'Entreprise",
       testimonials: "Témoignages ",
       practiceareas: "Domaines de Pratiques",
       industries: "Secteurs d'activité ",
