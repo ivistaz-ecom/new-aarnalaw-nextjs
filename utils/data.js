@@ -12,9 +12,9 @@ export const HeaderMenu = [
   {
     menu: "News & Insights",
     subMenu: [
-      { name: "Insights" , slug: "/insights"},
-      { name: "Aarna News" , slug: "/aarna-news"},
-      { name: "Publications" , slug: "/publications"},
+      { name: "Insights", slug: "/insights" },
+      { name: "Aarna News", slug: "/aarna-news" },
+      { name: "Publications", slug: "/publications" },
       { name: "Podcasts", slug: "/podcasts" },
     ],
   },
@@ -131,7 +131,7 @@ export const credentials = [
     imageUrl: "/credentials/indian_business_law.png", //Chambers & Partners 2025
     title: "IBLJ 2025",
     desc: "Arbitration & ADR",
-  }, 
+  },
   {
     imageUrl: "/credentials/our-credentials-img-5.jpg", //Chambers & Partners 2025
     title: "Chambers & Partners",
@@ -266,24 +266,21 @@ export const partnersMembers = [
   },
 ];
 
-
-
-
 export const contactAddress = [
   {
     location: "BENGALURU",
     address: "No. 5, 2nd Main Road, Vyalikaval, Bengaluru 560003",
     phone: "+91 80 2356 6792",
-    direction:
-      "https://www.google.com/maps?q=No.%205%2C%202nd%20Main%20Road%2C%2C%20Vyalikaval%2C%20Bengaluru%20560003",
+    direction: "https://maps.app.goo.gl/77m912JkanSnmHD66",
   },
   {
     location: "NEW DELHI",
-    address: "Flat No.503, Silver Arch Apartments, 22, Feroz Shah Road, New Delhi-110001",
+    address:
+      "Flat No. 704, 6th floor, Tower 13th, Commonwealth Games Village Apartments, New Delhi - 110092",
     // phone: "+91 11 4350 5878",
-    direction: "https://www.google.com/maps/search/Aarna+Law+LLP,+Flat+No.503,+Silver+Arch+Apartments,+22,+Feroz+Shah+Road,+New+Delhi-110001/@28.623814,77.2238841,836m/data=!3m2!1e3!4b1?entry=ttu&g_ep=EgoyMDI1MDEyOS4xIKXMDSoJLDEwMjExMjM0SAFQAw%3D%3D",
+    direction: "https://maps.app.goo.gl/2C2vpoYLV3NZSEZLA",
   },
-  
+
   {
     location: "MUMBAI",
     address:
