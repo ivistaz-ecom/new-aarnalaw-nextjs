@@ -30,17 +30,17 @@ export default function Banner({ title }) {
 
   return (
     <div
-      className="relative md:bg-[url('/insights/Podcast-desktop.jpg')] bg-[url('/insights/PodcastMobileBanner.jpg')] bg-cover bg-center"
+      className="relative md:bg-[url('/insights/PodcastDesktop.jpg')] bg-[url('/insights/PodcastMobileBanner.jpg')] md:bg-cover md:bg-bottom bg-top"
       style={{ height: "550px" }}
     >
       <div
-        className="absolute flex w-full items-center justify-center"
+        className="absolute flex w-full items-center justify-center  md:mt-0 mt-20"
         style={{
           top: navHeight ? `${(550 - navHeight) / 1.8 + navHeight}px` : "50%",
           transform: "translateY(-50%)"
         }}
       >
-        <h1 className="md:text-3xl text-2xl font-bold text-white bg-black/50 px-4 py-2">
+        <h1 className="md:text-3xl text-2xl font-bold text-white bg-black/50 px-4 py-5">
           {getTitle()}
           {/* Or use translations if needed:
               {translations.podcastsTitle.podcasts}
