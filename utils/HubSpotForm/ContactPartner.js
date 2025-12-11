@@ -1,21 +1,101 @@
-import { useEffect } from "react";
+"use client";
+import React, { useState } from "react";
 
-export default function HubSpotForm({ id }) {
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://js.hsforms.net/forms/v2.js";
-    document.body.appendChild(script);
+const ContactPartner = () => {
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    company: "",
+  });
 
-    script.addEventListener("load", () => {
-      if (window.hbspt) {
-        window.hbspt.forms.create({
-          portalId: "25868325",
-          formId: "518865a6-2b7d-4689-8502-80081b2f1da7",
-          target: "#" + id,
-        });
-      }
+  const [status, setStatus] = useState("");
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("Submitting...");
+
+    const res = await fetch("/api/zoho-lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
     });
-  }, []);
 
-  return <div id={id}></div>;
-}
+    const data = await res.json();
+
+    if (res.ok) {
+      setStatus("Lead submitted successfully!");
+      setForm({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        company: "",
+      });
+    } else {
+      console.error(data);
+      setStatus("Error submitting lead.");
+    }
+  };
+
+  return (
+    <div style={{ maxWidth: 500, margin: "40px auto" }}>
+      <h1>Contact Partner</h1>
+
+      <form onSubmit={handleSubmit}>
+        <input
+          name="firstName"
+          placeholder="First Name"
+          value={form.firstName}
+          onChange={handleChange}
+          required
+        />
+        <br />
+
+        <input
+          name="lastName"
+          placeholder="Last Name"
+          value={form.lastName}
+          onChange={handleChange}
+          required
+        />
+        <br />
+
+        <input
+          name="email"
+          placeholder="Email"
+          value={form.email}
+          onChange={handleChange}
+        />
+        <br />
+
+        <input
+          name="phone"
+          placeholder="Phone"
+          value={form.phone}
+          onChange={handleChange}
+        />
+        <br />
+
+        <input
+          name="company"
+          placeholder="Company"
+          value={form.company}
+          onChange={handleChange}
+        />
+        <br />
+
+        <button type="submit">Submit</button>
+      </form>
+
+      <p>{status}</p>
+    </div>
+  );
+};
+
+export default ContactPartner;

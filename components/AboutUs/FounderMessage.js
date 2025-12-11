@@ -19,9 +19,9 @@ function FounderMessage() {
             loading="lazy"
           />
         </div>
-        <h1 className="pb-4 text-xl font-bold text-custom-blue lg:text-2xl">
+        <h3 className="pb-4 text-xl font-bold text-custom-blue lg:text-2xl">
           {translations.founderMessage.founderTitle}
-        </h1>
+        </h3>
       </div>
 
       {/* Image Section */}
@@ -49,9 +49,9 @@ function FounderMessage() {
             loading="lazy"
           />
         </div>
-        <h1 className="hidden pb-4 text-xl font-bold text-custom-blue lg:block lg:text-2xl">
+        <h3 className="hidden pb-4 text-xl font-bold text-custom-blue lg:block lg:text-2xl">
           {translations.founderMessage.founderTitle}
-        </h1>
+        </h3>
 
         {/* Paragraph */}
         <p className="mt-4 text-custom-gray md:mt-0">

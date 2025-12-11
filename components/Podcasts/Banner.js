@@ -29,8 +29,12 @@ export default function Banner({ title }) {
   };
 
   return (
+    // <div
+    //   className="relative md:bg-[url('/insights/PodcastDesktop.jpg')] bg-[url('/insights/PodcastMobileBanner.jpg')] md:bg-cover md:bg-bottom bg-top"
+    //   style={{ height: "550px" }}
+    // >
     <div
-      className="relative md:bg-[url('/insights/PodcastDesktop.jpg')] bg-[url('/insights/PodcastMobileBanner.jpg')] md:bg-cover md:bg-bottom bg-top"
+      className="relative md:bg-[url('/insights/InsightsBanner.jpg')] bg-[url('/insights/InsightsMobileBanner.jpg')] bg-cover bg-center"
       style={{ height: "550px" }}
     >
       <div

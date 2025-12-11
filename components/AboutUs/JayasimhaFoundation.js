@@ -11,9 +11,9 @@ export default function JayasimhaFoundation() {
         {/* Text Section */}
         <div className="order-2 flex items-center justify-center lg:order-1">
           <div className="flex flex-col items-start justify-center p-2 lg:pe-12">
-            <h1 className="hidden pb-2 text-2xl font-bold text-gray-300 md:block">
+            <h2 className="hidden pb-2 text-2xl font-bold text-gray-300 md:block">
               {translations.jayasimhaFoundation.jayasimhaTitle}
-            </h1>
+            </h2>
             <p className="mt-4 py-2 text-white md:mt-0">
               {translations.jayasimhaFoundation.jayasimhaPara1}
             </p>

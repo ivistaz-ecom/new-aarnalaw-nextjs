@@ -28,7 +28,7 @@ export default function Banner() {
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: '100%', height: 'auto' }}
+          style={{ width: '100%', height: '500px' }}
           loading={isFirstBanner ? "eager" : "lazy"}
           priority={isFirstBanner}
           placeholder="blur"
@@ -48,11 +48,11 @@ export default function Banner() {
           width={0}
           height={0}
           sizes="100vw"
-          style={{ width: '100%', height: 'auto' }}
+          style={{ width: '100%', height: '500px' }}
           loading={isFirstBanner ? "eager" : "lazy"}
           priority={isFirstBanner}
           placeholder="blur"
-          blurDataURL={banner.bannerUrl} 
+          blurDataURL={banner.bannerUrl}
         />
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center p-4 text-center text-white pt-[200px]">
           <p className="text-4xl font-bold lg:text-4xl">{banner.bannerText}</p>

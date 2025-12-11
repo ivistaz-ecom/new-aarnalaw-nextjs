@@ -22,12 +22,12 @@ const WhatWeDo = () => {
 
       {/* Text Section */}
       <div className="flex flex-col justify-center min-h-[400px] lg:min-h-[500px] p-2 lg:pl-5">
-        <h1 className="text-2xl font-bold uppercase text-custom-red mt-4 lg:mt-0">
+        <h2 className="text-2xl font-bold uppercase text-custom-red mt-4 lg:mt-0">
           {translations.whatWeDo.title}
-        </h1>
-        <h2 className="py-4 text-2xl lg:text-[32px] md:leading-10 font-semibold text-custom-blue md:mt-0">
-          {translations.whatWeDo.headline}
         </h2>
+        <h3 className="py-4 text-2xl lg:text-[32px] md:leading-10 font-semibold text-custom-blue md:mt-0">
+          {translations.whatWeDo.headline}
+        </h3>
         <p className="text-custom-gray md:mt-0">
           {translations.whatWeDo.para1}
         </p>

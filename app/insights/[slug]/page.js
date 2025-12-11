@@ -146,7 +146,7 @@ export default function Page({ params }) {
 
       <div className="pt-10">
         <div className="mx-auto container px-4 md-px">
-          <div
+          <h3
             dangerouslySetInnerHTML={{ __html: content }}
             className="insight-blog"
           />

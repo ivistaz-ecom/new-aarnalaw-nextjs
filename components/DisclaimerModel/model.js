@@ -11,7 +11,7 @@ const Model = () => {
         by advocates in any form or manner. By accessing this website,{" "}
         <a
           href="https://www.aarnalaw.com"
-          className="text-custom-red hover:underline"
+          className="text-custom-red underline"
         >
           https://www.aarnalaw.com
         </a>
@@ -69,7 +69,7 @@ const Model = () => {
         <li>
           This website uses cookies to enhance user experience. By continuing to
           use this site, you consent to our use of cookies as outlined in our
-          Privacy Policy. Please read our <a className="text-custom-red hover:underline" href="/privacy-policy">Privacy Policy</a> and <a className="text-custom-red hover:underline" href="/terms-of-use">Terms of Use</a> to
+          Privacy Policy. Please read our <a className="text-custom-red underline" href="/privacy-policy">Privacy Policy</a> and <a className="text-custom-red underline" href="/terms-of-use">Terms of Use</a> to
           understand how we collect, use, and protect your data.
         </li>
         <li>

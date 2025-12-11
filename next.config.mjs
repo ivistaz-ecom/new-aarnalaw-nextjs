@@ -23,6 +23,7 @@ const nextConfig = {
 
   async redirects() {
     return [
+
       //Practice area
       {
         source: "/practice-area",
@@ -66,6 +67,99 @@ const nextConfig = {
           "/practice-areas/corporate-advisory",
         permanent: true,
       },
+      {
+        source: "/practice-area/intellectual-property-2",
+        destination:
+          "/practice-areas/intellectual-property-2",
+        permanent: true,
+      },
+      {
+        source: "/practice-area/real-estate-2",
+        destination:
+          "/practice-areas/real-estate-2",
+        permanent: true,
+      },
+      {
+        source: "/practice-areas/bribery-corruption",
+        destination: "/prectice-areas",
+        permanent: true,
+      },
+      {
+        source: "/practice-areas/real-estate",
+        destination: "/practice-areas/real-estate-2",
+        permanent: true,
+      },
+      {
+        source: "/practice-area/domestic-arbitration-and-mediation",
+        destination: "/practice-areas/domestic-arbitration-and-mediation",
+        permanent: true,
+      },
+      {
+        source: "/practice-areas/data-protection-privacy",
+        destination: "/practice-areas",
+        permanent: true,
+      },
+      {
+        source: "/practice-area/trial-and-litigation",
+        destination: "/practice-areas/trial-and-litigation",
+        permanent: true,
+      },
+      {
+        source: "/practice-areas/dispute-resolution",
+        destination: "/practice-areas",
+        permanent: true,
+      },
+      {
+        source: "/practice-areas/art-law-ip",
+        destination: "/practice-areas/art-law",
+        permanent: true,
+      },
+      {
+        source: "/practice-areas/intellectual-property",
+        destination: "/practice-areas/intellectual-property-2",
+        permanent: true,
+      },
+
+      //Industries
+      {
+        source: "/industries/corporate-law",
+        destination: "/industries",
+        permanent: true,
+      },
+      {
+        source: "/industries/securities-and-regulatory-law",
+        destination: "/industries",
+        permanent: true,
+      },
+      {
+        source: "/industries/banking-finance-insolvency",
+        destination: "/industries",
+        permanent: true,
+      },
+      {
+        source: "/industries/environmental-law",
+        destination: "/industries",
+        permanent: true,
+      },
+      {
+        source: "/industries/employment-law",
+        destination: "/industries",
+        permanent: true,
+      },
+
+      //Podcasts
+      {
+        source: "/podcast/making-mediation-work-for-india-part-1",
+        destination: "/podcasts/making-mediation-work-for-india-part-1",
+        permanent: true,
+      },
+      {
+        source: "/podcast/making-mediation-work-for-india-part-2",
+        destination: "/podcasts/making-mediation-work-for-india-part-2",
+        permanent: true,
+      },
+
+
       //Contact
       {
         source: "/contact",
@@ -95,6 +189,66 @@ const nextConfig = {
         permanent: true,
       },
 
+      // Insights -> Aarna News
+
+      {
+        source: "/insights/shreyas-jayasimha-appointed-expert-committee",
+        destination:
+          "/aarna-news/shreyas-jayasimha-appointed-expert-committee",
+        permanent: true,
+      },
+      {
+        source: "/insights/aarna-law-participates-in-inta-annual-meeting-2023-singapore",
+        destination:
+          "/aarna-news/aarna-law-participates-in-inta-annual-meeting-2023-singapore",
+        permanent: true,
+      },
+      {
+        source: "/insights/aarna-law-participates-siac-bengaluru-conference-2023",
+        destination:
+          "/aarna-news/aarna-law-participates-siac-bengaluru-conference-2023",
+        permanent: true,
+      },
+      {
+        source: "/insights/aarna-law-hosts-singapore-international-arbitration-centre-in-bangalore",
+        destination:
+          "/aarna-news/aarna-law-hosts-singapore-international-arbitration-centre-in-bangalore",
+        permanent: true,
+      },
+      {
+        source: "/insights/international-trade-shipping-commodity-arbitration-arbitrability-of-corporate-disputes",
+        destination:
+          "/aarna-news/international-trade-shipping-commodity-arbitration-arbitrability-of-corporate-disputes",
+        permanent: true,
+      },
+      {
+        source: "/insights/shreyas-jayasimha-speaks-at-net-zero-warriors-entrepreneurs-driving-energy-transition",
+        destination:
+          "/aarna-news/shreyas-jayasimha-speaks-at-net-zero-warriors-entrepreneurs-driving-energy-transition",
+        permanent: true,
+      },
+      {
+        source: "/insights/aarna-law-welcomes-partner",
+        destination:
+          "/aarna-news/aarna-law-welcomes-partner",
+        permanent: true,
+      },
+      {
+        source: "/insights/anusha-madhusudhan-selected-for-judicial-fellowship-programme",
+        destination:
+          "/aarna-news/anusha-madhusudhan-selected-for-judicial-fellowship-programme",
+        permanent: true,
+      },
+      {
+        source: "/event/emaar-india-limited-v-tarun-aggarwal-projects-llp",
+        destination: "/insights/emaar-india-limited-v-tarun-aggarwal-projects-llp",
+        permanent: true,
+      },
+      {
+        source: "/new-free-trade-agreement-between-efta-and-india-offers-enhanced-ip-rights-for-business-owners",
+        destination: "/insights/new-free-trade-agreement-between-efta-and-india-offers-enhanced-ip-rights-for-business-owners",
+        permanent: true,
+      },
 
       // Insights
 
