@@ -2,6 +2,7 @@ import React from "react";
 import Banner from "@/components/ContactUs/Banner";
 import Address from "@/components/ContactUs/Address";
 import ContactUs from "@/components/ContactUs/ContactForm";
+import ZohoContactForm from "@/components/ContactUs/ZohoContactForm";
 import Testimonials from "@/components/ContactUs/Testimonials";
 
 export const metadata = {
@@ -28,7 +29,8 @@ function page() {
       <Banner />
       {/* <Testimonials /> */}
       <Address />
-      <ContactUs />
+      {/* <ContactUs /> */}
+      <ZohoContactForm />
     </>
   );
 }
