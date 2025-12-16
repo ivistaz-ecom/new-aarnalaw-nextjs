@@ -1,7 +1,7 @@
 import { Modal } from "flowbite-react";
 import { useState, useEffect, useRef } from "react";
-import HubSpotCareer from "@/utils/HubSpotForm/CareerForm";
-import InternShip from "@/utils/HubSpotForm/Internships";
+import CareerForm from "@/components/Careers/CareerForm";
+import InternshipForm from "@/components/Careers/InternshipForm";
 import Subscribe from "@/utils/HubSpotForm/Subscribe";
 import ContactPartner from "@/utils/HubSpotForm/ContactPartner";
 import { HiX } from "react-icons/hi";
@@ -11,8 +11,8 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
   const modalRef = useRef(null);
 
   const componentMap = {
-    career: HubSpotCareer,
-    internships: InternShip,
+    career: CareerForm,
+    internships: InternshipForm,
     subscribe: Subscribe,
     contactPartner: ContactPartner,
   };
@@ -38,8 +38,8 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
   return (
     <>
       <button
-        className={`border border-custom-red bg-transparent p-2 text-lg text-custom-blue font-semibold 
-          hover:bg-custom-blue hover:text-white transition-colors duration-300
+        className={`border border-custom-red bg-transparent p-2 text-lg font-semibold text-custom-blue 
+          transition-colors duration-300 hover:bg-custom-blue hover:text-white
           md:px-6 md:text-base`}
         onClick={() => setOpenModal(true)}
       >
@@ -49,14 +49,14 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
       <Modal
         show={openModal}
         onClose={() => setOpenModal(false)}
-        position="center" 
+        position="center"
       >
         <div
           ref={modalRef}
-          className="relative bg-white rounded-lg shadow dark:bg-gray-700 w-full md:w-[700px] max-h-[90vh] overflow-hidden flex flex-col"
+          className="relative flex max-h-[90vh] w-full flex-col overflow-hidden rounded-lg bg-white shadow dark:bg-gray-700 md:w-[700px]"
         >
           {/* Modal Header */}
-          <div className="flex items-center justify-between px-6 pt-6 pb-2 border-b dark:border-gray-600">
+          <div className="flex items-center justify-between border-b px-6 pb-2 pt-6 dark:border-gray-600">
             <div
               className="text-xl font-semibold text-gray-900 dark:text-white"
               dangerouslySetInnerHTML={{ __html: modalTitle }}
@@ -65,12 +65,12 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
               onClick={() => setOpenModal(false)}
               className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-white"
             >
-              <HiX className="w-6 h-6" />
+              <HiX className="h-6 w-6" />
             </button>
           </div>
 
           {/* Modal Body */}
-          <div className="overflow-y-auto p-6" style={{ flex: '1 1 auto' }}>
+          <div className="overflow-y-auto p-6" style={{ flex: "1 1 auto" }}>
             {SelectedComponent ? (
               <SelectedComponent id={id} />
             ) : (
