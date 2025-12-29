@@ -7,12 +7,12 @@ import { headers } from "next/headers";
 import { LanguageProvider } from "../app/context/LanguageContext";
 import dynamic from "next/dynamic";
 
-const DisclaimerModal = dynamic(
-  () => import("../components/DisclaimerModel/DisclaimerModal"),
-  {
-    ssr: false,
-  },
-);
+// const DisclaimerModal = dynamic(
+//   () => import("../components/DisclaimerModel/DisclaimerModal"),
+//   {
+//     ssr: false,
+//   },
+// );
 
 export default function RootLayout({
   children,
@@ -36,7 +36,7 @@ export default function RootLayout({
       </head>
       <body>
         <LanguageProvider>
-          <DisclaimerModal />
+          {/* <DisclaimerModal /> */}
           <Header />
           {children}
           <Footer />
