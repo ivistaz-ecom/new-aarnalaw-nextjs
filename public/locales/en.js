@@ -13,6 +13,7 @@ const en = {
     insights: "Insights",
     aarnanews: "Aarna News",
     publications: "Publications",
+    eventAndWebinars: "Event & Webinars",
     podcasts: "Podcasts",
     careers: "Careers",
     contactus: "Contact Us",
@@ -43,6 +44,9 @@ const en = {
   },
   contactUsTitle: {
     contactUs: "Contact Us",
+  },
+  eventAndWebinarsTitle: {
+    eventAndWebinars: "Event & Webinars",
   },
 
   // About Us 
