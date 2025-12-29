@@ -16,7 +16,7 @@ export const HeaderMenu = [
       { name: "Aarna News", slug: "/aarna-news" },
       { name: "Publications", slug: "/publications" },
       { name: "Podcasts", slug: "/podcasts" },
-      { name: "Event and Webinars", slug: "/event-and-webinars" },
+     /* { name: "Event and Webinars", slug: "/event-and-webinars" }, */
     ],
   },
   { menu: "Careers", slug: "/careers" },
