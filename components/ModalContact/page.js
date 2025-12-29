@@ -2,7 +2,7 @@ import { Modal } from "flowbite-react";
 import { useState, useEffect, useRef } from "react";
 import CareerForm from "@/components/Careers/CareerForm";
 import InternshipForm from "@/components/Careers/InternshipForm";
-import Subscribe from "@/utils/HubSpotForm/Subscribe";
+import SubscribeForm from "@/components/Careers/SubscribeForm";
 import ContactPartner from "@/utils/HubSpotForm/ContactPartner";
 import { HiX } from "react-icons/hi";
 
@@ -13,7 +13,7 @@ function ModalContact({ btnName, textColor, modalTitle, btnType, id }) {
   const componentMap = {
     career: CareerForm,
     internships: InternshipForm,
-    subscribe: Subscribe,
+    subscribe: SubscribeForm,
     contactPartner: ContactPartner,
   };
 
